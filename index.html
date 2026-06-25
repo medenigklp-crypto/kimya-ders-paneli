@@ -21,7 +21,7 @@
         body {
             -webkit-tap-highlight-color: transparent;
             user-select: none;
-            overflow-x: hidden; /* Yatay kaymayı tamamen engeller */
+            overflow-x: hidden;
         }
         .active-tab {
             background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
@@ -42,7 +42,7 @@
         <div class="flex items-center space-x-3">
             <i class="fa-solid fa-flask-vial text-blue-500 text-xl animate-pulse"></i>
             <h1 class="text-lg font-bold tracking-wide bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
-                Kimya Eğitim Paneli <span class="text-xs font-semibold text-slate-400">v1.9</span>
+                Kimya Eğitim Paneli <span class="text-xs font-semibold text-slate-400">v2.1</span>
             </h1>
         </div>
         <div id="save-status" class="text-[11px] text-slate-400 bg-slate-900 px-2.5 py-1 rounded-full border border-slate-700 shrink-0">
@@ -53,39 +53,35 @@
     <!-- Ana İçerik Alanı -->
     <main class="flex-1 p-3 max-w-6xl w-full mx-auto pb-24 box-border overflow-x-hidden">
         
-        <!-- MODÜL 1: İNTERAKTİF DERS PANELİ -->
+        <!-- MODÜL 1: DİNAMİK MÜFREDAT & DERS YÖNETİM PANELİ -->
         <section id="tab-dersler" class="tab-content space-y-4">
             <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-lg">
-                <h2 class="text-base font-bold mb-3 text-blue-400 flex items-center">
+                <h2 class="text-base font-bold mb-1 text-blue-400 flex items-center">
                     <i class="fa-solid fa-graduation-cap mr-2"></i> Müfredat & Ders Yönetimi
                 </h2>
-                <div class="space-y-3">
-                    <div class="p-3 bg-slate-900 rounded-lg border border-slate-700 flex flex-col gap-3">
-                        <div class="flex items-start space-x-3">
-                            <input type="checkbox" id="check-t1" class="w-5 h-5 rounded text-blue-600 bg-slate-700 border-slate-600 text-save" data-id="check-t1">
-                            <div>
-                                <label for="check-t1" class="text-sm font-semibold text-slate-200 cursor-pointer">Tema 1.1: Kimya Hayattır</label>
-                                <p class="text-xs text-slate-400 mt-0.5">Kimya bilimi, maddeler ve laboratuvar güvenliği.</p>
-                            </div>
-                        </div>
-                        <input type="text" placeholder="Slayt Linki Ekle..." class="bg-slate-800 border border-slate-700 rounded px-3 py-1.5 text-xs w-full focus:outline-none focus:border-blue-500 text-save" data-id="link-t1">
+                <p class="text-[11px] text-slate-400 mb-4">Aşağıdan yeni üniteler ekleyebilir, silebilir ve Goodnotes/Drive linklerinizi sabitleyebilirsiniz.</p>
+                
+                <!-- Dinamik Ünite/Konu Ekleme Formu -->
+                <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 space-y-2 mb-4">
+                    <div class="text-xs font-bold text-slate-400 tracking-wider uppercase flex justify-between items-center">
+                        <span>Yeni Konu / Başlık Ekle</span>
+                        <button onclick="resetTopicsToDefault()" class="text-[10px] text-slate-500 hover:text-rose-400 normal-case underline font-normal">Sıfırla</button>
                     </div>
-
-                    <div class="p-3 bg-slate-900 rounded-lg border border-slate-700 flex flex-col gap-3">
-                        <div class="flex items-start space-x-3">
-                            <input type="checkbox" id="check-t2" class="w-5 h-5 rounded text-blue-600 bg-slate-700 border-slate-600 text-save" data-id="check-t2">
-                            <div>
-                                <label for="check-t2" class="text-sm font-semibold text-slate-200 cursor-pointer">Tema 1.2: Atomdan Periyodik Tabloya</label>
-                                <p class="text-xs text-slate-400 mt-0.5">Atom kuramları, kuantum orbitalleri ve periyodik özellikler.</p>
-                            </div>
-                        </div>
-                        <input type="text" placeholder="Slayt Linki Ekle..." class="bg-slate-800 border border-slate-700 rounded px-3 py-1.5 text-xs w-full focus:outline-none focus:border-blue-500 text-save" data-id="link-t2">
+                    <div class="grid grid-cols-1 gap-2">
+                        <input type="text" id="new-topic-name" placeholder="Konu/Ünite Adı (Örn: 02 Gazlar)" class="bg-slate-900 border border-slate-700 rounded p-2 text-xs text-white focus:outline-none">
+                        <input type="text" id="new-topic-desc" placeholder="Kısa Açıklama Veya İçerik Notu (Opsiyonel)" class="bg-slate-900 border border-slate-700 rounded p-2 text-xs text-white focus:outline-none">
                     </div>
+                    <button onclick="addNewTopic()" class="w-full bg-blue-600 hover:bg-blue-500 text-xs font-bold py-2 rounded shadow-md flex items-center justify-center">
+                        <i class="fa-solid fa-plus mr-1.5"></i> Listeye Yeni Başlık Ekle
+                    </button>
                 </div>
+
+                <!-- JS ile Dinamik Dolacak Müfredat Listesi -->
+                <div id="ayt-topics-container" class="space-y-3"></div>
             </div>
         </section>
 
-        <!-- MODÜL 2: 3D GÖRSELLEŞTİRME & İNTERAKTİF SİMÜLATÖR STÜDYOSU -->
+        <!-- MODÜL 2: 3D GÖRSELLEŞTİRME & SİMÜLATÖR STÜDYOSU -->
         <section id="tab-3d" class="tab-content space-y-4 hidden">
             <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-lg">
                 <div class="flex justify-between items-center mb-2">
@@ -99,7 +95,6 @@
                     <div id="canvas-3d"></div>
                 </div>
 
-                <!-- Değişken Kontrol Panel -->
                 <div id="simulation-controls" class="bg-slate-950 p-3 rounded-lg border border-slate-800 mt-3 space-y-3 hidden">
                     <div class="text-xs font-bold text-slate-400 tracking-wider uppercase flex items-center">
                         <i class="fa-solid fa-sliders mr-1.5 text-amber-400"></i> Simülasyon Kontrolleri
@@ -122,13 +117,12 @@
                     </div>
                 </div>
 
-                <!-- Seçim Menüsü -->
                 <div class="space-y-2.5 mt-3">
                     <div class="grid grid-cols-4 gap-1.5">
-                        <button onclick="change3DModel('dalton')" class="bg-slate-700 hover:bg-slate-600 text-[10px] py-2 rounded font-semibold transition-all">Dalton</button>
-                        <button onclick="change3DModel('thomson')" class="bg-slate-700 hover:bg-slate-600 text-[10px] py-2 rounded font-semibold transition-all">Thomson</button>
-                        <button onclick="change3DModel('rutherford')" class="bg-slate-700 hover:bg-slate-600 text-[10px] py-2 rounded font-semibold transition-all">Rutherf.</button>
-                        <button onclick="change3DModel('bohr')" class="bg-slate-700 hover:bg-slate-600 text-[10px] py-2 rounded font-semibold transition-all">Bohr</button>
+                        <button onclick="change3DModel('dalton')" class="bg-slate-700 hover:bg-slate-600 text-[10px] py-2 rounded font-semibold">Dalton</button>
+                        <button onclick="change3DModel('thomson')" class="bg-slate-700 hover:bg-slate-600 text-[10px] py-2 rounded font-semibold">Thomson</button>
+                        <button onclick="change3DModel('rutherford')" class="bg-slate-700 hover:bg-slate-600 text-[10px] py-2 rounded font-semibold">Rutherf.</button>
+                        <button onclick="change3DModel('bohr')" class="bg-slate-700 hover:bg-slate-600 text-[10px] py-2 rounded font-semibold">Bohr</button>
                     </div>
                     <div class="grid grid-cols-4 gap-1.5">
                         <button onclick="change3DModel('s_orbital')" class="bg-slate-800 hover:bg-slate-700 text-[10px] py-1.5 rounded">s orb.</button>
@@ -157,7 +151,6 @@
                     <i class="fa-solid fa-video mr-2"></i> Videolar & Oynatma Listesi
                 </h2>
                 
-                <!-- Video Ekleme Formu -->
                 <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 space-y-2">
                     <div class="text-xs font-bold text-slate-400 tracking-wider uppercase">Yeni Video Sabitle</div>
                     <div class="flex flex-col gap-2">
@@ -180,15 +173,12 @@
                     <video id="main-panel-video" controls class="w-full h-auto max-h-[300px]"></video>
                 </div>
 
-                <!-- OYNATMA LİSTESİ -->
                 <div class="pt-1">
                     <div class="text-xs font-bold text-slate-400 tracking-wider uppercase mb-2 flex items-center justify-between">
                         <span>Oynatma Listem</span>
                         <button onclick="resetVideoListToDefault()" class="text-[10px] text-slate-500 hover:text-rose-400 underline">Sıfırla</button>
                     </div>
-                    <div id="dynamic-video-container" class="space-y-1.5 max-h-[300px] overflow-y-auto w-full box-border pr-0.5">
-                        <!-- JS ile dolacak -->
-                    </div>
+                    <div id="dynamic-video-container" class="space-y-1.5 max-h-[300px] overflow-y-auto w-full box-border pr-0.5"></div>
                 </div>
             </div>
         </section>
@@ -211,27 +201,27 @@
 
     </main>
 
-    <!-- ALT NAVİGASYON (Taşma Korumalı Esnek Menü) -->
+    <!-- ALT NAVİGASYON -->
     <nav class="bg-slate-800 border-t border-slate-700 fixed bottom-0 left-0 right-0 p-1 flex justify-between items-center shadow-2xl z-50 max-w-6xl mx-auto rounded-t-xl box-border w-full">
-        <button onclick="switchTab('dersler')", id="btn-dersler" class="flex-1 flex flex-col items-center justify-center py-1.5 rounded-lg text-slate-400 transition-all min-w-0">
+        <button onclick="switchTab('dersler')" id="btn-dersler" class="flex-1 flex flex-col items-center justify-center py-1.5 rounded-lg text-slate-400 active-tab transition-all min-w-0">
             <i class="fa-solid fa-list-check text-base mb-0.5"></i>
             <span class="text-[9px] font-medium truncate">Ders</span>
         </button>
-        <button onclick="switchTab('3d')", id="btn-3d" class="flex-1 flex flex-col items-center justify-center py-1.5 rounded-lg text-slate-400 transition-all min-w-0">
+        <button onclick="switchTab('3d')" id="btn-3d" class="flex-1 flex flex-col items-center justify-center py-1.5 rounded-lg text-slate-400 transition-all min-w-0">
             <i class="fa-solid fa-cube text-base mb-0.5"></i>
             <span class="text-[9px] font-medium truncate">3D Stüdyo</span>
         </button>
-        <button onclick="switchTab('galeri')", id="btn-galeri" class="flex-1 flex flex-col items-center justify-center py-1.5 rounded-lg text-slate-400 transition-all min-w-0">
+        <button onclick="switchTab('galeri')" id="btn-galeri" class="flex-1 flex flex-col items-center justify-center py-1.5 rounded-lg text-slate-400 transition-all min-w-0">
             <i class="fa-solid fa-video text-base mb-0.5"></i>
             <span class="text-[9px] font-medium truncate">Videolar</span>
         </button>
-        <button onclick="switchTab('youtube')", id="btn-youtube" class="flex-1 flex flex-col items-center justify-center py-1.5 rounded-lg text-slate-400 transition-all min-w-0">
+        <button onclick="switchTab('youtube')" id="btn-youtube" class="flex-1 flex flex-col items-center justify-center py-1.5 rounded-lg text-slate-400 transition-all min-w-0">
             <i class="fa-brands fa-youtube text-base mb-0.5"></i>
             <span class="text-[9px] font-medium truncate">Senaryo</span>
         </button>
     </nav>
 
-    <!-- JAVASCRIPT ENGINE -->
+    <!-- JAVASCRIPT MOTORU -->
     <script>
         var activeTabId = 'dersler';
         function switchTab(tabId) {
@@ -243,9 +233,109 @@
             if(tabId === '3d') { setTimeout(() => { onWindowResize(); }, 50); }
         }
 
+        // --- 📂 SİZİN ATTIĞINIZ ÖRNEK AYT KİMYA ŞABLONU (İstediğiniz An Silebilirsiniz) 📂 ---
+        const defaultTopics = [
+            { id: "t1", name: "01 Modern Atom Modeli", desc: "Kuantum sayıları, elektron dizilimleri ve periyodik özellikler.", checked: false, link: "" },
+            { id: "t2", name: "02 Gazlar", desc: "İdeal gaz yasası, kinetik teori, gerçek gazlar ve gaz karışımları.", checked: false, link: "" },
+            { id: "t3", name: "03 Çözeltiler", desc: "Sıvı çözeltilerde derişim birimleri, çözünürlük ve koligatif özellikler.", checked: false, link: "" },
+            { id: "t4", name: "04 Kimyasal Tep. Enerji", desc: "Tepkime entalpileri, Hess yasası, oluşum entalpileri ve bağ enerjileri.", checked: false, link: "" },
+            { id: "t5", name: "05 Kimyasal Tep. Hız", desc: "Çarpışma teorisi, tepkime hızını etkileyen faktörler ve mekanizmalar.", checked: false, link: "" },
+            { id: "t6", name: "06 Kimyasal Tep. Denge", desc: "Maksimum düzensizlik, minimum enerji dengesi ve Le Chatelier ilkesi.", checked: false, link: "" },
+            { id: "t7", name: "07 Asit Baz Dengesi", desc: "Otoiyonizasyon, pH/pOH, zayıf asit/baz dengeleri ve titrasyon.", checked: false, link: "" },
+            { id: "t8", name: "08 Çözünürlük Dengesi", desc: "Çözünürlük çarpımı (Kçç) hesaplamaları ve ortak iyon etkisi.", checked: false, link: "" },
+            { id: "t9", name: "09 Elektrokimya", desc: "Redoks tepkimeleri, aktiflik, galvanik/elektrolitik hücreler ve Faraday yasaları.", checked: false, link: "" }
+        ];
+
+        // --- 🛠️ TAMAMEN DİNAMİK MÜFREDAT KONTROLÜ (YENİ SİSTEM) 🛠️ ---
+        function renderAytTopics() {
+            let list = JSON.parse(localStorage.getItem('custom_topic_list'));
+            if (!list) {
+                list = defaultTopics;
+                localStorage.setItem('custom_topic_list', JSON.stringify(list));
+            }
+            const container = document.getElementById('ayt-topics-container');
+            container.innerHTML = '';
+            
+            list.forEach(topic => {
+                const hasLink = topic.link && topic.link.trim().startsWith('http');
+                container.innerHTML += `
+                    <div class="p-3 bg-slate-900 rounded-lg border border-slate-700 flex flex-col gap-2.5 shadow">
+                        <div class="flex items-start justify-between gap-2">
+                            <div class="flex items-start space-x-2.5 min-w-0 flex-1">
+                                <input type="checkbox" id="check-${topic.id}" ${topic.checked ? 'checked' : ''} onchange="toggleTopicCheck('${topic.id}', this.checked)" class="w-4.5 h-4.5 mt-0.5 rounded text-blue-600 bg-slate-700 border-slate-600 shrink-0">
+                                <div class="min-w-0 flex-1">
+                                    <label for="check-${topic.id}" class="text-xs font-bold text-slate-200 cursor-pointer block truncate">${topic.name}</label>
+                                    <p class="text-[10px] text-slate-400 mt-0.5 leading-relaxed truncate">${topic.desc || ''}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-1 shrink-0">
+                                <button onclick="openTopicLink('${topic.id}')" class="text-[10px] bg-slate-800 hover:bg-blue-900 text-slate-400 hover:text-white px-2 py-1 rounded border border-slate-700 transition-colors ${hasLink ? '' : 'hidden'}" id="go-${topic.id}">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </button>
+                                <button onclick="deleteTopic('${topic.id}')" class="text-[10px] bg-slate-800 hover:bg-rose-950 text-slate-500 hover:text-rose-400 px-2 py-1 rounded border border-slate-700 transition-colors">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <input type="text" id="link-${topic.id}" value="${topic.link || ''}" placeholder="Goodnotes veya Drive Linki Yapıştırın..." oninput="updateTopicLink('${topic.id}', this.value)" class="bg-slate-800 border border-slate-700 rounded px-2.5 py-1.5 text-[11px] w-full text-white focus:outline-none focus:border-blue-500">
+                    </div>
+                `;
+            });
+        }
+
+        function toggleTopicCheck(id, isChecked) {
+            let list = JSON.parse(localStorage.getItem('custom_topic_list'));
+            let topic = list.find(t => t.id === id);
+            if(topic) { topic.checked = isChecked; localStorage.setItem('custom_topic_list', JSON.stringify(list)); }
+        }
+
+        function updateTopicLink(id, value) {
+            let list = JSON.parse(localStorage.getItem('custom_topic_list'));
+            let topic = list.find(t => t.id === id);
+            if(topic) {
+                topic.link = value;
+                localStorage.setItem('custom_topic_list', JSON.stringify(list));
+                const btn = document.getElementById(`go-${id}`);
+                if(btn) {
+                    if(value.trim().startsWith('http')) btn.classList.remove('hidden');
+                    else btn.classList.add('hidden');
+                }
+            }
+        }
+
+        function openTopicLink(id) {
+            let list = JSON.parse(localStorage.getItem('custom_topic_list'));
+            let topic = list.find(t => t.id === id);
+            if(topic && topic.link) { window.open(topic.link.trim(), '_blank'); }
+        }
+
+        function deleteTopic(id) {
+            let list = JSON.parse(localStorage.getItem('custom_topic_list'));
+            list = list.filter(t => t.id !== id);
+            localStorage.setItem('custom_topic_list', JSON.stringify(list));
+            renderAytTopics();
+        }
+
+        function addNewTopic() {
+            const nameInput = document.getElementById('new-topic-name');
+            const descInput = document.getElementById('new-topic-desc');
+            if(!nameInput.value.trim()) { alert("Lütfen ünite/konu adını girin!"); return; }
+            let list = JSON.parse(localStorage.getItem('custom_topic_list')) || [];
+            list.push({ id: "topic_" + Date.now(), name: nameInput.value.trim(), desc: descInput.value.trim(), checked: false, link: "" });
+            localStorage.setItem('custom_topic_list', JSON.stringify(list));
+            nameInput.value = ''; descInput.value = '';
+            renderAytTopics();
+        }
+
+        function resetTopicsToDefault() {
+            if(confirm("Müfredat listesi ilk orijinal şablon haline döndürülecektir. Emin misiniz?")) {
+                localStorage.setItem('custom_topic_list', JSON.stringify(defaultTopics));
+                renderAytTopics();
+            }
+        }
+
         function loadLocalVideo(event) {
-            const file = event.target.files[0];
-            if (!file) return;
+            const file = event.target.files[0]; if (!file) return;
             document.getElementById('main-panel-video').src = URL.createObjectURL(file);
             document.getElementById('video-player-container').classList.remove('hidden');
             document.getElementById('main-panel-video').play();
@@ -257,31 +347,15 @@
             document.getElementById('main-panel-video').play();
         }
 
-        // --- DİNAMİK VİDEO SEKMESİ SİLME/EKLEME ---
+        // --- 🎥 VİDEO LİSTESİ MOTORU 🎥 ---
         const defaultVideos = [
-            { name: "1. Laboratuvar Güvenlik Kuralları", file: "deney1.mp4" },
-            { name: "2. Kimyasal Risk Piktogramları", file: "deney2.mp4" },
-            { name: "3. Asitlerin Mermer Tezgaha Etkisi", file: "deney3.mp4" },
-            { name: "4. Kirecin Limon Tuzuyla Çözülmesi", file: "deney4.mp4" },
-            { name: "5. Gazlı İçeceklerin Pas Temizlemesi", file: "deney5.mp4" },
-            { name: "6. Sodyum Metalinin Su ile Patlaması", file: "deney6.mp4" },
-            { name: "7. Cıva Metalinin Toksik Özellikleri", file: "deney7.mp4" },
-            { name: "8. Alüminyum Folyonun Isı İletkenliği", file: "deney8.mp4" },
-            { name: "9. Çamaşır Suyu ve Tuz Ruhunun Tehlikesi", file: "deney9.mp4" },
-            { name: "10. Havadan Hafif Gazlar ve Balonlar", file: "deney10.mp4" },
-            { name: "11. Dalton ve Thomson Teorileri", file: "deney11.mp4" },
-            { name: "12. Rutherford Alfa Saçılma Deneyi", file: "deney12.mp4" },
-            { name: "13. Elementlerin Alev Testi (Emisyon)", file: "deney13.mp4" },
-            { name: "14. İyonlaşma Enerjisi Sapmaları", file: "deney14.mp4" },
-            { name: "15. Elektronegatiflik Çekim Analojisi", file: "deney15.mp4" }
+            { name: "1. Sodyum Klorür Kristal Örgüsü (Tuz-Su)", file: "NaCl-H2O.MP4" },
+            { name: "2. Laboratuvar Güvenlik Kuralları", file: "deney1.mp4" }
         ];
 
         function renderVideoList() {
             let list = JSON.parse(localStorage.getItem('custom_video_list'));
-            if (!list) {
-                list = defaultVideos;
-                localStorage.setItem('custom_video_list', JSON.stringify(list));
-            }
+            if (!list) { list = defaultVideos; localStorage.setItem('custom_video_list', JSON.stringify(list)); }
             const container = document.getElementById('dynamic-video-container');
             container.innerHTML = '';
             list.forEach((item, index) => {
@@ -290,7 +364,7 @@
                         <button onclick="playCloudVideo('${item.file}')" class="flex-1 p-2.5 text-left text-xs font-medium truncate text-slate-300 hover:text-cyan-400 min-w-0">
                             <i class="fa-solid fa-circle-play mr-2 text-cyan-400 shrink-0"></i>${item.name}
                         </button>
-                        <button onclick="deleteVideoFromList(${index})" class="p-2.5 bg-slate-950 hover:bg-rose-950 border-l border-slate-800 text-slate-500 hover:text-rose-400 transition-colors shrink-0 flex items-center justify-center w-10 h-full">
+                        <button onclick="deleteVideoFromList(${index})" class="p-2.5 bg-slate-950 hover:bg-rose-950 border-l border-slate-800 text-slate-500 hover:text-rose-400 shrink-0 flex items-center justify-center w-10 h-10">
                             <i class="fa-solid fa-trash-can text-xs"></i>
                         </button>
                     </div>
@@ -301,10 +375,7 @@
         function addNewVideoToList() {
             const nameInput = document.getElementById('new-video-name');
             const fileInput = document.getElementById('new-video-file');
-            if(!nameInput.value.trim() || !fileInput.value.trim()) {
-                alert("Lütfen tüm alanları doldurun!");
-                return;
-            }
+            if(!nameInput.value.trim() || !fileInput.value.trim()) { alert("Lütfen tüm alanları doldurun!"); return; }
             let list = JSON.parse(localStorage.getItem('custom_video_list')) || defaultVideos;
             list.push({ name: nameInput.value.trim(), file: fileInput.value.trim() });
             localStorage.setItem('custom_video_list', JSON.stringify(list));
@@ -313,18 +384,13 @@
         }
 
         function deleteVideoFromList(index) {
-            let list = JSON.parse(localStorage.getItem('custom_video_list'));
-            if(!list) return;
-            list.splice(index, 1);
-            localStorage.setItem('custom_video_list', JSON.stringify(list));
+            let list = JSON.parse(localStorage.getItem('custom_video_list')); if(!list) return;
+            list.splice(index, 1); localStorage.setItem('custom_video_list', JSON.stringify(list));
             renderVideoList();
         }
 
         function resetVideoListToDefault() {
-            if(confirm("Listeniz ilk orijinal haline döndürülecektir. Emin misiniz?")) {
-                localStorage.setItem('custom_video_list', JSON.stringify(defaultVideos));
-                renderVideoList();
-            }
+            if(confirm("Listeniz sıfırlanacaktır. Emin misiniz?")) { localStorage.setItem('custom_video_list', JSON.stringify(defaultVideos)); renderVideoList(); }
         }
 
         // --- GLOBAL SİMÜLASYON DEĞİŞKENLERİ ---
@@ -338,18 +404,17 @@
             if (activeModelType === 'dynamic_simulation') rebuildDynamicSimulation();
         }
 
-        // --- LOCALSTORAGE KAYITLARI ---
+        // --- HAFIZA BAŞLANGIÇ AYARLARI ---
         document.addEventListener('DOMContentLoaded', () => {
+            renderAytTopics(); // Önce ders listesini üret
+            
             document.querySelectorAll('.text-save').forEach(input => {
-                const savedValue = localStorage.getItem(input.getAttribute('data-id'));
-                if (savedValue !== null) {
-                    if (input.type === 'checkbox') input.checked = savedValue === 'true';
-                    else input.value = savedValue;
-                }
-                input.addEventListener('input', () => {
-                    localStorage.setItem(input.getAttribute('data-id'), input.type === 'checkbox' ? input.checked : input.value);
-                });
+                const id = input.getAttribute('data-id');
+                const savedValue = localStorage.getItem(id);
+                if (savedValue !== null) { input.value = savedValue; }
+                input.addEventListener('input', () => { localStorage.setItem(id, input.value); });
             });
+            
             renderVideoList();
             init3D();
         });
@@ -412,10 +477,8 @@
         }
 
         function onWindowResize() {
-            const container = document.getElementById('canvas-3d');
-            if(!container || !renderer) return;
-            camera.aspect = container.clientWidth / container.clientHeight;
-            camera.updateProjectionMatrix();
+            const container = document.getElementById('canvas-3d'); if(!container || !renderer) return;
+            camera.aspect = container.clientWidth / container.clientHeight; camera.updateProjectionMatrix();
             renderer.setSize(container.clientWidth, container.clientHeight);
         }
 
@@ -501,18 +564,10 @@
                 currentGroup.add(createQuantumAxes(), createOrientedLobe(0,1,0,true), createOrientedLobe(0,-1,0,true));
                 const tg = new THREE.Group(); tg.add(new THREE.Mesh(new THREE.TorusGeometry(1.05,0.32,24,64), new THREE.MeshPhongMaterial({ color: 0xf43f5e, emissive: 0xe11d48, emissiveIntensity: 0.6, transparent: true, opacity: 0.8, shininess: 90, blending: THREE.AdditiveBlending })), new THREE.Mesh(new THREE.TorusGeometry(1.05,0.35,8,32), new THREE.MeshPhongMaterial({ color: 0xf43f5e, transparent: true, opacity: 0.2, wireframe: true, blending: THREE.AdditiveBlending })));
                 tg.rotation.x = Math.PI/2; currentGroup.add(tg);
-            } else if (type === 'molecule') {
-                const o = new THREE.Mesh(new THREE.SphereGeometry(0.85,32,32), new THREE.MeshPhongMaterial({ color: 0xe11d48, shininess: 60 })); currentGroup.add(o);
-                const h1 = new THREE.Mesh(new THREE.SphereGeometry(0.45,32,32), new THREE.MeshPhongMaterial({ color: 0xffffff, shininess: 60 })); h1.position.set(-1.2,-0.8,0); currentGroup.add(h1);
-                const h2 = new THREE.Mesh(new THREE.SphereGeometry(0.45,32,32), new THREE.MeshPhongMaterial({ color: 0xffffff, shininess: 60 })); h2.position.set(1.2,-0.8,0); currentGroup.add(h2);
-                const b = new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.08,1.3,16), new THREE.MeshPhongMaterial({ color: 0x475569 }));
-                const b1 = b.clone(); b1.position.set(-0.6,-0.4,0); b1.rotation.z = Math.PI/3.6; currentGroup.add(b1);
-                const b2 = b.clone(); b2.position.set(0.6,-0.4,0); b2.rotation.z = -Math.PI/3.6; currentGroup.add(b2);
             }
             scene.add(currentGroup);
         }
 
-        // --- ⚡ INSTANT DEPLOY & ANTI-CACHE ENGINE ⚡ ---
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.getRegistrations().then(sws => { sws.forEach(s => s.unregister()); });
         }
