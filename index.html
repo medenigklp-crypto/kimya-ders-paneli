@@ -26,7 +26,7 @@
         #canvas-3d {
             width: 100%;
             height: 380px;
-            background-color: #1e293b;
+            background-color: #05070f;
             border-radius: 0.75rem;
         }
     </style>
@@ -37,7 +37,7 @@
         <div class="flex items-center space-x-3">
             <i class="fa-solid fa-flask-vial text-blue-500 text-2xl animate-pulse"></i>
             <h1 class="text-xl font-bold tracking-wide bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
-                Kimya Eğitim Paneli <span class="text-xs font-semibold text-slate-400">v1.3</span>
+                Kimya Eğitim Paneli <span class="text-xs font-semibold text-slate-400">v1.4</span>
             </h1>
         </div>
         <div id="save-status" class="text-xs text-slate-400 bg-slate-900 px-3 py-1 rounded-full border border-slate-700">
@@ -85,31 +85,31 @@
                 <h2 class="text-lg font-bold mb-2 text-emerald-400 flex items-center">
                     <i class="fa-solid fa-cube mr-2"></i> 3D Atom & Orbital Laboratuvarı
                 </h2>
-                <p class="text-slate-400 text-sm mb-4">Müfredattaki tarihsel atom kuramlarını ve üç boyutlu modern kuantum olasılık bulutlarını dinamik olarak inceleyin.</p>
+                <p class="text-slate-400 text-sm mb-4">Holografik kuantum bulutlarını, faz evrelerini (Kırmızı/Yeşil) ve yönelim geometrilerini gerçeğe en yakın kalitede inceleyin.</p>
                 
                 <div class="relative">
                     <div id="canvas-3d"></div>
                     <div class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-sm px-3 py-1.5 rounded text-xs border border-slate-700 text-slate-300">
-                        <i class="fa-solid fa-arrows-spin animate-spin mr-1 text-emerald-400"></i> Dokunarak Döndürebilirsiniz
+                        <i class="fa-solid fa-arrows-spin animate-spin mr-1 text-emerald-400"></i> Dokunarak Her Yöne Döndürebilirsiniz
                     </div>
                 </div>
 
-                <div class="space-y-3 mt-4">
+                <div class="space-y-4 mt-4">
                     <div>
                         <div class="text-xs font-bold text-slate-400 tracking-wider uppercase mb-1.5 flex items-center">
                             <i class="fa-solid fa-timeline mr-1.5 text-blue-400"></i> Tarihsel MEB Atom Modelleri
                         </div>
                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                            <button onclick="change3DModel('dalton')" class="bg-slate-700 hover:bg-slate-600 text-[11px] py-2 px-2 rounded-lg font-semibold transition-all border border-slate-600 flex items-center justify-center">Dalton</button>
-                            <button onclick="change3DModel('thomson')" class="bg-slate-700 hover:bg-slate-600 text-[11px] py-2 px-2 rounded-lg font-semibold transition-all border border-slate-600 flex items-center justify-center">Thomson</button>
-                            <button onclick="change3DModel('rutherford')" class="bg-slate-700 hover:bg-slate-600 text-[11px] py-2 px-2 rounded-lg font-semibold transition-all border border-slate-600 flex items-center justify-center">Rutherford</button>
-                            <button onclick="change3DModel('bohr')" class="bg-slate-700 hover:bg-slate-600 text-[11px] py-2 px-2 rounded-lg font-semibold transition-all border border-slate-600 flex items-center justify-center">Bohr</button>
+                            <button onclick="change3DModel('dalton')" class="bg-slate-700 hover:bg-slate-600 text-[11px] py-2 px-2 rounded-lg font-semibold transition-all border border-slate-600 flex items-center justify-center shadow-md">Dalton</button>
+                            <button onclick="change3DModel('thomson')" class="bg-slate-700 hover:bg-slate-600 text-[11px] py-2 px-2 rounded-lg font-semibold transition-all border border-slate-600 flex items-center justify-center shadow-md">Thomson</button>
+                            <button onclick="change3DModel('rutherford')" class="bg-slate-700 hover:bg-slate-600 text-[11px] py-2 px-2 rounded-lg font-semibold transition-all border border-slate-600 flex items-center justify-center shadow-md">Rutherford</button>
+                            <button onclick="change3DModel('bohr')" class="bg-slate-700 hover:bg-slate-600 text-[11px] py-2 px-2 rounded-lg font-semibold transition-all border border-slate-600 flex items-center justify-center shadow-md">Bohr</button>
                         </div>
                     </div>
 
                     <div>
                         <div class="text-xs font-bold text-slate-400 tracking-wider uppercase mb-1.5 flex items-center">
-                            <i class="fa-solid fa-atom mr-1.5 text-emerald-400"></i> s ve p Orbitalleri
+                            <i class="fa-solid fa-atom mr-1.5 text-emerald-400"></i> s ve p Orbitalleri (Küresel & Kuantum Loblular)
                         </div>
                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
                             <button onclick="change3DModel('s_orbital')" class="bg-slate-800 hover:bg-slate-700 text-[11px] py-2 px-2 rounded-lg font-medium transition-all border border-slate-700">s orbitali</button>
@@ -121,19 +121,19 @@
 
                     <div>
                         <div class="text-xs font-bold text-slate-400 tracking-wider uppercase mb-1.5 flex items-center">
-                            <i class="fa-solid fa-circle-dot mr-1.5 text-indigo-400"></i> d Orbitalleri (5 Yönelim)
+                            <i class="fa-solid fa-circle-dot mr-1.5 text-indigo-400"></i> d Orbitalleri (Kusursuz Vektörel Konumlandırma)
                         </div>
                         <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
-                            <button onclick="change3DModel('d_xy')" class="bg-slate-950 hover:bg-slate-700 text-[11px] py-2 px-1 rounded-lg font-medium transition-all border border-slate-800 text-indigo-300">d<sub>xy</sub></button>
-                            <button onclick="change3DModel('d_yz')" class="bg-slate-950 hover:bg-slate-700 text-[11px] py-2 px-1 rounded-lg font-medium transition-all border border-slate-800 text-indigo-300">d<sub>yz</sub></button>
-                            <button onclick="change3DModel('d_xz')" class="bg-slate-950 hover:bg-slate-700 text-[11px] py-2 px-1 rounded-lg font-medium transition-all border border-slate-800 text-indigo-300">d<sub>xz</sub></button>
-                            <button onclick="change3DModel('d_x2y2')" class="bg-slate-950 hover:bg-slate-700 text-[11px] py-2 px-1 rounded-lg font-medium transition-all border border-slate-800 text-indigo-300">d<sub>x²-y²</sub></button>
-                            <button onclick="change3DModel('d_z2')" class="bg-slate-950 hover:bg-slate-700 text-[11px] py-2 px-1 rounded-lg font-medium transition-all border border-slate-800 text-indigo-300 col-span-2 sm:col-span-1">d<sub>z²</sub></button>
+                            <button onclick="change3DModel('d_xy')" class="bg-slate-950 hover:bg-slate-700 text-[11px] py-2 px-1 rounded-lg font-bold transition-all border border-slate-800 text-indigo-300">d<sub>xy</sub></button>
+                            <button onclick="change3DModel('d_yz')" class="bg-slate-950 hover:bg-slate-700 text-[11px] py-2 px-1 rounded-lg font-bold transition-all border border-slate-800 text-indigo-300">d<sub>yz</sub></button>
+                            <button onclick="change3DModel('d_xz')" class="bg-slate-950 hover:bg-slate-700 text-[11px] py-2 px-1 rounded-lg font-bold transition-all border border-slate-800 text-emerald-400">d<sub>xz</sub> 🛠️</button>
+                            <button onclick="change3DModel('d_x2y2')" class="bg-slate-950 hover:bg-slate-700 text-[11px] py-2 px-1 rounded-lg font-bold transition-all border border-slate-800 text-indigo-300">d<sub>x²-y²</sub></button>
+                            <button onclick="change3DModel('d_z2')" class="bg-slate-950 hover:bg-slate-700 text-[11px] py-2 px-1 rounded-lg font-bold transition-all border border-slate-800 text-amber-400 col-span-2 sm:col-span-1">d<sub>z²</sub> 👑</button>
                         </div>
                     </div>
 
                     <div>
-                        <button onclick="change3DModel('molecule')" class="w-full bg-gradient-to-r from-emerald-800 to-teal-800 hover:from-emerald-700 hover:to-teal-700 text-xs py-2 px-4 rounded-lg font-bold transition-all text-center">
+                        <button onclick="change3DModel('molecule')" class="w-full bg-gradient-to-r from-emerald-800 to-teal-800 hover:from-emerald-700 hover:to-teal-700 text-xs py-2 px-4 rounded-lg font-bold transition-all text-center shadow-lg">
                             Molekül Yapısı Örneği: Saf Su (H<sub>2</sub>O)
                         </button>
                     </div>
@@ -228,7 +228,7 @@
             }, 500);
         }
 
-        // --- THREE.JS ORTAMI ---
+        // --- THREE.JS SİMÜLASYON MOTORU ---
         let scene, camera, renderer, currentGroup;
         let isDragging = false;
         let previousMousePosition = { x: 0, y: 0 };
@@ -237,23 +237,29 @@
             const container = document.getElementById('canvas-3d');
             
             scene = new THREE.Scene();
-            scene.background = new THREE.Color(0x0f172a);
+            scene.background = new THREE.Color(0x05070f); // Derin kuantum uzayı arka planı
             
             camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-            camera.position.set(0, 0, 7);
+            camera.position.set(0, 0, 6.5);
 
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+            // Gelişmiş Sinematik Neon Işıklandırma Matrisi
+            const ambientLight = new THREE.AmbientLight(0x1e293b, 1.5);
             scene.add(ambientLight);
             
-            const dirLight1 = new THREE.DirectionalLight(0xffffff, 0.6);
-            dirLight1.position.set(5, 5, 5);
+            const centerLight = new THREE.PointLight(0xffffff, 1.8, 12);
+            centerLight.position.set(0, 0, 0);
+            scene.add(centerLight);
+
+            const dirLight1 = new THREE.DirectionalLight(0x38bdf8, 1.2); // Turkuaz Parıltı Rim
+            dirLight1.position.set(5, 5, 4);
             scene.add(dirLight1);
 
-            const dirLight2 = new THREE.DirectionalLight(0xffffff, 0.3);
-            dirLight2.position.set(-5, -5, 5);
+            const dirLight2 = new THREE.DirectionalLight(0xf43f5e, 0.6); // Kırmızı Dolgu Parıltısı
+            dirLight2.position.set(-5, -5, 4);
             scene.add(dirLight2);
 
-            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+            renderer.setPixelRatio(window.devicePixelRatio);
             renderer.setSize(container.clientWidth, container.clientHeight);
             container.appendChild(renderer.domElement);
 
@@ -268,6 +274,7 @@
             }
             animate();
 
+            // Kontroller
             container.addEventListener('mousedown', () => { isDragging = true; });
             container.addEventListener('mousemove', (e) => {
                 const deltaMove = { x: e.offsetX - previousMousePosition.x, y: e.offsetY - previousMousePosition.y };
@@ -303,8 +310,8 @@
 
         function createQuantumAxes() {
             const axesGroup = new THREE.Group();
-            const axisGeo = new THREE.CylinderGeometry(0.015, 0.012, 6.5, 8);
-            const axisMat = new THREE.MeshBasicMaterial({ color: 0x475569, transparent: true, opacity: 0.4 });
+            const axisGeo = new THREE.CylinderGeometry(0.012, 0.012, 6.0, 8);
+            const axisMat = new THREE.MeshBasicMaterial({ color: 0x334155, transparent: true, opacity: 0.4 });
 
             const xAxis = new THREE.Mesh(axisGeo, axisMat); xAxis.rotation.z = Math.PI / 2;
             const yAxis = new THREE.Mesh(axisGeo, axisMat);
@@ -314,39 +321,69 @@
             return axesGroup;
         }
 
-        // --- MATEMATİKSEL KUANTUM LOB MOTORU (Hatasız Gölgelendirme) ---
+        // --- 💎 YENİ NESİL 3 KATMANLI HOLOGRAFİK LOB MOTORU 💎 ---
         function createQuantumLobe(isPositive) {
             const lobeGroup = new THREE.Group();
-            const color = isPositive ? 0x10b981 : 0xf43f5e; // Pozitif Evre: Yeşil / Negatif Evre: Kırmızı
+            const mainColor = isPositive ? 0x10b981 : 0xf43f5e; // Yeşil (+) / Kırmızı (-)
 
-            // İç yoğunluk küresi (Çekirdeğe doğru daralan yumurta geometrisi)
-            const coreGeo = new THREE.SphereGeometry(0.65, 32, 32);
-            coreGeo.scale(1.0, 1.8, 1.0); // Geometri seviyesinde kusursuz normalleri hesaplayarak büyütme
-            coreGeo.translate(0, 0.9, 0); // Orijini tam düğüm noktasına (çekirdeğe) sabitleme
+            // 1. KATMAN: İç Parlayan Yoğunluk Çekirdeği (Additive Glow)
+            const coreGeo = new THREE.SphereGeometry(0.62, 24, 24);
+            coreGeo.scale(1.0, 2.0, 1.0);     // Kusursuz uzatılmış kum saati formu
+            coreGeo.translate(0, 0.9, 0);     // Düğüm noktasını (0,0,0) tam merkeze sabitleme
             
             const coreMat = new THREE.MeshPhongMaterial({ 
-                color: color, 
+                color: mainColor,
+                emissive: mainColor,
+                emissiveIntensity: 0.9,
                 transparent: true, 
-                opacity: 0.85, 
-                shininess: 80,
+                opacity: 0.75, 
+                shininess: 100,
+                blending: THREE.AdditiveBlending, // Işık üst üste binme efekti
+                depthWrite: false,
                 side: THREE.DoubleSide
             });
             lobeGroup.add(new THREE.Mesh(coreGeo, coreMat));
 
-            // Dış bulut olasılık katmanı (S orbitalindeki gibi şeffaf tel kafes)
-            const cloudGeo = new THREE.SphereGeometry(0.72, 16, 12);
-            cloudGeo.scale(1.0, 1.9, 1.0);
-            cloudGeo.translate(0, 0.9, 0);
+            // 2. KATMAN: Yumuşak Olasılık Sisi Kabuğu (Cloud Shell)
+            const shellGeo = new THREE.SphereGeometry(0.76, 24, 24);
+            shellGeo.scale(1.0, 2.0, 1.0);
+            shellGeo.translate(0, 0.9, 0);
             
-            const cloudMat = new THREE.MeshPhongMaterial({ 
-                color: color, 
+            const shellMat = new THREE.MeshPhongMaterial({ 
+                color: mainColor, 
                 transparent: true, 
                 opacity: 0.25, 
-                wireframe: true 
+                blending: THREE.AdditiveBlending,
+                depthWrite: false,
+                side: THREE.DoubleSide
             });
-            lobeGroup.add(new THREE.Mesh(cloudGeo, cloudMat));
+            lobeGroup.add(new THREE.Mesh(shellGeo, shellMat));
+
+            // 3. KATMAN: Dijital Pedagoji Tel Kafes Yapısı (Probability Mesh Lattice)
+            const meshGeo = new THREE.SphereGeometry(0.77, 12, 12);
+            meshGeo.scale(1.0, 2.0, 1.0);
+            meshGeo.translate(0, 0.9, 0);
+            
+            const meshMat = new THREE.MeshBasicMaterial({ 
+                color: mainColor, 
+                wireframe: true, 
+                transparent: true, 
+                opacity: 0.15, 
+                blending: THREE.AdditiveBlending
+            });
+            lobeGroup.add(new THREE.Mesh(meshGeo, meshMat));
 
             return lobeGroup;
+        }
+
+        // --- 🛠️ BUG-FREE KUANTERNIYON HİZALAYICI HIZLANDIRICI 🛠️ ---
+        function createOrientedLobe(dirX, dirY, dirZ, isPositive) {
+            const lobe = createQuantumLobe(isPositive);
+            const targetDirection = new THREE.Vector3(dirX, dirY, dirZ).normalize();
+            
+            // Temel lobumuz +Y yönüne bakar (0,1,0). Onu doğrudan targetDirection'a çeviriyoruz.
+            lobe.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), targetDirection);
+            return lobe;
         }
 
         // --- MODELLERİN OLUŞTURULMASI ---
@@ -354,20 +391,25 @@
             if (currentGroup) scene.remove(currentGroup);
             currentGroup = new THREE.Group();
 
-            // Dalton Modeli
+            // Dalton Modeli (Derin Metalik Enerji Küresi)
             if (type === 'dalton') {
                 const daltonGeo = new THREE.SphereGeometry(2, 32, 32);
-                const daltonMat = new THREE.MeshPhongMaterial({ color: 0x64748b, shininess: 40 });
+                const daltonMat = new THREE.MeshPhongMaterial({ 
+                    color: 0x475569, 
+                    emissive: 0x1e293b,
+                    shininess: 90, 
+                    specular: 0x38bdf8 
+                });
                 currentGroup.add(new THREE.Mesh(daltonGeo, daltonMat));
             } 
-            // Thomson Modeli
+            // Thomson Modeli (Işıltılı Üzümlü Kek)
             else if (type === 'thomson') {
-                const cloudGeo = new THREE.SphereGeometry(2.1, 32, 32);
-                const cloudMat = new THREE.MeshPhongMaterial({ color: 0xf43f5e, transparent: true, opacity: 0.5, shininess: 10 });
+                const cloudGeo = new THREE.SphereGeometry(2.0, 32, 32);
+                const cloudMat = new THREE.MeshPhongMaterial({ color: 0xf43f5e, transparent: true, opacity: 0.35, blending: THREE.AdditiveBlending });
                 currentGroup.add(new THREE.Mesh(cloudGeo, cloudMat));
 
-                const eGeo = new THREE.SphereGeometry(0.2, 16, 16);
-                const eMat = new THREE.MeshPhongMaterial({ color: 0x3b82f6 });
+                const eGeo = new THREE.SphereGeometry(0.18, 16, 16);
+                const eMat = new THREE.MeshPhongMaterial({ color: 0x38bdf8, emissive: 0x0284c7, emissiveIntensity: 0.8 });
                 const positions = [
                     [1, 0.5, 0.8], [-1, -0.6, 0.5], [0.2, 1.2, -0.7], [-0.8, 0.9, -0.5],
                     [0.9, -1, -0.4], [-0.3, -0.2, -1.2], [1.2, -0.3, 0.9], [-1.1, 0.2, 1.1]
@@ -378,161 +420,164 @@
                     currentGroup.add(electron);
                 });
             } 
-            // Rutherford Modeli
+            // Rutherford Modeli (Neon Yörüngeli Çekirdek)
             else if (type === 'rutherford') {
                 const coreGeo = new THREE.SphereGeometry(0.35, 16, 16);
-                const coreMat = new THREE.MeshPhongMaterial({ color: 0xef4444 });
+                const coreMat = new THREE.MeshPhongMaterial({ color: 0xef4444, emissive: 0xef4444, emissiveIntensity: 0.5 });
                 currentGroup.add(new THREE.Mesh(coreGeo, coreMat));
 
                 const eMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
-                const eGeo = new THREE.SphereGeometry(0.12, 12, 12);
+                const eGeo = new THREE.SphereGeometry(0.1, 12, 12);
                 for (let i = 0; i < 3; i++) {
                     const orbitGroup = new THREE.Group();
-                    const ringGeo = new THREE.RingGeometry(2.4, 2.42, 64);
-                    const ringMat = new THREE.MeshBasicMaterial({ color: 0x475569, side: THREE.DoubleSide, transparent: true, opacity: 0.4 });
+                    const ringGeo = new THREE.RingGeometry(2.3, 2.32, 64);
+                    const ringMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8, side: THREE.DoubleSide, transparent: true, opacity: 0.4, blending: THREE.AdditiveBlending });
                     orbitGroup.add(new THREE.Mesh(ringGeo, ringMat));
 
-                    const electron = new THREE.Mesh(eGeo, eMat); electron.position.x = 2.4;
+                    const electron = new THREE.Mesh(eGeo, eMat); electron.position.x = 2.3;
                     orbitGroup.add(electron);
-                    orbitGroup.rotation.x = Math.random() * Math.PI;
-                    orbitGroup.rotation.y = Math.random() * Math.PI;
+                    orbitGroup.rotation.x = (Math.PI / 3) * i + 0.2;
+                    orbitGroup.rotation.y = (Math.PI / 4) * i;
                     currentGroup.add(orbitGroup);
                 }
             }
-            // Bohr Modeli
+            // Bohr Modeli (Holografik Katmanlar)
             else if (type === 'bohr') {
-                const coreGeo = new THREE.SphereGeometry(0.5, 16, 16);
-                const coreMat = new THREE.MeshPhongMaterial({ color: 0xef4444 });
+                const coreGeo = new THREE.SphereGeometry(0.45, 16, 16);
+                const coreMat = new THREE.MeshPhongMaterial({ color: 0xef4444, emissive: 0xb91c1c });
                 currentGroup.add(new THREE.Mesh(coreGeo, coreMat));
 
-                const orbitRadii = [1.5, 2.5, 3.5];
+                const orbitRadii = [1.4, 2.3, 3.2];
                 const orbitColors = [0x3b82f6, 0x10b981, 0xf59e0b];
                 for (let i = 0; i < 3; i++) {
-                    const ringGeo = new THREE.RingGeometry(orbitRadii[i], orbitRadii[i] + 0.03, 64);
-                    const ringMat = new THREE.MeshBasicMaterial({ color: orbitColors[i], side: THREE.DoubleSide });
+                    const ringGeo = new THREE.RingGeometry(orbitRadii[i], orbitRadii[i] + 0.02, 64);
+                    const ringMat = new THREE.MeshBasicMaterial({ color: orbitColors[i], side: THREE.DoubleSide, transparent: true, opacity: 0.6, blending: THREE.AdditiveBlending });
                     const ring = new THREE.Mesh(ringGeo, ringMat);
-                    ring.rotation.x = Math.PI / 2.5; 
+                    ring.rotation.x = Math.PI / 2.3; 
                     currentGroup.add(ring);
 
-                    const eGeo = new THREE.SphereGeometry(0.15, 16, 16);
-                    const eMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+                    const eGeo = new THREE.SphereGeometry(0.14, 16, 16);
+                    const eMat = new THREE.MeshPhongMaterial({ color: 0xffffff, emissive: orbitColors[i] });
                     const electron = new THREE.Mesh(eGeo, eMat); electron.position.x = orbitRadii[i];
                     ring.add(electron);
                 }
             }
-            // Kuantum s Orbitali
+            // Kuantum s Orbitali (Yenilenen 3 Katmanlı Küresel Kusursuzluk)
             else if (type === 's_orbital') {
                 currentGroup.add(createQuantumAxes());
-                const sGeo = new THREE.SphereGeometry(2.2, 32, 16);
-                const sMat = new THREE.MeshPhongMaterial({ color: 0x3b82f6, transparent: true, opacity: 0.35, wireframe: true });
+                const sGeo = new THREE.SphereGeometry(2.1, 32, 16);
+                const sMat = new THREE.MeshPhongMaterial({ color: 0x3b82f6, transparent: true, opacity: 0.3, wireframe: true, blending: THREE.AdditiveBlending });
                 currentGroup.add(new THREE.Mesh(sGeo, sMat));
 
                 const innerGeo = new THREE.SphereGeometry(1.2, 32, 32);
-                const innerMat = new THREE.MeshPhongMaterial({ color: 0x1d4ed8, transparent: true, opacity: 0.8 });
+                const innerMat = new THREE.MeshPhongMaterial({ color: 0x1d4ed8, emissive: 0x1e40af, transparent: true, opacity: 0.75, blending: THREE.AdditiveBlending });
                 currentGroup.add(new THREE.Mesh(innerGeo, innerMat));
             } 
-            // Kuantum p_x Orbitali
+            // Kuantum p_x Orbitali (Tamamen Vektörel +X / -X Hizalaması)
             else if (type === 'px_orbital') {
                 currentGroup.add(createQuantumAxes());
-                const lPos = createQuantumLobe(true); lPos.rotation.z = -Math.PI / 2;
-                const lNeg = createQuantumLobe(false); lNeg.rotation.z = Math.PI / 2;
-                currentGroup.add(lPos, lNeg);
+                currentGroup.add(createOrientedLobe(1, 0, 0, true));   // Sağa bakan lob (+)
+                currentGroup.add(createOrientedLobe(-1, 0, 0, false)); // Sola bakan lob (-)
             }
-            // Kuantum p_y Orbitali
+            // Kuantum p_y Orbitali (Tamamen Vektörel +Y / -Y Hizalaması)
             else if (type === 'py_orbital') {
                 currentGroup.add(createQuantumAxes());
-                const lPos = createQuantumLobe(true);
-                const lNeg = createQuantumLobe(false); lNeg.rotation.z = Math.PI;
-                currentGroup.add(lPos, lNeg);
+                currentGroup.add(createOrientedLobe(0, 1, 0, true));   // Yukarı bakan lob (+)
+                currentGroup.add(createOrientedLobe(0, -1, 0, false)); // Aşağı bakan lob (-)
             }
-            // Kuantum p_z Orbitali
+            // Kuantum p_z Orbitali (Tamamen Vektörel +Z / -Z Hizalaması)
             else if (type === 'pz_orbital') {
                 currentGroup.add(createQuantumAxes());
-                const lPos = createQuantumLobe(true); lPos.rotation.x = Math.PI / 2;
-                const lNeg = createQuantumLobe(false); lNeg.rotation.x = -Math.PI / 2;
-                currentGroup.add(lPos, lNeg);
+                currentGroup.add(createOrientedLobe(0, 0, 1, true));   // Ekrana bakan lob (+)
+                currentGroup.add(createOrientedLobe(0, 0, -1, false)); // Arkaya bakan lob (-)
             }
-            // Kuantum d_xy Orbitali
+            // Kuantum d_xy Orbitali (XY Düzleminde Tam 45 Derecelik Çapraz Yonca)
             else if (type === 'd_xy') {
                 currentGroup.add(createQuantumAxes());
-                const angles = [Math.PI/4, 3*Math.PI/4, 5*Math.PI/4, 7*Math.PI/4];
-                const phases = [true, false, true, false];
-                for(let i=0; i<4; i++) {
-                    const lobe = createQuantumLobe(phases[i]);
-                    lobe.rotation.z = angles[i];
-                    currentGroup.add(lobe);
-                }
+                currentGroup.add(createOrientedLobe(1, 1, 0, true));
+                currentGroup.add(createOrientedLobe(-1, 1, 0, false));
+                currentGroup.add(createOrientedLobe(-1, -1, 0, true));
+                currentGroup.add(createOrientedLobe(1, -1, 0, false));
             }
-            // Kuantum d_yz Orbitali
+            // Kuantum d_yz Orbitali (YZ Düzleminde Derinlemesine Çapraz Yonca)
             else if (type === 'd_yz') {
                 currentGroup.add(createQuantumAxes());
-                const angles = [Math.PI/4, 3*Math.PI/4, 5*Math.PI/4, 7*Math.PI/4];
-                const phases = [true, false, true, false];
-                for(let i=0; i<4; i++) {
-                    const lobe = createQuantumLobe(phases[i]);
-                    lobe.rotation.x = angles[i];
-                    currentGroup.add(lobe);
-                }
+                currentGroup.add(createOrientedLobe(0, 1, 1, true));
+                currentGroup.add(createOrientedLobe(0, -1, 1, false));
+                currentGroup.add(createOrientedLobe(0, -1, -1, true));
+                currentGroup.add(createOrientedLobe(0, 1, -1, false));
             }
-            // Kuantum d_xz Orbitali
+            // 🛠️ Kuantum d_xz Orbitali (XZ YATAY TABAN DÜZLEMİNDE KUSURSUZ 45 DERECE ÇAPRAZLAR) 🛠️
             else if (type === 'd_xz') {
                 currentGroup.add(createQuantumAxes());
-                const angles = [Math.PI/4, 3*Math.PI/4, 5*Math.PI/4, 7*Math.PI/4];
-                const phases = [true, false, true, false];
-                for(let i=0; i<4; i++) {
-                    const lobe = createQuantumLobe(phases[i]);
-                    lobe.rotation.y = angles[i];
-                    currentGroup.add(lobe);
-                }
+                // Eksen karmaşasından etkilenmeyen %100 kusursuz vektörel doğrultular
+                currentGroup.add(createOrientedLobe(1, 0, 1, true));   // X/Z yönü (+)
+                currentGroup.add(createOrientedLobe(-1, 0, 1, false)); // -X/Z yönü (-)
+                currentGroup.add(createOrientedLobe(-1, 0, -1, true)); // -X/-Z yönü (+)
+                currentGroup.add(createOrientedLobe(1, 0, -1, false)); // X/-Z yönü (-)
             }
-            // Kuantum d_x2-y2 Orbitali (Eksenler üzerinde)
+            // Kuantum d_x2-y2 Orbitali (Doğrudan Ana Eksenlerin Üzerine Oturan Yonca)
             else if (type === 'd_x2y2') {
                 currentGroup.add(createQuantumAxes());
-                const angles = [0, Math.PI/2, Math.PI, 3*Math.PI/2];
-                const phases = [true, false, true, false]; // x eksenindekiler pozitif, y eksenindekiler negatif evre
-                for(let i=0; i<4; i++) {
-                    const lobe = createQuantumLobe(phases[i]);
-                    lobe.rotation.z = angles[i];
-                    currentGroup.add(lobe);
-                }
+                currentGroup.add(createOrientedLobe(1, 0, 0, true));   // X ekseninde (+)
+                currentGroup.add(createOrientedLobe(0, 1, 0, false));  // Y ekseninde (-)
+                currentGroup.add(createOrientedLobe(-1, 0, 0, true));  // -X ekseninde (+)
+                currentGroup.add(createOrientedLobe(0, -1, 0, false)); // -Y ekseninde (-)
             }
-            // Kuantum d_z2 Orbitali (Z ekseninde iki lob ve XY düzleminde halka)
+            // 👑 Kuantum d_z2 Orbitali (Dikey Plazma Dumbbell + Kusursuz Eksenel Yatay Donut Halka) 👑
             else if (type === 'd_z2') {
                 currentGroup.add(createQuantumAxes());
-                // İki dikey ana lob (Pozitif evre)
-                const lTop = createQuantumLobe(true); lTop.rotation.x = Math.PI / 2;
-                const lBot = createQuantumLobe(true); lBot.rotation.x = -Math.PI / 2;
-                currentGroup.add(lTop, lBot);
+                
+                // Dikey Kuantum Lobları (Pozitif Evre - Yeşil Enerji)
+                currentGroup.add(createOrientedLobe(0, 1, 0, true));
+                currentGroup.add(createOrientedLobe(0, -1, 0, true));
 
-                // Ortadaki kuantum halkası/donut (Negatif evre)
+                // Yatay Bel Halkası / Donut (Negatif Evre - Kırmızı Enerji Halkası)
                 const torusGroup = new THREE.Group();
-                const tGeo = new THREE.TorusGeometry(1.0, 0.32, 16, 48);
-                const tMat = new THREE.MeshPhongMaterial({ color: 0xf43f5e, transparent: true, opacity: 0.85, shininess: 70 });
+                
+                // İç parlayan halka çekirdeği (Glow Ring Core)
+                const tGeo = new THREE.TorusGeometry(1.05, 0.32, 24, 64);
+                const tMat = new THREE.MeshPhongMaterial({ 
+                    color: 0xf43f5e, 
+                    emissive: 0xe11d48,
+                    emissiveIntensity: 0.6,
+                    transparent: true, 
+                    opacity: 0.8, 
+                    shininess: 90,
+                    blending: THREE.AdditiveBlending
+                });
                 const torusCore = new THREE.Mesh(tGeo, tMat);
                 
-                const tCloudGeo = new THREE.TorusGeometry(1.05, 0.36, 8, 32);
-                const tCloudMat = new THREE.MeshPhongMaterial({ color: 0xf43f5e, transparent: true, opacity: 0.25, wireframe: true });
+                // Dış şeffaf olasılık çeper kafesi (Lattice Shield)
+                const tCloudGeo = new THREE.TorusGeometry(1.05, 0.35, 8, 32);
+                const tCloudMat = new THREE.MeshPhongMaterial({ 
+                    color: 0xf43f5e, 
+                    transparent: true, 
+                    opacity: 0.2, 
+                    wireframe: true,
+                    blending: THREE.AdditiveBlending
+                });
                 const torusCloud = new THREE.Mesh(tCloudGeo, tCloudMat);
                 
                 torusGroup.add(torusCore, torusCloud);
-                torusGroup.rotation.x = Math.PI / 2; // XY düzleminde düz yatması için
+                torusGroup.rotation.x = Math.PI / 2; // XZ yatay taban düzlemine tam sıfır sıfır oturtma
                 currentGroup.add(torusGroup);
             }
-            // Su Molekülü
+            // Su Molekülü (H2O)
             else if (type === 'molecule') {
-                const oxGeo = new THREE.SphereGeometry(0.9, 32, 32);
-                const oxMat = new THREE.MeshPhongMaterial({ color: 0xe11d48 });
+                const oxGeo = new THREE.SphereGeometry(0.85, 32, 32);
+                const oxMat = new THREE.MeshPhongMaterial({ color: 0xe11d48, shininess: 60 });
                 const oxygen = new THREE.Mesh(oxGeo, oxMat); currentGroup.add(oxygen);
 
                 const hydGeo = new THREE.SphereGeometry(0.45, 32, 32);
-                const hydMat = new THREE.MeshPhongMaterial({ color: 0xffffff });
-                const h1 = new THREE.Mesh(hydGeo, hydMat); h1.position.set(-1.3, -0.9, 0); currentGroup.add(h1);
-                const h2 = new THREE.Mesh(hydGeo, hydMat); h2.position.set(1.4, -0.9, 0); currentGroup.add(h2);
+                const hydMat = new THREE.MeshPhongMaterial({ color: 0xffffff, shininess: 60 });
+                const h1 = new THREE.Mesh(hydGeo, hydMat); h1.position.set(-1.2, -0.8, 0); currentGroup.add(h1);
+                const h2 = new THREE.Mesh(hydGeo, hydMat); h2.position.set(1.2, -0.8, 0); currentGroup.add(h2);
 
-                const bGeo = new THREE.CylinderGeometry(0.08, 0.08, 1.4, 16);
-                const bMat = new THREE.MeshPhongMaterial({ color: 0x64748b });
-                const bond1 = new THREE.Mesh(bGeo, bMat); bond1.position.set(-0.65, -0.45, 0); bond1.rotation.z = Math.PI / 3.8; currentGroup.add(bond1);
-                const bond2 = new THREE.Mesh(bGeo, bMat); bond2.position.set(0.7, -0.45, 0); bond2.rotation.z = -Math.PI / 3.8; currentGroup.add(bond2);
+                const bGeo = new THREE.CylinderGeometry(0.07, 0.08, 1.3, 16);
+                const bMat = new THREE.MeshPhongMaterial({ color: 0x475569 });
+                const bond1 = new THREE.Mesh(bGeo, bMat); bond1.position.set(-0.6, -0.4, 0); bond1.rotation.z = Math.PI / 3.6; currentGroup.add(bond1);
+                const bond2 = new THREE.Mesh(bGeo, bMat); bond2.position.set(0.6, -0.4, 0); bond2.rotation.z = -Math.PI / 3.6; currentGroup.add(bond2);
             }
 
             scene.add(currentGroup);
@@ -541,7 +586,7 @@
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 const swCode = `
-                    const CACHE_NAME = 'kimya-panel-v1.3';
+                    const CACHE_NAME = 'kimya-panel-v1.4';
                     const ASSETS = [this.location.href];
                     self.addEventListener('install', e => e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(ASSETS))));
                     self.addEventListener('fetch', e => e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))));
