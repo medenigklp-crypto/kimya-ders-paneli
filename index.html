@@ -37,7 +37,7 @@
         <div class="flex items-center space-x-3">
             <i class="fa-solid fa-flask-vial text-blue-500 text-2xl animate-pulse"></i>
             <h1 class="text-xl font-bold tracking-wide bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
-                Kimya Eğitim Paneli <span class="text-xs font-semibold text-slate-400">v1.6</span>
+                Kimya Eğitim Paneli <span class="text-xs font-semibold text-slate-400">v1.7</span>
             </h1>
         </div>
         <div id="save-status" class="text-xs text-slate-400 bg-slate-900 px-3 py-1 rounded-full border border-slate-700">
@@ -143,12 +143,21 @@
         <section id="tab-galeri" class="tab-content space-y-6 hidden">
             <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-lg space-y-4">
                 <h2 class="text-lg font-bold text-cyan-400 flex items-center">
-                    <i class="fa-solid fa-video mr-2"></i> MEB 1. Tema Video Kütüphanesi (15 Ders Videosu)
+                    <i class="fa-solid fa-video mr-2"></i> Ders Videoları Yönetim Paneli
                 </h2>
                 
-                <div class="p-4 bg-slate-900 rounded-lg border border-dashed border-slate-600 text-center">
-                    <label for="local-video-loader" class="cursor-pointer inline-flex items-center bg-cyan-600 hover:bg-cyan-500 text-xs font-bold py-2.5 px-4 rounded-lg transition-all shadow-md">
-                        <i class="fa-solid fa-file-video mr-2 text-sm"></i> Galeriden Anlık Video Seç/Oynat
+                <div class="p-4 bg-slate-950 rounded-lg border border-slate-800 space-y-3">
+                    <div class="text-xs font-bold text-slate-400 tracking-wider uppercase"><i class="fa-solid fa-plus mr-1 text-cyan-500"></i> Yeni Video Ekle</div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <input type="text" id="new-video-name" placeholder="Videonun Adı (Örn: Deney 16: Asitlik Testi)" class="bg-slate-900 border border-slate-700 rounded p-2 text-xs focus:outline-none focus:border-cyan-500">
+                        <input type="text" id="new-video-file" placeholder="Dosya Adı (Örn: deney16.mp4)" class="bg-slate-900 border border-slate-700 rounded p-2 text-xs focus:outline-none focus:border-cyan-500">
+                    </div>
+                    <button onclick="addNewVideoToList()" class="w-full bg-cyan-600 hover:bg-cyan-500 text-xs font-bold py-2 rounded transition-all">Listeye Sabitle</button>
+                </div>
+
+                <div class="p-3 bg-slate-900 rounded-lg border border-dashed border-slate-700 text-center">
+                    <label for="local-video-loader" class="cursor-pointer inline-flex items-center bg-slate-700 hover:bg-slate-600 text-xs font-semibold py-2 px-4 rounded transition-all">
+                        <i class="fa-solid fa-file-video mr-2 text-cyan-400"></i> Galeriden Geçici Video Seç/Oynat
                     </label>
                     <input type="file" id="local-video-loader" accept="video/*" class="hidden" onchange="loadLocalVideo(event)">
                 </div>
@@ -157,39 +166,13 @@
                     <video id="main-panel-video" controls class="w-full h-auto max-h-[350px]"></video>
                 </div>
 
-                <div class="pt-2">
-                    <div class="text-xs font-bold text-slate-400 tracking-wider uppercase mb-2 flex items-center">
-                        <i class="fa-solid fa-folder-open mr-1.5 text-cyan-500"></i> `videos/` Klasöründeki Kalıcı Oynatma Listesi
+                <div class="pt-1">
+                    <div class="text-xs font-bold text-slate-400 tracking-wider uppercase mb-2 flex items-center justify-between">
+                        <span><i class="fa-solid fa-folder-open mr-1.5 text-cyan-500"></i> Oynatma Listem</span>
+                        <button onclick="resetVideoListToDefault()" class="text-[10px] text-slate-500 hover:text-rose-400 underline lowercase">Fabrika Ayarlarına Dön</button>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-[400px] overflow-y-auto pr-1">
-                        <script>
-                            const videoMebList = [
-                                "1. Laboratuvar Güvenlik Kuralları Uygulaması",
-                                "2. Kimyasal Risk Piktogramları ve Anlamları",
-                                "3. Asitlerin Mermer Tezgaha Zararlı Etkisi",
-                                "4. Çaydanlıktaki Kirecin Limon Tuzuyla Çözülmesi",
-                                "5. Gazlı İçeceklerin Metal Pasını Temizlemesi",
-                                "6. Sodyum (Na) Metalinin Su ile Patlama Reaksiyonu",
-                                "7. Cıva (Hg) Sıvı Metalinin Toksik Özellikleri",
-                                "8. Alüminyum Folyonun Isı İletkenliği Deneyi",
-                                "9. Çamaşır Suyu ve Tuz Ruhunun Karışma Tehlikesi",
-                                "10. Havadan Hafif Gazlar ve Balon Davranışları",
-                                "11. Dalton ve Thomson Atom Teorisi Analizi",
-                                "12. Rutherford Alfa Saçılma Deneyi Şeması",
-                                "13. Elementlerin Alev Rengi Testi (Emisyon)",
-                                "14. İyonlaşma Enerjisindeki Periyodik Sapmalar",
-                                "15. Elektronegatiflik Bağ Çekim Gücü Analojisi"
-                            ];
-                            videoMebList.forEach((name, index) => {
-                                document.write(`
-                                    <button onclick="playCloudVideo('deney${index+1}.mp4')" class="w-full p-2.5 bg-slate-900 hover:bg-slate-700 rounded border border-slate-800 text-left text-xs font-medium flex justify-between items-center transition-all">
-                                        <span class="truncate"><i class="fa-solid fa-circle-play mr-2 text-cyan-400"></i>${name}</span>
-                                        <span class="text-[9px] text-slate-500 ml-2">deney${index+1}.mp4</span>
-                                    </button>
-                                `);
-                            });
-                        </script>
-                    </div>
+                    <div id="dynamic-video-container" class="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-[350px] overflow-y-auto pr-1">
+                        </div>
                 </div>
             </div>
         </section>
@@ -202,15 +185,15 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-3">
                     <div>
                         <label class="block text-xs font-semibold text-slate-400 mb-1">Video Başlığı</label>
-                        <input type="text" id="yt-title" placeholder="Başlık girin..." class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-sm focus:outline-none focus:border-rose-500 text-save" data-id="yt-title">
+                        <input type="text" id="yt-title" placeholder="Başlık..." class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-sm focus:outline-none focus:border-rose-500 text-save" data-id="yt-title">
                     </div>
                     <div class="md:col-span-2">
-                        <label class="block text-xs font-semibold text-slate-400 mb-1">Giriş / Kanca (Hook) Cümlesi</label>
-                        <input type="text" id="yt-hook" placeholder="Kanca cümle..." class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-sm focus:outline-none focus:border-rose-500 text-save" data-id="yt-hook">
+                        <label class="block text-xs font-semibold text-slate-400 mb-1">Giriş / Kanca Cümlesi</label>
+                        <input type="text" id="yt-hook" placeholder="Kanca..." class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-sm focus:outline-none focus:border-rose-500 text-save" data-id="yt-hook">
                     </div>
                 </div>
                 <div class="flex-1 flex flex-col">
-                    <textarea id="yt-body" placeholder="Senaryo akışınızı buraya kurgulayın..." class="w-full flex-1 bg-slate-900 border border-slate-700 rounded p-3 text-sm resize-none focus:outline-none focus:border-rose-500 text-save" data-id="yt-body"></textarea>
+                    <textarea id="yt-body" placeholder="Senaryo akışı..." class="w-full flex-1 bg-slate-900 border border-slate-700 rounded p-3 text-sm resize-none focus:outline-none focus:border-rose-500 text-save" data-id="yt-body"></textarea>
                 </div>
             </div>
         </section>
@@ -259,6 +242,83 @@
             document.getElementById('main-panel-video').play();
         }
 
+        // --- 🎥 DİNAMİK VİDEO LİSTE YÖNETİMİ (EKLE/SİL) 🎥 ---
+        const defaultVideos = [
+            { name: "1. Laboratuvar Güvenlik Kuralları", file: "deney1.mp4" },
+            { name: "2. Kimyasal Risk Piktogramları", file: "deney2.mp4" },
+            { name: "3. Asitlerin Mermer Tezgaha Etkisi", file: "deney3.mp4" },
+            { name: "4. Kirecin Limon Tuzuyla Çözülmesi", file: "deney4.mp4" },
+            { name: "5. Gazlı İçeceklerin Pas Temizlemesi", file: "deney5.mp4" },
+            { name: "6. Sodyum Metalinin Su ile Patlaması", file: "deney6.mp4" },
+            { name: "7. Cıva Metalinin Toksik Özellikleri", file: "deney7.mp4" },
+            { name: "8. Alüminyum Folyonun Isı İletkenliği", file: "deney8.mp4" },
+            { name: "9. Çamaşır Suyu ve Tuz Ruhunun Tehlikesi", file: "deney9.mp4" },
+            { name: "10. Havadan Hafif Gazlar ve Balonlar", file: "deney10.mp4" },
+            { name: "11. Dalton ve Thomson Teorileri", file: "deney11.mp4" },
+            { name: "12. Rutherford Alfa Saçılma Deneyi", file: "deney12.mp4" },
+            { name: "13. Elementlerin Alev Testi (Emisyon)", file: "deney13.mp4" },
+            { name: "14. İyonlaşma Enerjisi Sapmaları", file: "deney14.mp4" },
+            { name: "15. Elektronegatiflik Çekim Analojisi", file: "deney15.mp4" }
+        ];
+
+        function renderVideoList() {
+            let list = JSON.parse(localStorage.getItem('custom_video_list'));
+            if (!list) {
+                list = defaultVideos;
+                localStorage.setItem('custom_video_list', JSON.stringify(list));
+            }
+
+            const container = document.getElementById('dynamic-video-container');
+            container.innerHTML = '';
+
+            list.forEach((item, index) => {
+                container.innerHTML += `
+                    <div class="w-full bg-slate-900 rounded border border-slate-800 flex justify-between items-center overflow-hidden transition-all hover:border-slate-700">
+                        <button onclick="playCloudVideo('${item.file}')" class="flex-1 p-2.5 text-left text-xs font-medium truncate text-slate-300 hover:text-cyan-400">
+                            <i class="fa-solid fa-circle-play mr-2 text-cyan-400"></i>${item.name}
+                        </button>
+                        <button onclick="deleteVideoFromList(${index})" class="p-2.5 bg-slate-950 hover:bg-rose-950 border-l border-slate-800 text-slate-500 hover:text-rose-400 transition-colors" title="Listeden Sil">
+                            <i class="fa-solid fa-trash-can text-xs"></i>
+                        </button>
+                    </div>
+                `;
+            });
+        }
+
+        function addNewVideoToList() {
+            const nameInput = document.getElementById('new-video-name');
+            const fileInput = document.getElementById('new-video-file');
+            
+            if(!nameInput.value.trim() || !fileInput.value.trim()) {
+                alert("Lütfen hem video adını hem de dosya adını (örn: deney16.mp4) doldurun!");
+                return;
+            }
+
+            let list = JSON.parse(localStorage.getItem('custom_video_list')) || defaultVideos;
+            list.push({ name: nameInput.value.trim(), file: fileInput.value.trim() });
+            localStorage.setItem('custom_video_list', JSON.stringify(list));
+
+            nameInput.value = '';
+            fileInput.value = '';
+            renderVideoList();
+        }
+
+        function deleteVideoFromList(index) {
+            let list = JSON.parse(localStorage.getItem('custom_video_list'));
+            if(!list) return;
+            
+            list.splice(index, 1);
+            localStorage.setItem('custom_video_list', JSON.stringify(list));
+            renderVideoList();
+        }
+
+        function resetVideoListToDefault() {
+            if(confirm("Video listeniz ilk orijinal haline döndürülecektir. Emin misiniz?")) {
+                localStorage.setItem('custom_video_list', JSON.stringify(defaultVideos));
+                renderVideoList();
+            }
+        }
+
         // --- GLOBAL SİMÜLASYON DEĞİŞKENLERİ ---
         let simTemperature = 0.03;
         let simMaxParticles = 30;
@@ -267,19 +327,14 @@
         function updateSimParameters() {
             const tempVal = document.getElementById('param-temp').value;
             const countVal = document.getElementById('param-count').value;
-            
             simTemperature = tempVal * 0.0006;
             simMaxParticles = parseInt(countVal);
-
             document.getElementById('val-temp').innerText = Math.round(tempVal / 2) + " °C";
             document.getElementById('val-count').innerText = countVal + " Tanecik";
-
-            if (activeModelType === 'dynamic_simulation') {
-                rebuildDynamicSimulation();
-            }
+            if (activeModelType === 'dynamic_simulation') rebuildDynamicSimulation();
         }
 
-        // --- LOCALSTORAGE SİSTEMİ ---
+        // --- LOCALSTORAGE SİSTEMİ VE AÇILIŞ ---
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.text-save').forEach(input => {
                 const savedValue = localStorage.getItem(input.getAttribute('data-id'));
@@ -291,6 +346,7 @@
                     localStorage.setItem(input.getAttribute('data-id'), input.type === 'checkbox' ? input.checked : input.value);
                 });
             });
+            renderVideoList(); // Dinamik listeyi bas
             init3D();
         });
 
@@ -320,17 +376,12 @@
 
             change3DModel('dalton'); 
 
-            // RENDER LOOP (DEĞİŞKENLERE BAĞLI DİNAMİK HAREKET)
             function animate() {
                 requestAnimationFrame(animate);
-                
                 if (currentGroup && !isDragging) {
                     if (activeModelType === 'dynamic_simulation') {
-                        // Gaz Simülasyonu parçacık hareketleri - Hız tamamen kaydırıcı kontrolünde!
                         simulationParticles.forEach(p => {
                             p.mesh.position.add(p.velocity.clone().multiplyScalar(simTemperature * 25));
-                            
-                            // Sınır koruma kutusu (Kuantum çarpışma sınırları)
                             if (Math.abs(p.mesh.position.x) > 2.2) p.velocity.x *= -1;
                             if (Math.abs(p.mesh.position.y) > 2.2) p.velocity.y *= -1;
                             if (Math.abs(p.mesh.position.z) > 2.2) p.velocity.z *= -1;
@@ -343,13 +394,10 @@
             }
             animate();
 
-            // Sürükleme Kontrolleri
             container.addEventListener('mousedown', () => { isDragging = true; });
             container.addEventListener('mousemove', (e) => {
                 const deltaMove = { x: e.offsetX - previousMousePosition.x, y: e.offsetY - previousMousePosition.y };
-                if (isDragging && currentGroup) {
-                    currentGroup.rotation.y += deltaMove.x * 0.007; currentGroup.rotation.x += deltaMove.y * 0.007;
-                }
+                if (isDragging && currentGroup) { currentGroup.rotation.y += deltaMove.x * 0.007; currentGroup.rotation.x += deltaMove.y * 0.007; }
                 previousMousePosition = { x: e.offsetX, y: e.offsetY };
             });
             window.addEventListener('mouseup', () => { isDragging = false; });
@@ -373,6 +421,17 @@
             renderer.setSize(container.clientWidth, container.clientHeight);
         }
 
+        function createQuantumAxes() {
+            const axesGroup = new THREE.Group();
+            const axisGeo = new THREE.CylinderGeometry(0.012, 0.012, 6.0, 8);
+            const axisMat = new THREE.MeshBasicMaterial({ color: 0x334155, transparent: true, opacity: 0.4 });
+            const xAxis = new THREE.Mesh(axisGeo, axisMat); xAxis.rotation.z = Math.PI / 2;
+            const yAxis = new THREE.Mesh(axisGeo, axisMat);
+            const zAxis = new THREE.Mesh(axisGeo, axisMat); zAxis.rotation.x = Math.PI / 2;
+            axesGroup.add(xAxis, yAxis, zAxis);
+            return axesGroup;
+        }
+
         function createQuantumLobe(isPositive) {
             const lobeGroup = new THREE.Group();
             const mainColor = isPositive ? 0x10b981 : 0xf43f5e;
@@ -392,57 +451,35 @@
 
         function rebuildDynamicSimulation() {
             if (!currentGroup || activeModelType !== 'dynamic_simulation') return;
-            
-            // Mevcut parçacıkları temizle
             simulationParticles.forEach(p => currentGroup.remove(p.mesh));
             simulationParticles = [];
-
-            // Arayüzdeki kaydırıcı değerine göre (simMaxParticles) dinamik holografik atom küresi oluşturma
             const pGeo = new THREE.SphereGeometry(0.18, 16, 16);
             for (let i = 0; i < simMaxParticles; i++) {
-                const color = i % 2 === 0 ? 0x10b981 : 0xf43f5e; // Tepkimeye giren iki farklı madde simgesi
-                const pMat = new THREE.MeshPhongMaterial({ 
-                    color: color, emissive: color, emissiveIntensity: 0.8,
-                    transparent: true, opacity: 0.85, blending: THREE.AdditiveBlending 
-                });
+                const color = i % 2 === 0 ? 0x10b981 : 0xf43f5e;
+                const pMat = new THREE.MeshPhongMaterial({ color: color, emissive: color, emissiveIntensity: 0.8, transparent: true, opacity: 0.85, blending: THREE.AdditiveBlending });
                 const mesh = new THREE.Mesh(pGeo, pMat);
                 mesh.position.set((Math.random() - 0.5) * 4, (Math.random() - 0.5) * 4, (Math.random() - 0.5) * 4);
-                
                 currentGroup.add(mesh);
-                simulationParticles.push({
-                    mesh: mesh,
-                    velocity: new THREE.Vector3((Math.random() - 0.5) * 0.1, (Math.random() - 0.5) * 0.1, (Math.random() - 0.5) * 0.1).normalize()
-                });
+                simulationParticles.push({ mesh: mesh, velocity: new THREE.Vector3((Math.random() - 0.5) * 0.1, (Math.random() - 0.5) * 0.1, (Math.random() - 0.5) * 0.1).normalize() });
             }
         }
 
-        // --- MODELLERİN DEĞİŞTİRİLME MATRİSİ ---
         function change3DModel(type) {
             activeModelType = type;
             if (currentGroup) scene.remove(currentGroup);
             currentGroup = new THREE.Group();
-
             const ctrlPanel = document.getElementById('simulation-controls');
             const indicator = document.getElementById('sim-indicator');
             
             if (type === 'dynamic_simulation') {
-                ctrlPanel.classList.remove('hidden');
-                indicator.classList.remove('hidden');
-                
-                // Reaksiyon Kabı (Sınırları çizen şeffaf dış kafes)
-                const boxGeo = new THREE.BoxGeometry(4.8, 4.8, 4.8);
+                ctrlPanel.classList.remove('hidden'); indicator.classList.remove('hidden');
                 const boxMat = new THREE.MeshBasicMaterial({ color: 0x334155, wireframe: true, transparent: true, opacity: 0.3 });
-                currentGroup.add(new THREE.Mesh(boxGeo, boxMat));
-                
-                scene.add(currentGroup);
-                rebuildDynamicSimulation();
-                return;
+                currentGroup.add(new THREE.Mesh(new THREE.BoxGeometry(4.8, 4.8, 4.8), boxMat));
+                scene.add(currentGroup); rebuildDynamicSimulation(); return;
             } else {
-                ctrlPanel.classList.add('hidden');
-                indicator.classList.add('hidden');
+                ctrlPanel.classList.add('hidden'); indicator.classList.add('hidden');
             }
 
-            // Klasik ve Kuantum Modelleri
             if (type === 'dalton') {
                 currentGroup.add(new THREE.Mesh(new THREE.SphereGeometry(2, 32, 32), new THREE.MeshPhongMaterial({ color: 0x475569, emissive: 0x1e293b, shininess: 90, specular: 0x38bdf8 })));
             } else if (type === 'thomson') {
@@ -466,23 +503,23 @@
                     const e = new THREE.Mesh(new THREE.SphereGeometry(0.14,16,16), new THREE.MeshPhongMaterial({ color: 0xffffff, emissive: colors[i] })); e.position.x = radii[i]; r.add(e);
                 }
             } else if (type === 's_orbital') {
-                currentGroup.add(new THREE.Mesh(new THREE.SphereGeometry(2.1,32,16), new THREE.MeshPhongMaterial({ color: 0x3b82f6, transparent: true, opacity: 0.3, wireframe: true, blending: THREE.AdditiveBlending })), new THREE.Mesh(new THREE.SphereGeometry(1.2,32,32), new THREE.MeshPhongMaterial({ color: 0x1d4ed8, emissive: 0x1e40af, transparent: true, opacity: 0.75, blending: THREE.AdditiveBlending })));
+                currentGroup.add(createQuantumAxes(), new THREE.Mesh(new THREE.SphereGeometry(2.1,32,16), new THREE.MeshPhongMaterial({ color: 0x3b82f6, transparent: true, opacity: 0.3, wireframe: true, blending: THREE.AdditiveBlending })), new THREE.Mesh(new THREE.SphereGeometry(1.2,32,32), new THREE.MeshPhongMaterial({ color: 0x1d4ed8, emissive: 0x1e40af, transparent: true, opacity: 0.75, blending: THREE.AdditiveBlending })));
             } else if (type === 'px_orbital') {
-                currentGroup.add(createOrientedLobe(1,0,0,true), createOrientedLobe(-1,0,0,false));
+                currentGroup.add(createQuantumAxes(), createOrientedLobe(1,0,0,true), createOrientedLobe(-1,0,0,false));
             } else if (type === 'py_orbital') {
-                currentGroup.add(createOrientedLobe(0,1,0,true), createOrientedLobe(0,-1,0,false));
+                currentGroup.add(createQuantumAxes(), createOrientedLobe(0,1,0,true), createOrientedLobe(0,-1,0,false));
             } else if (type === 'pz_orbital') {
-                currentGroup.add(createOrientedLobe(0,0,1,true), createOrientedLobe(0,0,-1,false));
+                currentGroup.add(createQuantumAxes(), createOrientedLobe(0,0,1,true), createOrientedLobe(0,0,-1,false));
             } else if (type === 'd_xy') {
-                currentGroup.add(createOrientedLobe(1,1,0,true), createOrientedLobe(-1,1,0,false), createOrientedLobe(-1,-1,0,true), createOrientedLobe(1,-1,0,false));
+                currentGroup.add(createQuantumAxes(), createOrientedLobe(1,1,0,true), createOrientedLobe(-1,1,0,false), createOrientedLobe(-1,-1,0,true), createOrientedLobe(1,-1,0,false));
             } else if (type === 'd_yz') {
-                currentGroup.add(createOrientedLobe(0,1,1,true), createOrientedLobe(0,-1,1,false), createOrientedLobe(0,-1,-1,true), createOrientedLobe(0,1,-1,false));
+                currentGroup.add(createQuantumAxes(), createOrientedLobe(0,1,1,true), createOrientedLobe(0,-1,1,false), createOrientedLobe(0,-1,-1,true), createOrientedLobe(0,1,-1,false));
             } else if (type === 'd_xz') {
-                currentGroup.add(createOrientedLobe(1,0,1,true), createOrientedLobe(-1,0,1,false), createOrientedLobe(-1,0,-1,true), createOrientedLobe(1,0,-1,false));
+                currentGroup.add(createQuantumAxes(), createOrientedLobe(1,0,1,true), createOrientedLobe(-1,0,1,false), createOrientedLobe(-1,0,-1,true), createOrientedLobe(1,0,-1,false));
             } else if (type === 'd_x2y2') {
-                currentGroup.add(createOrientedLobe(1,0,0,true), createOrientedLobe(0,1,0,false), createOrientedLobe(-1,0,0,true), createOrientedLobe(0,-1,0,false));
+                currentGroup.add(createQuantumAxes(), createOrientedLobe(1,0,0,true), createOrientedLobe(0,1,0,false), createOrientedLobe(-1,0,0,true), createOrientedLobe(0,-1,0,false));
             } else if (type === 'd_z2') {
-                currentGroup.add(createOrientedLobe(0,1,0,true), createOrientedLobe(0,-1,0,true));
+                currentGroup.add(createQuantumAxes(), createOrientedLobe(0,1,0,true), createOrientedLobe(0,-1,0,true));
                 const tg = new THREE.Group(); tg.add(new THREE.Mesh(new THREE.TorusGeometry(1.05,0.32,24,64), new THREE.MeshPhongMaterial({ color: 0xf43f5e, emissive: 0xe11d48, emissiveIntensity: 0.6, transparent: true, opacity: 0.8, shininess: 90, blending: THREE.AdditiveBlending })), new THREE.Mesh(new THREE.TorusGeometry(1.05,0.35,8,32), new THREE.MeshPhongMaterial({ color: 0xf43f5e, transparent: true, opacity: 0.2, wireframe: true, blending: THREE.AdditiveBlending })));
                 tg.rotation.x = Math.PI/2; currentGroup.add(tg);
             } else if (type === 'molecule') {
