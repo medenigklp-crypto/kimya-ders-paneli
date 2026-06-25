@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Kimya Eğitim Paneli Pro</title>
-    <!-- PWA Meta Etiketleri -->
+    <title>Medeni Gökalp Kimya Paneli</title>
+    
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    
     <meta name="theme-color" content="#0f172a">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
-    <!-- Dış Kütüphaneler -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     
-    <!-- PWA Manifest -->
     <link rel="manifest" href="data:application/json;,{%22name%22:%22Kimya%20E%C4%9Fitim%20Paneli%22,%22short_name%22:%22KimyaPanel%22,%22start_url%22:%22.%22,%22display%22:%22standalone%22,%22background_color%22:%22#0f172a%22,%22theme_color%22:%22#0f172a%22}">
 
     <style>
@@ -37,12 +38,11 @@
 </head>
 <body class="bg-slate-900 text-slate-100 font-sans min-h-screen flex flex-col overflow-x-hidden">
 
-    <!-- Üst Başlık / Header -->
     <header class="bg-slate-800 border-b border-slate-700 p-4 sticky top-0 z-50 shadow-md flex justify-between items-center w-full">
         <div class="flex items-center space-x-3">
-            <i class="fa-solid fa-flask-vial text-blue-500 text-xl animate-pulse"></i>
-            <h1 class="text-lg font-bold tracking-wide bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
-                Kimya Eğitim Paneli <span class="text-xs font-semibold text-slate-400">v2.1</span>
+            <img src="logo.png" alt="Medeni Gökalp Logo" class="h-8 w-auto object-contain select-none pointer-events-none rounded">
+            <h1 class="text-md font-bold tracking-wide bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
+                Medeni Gökalp Kimya Paneli <span class="text-xs font-semibold text-slate-400">v2.1</span>
             </h1>
         </div>
         <div id="save-status" class="text-[11px] text-slate-400 bg-slate-900 px-2.5 py-1 rounded-full border border-slate-700 shrink-0">
@@ -50,10 +50,8 @@
         </div>
     </header>
 
-    <!-- Ana İçerik Alanı -->
     <main class="flex-1 p-3 max-w-6xl w-full mx-auto pb-24 box-border overflow-x-hidden">
         
-        <!-- MODÜL 1: DİNAMİK MÜFREDAT & DERS YÖNETİM PANELİ -->
         <section id="tab-dersler" class="tab-content space-y-4">
             <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-lg">
                 <h2 class="text-base font-bold mb-1 text-blue-400 flex items-center">
@@ -61,7 +59,6 @@
                 </h2>
                 <p class="text-[11px] text-slate-400 mb-4">Aşağıdan yeni üniteler ekleyebilir, silebilir ve Goodnotes/Drive linklerinizi sabitleyebilirsiniz.</p>
                 
-                <!-- Dinamik Ünite/Konu Ekleme Formu -->
                 <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 space-y-2 mb-4">
                     <div class="text-xs font-bold text-slate-400 tracking-wider uppercase flex justify-between items-center">
                         <span>Yeni Konu / Başlık Ekle</span>
@@ -76,12 +73,10 @@
                     </button>
                 </div>
 
-                <!-- JS ile Dinamik Dolacak Müfredat Listesi -->
                 <div id="ayt-topics-container" class="space-y-3"></div>
             </div>
         </section>
 
-        <!-- MODÜL 2: 3D GÖRSELLEŞTİRME & SİMÜLATÖR STÜDYOSU -->
         <section id="tab-3d" class="tab-content space-y-4 hidden">
             <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-lg">
                 <div class="flex justify-between items-center mb-2">
@@ -144,7 +139,6 @@
             </div>
         </section>
 
-        <!-- MODÜL 3: DİNAMİK VİDEO KÜTÜPHANESİ -->
         <section id="tab-galeri" class="tab-content space-y-4 hidden">
             <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-lg space-y-3">
                 <h2 class="text-base font-bold text-cyan-400 flex items-center">
@@ -183,7 +177,6 @@
             </div>
         </section>
 
-        <!-- MODÜL 4: YOUTUBE SENARYO TASARIMCISI -->
         <section id="tab-youtube" class="tab-content space-y-4 hidden">
             <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-lg flex flex-col h-[calc(100vh-12rem)]">
                 <h2 class="text-base font-bold mb-2 text-rose-400 flex items-center">
@@ -201,7 +194,6 @@
 
     </main>
 
-    <!-- ALT NAVİGASYON -->
     <nav class="bg-slate-800 border-t border-slate-700 fixed bottom-0 left-0 right-0 p-1 flex justify-between items-center shadow-2xl z-50 max-w-6xl mx-auto rounded-t-xl box-border w-full">
         <button onclick="switchTab('dersler')" id="btn-dersler" class="flex-1 flex flex-col items-center justify-center py-1.5 rounded-lg text-slate-400 active-tab transition-all min-w-0">
             <i class="fa-solid fa-list-check text-base mb-0.5"></i>
@@ -221,7 +213,6 @@
         </button>
     </nav>
 
-    <!-- JAVASCRIPT MOTORU -->
     <script>
         var activeTabId = 'dersler';
         function switchTab(tabId) {
@@ -233,10 +224,9 @@
             if(tabId === '3d') { setTimeout(() => { onWindowResize(); }, 50); }
         }
 
-        // --- 📂 SİZİN ATTIĞINIZ ÖRNEK AYT KİMYA ŞABLONU (İstediğiniz An Silebilirsiniz) 📂 ---
         const defaultTopics = [
             { id: "t1", name: "01 Modern Atom Modeli", desc: "Kuantum sayıları, elektron dizilimleri ve periyodik özellikler.", checked: false, link: "" },
-            { id: "t2", name: "02 Gazlar", desc: "İdeal gaz yasası, kinetik teori, gerçek gazlar ve gaz karışımları.", checked: false, link: "" },
+            { id: "t2", name: "02 Gazlar", desc: "İdeal gaz yasası, kinetik teori, gerçek gazlar og gaz karışımları.", checked: false, link: "" },
             { id: "t3", name: "03 Çözeltiler", desc: "Sıvı çözeltilerde derişim birimleri, çözünürlük ve koligatif özellikler.", checked: false, link: "" },
             { id: "t4", name: "04 Kimyasal Tep. Enerji", desc: "Tepkime entalpileri, Hess yasası, oluşum entalpileri ve bağ enerjileri.", checked: false, link: "" },
             { id: "t5", name: "05 Kimyasal Tep. Hız", desc: "Çarpışma teorisi, tepkime hızını etkileyen faktörler ve mekanizmalar.", checked: false, link: "" },
@@ -246,15 +236,10 @@
             { id: "t9", name: "09 Elektrokimya", desc: "Redoks tepkimeleri, aktiflik, galvanik/elektrolitik hücreler ve Faraday yasaları.", checked: false, link: "" }
         ];
 
-        // --- 🛠️ TAMAMEN DİNAMİK MÜFREDAT KONTROLÜ (YENİ SİSTEM) 🛠️ ---
         function renderAytTopics() {
             let list = JSON.parse(localStorage.getItem('custom_topic_list'));
-            if (!list) {
-                list = defaultTopics;
-                localStorage.setItem('custom_topic_list', JSON.stringify(list));
-            }
-            const container = document.getElementById('ayt-topics-container');
-            container.innerHTML = '';
+            if (!list) { list = defaultTopics; localStorage.setItem('custom_topic_list', JSON.stringify(list)); }
+            const container = document.getElementById('ayt-topics-container'); container.innerHTML = '';
             
             list.forEach(topic => {
                 const hasLink = topic.link && topic.link.trim().startsWith('http');
@@ -284,17 +269,14 @@
         }
 
         function toggleTopicCheck(id, isChecked) {
-            let list = JSON.parse(localStorage.getItem('custom_topic_list'));
-            let topic = list.find(t => t.id === id);
+            let list = JSON.parse(localStorage.getItem('custom_topic_list')); let topic = list.find(t => t.id === id);
             if(topic) { topic.checked = isChecked; localStorage.setItem('custom_topic_list', JSON.stringify(list)); }
         }
 
         function updateTopicLink(id, value) {
-            let list = JSON.parse(localStorage.getItem('custom_topic_list'));
-            let topic = list.find(t => t.id === id);
+            let list = JSON.parse(localStorage.getItem('custom_topic_list')); let topic = list.find(t => t.id === id);
             if(topic) {
-                topic.link = value;
-                localStorage.setItem('custom_topic_list', JSON.stringify(list));
+                topic.link = value; localStorage.setItem('custom_topic_list', JSON.stringify(list));
                 const btn = document.getElementById(`go-${id}`);
                 if(btn) {
                     if(value.trim().startsWith('http')) btn.classList.remove('hidden');
@@ -304,33 +286,27 @@
         }
 
         function openTopicLink(id) {
-            let list = JSON.parse(localStorage.getItem('custom_topic_list'));
-            let topic = list.find(t => t.id === id);
+            let list = JSON.parse(localStorage.getItem('custom_topic_list')); let topic = list.find(t => t.id === id);
             if(topic && topic.link) { window.open(topic.link.trim(), '_blank'); }
         }
 
         function deleteTopic(id) {
-            let list = JSON.parse(localStorage.getItem('custom_topic_list'));
-            list = list.filter(t => t.id !== id);
-            localStorage.setItem('custom_topic_list', JSON.stringify(list));
-            renderAytTopics();
+            let list = JSON.parse(localStorage.getItem('custom_topic_list')); list = list.filter(t => t.id !== id);
+            localStorage.setItem('custom_topic_list', JSON.stringify(list)); renderAytTopics();
         }
 
         function addNewTopic() {
-            const nameInput = document.getElementById('new-topic-name');
-            const descInput = document.getElementById('new-topic-desc');
+            const nameInput = document.getElementById('new-topic-name'); const descInput = document.getElementById('new-topic-desc');
             if(!nameInput.value.trim()) { alert("Lütfen ünite/konu adını girin!"); return; }
             let list = JSON.parse(localStorage.getItem('custom_topic_list')) || [];
             list.push({ id: "topic_" + Date.now(), name: nameInput.value.trim(), desc: descInput.value.trim(), checked: false, link: "" });
             localStorage.setItem('custom_topic_list', JSON.stringify(list));
-            nameInput.value = ''; descInput.value = '';
-            renderAytTopics();
+            nameInput.value = ''; descInput.value = ''; renderAytTopics();
         }
 
         function resetTopicsToDefault() {
             if(confirm("Müfredat listesi ilk orijinal şablon haline döndürülecektir. Emin misiniz?")) {
-                localStorage.setItem('custom_topic_list', JSON.stringify(defaultTopics));
-                renderAytTopics();
+                localStorage.setItem('custom_topic_list', JSON.stringify(defaultTopics)); renderAytTopics();
             }
         }
 
@@ -347,7 +323,6 @@
             document.getElementById('main-panel-video').play();
         }
 
-        // --- 🎥 VİDEO LİSTESİ MOTORU 🎥 ---
         const defaultVideos = [
             { name: "1. Sodyum Klorür Kristal Örgüsü (Tuz-Su)", file: "NaCl-H2O.MP4" },
             { name: "2. Laboratuvar Güvenlik Kuralları", file: "deney1.mp4" }
@@ -356,8 +331,7 @@
         function renderVideoList() {
             let list = JSON.parse(localStorage.getItem('custom_video_list'));
             if (!list) { list = defaultVideos; localStorage.setItem('custom_video_list', JSON.stringify(list)); }
-            const container = document.getElementById('dynamic-video-container');
-            container.innerHTML = '';
+            const container = document.getElementById('dynamic-video-container'); container.innerHTML = '';
             list.forEach((item, index) => {
                 container.innerHTML += `
                     <div class="w-full bg-slate-900 rounded border border-slate-800 flex justify-between items-center overflow-hidden box-border">
@@ -373,72 +347,54 @@
         }
 
         function addNewVideoToList() {
-            const nameInput = document.getElementById('new-video-name');
-            const fileInput = document.getElementById('new-video-file');
+            const nameInput = document.getElementById('new-video-name'); const fileInput = document.getElementById('new-video-file');
             if(!nameInput.value.trim() || !fileInput.value.trim()) { alert("Lütfen tüm alanları doldurun!"); return; }
             let list = JSON.parse(localStorage.getItem('custom_video_list')) || defaultVideos;
             list.push({ name: nameInput.value.trim(), file: fileInput.value.trim() });
             localStorage.setItem('custom_video_list', JSON.stringify(list));
-            nameInput.value = ''; fileInput.value = '';
-            renderVideoList();
+            nameInput.value = ''; fileInput.value = ''; renderVideoList();
         }
 
         function deleteVideoFromList(index) {
             let list = JSON.parse(localStorage.getItem('custom_video_list')); if(!list) return;
-            list.splice(index, 1); localStorage.setItem('custom_video_list', JSON.stringify(list));
-            renderVideoList();
+            list.splice(index, 1); localStorage.setItem('custom_video_list', JSON.stringify(list)); renderVideoList();
         }
 
         function resetVideoListToDefault() {
             if(confirm("Listeniz sıfırlanacaktır. Emin misiniz?")) { localStorage.setItem('custom_video_list', JSON.stringify(defaultVideos)); renderVideoList(); }
         }
 
-        // --- GLOBAL SİMÜLASYON DEĞİŞKENLERİ ---
         let simTemperature = 0.03; let simMaxParticles = 30; let activeModelType = 'dalton';
         function updateSimParameters() {
-            const tempVal = document.getElementById('param-temp').value;
-            const countVal = document.getElementById('param-count').value;
+            const tempVal = document.getElementById('param-temp').value; const countVal = document.getElementById('param-count').value;
             simTemperature = tempVal * 0.0006; simMaxParticles = parseInt(countVal);
             document.getElementById('val-temp').innerText = Math.round(tempVal / 2) + " °C";
             document.getElementById('val-count').innerText = countVal + " Tanecik";
             if (activeModelType === 'dynamic_simulation') rebuildDynamicSimulation();
         }
 
-        // --- HAFIZA BAŞLANGIÇ AYARLARI ---
         document.addEventListener('DOMContentLoaded', () => {
-            renderAytTopics(); // Önce ders listesini üret
-            
+            renderAytTopics();
             document.querySelectorAll('.text-save').forEach(input => {
-                const id = input.getAttribute('data-id');
-                const savedValue = localStorage.getItem(id);
+                const id = input.getAttribute('data-id'); const savedValue = localStorage.getItem(id);
                 if (savedValue !== null) { input.value = savedValue; }
                 input.addEventListener('input', () => { localStorage.setItem(id, input.value); });
             });
-            
-            renderVideoList();
-            init3D();
+            renderVideoList(); init3D();
         });
 
-        // --- THREE.JS GRAPHICS MOTORU ---
-        let scene, camera, renderer, currentGroup;
-        let isDragging = false; let previousMousePosition = { x: 0, y: 0 }; let simulationParticles = [];
+        let scene, camera, renderer, currentGroup; let isDragging = false; let previousMousePosition = { x: 0, y: 0 }; let simulationParticles = [];
 
         function init3D() {
             const container = document.getElementById('canvas-3d');
             scene = new THREE.Scene(); scene.background = new THREE.Color(0x05070f);
-            camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-            camera.position.set(0, 0, 6.5);
-
-            scene.add(new THREE.AmbientLight(0x1e293b, 1.5));
-            scene.add(new THREE.PointLight(0xffffff, 1.8, 12));
+            camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000); camera.position.set(0, 0, 6.5);
+            scene.add(new THREE.AmbientLight(0x1e293b, 1.5)); scene.add(new THREE.PointLight(0xffffff, 1.8, 12));
             const dLight1 = new THREE.DirectionalLight(0x38bdf8, 1.2); dLight1.position.set(5, 5, 4); scene.add(dLight1);
             const dLight2 = new THREE.DirectionalLight(0xf43f5e, 0.6); dLight2.position.set(-5, -5, 4); scene.add(dLight2);
 
-            renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setPixelRatio(window.devicePixelRatio);
-            renderer.setSize(container.clientWidth, container.clientHeight);
-            container.appendChild(renderer.domElement);
-
+            renderer = new THREE.WebGLRenderer({ antialias: true }); renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setSize(container.clientWidth, container.clientHeight); container.appendChild(renderer.domElement);
             change3DModel('dalton'); 
 
             function animate() {
@@ -472,23 +428,17 @@
                 }
                 previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
             });
-            window.addEventListener('touchend', () => { isDragging = false; });
-            window.addEventListener('resize', onWindowResize);
+            window.addEventListener('touchend', () => { isDragging = false; }); window.addEventListener('resize', onWindowResize);
         }
 
         function onWindowResize() {
             const container = document.getElementById('canvas-3d'); if(!container || !renderer) return;
-            camera.aspect = container.clientWidth / container.clientHeight; camera.updateProjectionMatrix();
-            renderer.setSize(container.clientWidth, container.clientHeight);
+            camera.aspect = container.clientWidth / container.clientHeight; camera.updateProjectionMatrix(); renderer.setSize(container.clientWidth, container.clientHeight);
         }
 
         function createQuantumAxes() {
-            const axesGroup = new THREE.Group();
-            const axisGeo = new THREE.CylinderGeometry(0.012, 0.012, 6.0, 8);
-            const axisMat = new THREE.MeshBasicMaterial({ color: 0x334155, transparent: true, opacity: 0.4 });
-            const xAxis = new THREE.Mesh(axisGeo, axisMat); xAxis.rotation.z = Math.PI / 2;
-            const yAxis = new THREE.Mesh(axisGeo, axisMat);
-            const zAxis = new THREE.Mesh(axisGeo, axisMat); zAxis.rotation.x = Math.PI / 2;
+            const axesGroup = new THREE.Group(); const axisGeo = new THREE.CylinderGeometry(0.012, 0.012, 6.0, 8); const axisMat = new THREE.MeshBasicMaterial({ color: 0x334155, transparent: true, opacity: 0.4 });
+            const xAxis = new THREE.Mesh(axisGeo, axisMat); xAxis.rotation.z = Math.PI / 2; const yAxis = new THREE.Mesh(axisGeo, axisMat); const zAxis = new THREE.Mesh(axisGeo, axisMat); zAxis.rotation.x = Math.PI / 2;
             axesGroup.add(xAxis, yAxis, zAxis); return axesGroup;
         }
 
@@ -497,25 +447,18 @@
             const coreGeo = new THREE.SphereGeometry(0.62, 24, 24); coreGeo.scale(1.0, 2.0, 1.0); coreGeo.translate(0, 0.9, 0);
             lobeGroup.add(new THREE.Mesh(coreGeo, new THREE.MeshPhongMaterial({ color: mainColor, emissive: mainColor, emissiveIntensity: 0.9, transparent: true, opacity: 0.75, shininess: 100, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide })));
             const meshGeo = new THREE.SphereGeometry(0.77, 12, 12); meshGeo.scale(1.0, 2.0, 1.0); meshGeo.translate(0, 0.9, 0);
-            lobeGroup.add(new THREE.Mesh(meshGeo, new THREE.MeshBasicMaterial({ color: mainColor, wireframe: true, transparent: true, opacity: 0.15, blending: THREE.AdditiveBlending })));
-            return lobeGroup;
+            lobeGroup.add(new THREE.Mesh(meshGeo, new THREE.MeshBasicMaterial({ color: mainColor, wireframe: true, transparent: true, opacity: 0.15, blending: THREE.AdditiveBlending }))); return lobeGroup;
         }
 
-        function createOrientedLobe(dirX, dirY, dirZ, isPositive) {
-            const lobe = createQuantumLobe(isPositive);
-            lobe.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), new THREE.Vector3(dirX, dirY, dirZ).normalize());
-            return lobe;
-        }
+        function createOrientedLobe(dirX, dirY, dirZ, isPositive) { const lobe = createQuantumLobe(isPositive); lobe.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), new THREE.Vector3(dirX, dirY, dirZ).normalize()); return lobe; }
 
         function rebuildDynamicSimulation() {
             if (!currentGroup || activeModelType !== 'dynamic_simulation') return;
-            simulationParticles.forEach(p => currentGroup.remove(p.mesh)); simulationParticles = [];
-            const pGeo = new THREE.SphereGeometry(0.18, 16, 16);
+            simulationParticles.forEach(p => currentGroup.remove(p.mesh)); simulationParticles = []; const pGeo = new THREE.SphereGeometry(0.18, 16, 16);
             for (let i = 0; i < simMaxParticles; i++) {
                 const color = i % 2 === 0 ? 0x10b981 : 0xf43f5e;
                 const mesh = new THREE.Mesh(pGeo, new THREE.MeshPhongMaterial({ color: color, emissive: color, emissiveIntensity: 0.8, transparent: true, opacity: 0.85, blending: THREE.AdditiveBlending }));
-                mesh.position.set((Math.random() - 0.5) * 4, (Math.random() - 0.5) * 4, (Math.random() - 0.5) * 4);
-                currentGroup.add(mesh);
+                mesh.position.set((Math.random() - 0.5) * 4, (Math.random() - 0.5) * 4, (Math.random() - 0.5) * 4); currentGroup.add(mesh);
                 simulationParticles.push({ mesh: mesh, velocity: new THREE.Vector3((Math.random() - 0.5) * 0.1, (Math.random() - 0.5) * 0.1, (Math.random() - 0.5) * 0.1).normalize() });
             }
         }
@@ -529,48 +472,39 @@
                 scene.add(currentGroup); rebuildDynamicSimulation(); return;
             } else { ctrlPanel.classList.add('hidden'); indicator.classList.add('hidden'); }
 
-            if (type === 'dalton') {
-                currentGroup.add(new THREE.Mesh(new THREE.SphereGeometry(2, 32, 32), new THREE.MeshPhongMaterial({ color: 0x475569, emissive: 0x1e293b, shininess: 90, specular: 0x38bdf8 })));
-            } else if (type === 'thomson') {
-                currentGroup.add(new THREE.Mesh(new THREE.SphereGeometry(2.0, 32, 32), new THREE.MeshPhongMaterial({ color: 0xf43f5e, transparent: true, opacity: 0.35, blending: THREE.AdditiveBlending })));
-                const eMat = new THREE.MeshPhongMaterial({ color: 0x38bdf8, emissive: 0x0284c7, emissiveIntensity: 0.8 });
-                [[1,0.5,0.8], [-1,-0.6,0.5], [0.2,1.2,-0.7], [-0.8,0.9,-0.5], [0.9,-1,-0.4], [-0.3,-0.2,-1.2], [1.2,-0.3,0.9], [-1.1,0.2,1.1]].forEach(pos => {
-                    const e = new THREE.Mesh(new THREE.SphereGeometry(0.18,16,16), eMat); e.position.set(pos[0],pos[1],pos[2]); currentGroup.add(e);
-                });
+            if (type === 'dalton') { currentGroup.add(new THREE.Mesh(new THREE.SphereGeometry(2, 32, 32), new THREE.MeshPhongMaterial({ color: 0x475569, emissive: 0x1e293b, shininess: 90, specular: 0x38bdf8 }))); }
+            else if (type === 'thomson') {
+                currentGroup.add(new THREE.Mesh(new THREE.SphereGeometry(2.0, 32, 32), new THREE.MeshPhongMaterial({ color: 0xf43f5e, transparent: true, opacity: 0.35, blending: THREE.AdditiveBlending }))); const eMat = new THREE.MeshPhongMaterial({ color: 0x38bdf8, emissive: 0x0284c7, emissiveIntensity: 0.8 });
+                [[1,0.5,0.8], [-1,-0.6,0.5], [0.2,1.2,-0.7], [-0.8,0.9,-0.5], [0.9,-1,-0.4], [-0.3,-0.2,-1.2], [1.2,-0.3,0.9], [-1.1,0.2,1.1]].forEach(pos => { const e = new THREE.Mesh(new THREE.SphereGeometry(0.18,16,16), eMat); e.position.set(pos[0],pos[1],pos[2]); currentGroup.add(e); });
             } else if (type === 'rutherford') {
                 currentGroup.add(new THREE.Mesh(new THREE.SphereGeometry(0.35,16,16), new THREE.MeshPhongMaterial({ color: 0xef4444, emissive: 0xef4444, emissiveIntensity: 0.5 })));
                 for (let i = 0; i < 3; i++) {
                     const og = new THREE.Group(); og.add(new THREE.Mesh(new THREE.RingGeometry(2.3,2.32,64), new THREE.MeshBasicMaterial({ color: 0x38bdf8, side: THREE.DoubleSide, transparent: true, opacity: 0.4, blending: THREE.AdditiveBlending })));
-                    const e = new THREE.Mesh(new THREE.SphereGeometry(0.1,12,12), new THREE.MeshBasicMaterial({ color: 0xffffff })); e.position.x = 2.3; og.add(e);
-                    og.rotation.x = (Math.PI/3)*i+0.2; og.rotation.y = (Math.PI/4)*i; currentGroup.add(og);
+                    const e = new THREE.Mesh(new THREE.SphereGeometry(0.1,12,12), new THREE.MeshBasicMaterial({ color: 0xffffff })); e.position.x = 2.3; og.add(e); og.rotation.x = (Math.PI/3)*i+0.2; og.rotation.y = (Math.PI/4)*i; currentGroup.add(og);
                 }
             } else if (type === 'bohr') {
-                currentGroup.add(new THREE.Mesh(new THREE.SphereGeometry(0.45,16,16), new THREE.MeshPhongMaterial({ color: 0xef4444, emissive: 0xb91c1c })));
-                const radii = [1.4, 2.3, 3.2], colors = [0x3b82f6, 0x10b981, 0xf59e0b];
+                currentGroup.add(new THREE.Mesh(new THREE.SphereGeometry(0.45,16,16), new THREE.MeshPhongMaterial({ color: 0xef4444, emissive: 0xb91c1c }))); const radii = [1.4, 2.3, 3.2], colors = [0x3b82f6, 0x10b981, 0xf59e0b];
                 for (let i = 0; i < 3; i++) {
                     const r = new THREE.Mesh(new THREE.RingGeometry(radii[i],radii[i]+0.02,64), new THREE.MeshBasicMaterial({ color: colors[i], side: THREE.DoubleSide, transparent: true, opacity: 0.6, blending: THREE.AdditiveBlending })); r.rotation.x = Math.PI/2.3; currentGroup.add(r);
                     const e = new THREE.Mesh(new THREE.SphereGeometry(0.14,16,16), new THREE.MeshPhongMaterial({ color: 0xffffff, emissive: colors[i] })); e.position.x = radii[i]; r.add(e);
                 }
-            } else if (type === 's_orbital') {
-                currentGroup.add(createQuantumAxes(), new THREE.Mesh(new THREE.SphereGeometry(2.1,32,16), new THREE.MeshPhongMaterial({ color: 0x3b82f6, transparent: true, opacity: 0.3, wireframe: true, blending: THREE.AdditiveBlending })), new THREE.Mesh(new THREE.SphereGeometry(1.2,32,32), new THREE.MeshPhongMaterial({ color: 0x1d4ed8, emissive: 0x1e40af, transparent: true, opacity: 0.75, blending: THREE.AdditiveBlending })));
-            } else if (type === 'px_orbital') { currentGroup.add(createQuantumAxes(), createOrientedLobe(1,0,0,true), createOrientedLobe(-1,0,0,false));
-            } else if (type === 'py_orbital') { currentGroup.add(createQuantumAxes(), createOrientedLobe(0,1,0,true), createOrientedLobe(0,-1,0,false));
-            } else if (type === 'pz_orbital') { currentGroup.add(createQuantumAxes(), createOrientedLobe(0,0,1,true), createOrientedLobe(0,0,-1,false));
-            } else if (type === 'd_xy') { currentGroup.add(createQuantumAxes(), createOrientedLobe(1,1,0,true), createOrientedLobe(-1,1,0,false), createOrientedLobe(-1,-1,0,true), createOrientedLobe(1,-1,0,false));
-            } else if (type === 'd_yz') { currentGroup.add(createQuantumAxes(), createOrientedLobe(0,1,1,true), createOrientedLobe(0,-1,1,false), createOrientedLobe(0,-1,-1,true), createOrientedLobe(0,1,-1,false));
-            } else if (type === 'd_xz') { currentGroup.add(createQuantumAxes(), createOrientedLobe(1,0,1,true), createOrientedLobe(-1,0,1,false), createOrientedLobe(-1,0,-1,true), createOrientedLobe(1,0,-1,false));
-            } else if (type === 'd_x2y2') { currentGroup.add(createQuantumAxes(), createOrientedLobe(1,0,0,true), createOrientedLobe(0,1,0,false), createOrientedLobe(-1,0,0,true), createOrientedLobe(0,-1,0,false));
-            } else if (type === 'd_z2') {
-                currentGroup.add(createQuantumAxes(), createOrientedLobe(0,1,0,true), createOrientedLobe(0,-1,0,true));
-                const tg = new THREE.Group(); tg.add(new THREE.Mesh(new THREE.TorusGeometry(1.05,0.32,24,64), new THREE.MeshPhongMaterial({ color: 0xf43f5e, emissive: 0xe11d48, emissiveIntensity: 0.6, transparent: true, opacity: 0.8, shininess: 90, blending: THREE.AdditiveBlending })), new THREE.Mesh(new THREE.TorusGeometry(1.05,0.35,8,32), new THREE.MeshPhongMaterial({ color: 0xf43f5e, transparent: true, opacity: 0.2, wireframe: true, blending: THREE.AdditiveBlending })));
+            } else if (type === 's_orbital') { currentGroup.add(createQuantumAxes(), new THREE.Mesh(new THREE.SphereGeometry(2.1,32,16), new THREE.MeshPhongMaterial({ color: 0x3b82f6, transparent: true, opacity: 0.3, wireframe: true, blending: THREE.AdditiveBlending })), new THREE.Mesh(new THREE.SphereGeometry(1.2,32,32), new THREE.MeshPhongMaterial({ color: 0x1d4ed8, emissive: 0x1e40af, transparent: true, opacity: 0.75, blending: THREE.AdditiveBlending }))); }
+            else if (type === 'px_orbital') { currentGroup.add(createQuantumAxes(), createOrientedLobe(1,0,0,true), createOrientedLobe(-1,0,0,false)); }
+            else if (type === 'py_orbital') { currentGroup.add(createQuantumAxes(), createOrientedLobe(0,1,0,true), createOrientedLobe(0,-1,0,false)); }
+            else if (type === 'pz_orbital') { currentGroup.add(createQuantumAxes(), createOrientedLobe(0,0,1,true), createOrientedLobe(0,0,-1,false)); }
+            else if (type === 'd_xy') { currentGroup.add(createQuantumAxes(), createOrientedLobe(1,1,0,true), createOrientedLobe(-1,1,0,false), createOrientedLobe(-1,-1,0,true), createOrientedLobe(1,-1,0,false)); }
+            else if (type === 'd_yz') { currentGroup.add(createQuantumAxes(), createOrientedLobe(0,1,1,true), createOrientedLobe(0,-1,1,false), createOrientedLobe(0,-1,-1,true), createOrientedLobe(0,1,-1,false)); }
+            else if (type === 'd_xz') { currentGroup.add(createQuantumAxes(), createOrientedLobe(1,0,1,true), createOrientedLobe(-1,0,1,false), createOrientedLobe(-1,0,-1,true), createOrientedLobe(1,0,-1,false)); }
+            else if (type === 'd_x2y2') { currentGroup.add(createQuantumAxes(), createOrientedLobe(1,0,0,true), createOrientedLobe(0,1,0,false), createOrientedLobe(-1,0,0,true), createOrientedLobe(0,-1,0,false)); }
+            else if (type === 'd_z2') {
+                currentGroup.add(createQuantumAxes(), createOrientedLobe(0,1,0,true), createOrientedLobe(0,-1,0,true)); const tg = new THREE.Group();
+                tg.add(new THREE.Mesh(new THREE.TorusGeometry(1.05,0.32,24,64), new THREE.MeshPhongMaterial({ color: 0xf43f5e, emissive: 0xe11d48, emissiveIntensity: 0.6, transparent: true, opacity: 0.8, shininess: 90, blending: THREE.AdditiveBlending })), new THREE.Mesh(new THREE.TorusGeometry(1.05,0.35,8,32), new THREE.MeshPhongMaterial({ color: 0xf43f5e, transparent: true, opacity: 0.2, wireframe: true, blending: THREE.AdditiveBlending })));
                 tg.rotation.x = Math.PI/2; currentGroup.add(tg);
             }
             scene.add(currentGroup);
         }
 
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.getRegistrations().then(sws => { sws.forEach(s => s.unregister()); });
-        }
+        if ('serviceWorker' in navigator) { navigator.serviceWorker.getRegistrations().then(sws => { sws.forEach(s => s.unregister()); }); }
     </script>
 </body>
 </html>
