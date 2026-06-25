@@ -5,21 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Medeni Gökalp Kimya Paneli</title>
     
-    <!-- 🎯 BOŞLUKLU DOSYA ADINA GÖRE GÜNCELLENEN LOGO LINKLERI -->
     <link rel="icon" type="image/png" href="logo .png">
     <link rel="apple-touch-icon" href="logo .png">
     
-    <!-- PWA Meta Etiketleri -->
     <meta name="theme-color" content="#0f172a">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
-    <!-- Dış Kütüphaneler -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     
-    <!-- PWA Manifest -->
     <link rel="manifest" href="data:application/json;,{%22name%22:%22Kimya%20E%C4%9Fitim%20Paneli%22,%22short_name%22:%22KimyaPanel%22,%22start_url%22:%22.%22,%22display%22:%22standalone%22,%22background_color%22:%22#0f172a%22,%22theme_color%22:%22#0f172a%22}">
 
     <style>
@@ -42,13 +38,11 @@
 </head>
 <body class="bg-slate-900 text-slate-100 font-sans min-h-screen flex flex-col overflow-x-hidden">
 
-    <!-- Üst Başlık / Header (Boşluklu Logo Entegre Edildi) -->
     <header class="bg-slate-800 border-b border-slate-700 p-4 sticky top-0 z-50 shadow-md flex justify-between items-center w-full">
         <div class="flex items-center space-x-3">
-            <!-- 🎯 Burası da logo .png olarak güncellendi -->
             <img src="logo .png" alt="Medeni Gökalp Logo" class="h-8 w-auto object-contain select-none pointer-events-none rounded">
             <h1 class="text-md font-bold tracking-wide bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
-                Medeni Gökalp Kimya Paneli <span class="text-xs font-semibold text-slate-400">v2.1</span>
+                Medeni Gökalp Kimya Paneli <span class="text-xs font-semibold text-slate-400">v2.2</span>
             </h1>
         </div>
         <div id="save-status" class="text-[11px] text-slate-400 bg-slate-900 px-2.5 py-1 rounded-full border border-slate-700 shrink-0">
@@ -56,22 +50,19 @@
         </div>
     </header>
 
-    <!-- Ana İçerik Alanı -->
     <main class="flex-1 p-3 max-w-6xl w-full mx-auto pb-24 box-border overflow-x-hidden">
         
-        <!-- MODÜL 1: DİNAMİK MÜFREDAT & DERS YÖNETİM PANELİ -->
         <section id="tab-dersler" class="tab-content space-y-4">
             <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-lg">
                 <h2 class="text-base font-bold mb-1 text-blue-400 flex items-center">
                     <i class="fa-solid fa-graduation-cap mr-2"></i> Müfredat & Ders Yönetimi
                 </h2>
-                <p class="text-[11px] text-slate-400 mb-4">Aşağıdan yeni üniteler ekleyebilir, silebilir ve Goodnotes/Drive linklerinizi sabitleyebilirsiniz.</p>
+                <p class="text-[11px] text-slate-400 mb-4">Konuların üzerine tıklayarak detayları açabilir, Goodnotes isimlerini ve linklerini düzenleyebilirsiniz.</p>
                 
-                <!-- Dinamik Ünite/Konu Ekleme Formu -->
                 <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 space-y-2 mb-4">
                     <div class="text-xs font-bold text-slate-400 tracking-wider uppercase flex justify-between items-center">
                         <span>Yeni Konu / Başlık Ekle</span>
-                        <button onclick="resetTopicsToDefault()" class="text-[10px] text-slate-500 hover:text-rose-400 normal-case underline font-normal">Sıfırla</button>
+                        <button onclick="resetTopicsToDefault()" class="text-[10px] text-slate-500 hover:text-rose-400 normal-case underline font-normal">Fabrika Ayarlarına Dön</button>
                     </div>
                     <div class="grid grid-cols-1 gap-2">
                         <input type="text" id="new-topic-name" placeholder="Konu/Ünite Adı (Örn: 02 Gazlar)" class="bg-slate-900 border border-slate-700 rounded p-2 text-xs text-white focus:outline-none">
@@ -82,12 +73,10 @@
                     </button>
                 </div>
 
-                <!-- JS ile Dinamik Dolacak Müfredat Listesi -->
-                <div id="ayt-topics-container" class="space-y-3"></div>
+                <div id="ayt-topics-container" class="space-y-2"></div>
             </div>
         </section>
 
-        <!-- MODÜL 2: 3D GÖRSELLEŞTİRME & SİMÜLATÖR STÜDYOSU -->
         <section id="tab-3d" class="tab-content space-y-4 hidden">
             <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-lg">
                 <div class="flex justify-between items-center mb-2">
@@ -150,7 +139,6 @@
             </div>
         </section>
 
-        <!-- MODÜL 3: DİNAMİK VİDEO KÜTÜPHANESİ -->
         <section id="tab-galeri" class="tab-content space-y-4 hidden">
             <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-lg space-y-3">
                 <h2 class="text-base font-bold text-cyan-400 flex items-center">
@@ -189,7 +177,6 @@
             </div>
         </section>
 
-        <!-- MODÜL 4: YOUTUBE SENARYO TASARIMCISI -->
         <section id="tab-youtube" class="tab-content space-y-4 hidden">
             <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-lg flex flex-col h-[calc(100vh-12rem)]">
                 <h2 class="text-base font-bold mb-2 text-rose-400 flex items-center">
@@ -207,7 +194,6 @@
 
     </main>
 
-    <!-- ALT NAVİGASYON -->
     <nav class="bg-slate-800 border-t border-slate-700 fixed bottom-0 left-0 right-0 p-1 flex justify-between items-center shadow-2xl z-50 max-w-6xl mx-auto rounded-t-xl box-border w-full">
         <button onclick="switchTab('dersler')" id="btn-dersler" class="flex-1 flex flex-col items-center justify-center py-1.5 rounded-lg text-slate-400 active-tab transition-all min-w-0">
             <i class="fa-solid fa-list-check text-base mb-0.5"></i>
@@ -227,7 +213,6 @@
         </button>
     </nav>
 
-    <!-- JAVASCRIPT MOTORU -->
     <script>
         var activeTabId = 'dersler';
         function switchTab(tabId) {
@@ -239,6 +224,7 @@
             if(tabId === '3d') { setTimeout(() => { onWindowResize(); }, 50); }
         }
 
+        // Orijinal Şablon Verileri
         const defaultTopics = [
             { id: "t1", name: "01 Modern Atom Modeli", desc: "Kuantum sayıları, elektron dizilimleri ve periyodik özellikler.", checked: false, link: "" },
             { id: "t2", name: "02 Gazlar", desc: "İdeal gaz yasası, kinetik teori, gerçek gazlar ve gaz karışımları.", checked: false, link: "" },
@@ -248,9 +234,10 @@
             { id: "t6", name: "06 Kimyasal Tep. Denge", desc: "Maksimum düzensizlik, minimum enerji dengesi ve Le Chatelier ilkesi.", checked: false, link: "" },
             { id: "t7", name: "07 Asit Baz Dengesi", desc: "Otoiyonizasyon, pH/pOH, zayıf asit/baz dengeleri ve titrasyon.", checked: false, link: "" },
             { id: "t8", name: "08 Çözünürlük Dengesi", desc: "Çözünürlük çarpımı (Kçç) hesaplamaları ve ortak iyon etkisi.", checked: false, link: "" },
-            { id: "t9", name: "09 Elektrokimya", desc: "Redoks tepkemeleri, aktiflik, galvanik/elektrolitik hücreler ve Faraday yasaları.", checked: false, link: "" }
+            { id: "t9", name: "09 Elektrokimya", desc: "Redoks tepkimeleri, aktiflik, galvanik/elektrolitik hücreler ve Faraday yasaları.", checked: false, link: "" }
         ];
 
+        // 🎯 YENİ NESİL AKORDEON VE ANLIK İSİM DÜZENLEME MOTORU
         function renderAytTopics() {
             let list = JSON.parse(localStorage.getItem('custom_topic_list'));
             if (!list) { list = defaultTopics; localStorage.setItem('custom_topic_list', JSON.stringify(list)); }
@@ -259,28 +246,75 @@
             list.forEach(topic => {
                 const hasLink = topic.link && topic.link.trim().startsWith('http');
                 container.innerHTML += `
-                    <div class="p-3 bg-slate-900 rounded-lg border border-slate-700 flex flex-col gap-2.5 shadow">
-                        <div class="flex items-start justify-between gap-2">
-                            <div class="flex items-start space-x-2.5 min-w-0 flex-1">
-                                <input type="checkbox" id="check-${topic.id}" ${topic.checked ? 'checked' : ''} onchange="toggleTopicCheck('${topic.id}', this.checked)" class="w-4.5 h-4.5 mt-0.5 rounded text-blue-600 bg-slate-700 border-slate-600 shrink-0">
-                                <div class="min-w-0 flex-1">
-                                    <label for="check-${topic.id}" class="text-xs font-bold text-slate-200 cursor-pointer block truncate">${topic.name}</label>
-                                    <p class="text-[10px] text-slate-400 mt-0.5 leading-relaxed truncate">${topic.desc || ''}</p>
-                                </div>
+                    <div class="bg-slate-900 rounded-lg border border-slate-700 shadow overflow-hidden">
+                        <div class="p-3 flex items-center justify-between bg-slate-950/40 hover:bg-slate-950/80 cursor-pointer transition-colors" onclick="toggleAccordion('${topic.id}')">
+                            <div class="flex items-center space-x-3 min-w-0 flex-1">
+                                <input type="checkbox" id="check-${topic.id}" ${topic.checked ? 'checked' : ''} onchange="toggleTopicCheck('${topic.id}', this.checked)" onclick="event.stopPropagation();" class="w-4.5 h-4.5 rounded text-blue-600 bg-slate-700 border-slate-600 shrink-0">
+                                <span class="text-xs font-bold text-slate-200 truncate" id="title-text-${topic.id}">${topic.name}</span>
                             </div>
-                            <div class="flex items-center space-x-1 shrink-0">
+                            <div class="flex items-center space-x-2.5 shrink-0" onclick="event.stopPropagation();">
                                 <button onclick="openTopicLink('${topic.id}')" class="text-[10px] bg-slate-800 hover:bg-blue-900 text-slate-400 hover:text-white px-2 py-1 rounded border border-slate-700 transition-colors ${hasLink ? '' : 'hidden'}" id="go-${topic.id}">
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Aç
                                 </button>
-                                <button onclick="deleteTopic('${topic.id}')" class="text-[10px] bg-slate-800 hover:bg-rose-950 text-slate-500 hover:text-rose-400 px-2 py-1 rounded border border-slate-700 transition-colors">
-                                    <i class="fa-solid fa-trash-can"></i>
+                                <i class="fa-solid fa-chevron-down text-slate-500 text-xs transition-transform duration-200" id="arrow-${topic.id}"></i>
+                            </div>
+                        </div>
+                        
+                        <div id="body-${topic.id}" class="hidden p-3 border-t border-slate-800/60 bg-slate-900/40 space-y-3">
+                            <div>
+                                <label class="text-[9px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Konu Adını Düzenle (Goodnotes İle Eşle)</label>
+                                <input type="text" value="${topic.name}" oninput="updateTopicName('${topic.id}', this.value)" class="bg-slate-800 border border-slate-700 rounded px-2.5 py-1.5 text-xs w-full text-white focus:outline-none focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label class="text-[9px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Kısa Açıklama / Not</label>
+                                <input type="text" value="${topic.desc || ''}" oninput="updateTopicDesc('${topic.id}', this.value)" class="bg-slate-800 border border-slate-700 rounded px-2.5 py-1.5 text-xs w-full text-white focus:outline-none focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label class="text-[9px] text-slate-400 font-bold uppercase tracking-wider block mb-1">Goodnotes / Bulut Linki</label>
+                                <input type="text" value="${topic.link || ''}" placeholder="Bağlantı linkini buraya yapıştırın..." oninput="updateTopicLink('${topic.id}', this.value)" class="bg-slate-800 border border-slate-700 rounded px-2.5 py-1.5 text-xs w-full text-white focus:outline-none focus:border-blue-500">
+                            </div>
+                            <div class="flex justify-end pt-1">
+                                <button onclick="deleteTopic('${topic.id}')" class="text-[10px] bg-rose-950/40 hover:bg-rose-900 border border-rose-800 text-rose-300 px-3 py-1.5 rounded transition-colors flex items-center">
+                                    <i class="fa-solid fa-trash-can mr-1.5"></i> Bu Başlığı Sil
                                 </button>
                             </div>
                         </div>
-                        <input type="text" id="link-${topic.id}" value="${topic.link || ''}" placeholder="Goodnotes veya Drive Linki Yapıştırın..." oninput="updateTopicLink('${topic.id}', this.value)" class="bg-slate-800 border border-slate-700 rounded px-2.5 py-1.5 text-[11px] w-full text-white focus:outline-none focus:border-blue-500">
                     </div>
                 `;
             });
+        }
+
+        // Akordeon Açma/Kapama Tetikleyicisi
+        function toggleAccordion(id) {
+            const body = document.getElementById(`body-${id}`);
+            const arrow = document.getElementById(`arrow-${id}`);
+            if (body && arrow) {
+                if (body.classList.contains('hidden')) {
+                    body.classList.remove('hidden');
+                    arrow.classList.add('rotate-180');
+                } else {
+                    body.classList.add('hidden');
+                    arrow.classList.remove('rotate-180');
+                }
+            }
+        }
+
+        // Canlı Başlık İsmi Güncelleme
+        function updateTopicName(id, value) {
+            let list = JSON.parse(localStorage.getItem('custom_topic_list'));
+            let topic = list.find(t => t.id === id);
+            if(topic) {
+                topic.name = value;
+                localStorage.setItem('custom_topic_list', JSON.stringify(list));
+                document.getElementById(`title-text-${id}`).innerText = value; // Üst başlıktaki ismi anlık değiştirir
+            }
+        }
+
+        // Canlı Açıklama Güncelleme
+        function updateTopicDesc(id, value) {
+            let list = JSON.parse(localStorage.getItem('custom_topic_list'));
+            let topic = list.find(t => t.id === id);
+            if(topic) { topic.desc = value; localStorage.setItem('custom_topic_list', JSON.stringify(list)); }
         }
 
         function toggleTopicCheck(id, isChecked) {
