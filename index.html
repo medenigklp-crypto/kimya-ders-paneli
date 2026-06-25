@@ -2,22 +2,26 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kimya Eğitim Paneli Pro</title>
+    <!-- PWA Meta Etiketleri -->
     <meta name="theme-color" content="#0f172a">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
+    <!-- Dış Kütüphaneler -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     
+    <!-- PWA Manifest -->
     <link rel="manifest" href="data:application/json;,{%22name%22:%22Kimya%20E%C4%9Fitim%20Paneli%22,%22short_name%22:%22KimyaPanel%22,%22start_url%22:%22.%22,%22display%22:%22standalone%22,%22background_color%22:%22#0f172a%22,%22theme_color%22:%22#0f172a%22}">
 
     <style>
         body {
             -webkit-tap-highlight-color: transparent;
             user-select: none;
+            overflow-x: hidden; /* Yatay kaymayı tamamen engeller */
         }
         .active-tab {
             background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
@@ -25,87 +29,92 @@
         }
         #canvas-3d {
             width: 100%;
-            height: 380px;
+            height: 360px;
             background-color: #05070f;
             border-radius: 0.75rem;
         }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-100 font-sans min-h-screen flex flex-col">
+<body class="bg-slate-900 text-slate-100 font-sans min-h-screen flex flex-col overflow-x-hidden">
 
-    <header class="bg-slate-800 border-b border-slate-700 p-4 sticky top-0 z-50 shadow-md flex justify-between items-center">
+    <!-- Üst Başlık / Header -->
+    <header class="bg-slate-800 border-b border-slate-700 p-4 sticky top-0 z-50 shadow-md flex justify-between items-center w-full">
         <div class="flex items-center space-x-3">
-            <i class="fa-solid fa-flask-vial text-blue-500 text-2xl animate-pulse"></i>
-            <h1 class="text-xl font-bold tracking-wide bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
-                Kimya Eğitim Paneli <span class="text-xs font-semibold text-slate-400">v1.8</span>
+            <i class="fa-solid fa-flask-vial text-blue-500 text-xl animate-pulse"></i>
+            <h1 class="text-lg font-bold tracking-wide bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
+                Kimya Eğitim Paneli <span class="text-xs font-semibold text-slate-400">v1.9</span>
             </h1>
         </div>
-        <div id="save-status" class="text-xs text-slate-400 bg-slate-900 px-3 py-1 rounded-full border border-slate-700">
-            <i class="fa-solid fa-cloud text-emerald-500 mr-1"></i> Sistem Hazır
+        <div id="save-status" class="text-[11px] text-slate-400 bg-slate-900 px-2.5 py-1 rounded-full border border-slate-700 shrink-0">
+            <i class="fa-solid fa-cloud text-emerald-500 mr-1"></i> Bulut Hazır
         </div>
     </header>
 
-    <main class="flex-1 p-4 max-w-6xl w-full mx-auto pb-24">
+    <!-- Ana İçerik Alanı -->
+    <main class="flex-1 p-3 max-w-6xl w-full mx-auto pb-24 box-border overflow-x-hidden">
         
-        <section id="tab-dersler" class="tab-content space-y-6">
-            <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-lg">
-                <h2 class="text-lg font-bold mb-3 text-blue-400 flex items-center">
+        <!-- MODÜL 1: İNTERAKTİF DERS PANELİ -->
+        <section id="tab-dersler" class="tab-content space-y-4">
+            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-lg">
+                <h2 class="text-base font-bold mb-3 text-blue-400 flex items-center">
                     <i class="fa-solid fa-graduation-cap mr-2"></i> Müfredat & Ders Yönetimi
                 </h2>
-                <div class="space-y-4">
-                    <div class="p-4 bg-slate-900 rounded-lg border border-slate-700 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div class="space-y-3">
+                    <div class="p-3 bg-slate-900 rounded-lg border border-slate-700 flex flex-col gap-3">
                         <div class="flex items-start space-x-3">
-                            <input type="checkbox" id="check-t1" class="w-5 h-5 mt-1 rounded text-blue-600 bg-slate-700 border-slate-600 focus:ring-blue-500 text-save" data-id="check-t1">
+                            <input type="checkbox" id="check-t1" class="w-5 h-5 rounded text-blue-600 bg-slate-700 border-slate-600 text-save" data-id="check-t1">
                             <div>
-                                <label for="check-t1" class="font-semibold text-slate-200 cursor-pointer">Tema 1.1: Kimya Hayattır</label>
-                                <p class="text-xs text-slate-400 mt-1">Kimya bilimi, kimyasal maddeler ve laboratuvar güvenliği.</p>
+                                <label for="check-t1" class="text-sm font-semibold text-slate-200 cursor-pointer">Tema 1.1: Kimya Hayattır</label>
+                                <p class="text-xs text-slate-400 mt-0.5">Kimya bilimi, maddeler ve laboratuvar güvenliği.</p>
                             </div>
                         </div>
-                        <input type="text" placeholder="Slayt Linki Ekle..." class="bg-slate-800 border border-slate-700 rounded px-3 py-1.5 text-sm w-full md:w-64 focus:outline-none focus:border-blue-500 text-save" data-id="link-t1">
+                        <input type="text" placeholder="Slayt Linki Ekle..." class="bg-slate-800 border border-slate-700 rounded px-3 py-1.5 text-xs w-full focus:outline-none focus:border-blue-500 text-save" data-id="link-t1">
                     </div>
 
-                    <div class="p-4 bg-slate-900 rounded-lg border border-slate-700 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="p-3 bg-slate-900 rounded-lg border border-slate-700 flex flex-col gap-3">
                         <div class="flex items-start space-x-3">
-                            <input type="checkbox" id="check-t2" class="w-5 h-5 mt-1 rounded text-blue-600 bg-slate-700 border-slate-600 focus:ring-blue-500 text-save" data-id="check-t2">
+                            <input type="checkbox" id="check-t2" class="w-5 h-5 rounded text-blue-600 bg-slate-700 border-slate-600 text-save" data-id="check-t2">
                             <div>
-                                <label for="check-t2" class="font-semibold text-slate-200 cursor-pointer">Tema 1.2: Atomdan Periyodik Tabloya</label>
-                                <p class="text-xs text-slate-400 mt-1">Atom teorileri, kuantum orbitalleri ve periyodik özellikler.</p>
+                                <label for="check-t2" class="text-sm font-semibold text-slate-200 cursor-pointer">Tema 1.2: Atomdan Periyodik Tabloya</label>
+                                <p class="text-xs text-slate-400 mt-0.5">Atom kuramları, kuantum orbitalleri ve periyodik özellikler.</p>
                             </div>
                         </div>
-                        <input type="text" placeholder="Slayt Linki Ekle..." class="bg-slate-800 border border-slate-700 rounded px-3 py-1.5 text-sm w-full md:w-64 focus:outline-none focus:border-blue-500 text-save" data-id="link-t2">
+                        <input type="text" placeholder="Slayt Linki Ekle..." class="bg-slate-800 border border-slate-700 rounded px-3 py-1.5 text-xs w-full focus:outline-none focus:border-blue-500 text-save" data-id="link-t2">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="tab-3d" class="tab-content space-y-6 hidden">
-            <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-lg">
+        <!-- MODÜL 2: 3D GÖRSELLEŞTİRME & İNTERAKTİF SİMÜLATÖR STÜDYOSU -->
+        <section id="tab-3d" class="tab-content space-y-4 hidden">
+            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-lg">
                 <div class="flex justify-between items-center mb-2">
-                    <h2 class="text-lg font-bold text-emerald-400 flex items-center">
+                    <h2 class="text-base font-bold text-emerald-400 flex items-center">
                         <i class="fa-solid fa-cube mr-2"></i> 3D Laboratuvar & Simülatör
                     </h2>
-                    <span id="sim-indicator" class="text-[10px] bg-indigo-950 text-indigo-300 border border-indigo-800 px-2 py-0.5 rounded-full hidden animate-pulse">Dinamik Simülasyon Aktif</span>
+                    <span id="sim-indicator" class="text-[9px] bg-indigo-950 text-indigo-300 border border-indigo-800 px-2 py-0.5 rounded-full hidden animate-pulse">Simülasyon Aktif</span>
                 </div>
                 
-                <div class="relative">
+                <div class="relative w-full">
                     <div id="canvas-3d"></div>
                 </div>
 
-                <div id="simulation-controls" class="bg-slate-950 p-4 rounded-lg border border-slate-800 mt-4 space-y-4 hidden">
+                <!-- Değişken Kontrol Panel -->
+                <div id="simulation-controls" class="bg-slate-950 p-3 rounded-lg border border-slate-800 mt-3 space-y-3 hidden">
                     <div class="text-xs font-bold text-slate-400 tracking-wider uppercase flex items-center">
-                        <i class="fa-solid fa-sliders mr-1.5 text-amber-400"></i> Simülasyon Değişken Kontrolleri
+                        <i class="fa-solid fa-sliders mr-1.5 text-amber-400"></i> Simülasyon Kontrolleri
                     </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="space-y-3">
                         <div>
                             <div class="flex justify-between text-xs mb-1">
-                                <span class="text-slate-400">Sıcaklık (Kinetik Enerji / Hız)</span>
+                                <span class="text-slate-400">Sıcaklık (Hız)</span>
                                 <span id="val-temp" class="text-amber-400 font-bold">50%</span>
                             </div>
                             <input type="range" id="param-temp" min="5" max="200" value="50" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500" oninput="updateSimParameters()">
                         </div>
                         <div>
                             <div class="flex justify-between text-xs mb-1">
-                                <span class="text-slate-400">Tanecik Yoğunluğu (Konsantrasyon)</span>
+                                <span class="text-slate-400">Yoğunluk (Tanecik Sayısı)</span>
                                 <span id="val-count" class="text-emerald-400 font-bold">30 Adet</span>
                             </div>
                             <input type="range" id="param-count" min="5" max="100" value="30" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500" oninput="updateSimParameters()">
@@ -113,114 +122,116 @@
                     </div>
                 </div>
 
-                <div class="space-y-3 mt-4">
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                        <button onclick="change3DModel('dalton')" class="bg-slate-700 hover:bg-slate-600 text-[11px] py-1.5 rounded border border-slate-600 font-medium">Dalton</button>
-                        <button onclick="change3DModel('thomson')" class="bg-slate-700 hover:bg-slate-600 text-[11px] py-1.5 rounded border border-slate-600 font-medium">Thomson</button>
-                        <button onclick="change3DModel('rutherford')" class="bg-slate-700 hover:bg-slate-600 text-[11px] py-1.5 rounded border border-slate-600 font-medium">Rutherford</button>
-                        <button onclick="change3DModel('bohr')" class="bg-slate-700 hover:bg-slate-600 text-[11px] py-1.5 rounded border border-slate-600 font-medium">Bohr</button>
+                <!-- Seçim Menüsü -->
+                <div class="space-y-2.5 mt-3">
+                    <div class="grid grid-cols-4 gap-1.5">
+                        <button onclick="change3DModel('dalton')" class="bg-slate-700 hover:bg-slate-600 text-[10px] py-2 rounded font-semibold transition-all">Dalton</button>
+                        <button onclick="change3DModel('thomson')" class="bg-slate-700 hover:bg-slate-600 text-[10px] py-2 rounded font-semibold transition-all">Thomson</button>
+                        <button onclick="change3DModel('rutherford')" class="bg-slate-700 hover:bg-slate-600 text-[10px] py-2 rounded font-semibold transition-all">Rutherf.</button>
+                        <button onclick="change3DModel('bohr')" class="bg-slate-700 hover:bg-slate-600 text-[10px] py-2 rounded font-semibold transition-all">Bohr</button>
                     </div>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                        <button onclick="change3DModel('s_orbital')" class="bg-slate-800 hover:bg-slate-700 text-[11px] py-1.5 rounded border border-slate-700">s orbitali</button>
-                        <button onclick="change3DModel('px_orbital')" class="bg-slate-800 hover:bg-slate-700 text-[11px] py-1.5 rounded border border-slate-700">p<sub>x</sub> orbitali</button>
-                        <button onclick="change3DModel('py_orbital')" class="bg-slate-800 hover:bg-slate-700 text-[11px] py-1.5 rounded border border-slate-700">p<sub>y</sub> orbitali</button>
-                        <button onclick="change3DModel('pz_orbital')" class="bg-slate-800 hover:bg-slate-700 text-[11px] py-1.5 rounded border border-slate-700">p<sub>z</sub> orbitali</button>
+                    <div class="grid grid-cols-4 gap-1.5">
+                        <button onclick="change3DModel('s_orbital')" class="bg-slate-800 hover:bg-slate-700 text-[10px] py-1.5 rounded">s orb.</button>
+                        <button onclick="change3DModel('px_orbital')" class="bg-slate-800 hover:bg-slate-700 text-[10px] py-1.5 rounded">pₓ orb.</button>
+                        <button onclick="change3DModel('py_orbital')" class="bg-slate-800 hover:bg-slate-700 text-[10px] py-1.5 rounded">p_y orb.</button>
+                        <button onclick="change3DModel('pz_orbital')" class="bg-slate-800 hover:bg-slate-700 text-[10px] py-1.5 rounded">p_z orb.</button>
                     </div>
                     <div class="grid grid-cols-5 gap-1">
-                        <button onclick="change3DModel('d_xy')" class="bg-slate-950 hover:bg-slate-700 text-[10px] py-1.5 rounded border border-slate-800 text-indigo-300">d<sub>xy</sub></button>
-                        <button onclick="change3DModel('d_yz')" class="bg-slate-950 hover:bg-slate-700 text-[10px] py-1.5 rounded border border-slate-800 text-indigo-300">d<sub>yz</sub></button>
-                        <button onclick="change3DModel('d_xz')" class="bg-slate-950 hover:bg-slate-700 text-[10px] py-1.5 rounded border border-slate-800 text-indigo-300">d<sub>xz</sub></button>
-                        <button onclick="change3DModel('d_x2y2')" class="bg-slate-950 hover:bg-slate-700 text-[10px] py-1.5 rounded border border-slate-800 text-indigo-300">d<sub>x²-y²</sub></button>
-                        <button onclick="change3DModel('d_z2')" class="bg-slate-950 hover:bg-slate-700 text-[10px] py-1.5 rounded border border-slate-800 text-amber-400">d<sub>z²</sub></button>
+                        <button onclick="change3DModel('d_xy')" class="bg-slate-950 hover:bg-slate-700 text-[10px] py-1.5 rounded text-indigo-300">dₓ_y</button>
+                        <button onclick="change3DModel('d_yz')" class="bg-slate-950 hover:bg-slate-700 text-[10px] py-1.5 rounded text-indigo-300">d_yz</button>
+                        <button onclick="change3DModel('d_xz')" class="bg-slate-950 hover:bg-slate-700 text-[10px] py-1.5 rounded text-indigo-300">d_xz</button>
+                        <button onclick="change3DModel('d_x2y2')" class="bg-slate-950 hover:bg-slate-700 text-[10px] py-1.5 rounded text-indigo-300">d_x²y²</button>
+                        <button onclick="change3DModel('d_z2')" class="bg-slate-950 hover:bg-slate-700 text-[10px] py-1.5 rounded text-amber-400">d_z²</button>
                     </div>
-                    <button onclick="change3DModel('dynamic_simulation')" class="w-full bg-gradient-to-r from-amber-600 to-emerald-600 hover:from-amber-500 hover:to-emerald-500 text-xs py-2.5 rounded-lg font-bold transition-all text-center shadow-lg">
-                        <i class="fa-solid fa-flask-pulse mr-1"></i> Değişken Kontrollü Gaz Reaksiyon Simülatörünü Aç
+                    <button onclick="change3DModel('dynamic_simulation')" class="w-full bg-gradient-to-r from-amber-600 to-emerald-600 text-[11px] py-2 rounded-lg font-bold shadow-lg">
+                        <i class="fa-solid fa-flask-pulse mr-1"></i> Gaz Reaksiyon Simülatörünü Aç
                     </button>
                 </div>
             </div>
         </section>
 
-        <section id="tab-galeri" class="tab-content space-y-6 hidden">
-            <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-lg space-y-4">
-                <h2 class="text-lg font-bold text-cyan-400 flex items-center">
-                    <i class="fa-solid fa-video mr-2"></i> Ders Videoları Yönetim Paneli
+        <!-- MODÜL 3: DİNAMİK VİDEO KÜTÜPHANESİ -->
+        <section id="tab-galeri" class="tab-content space-y-4 hidden">
+            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-lg space-y-3">
+                <h2 class="text-base font-bold text-cyan-400 flex items-center">
+                    <i class="fa-solid fa-video mr-2"></i> Videolar & Oynatma Listesi
                 </h2>
                 
-                <div class="p-4 bg-slate-950 rounded-lg border border-slate-800 space-y-3">
-                    <div class="text-xs font-bold text-slate-400 tracking-wider uppercase"><i class="fa-solid fa-plus mr-1 text-cyan-500"></i> Yeni Video Ekle</div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        <input type="text" id="new-video-name" placeholder="Videonun Ekrandaki Adı (Örn: Deney 16)" class="bg-slate-900 border border-slate-700 rounded p-2 text-xs text-white focus:outline-none focus:border-cyan-500">
-                        <input type="text" id="new-video-file" placeholder="GitHub'daki Dosya Adı (Örn: deney16.mp4)" class="bg-slate-900 border border-slate-700 rounded p-2 text-xs text-white focus:outline-none focus:border-cyan-500">
+                <!-- Video Ekleme Formu -->
+                <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 space-y-2">
+                    <div class="text-xs font-bold text-slate-400 tracking-wider uppercase">Yeni Video Sabitle</div>
+                    <div class="flex flex-col gap-2">
+                        <input type="text" id="new-video-name" placeholder="Ekrandaki İsim (Örn: Deney 16)" class="bg-slate-900 border border-slate-700 rounded p-2 text-xs text-white focus:outline-none">
+                        <input type="text" id="new-video-file" placeholder="GitHub Dosya Adı (Örn: deney16.mp4)" class="bg-slate-900 border border-slate-700 rounded p-2 text-xs text-white focus:outline-none">
                     </div>
-                    <button onclick="addNewVideoToList()" class="w-full bg-cyan-600 hover:bg-cyan-500 text-xs font-bold py-2 rounded transition-all shadow-md">
-                        <i class="fa-solid fa-floppy-disk mr-1"></i> Listeye Sabitle (Kaydet)
+                    <button onclick="addNewVideoToList()" class="w-full bg-cyan-600 hover:bg-cyan-500 text-xs font-bold py-2 rounded shadow-md flex items-center justify-center">
+                        <i class="fa-solid fa-floppy-disk mr-1.5"></i> Listeye Sabitle (Kaydet)
                     </button>
                 </div>
 
-                <div class="p-3 bg-slate-900 rounded-lg border border-dashed border-slate-700 text-center">
-                    <label for="local-video-loader" class="cursor-pointer inline-flex items-center bg-slate-700 hover:bg-slate-600 text-xs font-semibold py-2 px-4 rounded transition-all">
-                        <i class="fa-solid fa-file-video mr-2 text-cyan-400"></i> Galeriden Geçici Video Seç/Oynat
+                <div class="p-2.5 bg-slate-900 rounded-lg border border-dashed border-slate-700 text-center">
+                    <label for="local-video-loader" class="cursor-pointer inline-flex items-center bg-slate-700 hover:bg-slate-600 text-xs font-semibold py-1.5 px-3 rounded">
+                        <i class="fa-solid fa-file-video mr-2 text-cyan-400"></i> Galeriden Geçici Oynat
                     </label>
                     <input type="file" id="local-video-loader" accept="video/*" class="hidden" onchange="loadLocalVideo(event)">
                 </div>
 
-                <div class="bg-black rounded-lg overflow-hidden border border-slate-700 shadow-2xl hidden" id="video-player-container">
-                    <video id="main-panel-video" controls class="w-full h-auto max-h-[350px]"></video>
+                <div class="bg-black rounded-lg overflow-hidden border border-slate-700 hidden" id="video-player-container">
+                    <video id="main-panel-video" controls class="w-full h-auto max-h-[300px]"></video>
                 </div>
 
+                <!-- OYNATMA LİSTESİ -->
                 <div class="pt-1">
                     <div class="text-xs font-bold text-slate-400 tracking-wider uppercase mb-2 flex items-center justify-between">
-                        <span><i class="fa-solid fa-folder-open mr-1.5 text-cyan-500"></i> Oynatma Listem</span>
-                        <button onclick="resetVideoListToDefault()" class="text-[10px] text-slate-500 hover:text-rose-400 underline lowercase">Listeyi Sıfırla</button>
+                        <span>Oynatma Listem</span>
+                        <button onclick="resetVideoListToDefault()" class="text-[10px] text-slate-500 hover:text-rose-400 underline">Sıfırla</button>
                     </div>
-                    <div id="dynamic-video-container" class="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-[350px] overflow-y-auto pr-1">
-                        </div>
+                    <div id="dynamic-video-container" class="space-y-1.5 max-h-[300px] overflow-y-auto w-full box-border pr-0.5">
+                        <!-- JS ile dolacak -->
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="tab-youtube" class="tab-content space-y-6 hidden">
-            <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-lg flex flex-col h-[calc(100vh-12rem)]">
-                <h2 class="text-lg font-bold mb-2 text-rose-400 flex items-center">
-                    <i class="fa-brands fa-youtube mr-2"></i> YouTube Video Senaryo Üretici
+        <!-- MODÜL 4: YOUTUBE SENARYO TASARIMCISI -->
+        <section id="tab-youtube" class="tab-content space-y-4 hidden">
+            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-lg flex flex-col h-[calc(100vh-12rem)]">
+                <h2 class="text-base font-bold mb-2 text-rose-400 flex items-center">
+                    <i class="fa-brands fa-youtube mr-2"></i> YouTube Senaryo Üretici
                 </h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-3">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-400 mb-1">Video Başlığı</label>
-                        <input type="text" id="yt-title" placeholder="Başlık..." class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-sm focus:outline-none focus:border-rose-500 text-save" data-id="yt-title">
-                    </div>
-                    <div class="md:col-span-2">
-                        <label class="block text-xs font-semibold text-slate-400 mb-1">Giriş / Kanca Cümlesi</label>
-                        <input type="text" id="yt-hook" placeholder="Kanca..." class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-sm focus:outline-none focus:border-rose-500 text-save" data-id="yt-hook">
-                    </div>
+                <div class="flex flex-col gap-2 mb-2">
+                    <input type="text" id="yt-title" placeholder="Video Başlığı..." class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-xs focus:outline-none text-save" data-id="yt-title">
+                    <input type="text" id="yt-hook" placeholder="Giriş / Kanca Cümlesi..." class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-xs focus:outline-none text-save" data-id="yt-hook">
                 </div>
                 <div class="flex-1 flex flex-col">
-                    <textarea id="yt-body" placeholder="Senaryo akışı..." class="w-full flex-1 bg-slate-900 border border-slate-700 rounded p-3 text-sm resize-none focus:outline-none focus:border-rose-500 text-save" data-id="yt-body"></textarea>
+                    <textarea id="yt-body" placeholder="Senaryo akışı ve sahne notları..." class="w-full flex-1 bg-slate-900 border border-slate-700 rounded p-2 text-xs resize-none focus:outline-none text-save" data-id="yt-body"></textarea>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <nav class="bg-slate-800 border-t border-slate-700 fixed bottom-0 left-0 right-0 p-2 flex justify-around items-center shadow-2xl z-50 max-w-6xl mx-auto rounded-t-xl md:rounded-none">
-        <button onclick="switchTab('dersler')" id="btn-dersler" class="flex flex-col items-center justify-center w-16 py-1 rounded-xl text-slate-400 active-tab transition-all">
+    <!-- ALT NAVİGASYON (Taşma Korumalı Esnek Menü) -->
+    <nav class="bg-slate-800 border-t border-slate-700 fixed bottom-0 left-0 right-0 p-1 flex justify-between items-center shadow-2xl z-50 max-w-6xl mx-auto rounded-t-xl box-border w-full">
+        <button onclick="switchTab('dersler')", id="btn-dersler" class="flex-1 flex flex-col items-center justify-center py-1.5 rounded-lg text-slate-400 transition-all min-w-0">
             <i class="fa-solid fa-list-check text-base mb-0.5"></i>
-            <span class="text-[9px] font-medium">Ders Paneli</span>
+            <span class="text-[9px] font-medium truncate">Ders</span>
         </button>
-        <button onclick="switchTab('3d')" id="btn-3d" class="flex flex-col items-center justify-center w-16 py-1 rounded-xl text-slate-400 transition-all">
+        <button onclick="switchTab('3d')", id="btn-3d" class="flex-1 flex flex-col items-center justify-center py-1.5 rounded-lg text-slate-400 transition-all min-w-0">
             <i class="fa-solid fa-cube text-base mb-0.5"></i>
-            <span class="text-[9px] font-medium">3D Stüdyo</span>
+            <span class="text-[9px] font-medium truncate">3D Stüdyo</span>
         </button>
-        <button onclick="switchTab('galeri')" id="btn-galeri" class="flex flex-col items-center justify-center w-16 py-1 rounded-xl text-slate-400 transition-all">
+        <button onclick="switchTab('galeri')", id="btn-galeri" class="flex-1 flex flex-col items-center justify-center py-1.5 rounded-lg text-slate-400 transition-all min-w-0">
             <i class="fa-solid fa-video text-base mb-0.5"></i>
-            <span class="text-[9px] font-medium">Videolar</span>
+            <span class="text-[9px] font-medium truncate">Videolar</span>
         </button>
-        <button onclick="switchTab('youtube')" id="btn-youtube" class="flex flex-col items-center justify-center w-16 py-1 rounded-xl text-slate-400 transition-all">
+        <button onclick="switchTab('youtube')", id="btn-youtube" class="flex-1 flex flex-col items-center justify-center py-1.5 rounded-lg text-slate-400 transition-all min-w-0">
             <i class="fa-brands fa-youtube text-base mb-0.5"></i>
-            <span class="text-[9px] font-medium">Senaryo</span>
+            <span class="text-[9px] font-medium truncate">Senaryo</span>
         </button>
     </nav>
 
+    <!-- JAVASCRIPT ENGINE -->
     <script>
         var activeTabId = 'dersler';
         function switchTab(tabId) {
@@ -246,7 +257,7 @@
             document.getElementById('main-panel-video').play();
         }
 
-        // --- DİNAMİK VİDEO LİSTESİ MANTIĞI ---
+        // --- DİNAMİK VİDEO SEKMESİ SİLME/EKLEME ---
         const defaultVideos = [
             { name: "1. Laboratuvar Güvenlik Kuralları", file: "deney1.mp4" },
             { name: "2. Kimyasal Risk Piktogramları", file: "deney2.mp4" },
@@ -275,11 +286,11 @@
             container.innerHTML = '';
             list.forEach((item, index) => {
                 container.innerHTML += `
-                    <div class="w-full bg-slate-900 rounded border border-slate-800 flex justify-between items-center overflow-hidden transition-all hover:border-slate-700">
-                        <button onclick="playCloudVideo('${item.file}')" class="flex-1 p-2.5 text-left text-xs font-medium truncate text-slate-300 hover:text-cyan-400">
-                            <i class="fa-solid fa-circle-play mr-2 text-cyan-400"></i>${item.name}
+                    <div class="w-full bg-slate-900 rounded border border-slate-800 flex justify-between items-center overflow-hidden box-border">
+                        <button onclick="playCloudVideo('${item.file}')" class="flex-1 p-2.5 text-left text-xs font-medium truncate text-slate-300 hover:text-cyan-400 min-w-0">
+                            <i class="fa-solid fa-circle-play mr-2 text-cyan-400 shrink-0"></i>${item.name}
                         </button>
-                        <button onclick="deleteVideoFromList(${index})" class="p-2.5 bg-slate-950 hover:bg-rose-950 border-l border-slate-800 text-slate-500 hover:text-rose-400 transition-colors">
+                        <button onclick="deleteVideoFromList(${index})" class="p-2.5 bg-slate-950 hover:bg-rose-950 border-l border-slate-800 text-slate-500 hover:text-rose-400 transition-colors shrink-0 flex items-center justify-center w-10 h-full">
                             <i class="fa-solid fa-trash-can text-xs"></i>
                         </button>
                     </div>
@@ -291,11 +302,10 @@
             const nameInput = document.getElementById('new-video-name');
             const fileInput = document.getElementById('new-video-file');
             if(!nameInput.value.trim() || !fileInput.value.trim()) {
-                alert("Lütfen hem video adını hem de dosya adını doldurun!");
+                alert("Lütfen tüm alanları doldurun!");
                 return;
             }
             let list = JSON.parse(localStorage.getItem('custom_video_list')) || defaultVideos;
-            list = JSON.parse(JSON.stringify(list)); // Deep copy engelleme
             list.push({ name: nameInput.value.trim(), file: fileInput.value.trim() });
             localStorage.setItem('custom_video_list', JSON.stringify(list));
             nameInput.value = ''; fileInput.value = '';
@@ -310,10 +320,12 @@
             renderVideoList();
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            renderVideoList();
-            init3D();
-        });
+        function resetVideoListToDefault() {
+            if(confirm("Listeniz ilk orijinal haline döndürülecektir. Emin misiniz?")) {
+                localStorage.setItem('custom_video_list', JSON.stringify(defaultVideos));
+                renderVideoList();
+            }
+        }
 
         // --- GLOBAL SİMÜLASYON DEĞİŞKENLERİ ---
         let simTemperature = 0.03; let simMaxParticles = 30; let activeModelType = 'dalton';
@@ -326,7 +338,23 @@
             if (activeModelType === 'dynamic_simulation') rebuildDynamicSimulation();
         }
 
-        // --- THREE.JS ORTAMI ---
+        // --- LOCALSTORAGE KAYITLARI ---
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.text-save').forEach(input => {
+                const savedValue = localStorage.getItem(input.getAttribute('data-id'));
+                if (savedValue !== null) {
+                    if (input.type === 'checkbox') input.checked = savedValue === 'true';
+                    else input.value = savedValue;
+                }
+                input.addEventListener('input', () => {
+                    localStorage.setItem(input.getAttribute('data-id'), input.type === 'checkbox' ? input.checked : input.value);
+                });
+            });
+            renderVideoList();
+            init3D();
+        });
+
+        // --- THREE.JS GRAPHICS MOTORU ---
         let scene, camera, renderer, currentGroup;
         let isDragging = false; let previousMousePosition = { x: 0, y: 0 }; let simulationParticles = [];
 
@@ -364,7 +392,6 @@
             }
             animate();
 
-            // Sürükleme Dinamikleri
             container.addEventListener('mousedown', () => { isDragging = true; });
             container.addEventListener('mousemove', (e) => {
                 const deltaMove = { x: e.offsetX - previousMousePosition.x, y: e.offsetY - previousMousePosition.y };
@@ -485,35 +512,9 @@
             scene.add(currentGroup);
         }
 
-        // --- ⚡ INSTANT UPDATE NETWORK-FIRST CACHE ENGINE ⚡ ---
+        // --- ⚡ INSTANT DEPLOY & ANTI-CACHE ENGINE ⚡ ---
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                const swCode = `
-                    const CACHE_NAME = 'kimya-panel-v1.8';
-                    self.addEventListener('install', e => { self.skipWaiting(); });
-                    self.addEventListener('activate', e => {
-                        e.waitUntil(caches.keys().then(keys => Promise.all(
-                            keys.map(k => { if (k !== CACHE_NAME) return caches.delete(k); })
-                        )).then(() => self.clients.claim()));
-                    });
-                    self.addEventListener('fetch', e => {
-                        e.respondWith(
-                            fetch(e.request)
-                                .then(res => {
-                                    const clone = res.clone();
-                                    caches.open(CACHE_NAME).then(c => c.put(e.request, clone));
-                                    return res;
-                                })
-                                .catch(() => caches.match(e.request))
-                        );
-                    });
-                `;
-                const blob = new Blob([swCode], { type: 'application/javascript' });
-                navigator.serviceWorker.register(URL.createObjectURL(blob))
-                    .then(reg => {
-                        if (reg.waiting) { reg.waiting.postMessage({ type: 'SKIP_WAITING' }); window.location.reload(); }
-                    });
-            });
+            navigator.serviceWorker.getRegistrations().then(sws => { sws.forEach(s => s.unregister()); });
         }
     </script>
 </body>
