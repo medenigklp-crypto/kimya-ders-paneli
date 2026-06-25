@@ -149,10 +149,10 @@
                 <div class="p-4 bg-slate-950 rounded-lg border border-slate-800 space-y-3">
                     <div class="text-xs font-bold text-slate-400 tracking-wider uppercase"><i class="fa-solid fa-plus mr-1 text-cyan-500"></i> Yeni Video Ekle</div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        <input type="text" id="new-video-name" placeholder="Videonun Adı (Örn: Deney 16: Asitlik Testi)" class="bg-slate-900 border border-slate-700 rounded p-2 text-xs focus:outline-none focus:border-cyan-500">
-                        <input type="text" id="new-video-file" placeholder="Dosya Adı (Örn: deney16.mp4)" class="bg-slate-900 border border-slate-700 rounded p-2 text-xs focus:outline-none focus:border-cyan-500">
+                        <input type="text" id="new-video-name" placeholder="Videonun Adı (Örn: Deney 16: Asitlik Testi)" class="bg-slate-900 border border-slate-700 rounded p-2 text-xs text-white focus:outline-none focus:border-cyan-500">
+                        <input type="text" id="new-video-file" placeholder="Dosya Adı (Örn: deney16.mp4)" class="bg-slate-900 border border-slate-700 rounded p-2 text-xs text-white focus:outline-none focus:border-cyan-500">
                     </div>
-                    <button onclick="addNewVideoToList()" class="w-full bg-cyan-600 hover:bg-cyan-500 text-xs font-bold py-2 rounded transition-all">Listeye Sabitle</button>
+                    <button onclick="addNewVideoToList()" class="w-full bg-cyan-600 hover:bg-cyan-500 text-xs font-bold py-2 rounded transition-all shadow-md">Listeye Sabitle (Kaydet)</button>
                 </div>
 
                 <div class="p-3 bg-slate-900 rounded-lg border border-dashed border-slate-700 text-center">
@@ -169,7 +169,7 @@
                 <div class="pt-1">
                     <div class="text-xs font-bold text-slate-400 tracking-wider uppercase mb-2 flex items-center justify-between">
                         <span><i class="fa-solid fa-folder-open mr-1.5 text-cyan-500"></i> Oynatma Listem</span>
-                        <button onclick="resetVideoListToDefault()" class="text-[10px] text-slate-500 hover:text-rose-400 underline lowercase">Fabrika Ayarlarına Dön</button>
+                        <button onclick="resetVideoListToDefault()" class="text-[10px] text-slate-500 hover:text-rose-400 underline lowercase">Sıfırla (Varsayılana Dön)</button>
                     </div>
                     <div id="dynamic-video-container" class="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-[350px] overflow-y-auto pr-1">
                         </div>
@@ -220,7 +220,10 @@
     </nav>
 
     <script>
+        // Sekme Değişimi
+        var activeTabId = 'dersler';
         function switchTab(tabId) {
+            activeTabId = tabId;
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.getElementById(`tab-${tabId}`).classList.remove('hidden');
             document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active-tab'));
@@ -242,7 +245,7 @@
             document.getElementById('main-panel-video').play();
         }
 
-        // --- 🎥 DİNAMİK VİDEO LİSTE YÖNETİMİ (EKLE/SİL) 🎥 ---
+        // --- 🎥 DİNAMİK VİDEO MANTIĞI (EKLE/SİL) 🎥 ---
         const defaultVideos = [
             { name: "1. Laboratuvar Güvenlik Kuralları", file: "deney1.mp4" },
             { name: "2. Kimyasal Risk Piktogramları", file: "deney2.mp4" },
@@ -267,17 +270,15 @@
                 list = defaultVideos;
                 localStorage.setItem('custom_video_list', JSON.stringify(list));
             }
-
             const container = document.getElementById('dynamic-video-container');
             container.innerHTML = '';
-
             list.forEach((item, index) => {
                 container.innerHTML += `
                     <div class="w-full bg-slate-900 rounded border border-slate-800 flex justify-between items-center overflow-hidden transition-all hover:border-slate-700">
                         <button onclick="playCloudVideo('${item.file}')" class="flex-1 p-2.5 text-left text-xs font-medium truncate text-slate-300 hover:text-cyan-400">
                             <i class="fa-solid fa-circle-play mr-2 text-cyan-400"></i>${item.name}
                         </button>
-                        <button onclick="deleteVideoFromList(${index})" class="p-2.5 bg-slate-950 hover:bg-rose-950 border-l border-slate-800 text-slate-500 hover:text-rose-400 transition-colors" title="Listeden Sil">
+                        <button onclick="deleteVideoFromList(${index})" class="p-2.5 bg-slate-950 hover:bg-rose-950 border-l border-slate-800 text-slate-500 hover:text-rose-400 transition-colors">
                             <i class="fa-solid fa-trash-can text-xs"></i>
                         </button>
                     </div>
@@ -288,25 +289,20 @@
         function addNewVideoToList() {
             const nameInput = document.getElementById('new-video-name');
             const fileInput = document.getElementById('new-video-file');
-            
             if(!nameInput.value.trim() || !fileInput.value.trim()) {
-                alert("Lütfen hem video adını hem de dosya adını (örn: deney16.mp4) doldurun!");
+                alert("Lütfen hem video adını hem de dosya adını doldurun!");
                 return;
             }
-
             let list = JSON.parse(localStorage.getItem('custom_video_list')) || defaultVideos;
             list.push({ name: nameInput.value.trim(), file: fileInput.value.trim() });
             localStorage.setItem('custom_video_list', JSON.stringify(list));
-
-            nameInput.value = '';
-            fileInput.value = '';
+            nameInput.value = ''; fileInput.value = '';
             renderVideoList();
         }
 
         function deleteVideoFromList(index) {
             let list = JSON.parse(localStorage.getItem('custom_video_list'));
             if(!list) return;
-            
             list.splice(index, 1);
             localStorage.setItem('custom_video_list', JSON.stringify(list));
             renderVideoList();
@@ -334,7 +330,7 @@
             if (activeModelType === 'dynamic_simulation') rebuildDynamicSimulation();
         }
 
-        // --- LOCALSTORAGE SİSTEMİ VE AÇILIŞ ---
+        // --- LOCALSTORAGE KAYIT ---
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.text-save').forEach(input => {
                 const savedValue = localStorage.getItem(input.getAttribute('data-id'));
@@ -346,7 +342,7 @@
                     localStorage.setItem(input.getAttribute('data-id'), input.type === 'checkbox' ? input.checked : input.value);
                 });
             });
-            renderVideoList(); // Dinamik listeyi bas
+            renderVideoList();
             init3D();
         });
 
@@ -365,7 +361,7 @@
             camera.position.set(0, 0, 6.5);
 
             scene.add(new THREE.AmbientLight(0x1e293b, 1.5));
-            const pLight = new THREE.PointLight(0xffffff, 1.8, 12); scene.add(pLight);
+            scene.add(new THREE.PointLight(0xffffff, 1.8, 12));
             const dLight1 = new THREE.DirectionalLight(0x38bdf8, 1.2); dLight1.position.set(5, 5, 4); scene.add(dLight1);
             const dLight2 = new THREE.DirectionalLight(0xf43f5e, 0.6); dLight2.position.set(-5, -5, 4); scene.add(dLight2);
 
@@ -379,14 +375,14 @@
             function animate() {
                 requestAnimationFrame(animate);
                 if (currentGroup && !isDragging) {
-                    if (activeModelType === 'dynamic_simulation') {
+                    if (activeModelType === 'dynamic_simulation' && activeTabId === '3d') {
                         simulationParticles.forEach(p => {
                             p.mesh.position.add(p.velocity.clone().multiplyScalar(simTemperature * 25));
                             if (Math.abs(p.mesh.position.x) > 2.2) p.velocity.x *= -1;
                             if (Math.abs(p.mesh.position.y) > 2.2) p.velocity.y *= -1;
                             if (Math.abs(p.mesh.position.z) > 2.2) p.velocity.z *= -1;
                         });
-                    } else {
+                    } else if (activeTabId === '3d') {
                         currentGroup.rotation.y += 0.006;
                     }
                 }
