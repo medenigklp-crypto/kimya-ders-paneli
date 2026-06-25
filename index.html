@@ -90,14 +90,14 @@
                 <div class="relative">
                     <div id="canvas-3d"></div>
                     <div class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-sm px-3 py-1.5 rounded text-xs border border-slate-700 text-slate-300">
-                        <i class="fa-solid : fa-arrows-spin animate-spin mr-1 text-emerald-400"></i> Dokunarak Döndürebilirsiniz
+                        <i class="fa-solid fa-arrows-spin animate-spin mr-1 text-emerald-400"></i> Dokunarak Döndürebilirsiniz
                     </div>
                 </div>
 
                 <div class="space-y-4 mt-4">
                     <div>
                         <div class="text-xs font-bold text-slate-400 tracking-wider uppercase mb-2 flex items-center">
-                            <i class="fa-solid : fa-timeline mr-1.5 text-blue-400"></i> Tarihsel MEB Atom Modelleri
+                            <i class="fa-solid fa-timeline mr-1.5 text-blue-400"></i> Tarihsel MEB Atom Modelleri
                         </div>
                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                             <button onclick="change3DModel('dalton')" class="bg-slate-700 hover:bg-slate-600 text-[11px] py-2 px-2.5 rounded-lg font-semibold transition-all border border-slate-600 flex items-center">
@@ -117,38 +117,35 @@
 
                     <div>
                         <div class="text-xs font-bold text-slate-400 tracking-wider uppercase mb-2 flex items-center">
-                            <i class="fa-solid : fa-atom mr-1.5 text-emerald-400"></i> Modern Kuantum Orbitalleri (1926)
+                            <i class="fa-solid fa-atom mr-1.5 text-emerald-400"></i> Modern Kuantum Orbitalleri (1926)
                         </div>
                         <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
                             <button onclick="change3DModel('s_orbital')" class="bg-slate-800 hover:bg-slate-700 text-[11px] py-2 px-2.5 rounded-lg font-medium transition-all border border-slate-700 flex items-center justify-center">
                                 s orbitali
                             </button>
                             <button onclick="change3DModel('px_orbital')" class="bg-slate-800 hover:bg-slate-700 text-[11px] py-2 px-2.5 rounded-lg font-medium transition-all border border-slate-700 flex items-center justify-center">
-                                p<sub>x</sub> orbitali
+                                p_x orbitali
                             </button>
                             <button onclick="change3DModel('py_orbital')" class="bg-slate-800 hover:bg-slate-700 text-[11px] py-2 px-2.5 rounded-lg font-medium transition-all border border-slate-700 flex items-center justify-center">
-                                p<sub>y</sub> orbitali
+                                p_y orbitali
                             </button>
                             <button onclick="change3DModel('pz_orbital')" class="bg-slate-800 hover:bg-slate-700 text-[11px] py-2 px-2.5 rounded-lg font-medium transition-all border border-slate-700 flex items-center justify-center">
-                                p<sub>z</sub> orbitali
+                                p_z orbitali
                             </button>
                             <button onclick="change3DModel('d_orbital')" class="bg-slate-800 hover:bg-slate-700 text-[11px] py-2 px-2.5 rounded-lg font-medium transition-all border border-slate-700 flex items-center justify-center col-span-2 sm:col-span-1">
-                                d orbitali (d<sub>xy</sub>)
+                                d orbitali
                             </button>
                         </div>
                     </div>
 
                     <div>
                         <button onclick="change3DModel('molecule')" class="w-full bg-gradient-to-r from-emerald-800 to-teal-800 hover:from-emerald-700 hover:to-teal-700 text-xs py-2 px-4 rounded-lg font-bold transition-all text-center">
-                            Molekül Yapısı Örneği: Saf Su (H<sub>2</sub>O)
+                            Molekül Yapısı Örneği: Saf Su (H2O)
                         </button>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section id="tab-durum" class="tab-content space-y-6 hidden">
-            </section>
 
         <section id="tab-youtube" class="tab-content space-y-6 hidden">
             <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-lg flex flex-col h-[calc(100vh-12rem)]">
@@ -266,7 +263,7 @@
             renderer.setSize(container.clientWidth, container.clientHeight);
             container.appendChild(renderer.domElement);
 
-            change3DModel('dalton'); // Varsayılan açılış modeli
+            change3DModel('dalton'); 
 
             function animate() {
                 requestAnimationFrame(animate);
@@ -277,7 +274,6 @@
             }
             animate();
 
-            // Sürükleme ve Dokunmatik Kontrolleri
             container.addEventListener('mousedown', () => { isDragging = true; });
             container.addEventListener('mousemove', (e) => {
                 const deltaMove = { x: e.offsetX - previousMousePosition.x, y: e.offsetY - previousMousePosition.y };
@@ -324,26 +320,23 @@
             return axesGroup;
         }
 
-        // --- MODELLERİN 3D MATRİS OLUŞTURULMASI ---
         function change3DModel(type) {
             if (currentGroup) scene.remove(currentGroup);
             currentGroup = new THREE.Group();
 
-            // 1. DALTON MODELİ (İçi dolu sert küre)
+            // 1. DALTON MODELİ
             if (type === 'dalton') {
                 const daltonGeo = new THREE.SphereGeometry(2, 32, 32);
-                const daltonMat = new THREE.MeshPhotonMaterial || new THREE.MeshPhongMaterial({ color: 0x64748b, shininess: 30, bumpScale: 0.05 });
+                const daltonMat = new THREE.MeshPhongMaterial({ color: 0x64748b, shininess: 40 });
                 const ball = new THREE.Mesh(daltonGeo, daltonMat);
                 currentGroup.add(ball);
             } 
-            // 2. THOMSON MODELİ (Üzümlü Kek - Pozitif küre içine gömülü elektronlar)
+            // 2. THOMSON MODELİ
             else if (type === 'thomson') {
-                // Ana artı yük bulutu (Yarı şeffaf pembe/kırmızı)
                 const cloudGeo = new THREE.SphereGeometry(2.1, 32, 32);
                 const cloudMat = new THREE.MeshPhongMaterial({ color: 0xf43f5e, transparent: true, opacity: 0.5, shininess: 10 });
                 currentGroup.add(new THREE.Mesh(cloudGeo, cloudMat));
 
-                // Gömülü elektronlar (Mavi küçük küreler)
                 const eGeo = new THREE.SphereGeometry(0.2, 16, 16);
                 const eMat = new THREE.MeshPhongMaterial({ color: 0x3b82f6 });
                 
@@ -358,14 +351,12 @@
                     currentGroup.add(electron);
                 });
             } 
-            // 3. RUTHERFORD MODELİ (Geniş boşluk ve merkezi yoğun çekirdek)
+            // 3. RUTHERFORD MODELİ
             else if (type === 'rutherford') {
-                // Merkez Çekirdek (Çok küçük ve yoğun)
                 const coreGeo = new THREE.SphereGeometry(0.35, 16, 16);
                 const coreMat = new THREE.MeshPhongMaterial({ color: 0xef4444 });
                 currentGroup.add(new THREE.Mesh(coreGeo, coreMat));
 
-                // Rastgele geniş eliptik yörüngeler ve uzak elektronlar
                 const eMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
                 const eGeo = new THREE.SphereGeometry(0.12, 12, 12);
 
@@ -384,7 +375,7 @@
                     currentGroup.add(orbitGroup);
                 }
             }
-            // 4. BOHR MODELİ (Planar konsantrik çizgisel dairesel kabuklar)
+            // 4. BOHR MODELİ
             else if (type === 'bohr') {
                 const coreGeo = new THREE.SphereGeometry(0.5, 16, 16);
                 const coreMat = new THREE.MeshPhongMaterial({ color: 0xef4444 });
@@ -398,7 +389,6 @@
                     const ringMat = new THREE.MeshBasicMaterial({ color: orbitColors[i], side: THREE.DoubleSide });
                     const ring = new THREE.Mesh(ringGeo, ringMat);
                     
-                    // Bohr yörüngelerini ortak bir eğime alalım
                     ring.rotation.x = Math.PI / 2.5; 
                     currentGroup.add(ring);
 
@@ -420,7 +410,7 @@
                 const innerMat = new THREE.MeshPhongMaterial({ color: 0x1d4ed8, transparent: true, opacity: 0.75 });
                 currentGroup.add(new THREE.Mesh(innerGeo, innerMat));
             } 
-            // 6. KUANTUM P ORBİTALLERİ (p_x, p_y, p_z)
+            // 6. KUANTUM P ORBİTALLERİ
             else if (type === 'px_orbital' || type === 'py_orbital' || type === 'pz_orbital') {
                 currentGroup.add(createQuantumAxes());
                 const lobeGeo = new THREE.SphereGeometry(1.1, 32, 32);
