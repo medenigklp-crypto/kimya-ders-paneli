@@ -1,0 +1,1 @@
+# kimya-ders-paneli
