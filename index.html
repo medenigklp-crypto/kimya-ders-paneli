@@ -8,37 +8,11 @@
     <link rel="icon" type="image/png" href="logo .png">
     <link rel="apple-touch-icon" href="logo .png">
     
-    <meta name="theme-color" content="#060813">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-    <style>
-        body { -webkit-tap-highlight-color: transparent; user-select: none; overflow-x: hidden; background-color: #060813; }
-        .active-tab { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; }
-        #canvas-3d { width: 100%; height: 360px; background-color: #05070f; border-radius: 0.75rem; }
-        .animate-spin-slow { animation: spin 8s linear infinite; }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        
-        /* Gelişmiş Kaydırma Çubukları */
-        ::-webkit-scrollbar { width: 4px; height: 5px; }
-        ::-webkit-scrollbar-track { background: #060813; }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 9px; }
-
-        /* Ferrumone Neon Kategori Renkleri */
-        .cat-ametal { border-color: #10b981 !important; color: #10b981; background-color: rgba(16, 185, 129, 0.03); }
-        .cat-soygaz { border-color: #ec4899 !important; color: #ec4899; background-color: rgba(236, 72, 153, 0.03); }
-        .cat-alkali { border-color: #ef4444 !important; color: #ef4444; background-color: rgba(239, 68, 68, 0.03); }
-        .cat-toprak-alkali { border-color: #f97316 !important; color: #f97316; background-color: rgba(249, 115, 22, 0.03); }
-        .cat-halojen { border-color: #84cc16 !important; color: #84cc16; background-color: rgba(132, 204, 22, 0.03); }
-        .cat-yarimetal { border-color: #eab308 !important; color: #eab308; background-color: rgba(234, 179, 8, 0.03); }
-        .cat-gecis { border-color: #3b82f6 !important; color: #3b82f6; background-color: rgba(59, 130, 246, 0.03); }
-        .cat-toprak-metali { border-color: #06b6d4 !important; color: #06b6d4; background-color: rgba(6, 182, 212, 0.03); }
-        .cat-lantanit-aktinit { border-color: #a855f7 !important; color: #a855f7; background-color: rgba(168, 85, 247, 0.03); }
-    </style>
+    
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="text-slate-100 font-sans min-h-screen flex flex-col overflow-x-hidden">
 
@@ -60,7 +34,6 @@
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
                 <h2 class="text-base font-bold mb-1 text-blue-400 flex items-center"><i class="fa-solid fa-graduation-cap mr-2"></i> Müfredat & Ders Yönetimi</h2>
                 <p class="text-[11px] text-slate-400 mb-3">Konuların üzerine tıklayarak detayları açabilir, Goodnotes isimlerini ve linklerini düzenleyebilirsiniz.</p>
-                
                 <div class="p-3 bg-slate-950 rounded-lg border border-slate-900 space-y-2 mb-4">
                     <div class="text-xs font-bold text-slate-400 tracking-wider uppercase flex justify-between items-center">
                         <span>Yeni Konu / Başlık Ekle</span>
@@ -80,7 +53,6 @@
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
                 <h2 class="text-base font-bold text-emerald-400 flex items-center mb-2"><i class="fa-solid fa-flask mr-2"></i> Interaktif 3D Stüdyo</h2>
                 <div id="canvas-3d"></div>
-
                 <div class="space-y-3 mt-3">
                     <div class="space-y-1">
                         <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider"><i class="fa-solid fa-vial text-teal-400 mr-1"></i> Cam Malzemeler</div>
@@ -89,30 +61,12 @@
                             <button onclick="change3DModel('erlenmayer')" class="bg-teal-950/60 border border-teal-900 text-[10px] py-1.5 rounded font-semibold">Erlenmayer</button>
                             <button onclick="change3DModel('cambalon')" class="bg-teal-950/60 border border-teal-900 text-[10px] py-1.5 rounded font-semibold">Cam Balon</button>
                         </div>
-                        <div class="grid grid-cols-3 gap-1.5">
-                            <button onclick="change3DModel('deneytupu')" class="bg-teal-950/60 border border-teal-900 text-[10px] py-1.5 rounded font-semibold">Deney Tüpü</button>
-                            <button onclick="change3DModel('balonjoje')" class="bg-teal-950/60 border border-teal-900 text-[10px] py-1.5 rounded font-semibold">Balon Joje</button>
-                            <button onclick="change3DModel('ayirmahunisi')" class="bg-teal-950/60 border border-teal-900 text-[10px] py-1.5 rounded font-semibold">Ayırma Hunisi</button>
-                        </div>
-                        <div class="grid grid-cols-3 gap-1.5">
-                            <button onclick="change3DModel('derecelisilindir')" class="bg-teal-950/60 border border-teal-900 text-[10px] py-1.5 rounded font-semibold">D. Silindir</button>
-                            <button onclick="change3DModel('buret')" class="bg-teal-950/60 border border-teal-900 text-[10px] py-1.5 rounded font-semibold">Büret</button>
-                            <button onclick="change3DModel('pipet')" class="bg-teal-950/60 border border-teal-900 text-[10px] py-1.5 rounded font-semibold">Pipet</button>
-                        </div>
                     </div>
                     <div class="space-y-1">
-                        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider"><i class="fa-solid fa-atom text-blue-400 mr-1"></i> Modeller & Orbitaller</div>
-                        <div class="grid grid-cols-4 gap-1.5">
-                            <button onclick="change3DModel('dalton')" class="bg-slate-800 border border-slate-700 text-[10px] py-1 rounded">Dalton</button>
-                            <button onclick="change3DModel('thomson')" class="bg-slate-800 border border-slate-700 text-[10px] py-1 rounded">Thomson</button>
-                            <button onclick="change3DModel('rutherford')" class="bg-slate-800 border border-slate-700 text-[10px] py-1 rounded">Rutherf.</button>
-                            <button onclick="change3DModel('bohr')" class="bg-slate-800 border border-slate-700 text-[10px] py-1 rounded">Bohr</button>
-                        </div>
-                        <div class="grid grid-cols-4 gap-1.5">
-                            <button onclick="change3DModel('s_orbital')" class="bg-slate-950 text-[10px] py-1 rounded">s orb.</button>
-                            <button onclick="change3DModel('px_orbital')" class="bg-slate-950 text-[10px] py-1 rounded">pₓ orb.</button>
-                            <button onclick="change3DModel('py_orbital')" class="bg-slate-950 text-[10px] py-1 rounded">p_y orb.</button>
-                            <button onclick="change3DModel('pz_orbital')" class="bg-slate-950 text-[10px] py-1 rounded">p_z orb.</button>
+                        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider"><i class="fa-solid fa-atom text-blue-400 mr-1"></i> Atom Modelleri</div>
+                        <div class="grid grid-cols-2 gap-1.5">
+                            <button onclick="change3DModel('dalton')" class="bg-slate-800 border border-slate-700 text-[10px] py-1 rounded">Dalton Atom Modeli</button>
+                            <button onclick="change3DModel('bohr')" class="bg-slate-800 border border-slate-700 text-[10px] py-1 rounded">Bohr Küre Modeli</button>
                         </div>
                     </div>
                 </div>
@@ -121,139 +75,68 @@
 
         <section id="tab-elementler" class="tab-content space-y-4 hidden">
             <div class="bg-[#0a0d16] p-4 rounded-xl border border-slate-800 shadow-lg space-y-4">
-                
                 <div class="flex items-center justify-between gap-2">
                     <div class="relative flex-1 max-w-xs">
                         <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-500 text-xs"></i>
-                        <input type="text" id="element-search" oninput="filterElements(this.value)" placeholder="Element ara..." class="bg-[#0f1422] border border-slate-800 rounded-lg pl-9 pr-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500 w-full">
+                        <input type="text" id="element-search" oninput="filterElements(this.value)" placeholder="Element ara..." class="bg-[#0f1422] border border-slate-800 rounded-lg pl-9 pr-3 py-2 text-xs text-white focus:outline-none w-full">
                     </div>
                     <div class="flex items-center space-x-2">
-                        <button class="bg-[#1c120c] border border-[#eab308]/30 text-[#f97316] font-bold text-xs px-3 py-2 rounded-lg flex items-center space-x-1.5">
-                            <i class="fa-solid fa-temperature-half text-xs"></i>
-                            <span>Sıcaklık Modu</span>
-                        </button>
-                        <button onclick="toggleFullScreenContainer()" class="bg-[#0f1422] border border-slate-800 text-slate-400 p-2.5 rounded-lg text-xs">
-                            <i class="fa-solid fa-expand"></i>
-                        </button>
+                        <button class="bg-[#1c120c] border border border-[#eab308]/30 text-[#f97316] font-bold text-xs px-3 py-2 rounded-lg flex items-center space-x-1.5"><i class="fa-solid fa-temperature-half"></i><span>Sıcaklık Modu</span></button>
+                        <button onclick="toggleFullScreenContainer()" class="bg-[#0f1422] border border-slate-800 text-slate-400 p-2.5 rounded-lg text-xs"><i class="fa-solid fa-expand"></i></button>
                     </div>
                 </div>
-
                 <div class="overflow-x-auto w-full pb-3">
-                    <div id="periodic-matrix-container" class="grid gap-1.5 p-1 min-w-[1240px]" style="grid-template-columns: 28px repeat(18, minmax(64px, 1fr));">
-                        </div>
+                    <div id="periodic-matrix-container" class="grid gap-1.5 p-1 min-w-[1240px]" style="grid-template-columns: 28px repeat(18, minmax(64px, 1fr));"></div>
                 </div>
             </div>
         </section>
 
         <section id="tab-guvenlik" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
-                <h2 class="text-base font-bold mb-1 text-amber-400 flex items-center"><i class="fa-solid fa-triangle-exclamation mr-2"></i> Kimyasal Tehlike İşaretleri</h2>
-                <p class="text-[11px] text-slate-400 mb-4">MEB 9. Sınıf Sayfa 38-39 formatındaki resmi piktogramlar (Kırmızı Çerçeve - Beyaz Zemin - Siyah Amblem).</p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5" id="piktogram-container">
-                    <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-3"><div class="shrink-0 w-14 h-14 flex items-center justify-center"><div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow"><div class="-rotate-45 text-slate-900 text-lg"><i class="fa-solid fa-fire"></i></div></div></div><div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Yanıcı Madde</h3><p class="text-[10px] text-slate-400 leading-relaxed">Isı ve ateşten uzak tutulur. Örnek: Alkol, Aseton, LPG</p></div></div>
-                    <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-3"><div class="shrink-0 w-14 h-14 flex items-center justify-center"><div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow"><div class="-rotate-45 text-slate-900 text-base flex items-center justify-center relative w-6 h-6"><i class="fa-regular fa-circle text-xs absolute bottom-0.5 font-bold"></i><i class="fa-solid fa-fire text-[10px] absolute top-0"></i></div></div></div><div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Yakıcı / Oksitleyici</h3><p class="text-[10px] text-slate-400 leading-relaxed">Yanıcılarla temas etmemelidir. Örnek: Oksijen, Nitrik Asit</p></div></div>
-                    <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-3"><div class="shrink-0 w-14 h-14 flex items-center justify-center"><div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow"><div class="-rotate-45 text-slate-900 flex items-center justify-center w-6 h-6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="5" x2="8" y2="10" /><line x1="8" y1="12" x2="8" y2="12.01" stroke-width="3.5" /><line x1="21" y1="5" x2="16" y2="10" /><line x1="16" y1="12" x2="16" y2="12.01" stroke-width="3.5" /><path d="M2 18h5l0.5-2h1l0.5 2h2" /><path d="M13 18h2.5l0.5-2h1l0.5 2h2.5" /></svg></div></div></div><div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Aşındırıcı / Korozif</h3><p class="text-[10px] text-slate-400 leading-relaxed">Cildi ve metalleri aşındırır. Örnek: Sülfürik Asit, Tuz Ruhu</p></div></div>
-                    <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-3"><div class="shrink-0 w-14 h-14 flex items-center justify-center"><div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow"><div class="-rotate-45 text-slate-900 text-lg"><i class="fa-solid fa-burst"></i></div></div></div><div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Patlayıcı Madde</h3><p class="text-[10px] text-slate-400 leading-relaxed">Darbe ve yüksek ısıdan korunmalıdır. Örnek: TNT, Dinamit</p></div></div>
-                    <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-3"><div class="shrink-0 w-14 h-14 flex items-center justify-center"><div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow"><div class="-rotate-45 text-slate-900 text-xl font-sans font-black flex items-center justify-center leading-none select-none">!</div></div></div><div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Tahriş Edici Madde</h3><p class="text-[10px] text-slate-400 leading-relaxed">Alerji yapar, buharı solunmamalıdır. Örnek: Çamaşır Suyu, Deterjan</p></div></div>
-                    <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-3"><div class="shrink-0 w-14 h-14 flex items-center justify-center"><div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow"><div class="-rotate-45 text-slate-900 text-base"><i class="fa-solid fa-skull-crossbones"></i></div></div></div><div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Zehirli / Toksik Madde</h3><p class="text-[10px] text-slate-400 leading-relaxed">Ciddi zehirlenmelere and ölüme yol açar. Örnek: Klor Gazı, Siyanür</p></div></div>
-                    <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-3"><div class="shrink-0 w-14 h-14 flex items-center justify-center"><div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow"><div class="-rotate-45 text-slate-900 text-base animate-pulse"><i class="fa-solid fa-radiation animate-spin-slow"></i></div></div></div><div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Radyoaktif Madde</h3><p class="text-[10px] text-slate-400 leading-relaxed">Zararlı radyasyon yayar. Örnek: Uranyum, Röntgen Cihazları</p></div></div>
-                    <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-3"><div class="shrink-0 w-14 h-14 flex items-center justify-center"><div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow"><div class="-rotate-45 text-slate-900 flex items-center justify-center w-6 h-6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18c4-1 8-1 12 0s4 1 8 0" stroke-width="2" /><path d="M6 18V7M6 12l3-2M6 10L4 8M6 14L4 15" /><path d="M13 15.5c1.5-0.8 3.5-0.8 5 0.5l1.5-0.8v1.6l-1.5-0.8c-1.5 1-3.5 1-5 0.3z" fill="currentColor" /></svg></div></div></div><div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Çevreye Zararlı Madde</h3><p class="text-[10px] text-slate-400 leading-relaxed">Doğaya bırakılmamalıdır, lavaboya dökülmez. Örnek: Piller, Cıva</p></div></div>
-                </div>
+                <h2 class="text-base font-bold mb-2 text-amber-400 flex items-center"><i class="fa-solid fa-triangle-exclamation mr-2"></i> Kimyasal Tehlike Piktogramları</h2>
+                <p class="text-[11px] text-slate-400 mb-4">MEB 9. Sınıf Sayfa 38-39 formatındaki resmi piktogramlar.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5" id="piktogram-container"></div>
             </div>
         </section>
 
         <section id="tab-galeri" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg space-y-3">
-                <h2 class="text-base font-bold text-cyan-400 flex items-center"><i class="fa-solid fa-video mr-2"></i> Videolar & Deney Listesi</h2>
                 <div class="p-3 bg-slate-950 rounded-lg border border-slate-900 space-y-2">
-                    <input type="text" id="new-video-name" placeholder="Ekrandaki İsim..." class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white focus:outline-none">
-                    <input type="text" id="new-video-file" placeholder="GitHub Dosya Adı (NaCl-H2O.MP4)..." class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white focus:outline-none">
+                    <input type="text" id="new-video-name" placeholder="Video Başlığı..." class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white focus:outline-none">
+                    <input type="text" id="new-video-file" placeholder="Dosya Adı..." class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white focus:outline-none">
                     <button onclick="addNewVideoToList()" class="w-full bg-cyan-600 text-xs font-bold py-2 rounded shadow-md">Listeye Sabitle</button>
                 </div>
-                <div class="bg-black rounded-lg overflow-hidden border border-slate-700 hidden" id="video-player-container">
-                    <video id="main-panel-video" controls class="w-full h-auto max-h-[300px]"></video>
-                </div>
+                <div class="bg-black rounded-lg overflow-hidden border border-slate-700 hidden" id="video-player-container"><video id="main-panel-video" controls class="w-full h-auto max-h-[300px]"></video></div>
                 <div id="dynamic-video-container" class="space-y-1.5"></div>
             </div>
         </section>
 
         <section id="tab-youtube" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg flex flex-col h-[calc(100vh-12rem)]">
-                <h2 class="text-base font-bold mb-2 text-rose-400 flex items-center"><i class="fa-brands fa-youtube mr-2"></i> YouTube Senaryo Üretici</h2>
                 <input type="text" id="yt-title" placeholder="Video Başlığı..." class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-save mb-2" data-id="yt-title">
-                <textarea id="yt-body" placeholder="Senaryo akışı ve sahne notları..." class="w-full flex-1 bg-slate-900 border border-slate-800 rounded p-2 text-xs resize-none text-save" data-id="yt-body"></textarea>
+                <textarea id="yt-body" placeholder="Senaryo akışı ve kurgu planları..." class="w-full flex-1 bg-slate-900 border border-slate-800 rounded p-2 text-xs resize-none text-save" data-id="yt-body"></textarea>
             </div>
         </section>
-
     </main>
 
     <div id="element-modal" class="fixed inset-0 bg-slate-950/95 backdrop-blur-sm z-50 hidden flex items-center justify-center p-0 sm:p-4">
         <div class="bg-[#05070f] w-full h-full sm:max-w-2xl sm:h-[90vh] sm:rounded-2xl border-t sm:border border-slate-800 flex flex-col shadow-2xl overflow-hidden">
-            
-            <div class="p-4 bg-[#0a0d16] border-b border-slate-850 flex justify-between items-center shrink-0">
-                <span class="text-xs font-semibold text-slate-400" id="modal-breadcrumb">Periyodik Tablo / Element</span>
-                <button onclick="closeModal()" class="text-slate-400 text-xs bg-[#131a2e] px-3 py-1.5 rounded-lg border border-slate-800 font-bold">Kapat</button>
-            </div>
-            
+            <div class="p-4 bg-[#0a0d16] border-b border-slate-850 flex justify-between items-center shrink-0"><span class="text-xs font-semibold text-slate-400" id="modal-breadcrumb"></span><button onclick="closeModal()" class="text-slate-400 text-xs bg-[#131a2e] px-3 py-1.5 rounded-lg border border-slate-800 font-bold">Kapat</button></div>
             <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-[#05070f]" id="modal-scroll-content">
-                
                 <div class="bg-[#0a0d16] p-5 rounded-2xl border border-slate-850 flex flex-col items-start space-y-4">
-                    <div id="m-badge-container" class="w-24 h-24 border rounded-2xl flex flex-col items-center justify-center text-center shadow-lg bg-slate-950/50">
-                        <span class="text-xs text-slate-400 font-bold self-start pl-3 pt-1" id="m-num">79</span>
-                        <span class="text-3xl font-black tracking-tight mt-[-2px]" id="m-sym">Au</span>
-                        <span class="text-[10px] text-slate-500 font-bold pb-1" id="m-mass">196.97</span>
-                    </div>
-                    
-                    <div class="space-y-2 w-full">
-                        <h2 class="text-xl font-black text-white" id="m-name">Element Nedir?</h2>
-                        <div class="flex flex-wrap gap-1.5" id="m-tags"></div>
-                        <p class="text-xs text-slate-300 leading-relaxed pt-2 border-t border-slate-850" id="m-desc"></p>
-                    </div>
+                    <div id="m-badge-container" class="w-24 h-24 border rounded-2xl flex flex-col items-center justify-center text-center shadow-lg bg-slate-950/50"><span class="text-xs text-slate-400 font-bold self-start pl-3 pt-1" id="m-num"></span><span class="text-3xl font-black tracking-tight mt-[-2px]" id="m-sym"></span><span class="text-[10px] text-slate-500 font-bold pb-1" id="m-mass"></span></div>
+                    <div class="space-y-2 w-full"><h2 class="text-xl font-black text-white" id="m-name"></h2><div class="flex flex-wrap gap-1.5" id="m-tags"></div><p class="text-xs text-slate-300 leading-relaxed pt-2 border-t border-slate-850" id="m-desc"></p></div>
                 </div>
-
                 <div class="grid grid-cols-2 gap-2" id="m-grid-props"></div>
-
-                <div id="ferrum-history-block" class="p-4 bg-[#0a0d16] border border-slate-850 rounded-2xl">
-                    <div class="text-[11px] text-blue-400 font-bold uppercase flex items-center gap-1.5 mb-2"><i class="fa-regular fa-clock"></i> Keşif Tarihi</div>
-                    <p class="text-xs text-slate-300 leading-relaxed" id="m-history-text"></p>
-                </div>
-
-                <div id="ferrum-isotope-block" class="p-4 bg-[#0a0d16] border border-slate-850 rounded-2xl">
-                    <div class="text-[11px] text-purple-400 font-bold uppercase flex items-center gap-1.5 mb-2"><i class="fa-solid fa-circle-nodes"></i> İzotoplar</div>
-                    <p class="text-xs text-slate-300 leading-relaxed" id="m-isotope-text"></p>
-                </div>
-
-                <div id="ferrum-usages-block" class="p-4 bg-[#0a0d16] border border-slate-850 rounded-2xl">
-                    <div class="text-[11px] text-cyan-400 font-bold uppercase mb-2">Kullanım Alanları</div>
-                    <ul class="space-y-1.5 list-none" id="m-usages-list"></ul>
-                </div>
-
-                <div id="ferrum-bio-block" class="p-4 bg-[#06100d] border border-emerald-900/60 rounded-2xl">
-                    <div class="text-[11px] text-emerald-400 font-bold uppercase flex items-center gap-1.5 mb-2"><i class="fa-solid fa-heart-pulse"></i> Biyolojik Rol</div>
-                    <p class="text-xs text-slate-300 leading-relaxed" id="m-bio-text"></p>
-                </div>
-
-                <div id="ferrum-interesting-block" class="p-4 bg-[#191307] border border-amber-900/60 rounded-2xl">
-                    <div class="text-[11px] text-[#f97316] font-bold uppercase flex items-center gap-1.5 mb-2"><i class="fa-regular fa-star"></i> İlginç Bilgiler</div>
-                    <ul class="space-y-2 list-disc pl-4 text-xs text-slate-300 leading-relaxed" id="m-interesting-list"></ul>
-                </div>
-
-                <div id="ferrum-notes-block" class="p-4 bg-[#0a1124] border border-blue-900/60 rounded-2xl">
-                    <div class="text-[11px] text-blue-400 font-bold uppercase flex items-center gap-1.5 mb-2"><i class="fa-solid fa-bolt"></i> Çalışma Notları</div>
-                    <ul class="space-y-1.5 text-xs text-slate-300 leading-relaxed" id="m-notes-list"></ul>
-                </div>
-
-                <div class="space-y-2">
-                    <div class="text-[11px] text-slate-400 font-bold uppercase tracking-wider pl-1" id="sss-heading">SSS</div>
-                    <div class="space-y-2" id="m-sss-container"></div>
-                </div>
+                <div id="ferrum-history-block" class="p-4 bg-[#0a0d16] border border-slate-850 rounded-2xl"><div class="text-[11px] text-blue-400 font-bold uppercase mb-2"><i class="fa-regular fa-clock"></i> Keşif Tarihi</div><p class="text-xs text-slate-300 leading-relaxed" id="m-history-text"></p></div>
+                <div id="ferrum-isotope-block" class="p-4 bg-[#0a0d16] border border-slate-850 rounded-2xl"><div class="text-[11px] text-purple-400 font-bold uppercase mb-2"><i class="fa-solid fa-circle-nodes"></i> İzotoplar</div><p class="text-xs text-slate-300 leading-relaxed" id="m-isotope-text"></p></div>
+                <div id="ferrum-usages-block" class="p-4 bg-[#0a0d16] border border-slate-850 rounded-2xl"><div class="text-[11px] text-cyan-400 font-bold uppercase mb-2">Kullanım Alanları</div><ul class="space-y-1.5 list-none" id="m-usages-list"></ul></div>
+                <div id="ferrum-bio-block" class="p-4 bg-[#06100d] border border-emerald-900/60 rounded-2xl"><div class="text-[11px] text-emerald-400 font-bold uppercase mb-2"><i class="fa-solid fa-heart-pulse"></i> Biyolojik Rol</div><p class="text-xs text-slate-300 leading-relaxed" id="m-bio-text"></p></div>
+                <div id="ferrum-interesting-block" class="p-4 bg-[#191307] border border-amber-900/60 rounded-2xl"><div class="text-[11px] text-[#f97316] font-bold uppercase mb-2"><i class="fa-regular fa-star"></i> İlginç Bilgiler</div><ul class="space-y-2 list-disc pl-4 text-xs text-slate-300" id="m-interesting-list"></ul></div>
+                <div id="ferrum-notes-block" class="p-4 bg-[#0a1124] border border-blue-900/60 rounded-2xl"><div class="text-[11px] text-blue-400 font-bold uppercase mb-2"><i class="fa-solid fa-bolt"></i> Çalışma Notları</div><ul class="space-y-1.5 text-xs text-slate-300" id="m-notes-list"></ul></div>
+                <div class="space-y-2"><div class="text-[11px] text-slate-400 font-bold uppercase pl-1" id="sss-heading">SSS</div><div class="space-y-2" id="m-sss-container"></div></div>
             </div>
-
-            <div class="p-3 bg-[#0a0d16] border-t border-slate-850 flex items-center justify-between gap-2 shrink-0">
-                <button id="modal-btn-prev" onclick="navigateElement(-1)" class="flex-1 bg-[#131a2e] border border-slate-800 text-xs py-2 rounded-xl text-slate-300 text-left pl-3 truncate">← Önceki</button>
-                <button onclick="closeModal()" class="bg-[#1c120c] border border-[#f97316]/30 text-[#f97316] text-xs font-bold px-4 py-2 rounded-xl flex items-center gap-2"><i class="fa-solid fa-table-cells"></i> Periyodik Tablo</button>
-                <button id="modal-btn-next" onclick="navigateElement(1)" class="flex-1 bg-[#131a2e] border border-slate-800 text-xs py-2 rounded-xl text-slate-300 text-right pr-3 truncate">Sonraki →</button>
-            </div>
+            <div class="p-3 bg-[#0a0d16] border-t border-slate-850 flex items-center justify-between gap-2 shrink-0"><button id="modal-btn-prev" onclick="navigateElement(-1)" class="flex-1 bg-[#131a2e] border border-slate-800 text-xs py-2 rounded-xl text-left pl-3 text-slate-300 truncate"></button><button onclick="closeModal()" class="bg-[#1c120c] border border-[#f97316]/30 text-[#f97316] text-xs font-bold px-4 py-2 rounded-xl"><i class="fa-solid fa-table-cells mr-2"></i>Periyodik Tablo</button><button id="modal-btn-next" onclick="navigateElement(1)" class="flex-1 bg-[#131a2e] border border-slate-800 text-xs py-2 rounded-xl text-right pr-3 text-slate-300 truncate"></button></div>
         </div>
     </div>
 
@@ -266,607 +149,7 @@
         <button onclick="switchTab('youtube')" id="btn-youtube" class="flex-1 flex flex-col items-center justify-center py-1 rounded-lg text-slate-400 min-w-[55px]"><i class="fa-brands fa-youtube text-xs mb-0.5"></i><span class="text-[8px]">Senaryo</span></button>
     </nav>
 
-    <script>
-        let activeTabId = 'dersler';
-        let isDragging = false; 
-        let currentModalElementNum = 79;
-        let activeCategoryFilter = null; 
-
-        function switchTab(tabId) {
-            activeTabId = tabId;
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
-            const targetContent = document.getElementById(`tab-${tabId}`);
-            if (targetContent) targetContent.classList.remove('hidden');
-            
-            const tabButtons = ['dersler', '3d', 'elementler', 'guvenlik', 'galeri', 'youtube'];
-            tabButtons.forEach(id => {
-                const btn = document.getElementById(`btn-${id}`);
-                if (btn) {
-                    if (id === tabId) {
-                        btn.classList.add('active-tab');
-                        btn.classList.remove('text-slate-400');
-                        btn.classList.add('text-white');
-                    } else {
-                        btn.classList.remove('active-tab');
-                        btn.classList.remove('text-white');
-                        btn.classList.add('text-slate-400');
-                    }
-                }
-            });
-            if (tabId === '3d' && typeof onWindowResize === 'function') {
-                setTimeout(onWindowResize, 50);
-            }
-            document.activeElement.blur();
-            window.scrollTo(0, 0);
-        }
-
-        // --- 📂 ELEMENT MATRİS VERİ SETİ 📂 ---
-        const names = ["Hidrojen","Helyum","Lityum","Berilyum","Bor","Karbon","Azot","Oksijen","Flor","Neon","Sodyum","Magnezyum","Alüminyum","Silisyum","Fosfor","Kükürt","Klor","Argon","Potasyum","Kalsiyum","Skandiyum","Titanyum","Vanadyum","Krom","Manganez","Demir","Kobalt","Nikel","Bakır","Çinko","Galyum","Germanyum","Arsenik","Selenyum","Brom","Kripton","Rubidyum","Stronsiyum","İtriyum","Zirkonyum","Niyobyum","Molibden","Teknesyum","Rutenyum","Rodyum","Paladyum","Gümüş","Kadmiyum","İndiyum","Kalay","Antimon","Tellür","İyot","Ksenon","Sezyum","Baryum","Lantan","Seryum","Praseodim","Neodimyum","Prometyum","Samaryum","Europiyum","Gadolinyum","Terbiyum","Disprozyum","Holmiyum","Erbiyum","Tulyum","İterbiyum","Lutesyum","Hafniyum","Tantal","Volfram","Renyum","Osmiyum","İridyum","Platin","Altın","Cıva","Talyum","Kurşun","Bizmuth","Polonyum","Astat","Radon","Fransiyum","Radyum","Aktinyum","Toryum","Protaktinyum","Uranyum","Neptünyum","Plutonyum","Amerikyum","Küriyum","Berkelyum","Kaliforniyum","Aynştaynyum","Fermiyum","Mendelevyum","Nobelyum","Lavrensiyum","Rutherfordiyum","Dubniyum","Seaborgeyum","Bohriyum","Hassiyum","Maytneriyum","Darmstadtiyum","Röntgenyum","Kopernikyum","Nihonyum","Flerovyum","Moskovyum","Livermoryum","Tennessin","Oganesson"];
-        const symbols = ["H","He","Li","Be","B","C","N","O","F","Ne","Na","Mg","Al","Si","P","S","Cl","Ar","K","Ca","Sc","Ti","V","Cr","Mn","Fe","Co","Ni","Cu","Zn","Ga","Ge","As","Se","Br","Kr","Rb","Sr","Y","Zr","Nb","Mo","Tc","Ru","Rh","Pd","Ag","Cd","In","Sn","Sb","Te","I","Xe","Cs","Ba","La","Ce","Pr","Nd","Pm","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu","Hf","Ta","W","Re","Os","Ir","Pt","Au","Hg","Tl","Pb","Bi","Po","At","Rn","Fr","Ra","Ac","Th","Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm","Md","No","Lr","Rf","Db","Sg","Bh","Hs","Mt","Ds","Rg","Cn","Nh","Fl","Mc","Lv","Ts","Og"];
-        const masses = [1.008, 4.002, 6.94, 9.012, 10.81, 12.011, 14.007, 15.999, 18.998, 20.18, 22.99, 24.305, 26.982, 28.085, 30.974, 32.06, 35.45, 39.948, 39.098, 40.078, 44.956, 47.867, 50.942, 51.996, 54.938, 55.845, 58.933, 58.693, 63.546, 65.38, 69.723, 72.63, 74.922, 78.971, 79.904, 83.798, 85.468, 87.62, 88.906, 91.224, 92.906, 95.95, 98, 101.07, 102.91, 106.42, 107.87, 112.41, 114.82, 118.71, 121.76, 127.6, 126.9, 131.29, 132.91, 137.33, 138.91, 140.12, 140.91, 144.24, 145, 150.36, 151.96, 157.25, 158.93, 162.5, 164.93, 167.26, 168.93, 173.05, 174.97, 178.49, 180.95, 183.84, 186.21, 190.23, 192.22, 195.08, 196.97, 200.59, 204.38, 207.2, 208.98, 209, 210, 222, 223, 226, 227, 232.04, 231.04, 238.03, 237, 244, 243, 247, 247, 251, 252, 257, 258, 259, 262, 267, 268, 269, 270, 269, 278, 281, 280, 285, 286, 289, 289, 293, 294, 294];
-        
-        function getElementCategory(n) {
-            if (n === 1 || (n >= 6 && n <= 8) || (n >= 15 && n <= 16) || n === 34) return "Ametaller";
-            if ([2, 10, 18, 36, 54, 86, 118].includes(n)) return "Soygazlar";
-            if ([3, 11, 19, 37, 55, 87].includes(n)) return "Alkali Metaller";
-            if ([4, 12, 20, 38, 56, 88].includes(n)) return "Toprak Alkali Metaller";
-            if ([9, 17, 35, 53, 85, 117].includes(n)) return "Halojenler";
-            if ([5, 14, 32, 33, 51, 52, 84].includes(n)) return "Yarı Metaller";
-            if (n >= 57 && n <= 71) return "Lantanit";
-            if (n >= 89 && n <= 103) return "Aktinit";
-            if ([13, 31, 49, 50, 81, 82, 83, 113, 114, 115, 116].includes(n)) return "Toprak Metalleri";
-            return "Geçiş Metalleri";
-        }
-
-        function getCatStyle(cat) {
-            if(cat === "Ametaller") return "cat-ametal";
-            if(cat === "Soygazlar") return "cat-soygaz";
-            if(cat === "Alkali Metaller") return "cat-alkali";
-            if(cat === "Toprak Alkali Metaller") return "cat-toprak-alkali";
-            if(cat === "Halojenler") return "cat-halojen";
-            if(cat === "Yarı Metaller") return "cat-yarimetal";
-            if(cat === "Toprak Metalleri") return "cat-toprak-metali";
-            if(["Lantanit", "Aktinit"].includes(cat)) return "cat-lantanit-aktinit";
-            return "cat-gecis";
-        }
-
-        function getGridCoords(num) {
-            if (num === 1) return { row: 2, col: 2 }; 
-            if (num === 2) return { row: 2, col: 19 }; 
-            if (num >= 3 && num <= 4) return { row: 3, col: num - 1 }; 
-            if (num >= 5 && num <= 10) return { row: 3, col: num + 9 }; 
-            if (num >= 11 && num <= 12) return { row: 4, col: num - 9 }; 
-            if (num >= 13 && num <= 18) return { row: 4, col: num + 1 }; 
-            if (num >= 19 && num <= 36) return { row: 5, col: num - 17 }; 
-            if (num >= 37 && num <= 54) return { row: 6, col: num - 35 }; 
-            if (num === 55) return { row: 7, col: 2 }; 
-            if (num === 56) return { row: 7, col: 3 }; 
-            if (num >= 57 && num <= 71) return { row: 10, col: num - 57 + 4 }; 
-            if (num >= 72 && num <= 86) return { row: 7, col: num - 72 + 5 }; 
-            if (num === 87) return { row: 8, col: 2 }; 
-            if (num === 88) return { row: 8, col: 3 }; 
-            if (num >= 89 && num <= 103) return { row: 11, col: num - 89 + 4 }; 
-            if (num >= 104 && num <= 118) return { row: 8, col: num - 104 + 5 }; 
-        }
-
-        function toggleCategoryFilter(catName) {
-            if (activeCategoryFilter === catName) {
-                activeCategoryFilter = null; 
-            } else {
-                activeCategoryFilter = catName; 
-            }
-            renderElementsGrid(globalElements);
-        }
-
-        function renderElementsGrid(list) {
-            const container = document.getElementById('periodic-matrix-container'); container.innerHTML = '';
-            
-            for (let g = 1; g <= 18; g++) { container.innerHTML += `<div class="text-center text-[10px] font-bold text-slate-600 self-end pb-1" style="grid-row: 1; grid-column: ${g + 1};">${g}</div>`; }
-            for (let p = 1; p <= 7; p++) { container.innerHTML += `<div class="flex items-center justify-center text-[10px] font-bold text-slate-600 pr-1" style="grid-row: ${p + 1}; grid-column: 1;">${p}</div>`; }
-
-            const legends = [
-                { id: "Alkali Metaller", name: "Alkali Metal", count: "6 element", color: "#ef4444", row: 3, col: 4 },
-                { id: "Toprak Alkali Metaller", name: "Toprak Alkali Metal", count: "6 element", color: "#f97316", row: 3, col: 6 },
-                { id: "Lantanit/Aktinit", name: "Lantanit & Aktinit", count: "30 element", color: "#a855f7", row: 3, col: 8 },
-                { id: "Geçiş Metalleri", name: "Geçiş Metali", count: "35 element", color: "#3b82f6", row: 3, col: 10 },
-                { id: "Toprak Metalleri", name: "Toprak Metali", count: "12 element", color: "#06b6d4", row: 3, col: 12 },
-                { id: "Yarı Metaller", name: "Yarı Metal", count: "6 element", color: "#eab308", row: 4, col: 4 },
-                { id: "Ametaller", name: "Ametal", count: "7 element", color: "#10b981", row: 4, col: 6 },
-                { id: "Halojenler", name: "Halojen", count: "6 element", color: "#84cc16", row: 4, col: 8 },
-                { id: "Soygazlar", name: "Soy Gaz", count: "7 element", color: "#ec4899", row: 4, col: 10 },
-                { id: "Bilinmiyor", name: "Bilinmiyor", count: "3 element", color: "#64748b", row: 4, col: 12 }
-            ];
-
-            legends.forEach(l => {
-                let activeStyle = "border-slate-850 bg-[#0a0d16]/40 opacity-40";
-                if (activeCategoryFilter === l.id) {
-                    activeStyle = "border-white bg-slate-900 shadow-2xl scale-105 opacity-100 ring-2 ring-white/20";
-                } else if (!activeCategoryFilter) {
-                    activeStyle = "border-slate-850 bg-[#0a0d16]/40 hover:border-slate-700 opacity-100";
-                }
-                container.innerHTML += `
-                    <div onclick="toggleCategoryFilter('${l.id}')" class="border rounded-xl p-1 flex flex-col items-center justify-center text-center select-none cursor-pointer transition-all ${activeStyle}" style="grid-row: ${l.row}; grid-column: ${l.col} / span 2;">
-                        <div class="w-5 h-0.5 mb-1 rounded" style="background-color: ${l.color};"></div>
-                        <span class="text-[9px] font-black tracking-tight" style="color: ${l.color};">${l.name}</span>
-                        <span class="text-[7px] text-slate-500 font-medium">${l.count}</span>
-                    </div>`;
-            });
-
-            container.innerHTML += `
-                <div class="border border-dashed border-purple-950 rounded-xl flex items-center justify-center text-center bg-purple-950/5 select-none" style="grid-row: 7; grid-column: 4;"><span class="text-[9px] font-bold text-purple-500/70">57-71</span></div>
-                <div class="border border-dashed border-purple-950 rounded-xl flex items-center justify-center text-center bg-purple-950/5 select-none" style="grid-row: 8; grid-column: 4;"><span class="text-[9px] font-bold text-purple-500/70">89-103</span></div>
-                <div style="grid-row: 9; grid-column: 1 / span 19; height: 12px;"></div>`;
-
-            list.forEach(el => {
-                const coords = getGridCoords(el.n); let colorStyle = getCatStyle(el.cat);
-                let isMatch = false;
-                if (activeCategoryFilter === "Lantanit/Aktinit") {
-                    isMatch = ["Lantanit", "Aktinit"].includes(el.cat);
-                } else {
-                    isMatch = el.cat === activeCategoryFilter;
-                }
-                let dimmingStyle = "";
-                if (activeCategoryFilter && !isMatch) {
-                    dimmingStyle = "opacity: 0.10; filter: grayscale(80%); pointer-events: none; transform: scale(0.95);";
-                } else if (activeCategoryFilter && isMatch) {
-                    dimmingStyle = "transform: scale(1.02); box-shadow: 0 0 10px rgba(255,255,255,0.1); font-weight: bold;";
-                }
-                container.innerHTML += `
-                    <div onclick="openElementDetail(${el.n})" class="p-1 bg-[#0f1422] border rounded-xl flex flex-col items-center justify-center text-center shadow-md hover:scale-105 transition-all cursor-pointer ${colorStyle}" style="grid-row: ${coords.row}; grid-column: ${coords.col}; ${dimmingStyle}">
-                        <span class="text-[8px] text-slate-500 font-bold self-start pl-0.5">${el.n}</span>
-                        <span class="text-xs font-black tracking-tight text-white mt-[-2px]">${el.s}</span>
-                        <span class="text-[8px] font-medium text-slate-400 truncate w-full mt-0.5">${el.name}</span>
-                    </div>`;
-            });
-        }
-        function filterElements(q) { renderElementsGrid(globalElements.filter(x => x.name.toLowerCase().includes(q.toLowerCase()) || x.s.toLowerCase().includes(q.toLowerCase()))); }
-
-        // --- 🔘 FERRUMONE TAM SÜRÜM DERİN KİMYA VERİ BLOĞU 🔘 ---
-        function openElementDetail(num) {
-            currentModalElementNum = num; const el = globalElements.find(x => x.n === num); if(!el) return;
-            let colorStyle = getCatStyle(el.cat); const badge = document.getElementById('m-badge-container');
-            badge.className = `w-24 h-24 border rounded-2xl flex flex-col items-center justify-center text-center shadow-lg bg-slate-950/50 ${colorStyle}`;
-
-            document.getElementById('modal-breadcrumb').innerText = `Periyodik Tablo / ${el.name}`;
-            document.getElementById('m-num').innerText = el.n; document.getElementById('m-sym').innerText = el.s; document.getElementById('m-mass').innerText = el.m;
-            document.getElementById('m-name').innerHTML = `${el.name} (${el.s}) Nedir? <span class="text-xs font-normal text-slate-500" id="m-eng">Element</span>`;
-            
-            let eng = "Chemical Element"; let state = "Katı"; let period = Math.ceil(num/18); let group = (num % 18 === 0) ? 18 : num % 18;
-            let desc = `${el.name}, periyodik tablonun ${el.cat} sınıfına ait bir elementtir.`;
-            let config = "n/a"; let shells = "n/a"; let density = "n/a"; let discoverer = "Bilinmiyor";
-            let electronegativity = "n/a"; let melt = "n/a"; let boil = "n/a";
-            let historyText = "Müfredat kapsamında özellikleri incelenen elementler sınıfındandır.";
-            let isotopeText = "Kararlı izotop bağıntıları lise kimya müfredatında yer alır.";
-            let usages = ["Laboratuvar araştırma süreçleri ve endüstriyel üretim alanları."];
-            let bioText = "Canlı mekanizmalarında iz miktar düzeyinde fonksiyon üstlenebilir.";
-            let interesting = ["AYT/TYT müfredatında soru potansiyeli yüksek elementlerdendir."];
-            let notes = ["Reaksiyon yatkınlıkları periyodik özellik trendlerine göre değişim gösterir."];
-            let sss = [
-                { q: `${el.name} atom numarası kaçtır?`, a: `${el.name} elementinin periyodik tablodaki atom numarası ${el.n}'dir.` },
-                { q: `${el.name} elektron dizilimi nasıldır?`, a: `Müfredat kuantum sayıları kurallarına uygun dizilim gösterir.` }
-            ];
-
-            // 🌟 1: HİDROJEN
-            if(num === 1) {
-                eng = "Hydrogen"; state = "Gaz"; group = 1; period = 1;
-                desc = "Evrenin en hafif ve en bol bulunan elementidir. Yıldızların temel füzyon yakıtıdır. Ametal özellik taşır.";
-                config = "1s¹"; shells = "1"; density = "0.089 g/L"; electronegativity = "2.20"; melt = "-259.1 °C"; boil = "-252.9 °C"; discoverer = "Henry Cavendish";
-                historyText = "1766 yılında Henry Cavendish tarafından keşfedildi. Lavoisier elemente su üreten anlamına gelen 'Hydrogen' ismini verdi.";
-                isotopeText = "¹H (Protium), ²H (Deuterium - Ağır Hidrojen), ³H (Tritium - Radyoaktif).";
-                usages = ["Amonyak sentezi", "Roket yakıtları (sıvı H₂)", "Temiz enerji (Hidrojen yakıt pilleri)"];
-                bioText = "Su molekülünün yapısında yer alarak insan vücudunun kütlece %10'unu oluşturur.";
-                interesting = ["1A grubunda yer almasına rağmen alkali metal değildir, ametaldir.", "Evrendeki atomların yaklaşık %90'ını tek başına oluşturur."];
-                notes = ["Nötronu olmayan tek kararlı elementtir.", "Katyonu (H⁺) sulu çözeltilerin asitlik derecesini belirler."];
-                sss = [
-                    { q: "Hidrojen neden 1A grubundadır?", a: "Valans katmanında 1 elektron barındırdığı için s-blok 1A grubunda yer alır." },
-                    { q: "Hidrojen yakıtı çevre dostu mudur?", a: "Evet, yandığında yan ürün olarak sadece su buharı açığa çıkarır." }
-                ];
-            }
-            // 🌟 2: HELYUM
-            else if(num === 2) {
-                eng = "Helium"; state = "Gaz"; group = 18; period = 1;
-                desc = "Evrendeki en hafif ikinci elementtir. Reaksiyona girmeyen (inert) bir soy gazdır. Dublet kuralına uyar.";
-                config = "1s²"; shells = "2"; density = "0.178 g/L"; electronegativity = "n/a"; melt = "-272.2 °C"; boil = "-268.9 °C"; discoverer = "Pierre Janssen / Norman Lockyer";
-                historyText = "İlk kez 1868 yılında güneş tutulması esnasındaki spektrum çizgilerinden keşfedildi. Adını Yunan güneş tanrısı Helios'tan alır.";
-                isotope5text = "³He, ⁴He (Doğal form %99.99 ⁴He yapısındadır).";
-                usages = ["Kriyojenik soğutma (MR cihazları)", "Meteoroloji ve eğlence balonları", "Derin deniz dalgıç tüpleri (Heliyum-Oksijen karışımı)"];
-                bioText = "Biyolojik olarak tamamen inerttir, vücut dokularıyla hiçbir reaksiyona girmez.";
-                interesting = ["Değerlik elektron sayısı 2 olmasına rağmen 2A grubunda değil, 8A soy gazlar grubundadır.", "Mutlak sıfıra (-273.15 °C) en yakın sıcaklıkta bile normal basınçta sıvı kalabilen tek elementtir."];
-                notes = ["Son katmanında 2 elektron barındırarak kararlı karaktere ulaşma durumuna (dublet kuralı) örnek gösterilir.", "İyonlaşma enerjisi en yüksek olan elementtir."];
-                sss = [
-                    { q: "Helyum neden yanmaz?", a: "Valans kabuğu tamamen dolu olduğu için elektron almaya veya vermeye karşı isteksizdir, yanma reaksiyonu vermez." },
-                    { q: "Dalgıç tüplerinde neden helyum kullanılır?", a: "Yüksek basınç altında kanda azot gibi çözünmeyerek vurgun (vurgun hastalığı) riskini minimize eder." }
-                ];
-            }
-            // 🌟 6: KARBON
-            else if(num === 6) {
-                eng = "Carbon"; state = "Katı"; group = 14; period = 2;
-                desc = "Yaşamın temel taşıdır. Dört bağ yapabilme yeteneği sayesinde milyonlarca farklı kararlı organik molekül oluşturabilir.";
-                config = "[He] 2s² 2p²"; shells = "2 | 4"; density = "2.26 g/cm³"; electronegativity = "2.55"; melt = "3550 °C"; boil = "4027 °C"; discoverer = "Antik çağ";
-                historyText = "Tarih öncesi çağlardan beri kömür formunda kullanılmaktadır. Elmas ve grafitin aynı elementten oluştuğu 18. yüzyılda kanıtlanmıştır.";
-                isotopeText = "¹²C (Kararlı), ¹³C (Kararlı), ¹⁴C (Radyoaktif - Yaş tayini).";
-                usages = ["Çelik üretimi", "Nano-teknoloji (Grafen, Karbon Nanotüpler)", "Polimer ve plastik sanayisi"];
-                bioText = "Organik kimyanın omurgasıdır. Karbonhidratlar, lipidler, proteinler ve DNA'nın iskelet yapısını kurar.";
-                interesting = ["Aynı element hem en yumuşak malzemelerden birini (grafit) hem de en sert malzemeyi (elmas) oluşturabilir.", "Karbon atomları kendi aralarında sonsuz zincirler oluşturma yeteneğine sahiptir."];
-                notes = ["AYT Kimya Organik Giriş konusunun temelidir. Hibritleşme teorileri bu element üzerinden anlatılır.", "Kovalent bağ kapasitesi en yüksek elementlerdendir."];
-                sss = [
-                    { q: "Karbon allotropları nelerdir?", a: "Doğal allotropları elmas ve grafittir. Yapay allotropları ise fullerene, nanotüp ve grafendir." },
-                    { q: "Karbon yaş tayini yöntemi nedir?", a: "Radyoaktif ¹⁴C izotopunun yarılanma ömrü kullanılarak fosillerin yaş tayini yapılır." }
-                ];
-            }
-            // 🌟 7: AZOT
-            else if(num === 7) {
-                eng = "Nitrogen"; state = "Gaz"; group = 15; period = 2;
-                desc = "Atmosferin hacimce %78'ini oluşturan, oda koşullarında oldukça kararlı ve bağ enerjisi çok yüksek bir gazdır.";
-                config = "[He] 2s² 2p³"; shells = "2 | 5"; density = "1.251 g/L"; electronegativity = "3.04"; melt = "-210.0 °C"; boil = "-195.8 °C"; discoverer = "Daniel Rutherford";
-                historyText = "1772 yılında Daniel Rutherford tarafından keşfedildi. Lavoisier yaşamı desteklemediği için ona Yunanca yaşam yok anlamına gelen 'Azote' ismini verdi.";
-                isotopeText = "¹⁴N (%99.6), ¹⁵N (%0.4).";
-                usages = ["Sıvı azot ile şoklama ve dondurma süreçleri", "Gübre (üre, amonyum nitrat) imalatı", "Patlayıcı sanayisi (TNT, dinamit)", "Gıda ambalajlarında koruyucu atmosfer gazı"];
-                bioText = "Amino asitlerin, proteinlerin ve nükleik asitlerin (DNA/RNA) yapısında mutlak bulunması gereken elementtir.";
-                interesting = ["Azot atomları arasındaki üçlü kovalent bağ (N≡N) o kadar güçlüdür ki oda sıcaklığında reaksiyona girmesi imkansıza yakındır (Asallık).", "Yıldırımlar ve şimşekler havadaki bu güçlü bağı kırarak azotun toprağa bağlanmasını (azot fiksasyonu) sağlar."];
-                notes = ["Müfredatta p-bloğu 5A grubu elementidir. Küresel simetri özelliği (p³) gösterir.", "Periyodik özelliklerde iyonlaşma enerjisi sıralamasında 3 aşağı 5 yukarı kuralının '5' numarasını oluşturur."];
-                sss = [
-                    { q: "Azot gazı neden reaksiyonlara karşı ilgisizdir?", a: "Moleküler formdaki üçlü kovalent bağın kırılması çok yüksek enerji gerektirdiği için oda koşullarında inert davranır." },
-                    { q: "Sıvı azot neden tehlikelidir?", a: "-196 °C sıcaklığa sahip olduğu için çıplak tenle temas ettiğinde anında ciddi doku donmalarına (kriyojenik yanık) sebep olur." }
-                ];
-            }
-            // 🌟 8: OKSİJEN
-            else if(num === 8) {
-                eng = "Oxygen"; state = "Gaz"; group = 16; period = 2;
-                desc = "Solunum ve yanma reaksiyonlarının temel elementidir. Yerkabuğunda kütlece en çok bulunan elementtir (%46.6).";
-                config = "[He] 2s² 2p⁴"; shells = "2 | 6"; density = "1.429 g/L"; electronegativity = "3.44"; melt = "-218.7 °C"; boil = "-182.9 °C"; discoverer = "Scheele / Priestley";
-                historyText = "1772-1774 yılları arasında keşfedildi. Lavoisier elementin asit oluşturma özelliklerini inceleyerek 'oksijen' adını verdi.";
-                isotopeText = "¹⁶O (%99.76), ¹⁷O, ¹⁸O.";
-                usages = ["Çelik ergitme fırınları", "Tıbbi solunum tüpleri", "Ozonizasyon süreçleri (su arıtma)"];
-                bioText = "Hücresel solunumda ATP sentezi için son elektron alıcıdır. Vücut kütlesinin %65'ini oluşturur.";
-                interesting = ["Sıvı ve katı formdayken soluk mavi bir renk alır.", "Oksijen allotropu olan Ozon (O₃), Dünya'yı zararlı UV ışınlarından korur."];
-                notes = ["Yükseltgenme kavramının isim babasıdır. Fluor hariç tüm elementlerle reaksiyonlarında negatif yükseltgenme basamağı alır.", "Müfredatta gazlar ve redoks başlıklarında sıkça incelenir."];
-                sss = [
-                    { q: "Oksijen yanıcı mıdır?", a: "Hayır, oksijen yanıcı değil, yakıcı bir gazdır. Yanma olayının gerçekleşmesi için ortamda bulunması şarttır." },
-                    { q: "Ozon tabakası neden delinir?", a: "Kloroflorokarbon (CFC) gazları klor radikalleri salarak O₃ moleküllerini parçalar." }
-                ];
-            }
-            // 🌟 9: FLOR
-            else if(num === 9) {
-                eng = "Fluorine"; state = "Gaz"; group = 17; period = 2;
-                desc = "Periyodik tablonun en elektronegatif elementidir. Elektrona olan açlığı nedeniyle tüm reaksiyonlarında sadece -1 yükseltgenme basamağı alır.";
-                config = "[He] 2s² 2p⁵"; shells = "2 | 7"; density = "1.696 g/L"; electronegativity = "3.98"; melt = "-219.6 °C"; boil = "-188.1 °C"; discoverer = "Henri Moissan";
-                historyText = "O kadar reaktif bir elementtir ki saf halde eldesi onlarca bilim insanının zehirlenmesine yol açtı. 1886'da Henri Moissan özel platin ekipmanlarla izole ederek Nobel kazandı.";
-                isotopeText = "¹⁹F (%100 kararlı tek doğal izotop).";
-                usages = ["Diş macunlarında çürük önleyici koruyucu", "Teflon (PTFE) yapışmaz yüzey polimer üretimi", "Klima ve soğutucu gazların sentezi", "Uranyum zenginleştirme (UF₆ gazı)"];
-                bioText = "Kemik ve diş minesinin hidroksiapatit yapısına katılarak florapatit oluşturur, dişi asit erozyonuna karşı güçlendirir.";
-                interesting = ["Elektronegatifliği en yüksek (3.98) element olduğu için bileşiklerinde asla pozitif yükseltgenme basamağı alamaz.", "Camı eritebilen tek asit olan Hidroflorik Asit (HF), bu elementin hidrojenli bileşiğidir."];
-                notes = ["Müfredatta 7A Halojenler grubunun ilk üyesidir. Elektron ilgisi klordan düşüktür fakat elektronegatifliği en yüksektir (En popüler tuzak bilgi).", "Oksijenle yaptığı OF₂ bileşiğinde oksijene pozitif değerlik aldırır."];
-                sss = [
-                    { q: "Flor neden sadece -1 değerlik alır?", a: "Oktetini tamamlamak için sadece 1 elektrona ihtiyacı vardır ve elektron çekme gücü tablodaki tüm elementlerden büyüktür." },
-                    { q: "Flor gazı neden cam şişelerde saklanamaz?", a: "Oluşturduğu HF asidi veya saf flor gazı camın yapısındaki silisyum dioksit (SiO₂) ile doğrudan reaksiyona girerek camı aşındırır." }
-                ];
-            }
-            // 🌟 11: SODYUM
-            else if(num === 11) {
-                eng = "Sodium"; state = "Katı"; group = 1; period = 3;
-                desc = "Bıçakla kesilebilecek kadar yumuşak, suyla temas ettiğinde şiddetli patlamalarla H₂ gazı açığa çıkaran oldukça aktif bir alkali metaldir.";
-                config = "[Ne] 3s¹"; shells = "2 | 8 | 1"; density = "0.97 g/cm³"; electronegativity = "0.93"; melt = "97.8 °C"; boil = "883 °C"; discoverer = "Humphry Davy";
-                historyText = "1807 yılında Sir Humphry Davy tarafından kostik sodanın (NaOH) elektroliz edilmesi yöntemiyle ilk kez saf metal olarak izole edildi.";
-                isotopeText = "²³Na (%100 kararlı doğal form).";
-                usages = ["Sofratuzu (NaCl) imalatı", "Sodyum buharlı sokak aydınlatma lambaları", "Kağıt, cam ve deterjan sanayisi (Çamaşır sodası - Na₂CO₃)", "Nükleer reaktörlerde ısı transfer sıvısı"];
-                bioText = "Vücut sıvı dengesinin, ozmotik basıncın ve sinirsel ileti sistemindeki aksiyon potansiyelinin (Sodyum-Potasyum pompası) temel katyonudur.";
-                interesting = ["Saf metalik formu su yüzeyinde batmadan yüzerken, su moleküllerini parçalayarak alevli patlamalara neden olur.", "Yemek tuzu formundayken yaşam için şarttır, fakat saf metal hali ölümcül derecede reaktiftir."];
-                notes = ["Müfredatta 3. periyot 1A grubu Alkali Metalidir. Aktifliği çok yüksek olduğu için laboratuvarlarda açık havada saklanamaz, gaz yağı veya gazyağı/gaz yağı içinde korunur.", "Alev testinde karakteristik sarı renk verir."];
-                sss = [
-                    { q: "Sodyum metalik formu neden gaz yağında saklanır?", a: "Havadaki oksijen ve nem ile anında reaksiyona girerek oksitlendiği ve patlama riski taşıdığı için hava ile teması gaz yağı ile kesilir." },
-                    { q: "Sodyumun suyla reaksiyonu ne tür bir tepkimedir?", a: "Şiddetli bir ekzotermik (ısı veren) redoks tepkimesidir. Açığa çıkan H₂ gazı reaksiyon ısısıyla anında tutuşur." }
-                ];
-            }
-            // 🌟 12: MAGNEZYUM
-            else if(num === 12) {
-                eng = "Magnesium"; state = "Katı"; group = 2; period = 3;
-                desc = "Gümüşümsü beyaz renkte, hafif ve havada parlak beyaz bir ışıkla yanarak Magnezyum Oksit (MgO) oluşturan bir toprak alkali metaldir.";
-                config = "[Ne] 3s²"; shells = "2 | 8 | 2"; density = "1.74 g/cm³"; electronegativity = "1.31"; melt = "650 °C"; boil = "1090 °C"; discoverer = "Joseph Black / Humphry Davy";
-                historyText = "İlk olarak Joseph Black tarafından bir element olarak tanındı, 1808'de Humphry Davy tarafından amalgama yöntemiyle saf olarak elde edildi. Adını Manisa (Magnesia) bölgesinden alır.";
-                isotopeText = "²⁴Mg (%79), ²⁵Mg, ²⁶Mg.";
-                usages = ["Hafif alaşımlar (Otomotiv ve uçak parçaları)", "Havai fişek ve işaret fişekleri (Göz alıcı beyaz ışık)", "Görsel ve sinema flaş tozları", "Tıbbi antasit ilaçlar (Magnezyum sütü)"];
-                bioText = "Klorofil molekülünün merkez atomudur; bitkilerin fotosentez yapmasını sağlar. İnsanlarda 300'den fazla enzimin işlevsel kofaktörüdür.";
-                interesting = ["Magnezyum yangınları suyla söndürülemez; çünkü sıcak magnezyum su moleküllerindeki oksijeni çekerek daha şiddetli yanmaya devam eder.", "Vücutta eksikliği kas kramplarına ve kronik yorgunluğa neden olur."];
-                notes = ["Müfredatta 3. periyot 2A grubu 'Toprak Alkali Metalidir'. Reaksiyonlarında daima +2 değerlik alır.", "Sert suların yapısında kalsiyum ile birlikte bulunan temel iyonlardan biridir."];
-                sss = [
-                    { q: "Klorofil molekülünün yapısında hangi metal vardır?", a: "Merkez atomu olarak Magnezyum (Mg) yer alır. Eksikliğinde bitki yaprakları sararır ve fotosentez durur." },
-                    { q: "Magnezyum şeridi havada yandığında ne oluşur?", a: "Karakteristik kör edici beyaz bir ışık çıkararak beyaz renkli bazik bir oksit olan Magnezyum Oksit (MgO) katısı oluşturur." }
-                ];
-            }
-            // 🌟 13: ALÜMİNYUM
-            else if(num === 13) {
-                eng = "Aluminium"; state = "Katı"; group = 13; period = 3;
-                desc = "Yerkabuğunda en bol bulunan metaldir (kütlece ~%8,1). Düşük yoğunluğu ve korozyon direnci ile havacılık sanayisinin vazgeçilmezidir. Amfoter metaldir.";
-                config = "[Ne] 3s² 3p¹"; shells = "2 | 8 | 3"; density = "2.70 g/cm³"; electronegativity = "1.61"; melt = "660.3 °C"; boil = "2470 °C"; discoverer = "Hans Christian Ørsted";
-                historyText = "1825 yılında şanslı bir deneyle Hans Christian Ørsted tarafından keşfedilmiştir. Alüminyum folyo, içecek kutuları ve uçak gövdelerinde yaygın olarak kullanılır.";
-                isotopeText = "²⁷Al - Doğal bolluk: %100 kararlıdır.";
-                usages = ["Ambalaj sanayisi ve ulaşım (Uçak gövdesi, hafif şaseler).", "Elektrik iletim hatlarında yüksek iletkenlik kablosu.", "Termit reaksiyonları ile yüksek sıcaklıkta demiryolu kaynağı yapımında."];
-                bioText = "Elemental alüminyum vücut fonksiyonları için temel bir rol oynamaz, yüksek miktarda birikmesi sinir sistemi üzerinde nörotoksik etki yaratabilir.";
-                interesting = ["19. yüzyılda alüminyum elde etmek altından daha pahalıydı; Napolyon'un misafirlerine alüminyum çatal sunduğu bilinir.", "Yüzeyinde anında oluşan koruyucu Al₂O₃ film tabakası metali paslanmaya karşı kilitler."];
-                notes = ["Müfredatta 3A grubu 'Toprak Metalleri' başlığının ilk ve en karizmatik amfoterik metal örneğidir.", "Bazlarla tepkime verme denklemleri AYT kimya testlerinde tuzak soru olarak kullanılır."];
-                sss = [
-                    { q: "Alüminyum neden paslanmaz?", a: "Hava ile temas ettiği anda yüzeyinde koruyucu, çok ince og gözeneksiz bir Al₂O₃ film tabakası oluşur. Bu süreç metali paslanmaya karşı kilitler." },
-                    { q: "Alüminyum bazlarla neden reaksiyona girer?", a: "Amfoter özellik gösterdiği için bazik ortamlarda asit gibi davranarak çözünür alüminat kompleksleri oluşturur." }
-                ];
-            }
-            // 🌟 17: KLOR
-            else if(num === 17) {
-                eng = "Chlorine"; state = "Gaz"; group = 17; period = 3;
-                desc = "Boğucu kokulu, yeşilimsi sarı renkli, yüksek elektron ilgisine sahip halojen sınıfı zehirli bir gazdır.";
-                config = "[Ne] 3s² 3p⁵"; shells = "2 | 8 | 7"; density = "3.214 g/L"; electronegativity = "3.16"; melt = "-101.5 °C"; boil = "-34.0 °C"; discoverer = "Carl Wilhelm Scheele";
-                historyText = "1774 yılında Scheele tarafından keşfedildi, fakat element olduğu 1810'da Humphry Davy tarafından tescillendi. Yunanca açık yeşil anlamına gelen 'Chloros' kelimesinden gelir.";
-                isotopeText = "³⁵Cl (%75.8), ³⁷Cl (%24.2) (Ortalama atom kütlesinin 35.5 çıkmasının sebebidir).";
-                usages = ["İçme ve havuz sularının dezenfeksiyonu", "Çamaşır suyu (NaOCl) ve PVC plastik üretimi", "Tuz ruhu (HCl) üretimi", "Tekstil ve kağıt sanayisinde ağartıcı"];
-                bioText = "Mide özsuyundaki Hidroklorik Asit (HCl) yapısında yer alarak sindirimi sağlar. Hücre içi sıvı dengesinde ana anyondur.";
-                interesting = ["Periyodik tablonun elektron ilgisi (E.I.) en yüksek elementidir (Floru bu kulvarda geçer).", "I. Dünya Savaşı'nda maalesef kimyasal silah (boğucu gaz) olarak kullanılmıştır."];
-                notes = ["Müfredatta 3. periyot 7A grubundadır. Flor hariç diğer halojenler gibi bileşiklerinde -1 ile +7 arasında değişken yükseltgenme basamakları alabilir.", "Elektron ilgisi trendinin en ünlü istisnasıdır."];
-                sss = [
-                    { q: "Klorun elektron ilgisi neden flordan büyüktür?", a: "Flor atomunun çapı çok küçük olduğundan elektron yoğunluğu fazladır ve gelen elektronu iter; klorun hacmi bu elektronu daha rahat kabul eder." },
-                    { q: "Çamaşır suyu ile tuz ruhu karışırsa ne olur?", a: "Ölümcül derecede zehirli olan ve akciğerleri tahrip eden Klor Gazı (Cl₂) açığa çıkar, kesinlikle karıştırılmamalıdır." }
-                ];
-            }
-            // 🌟 20: KALSİYUM
-            else if(num === 20) {
-                eng = "Calcium"; state = "Katı"; group = 2; period = 4;
-                desc = "Yerkabuğunda en bol bulunan beşinci elementtir. Kemik ve dişlerin yapıtaşı olan aktif bir toprak alkali metaldir.";
-                config = "[Ar] 4s²"; shells = "2 | 8 | 8 | 2"; density = "1.55 g/cm³"; electronegativity = "1.00"; melt = "842 °C"; boil = "1484 °C"; discoverer = "Humphry Davy";
-                historyText = "Romalılar döneminden beri kireç (kalsiyum oksit) olarak harç yapımında kullanılıyordu. Saf metal olarak 1808 yılında Humphry Davy tarafından elektrolizle elde edildi.";
-                isotopeText = "⁴0Ca (%96.9), ⁴²Ca, ⁴³Ca, ⁴⁴Ca.";
-                usages = ["İnşaat sektörü: Sönmüş kireç, çimento, alçı imalatı", "Metalurjide diğer metallerin eldesi için indirgen ajan", "Peynir yapımında sütün pıhtılaştırılması", "Kireçtaşı ve mermer endüstrisi"];
-                bioText = "İnsan vücudunda en bol bulunan metalik elementtir. İskelet sisteminin dayanıklılığını sağlar, kan pıhtılaşmasında ve kas kasılmasında hayati rol oynar.";
-                interesting = ["Sönmemiş kirecin (CaO) suyla tepkimesi o kadar ekzotermiktir ki suyu anında kaynatacak düzeyde ısı açığa çıkarır.", "Vücuttaki kalsiyumun %99'u kemiklerde ve dişlerde depo edilmiştir."];
-                notes = ["Müfredatta 4. periyot 2A grubu elementidir. s-bloku üyesidir. Bileşiklerinde sadece +2 yükseltgenme basamağı alır.", "Su sertliği başlığında geçici sertliğe sebep olan Mg ile birlikte iki iyon metalinden biridir."];
-                sss = [
-                    { q: "Kireç sönmesi reaksiyonu nasıldır?", a: "CaO katısının suyla (H₂O) ekzotermik tepkimesi sonucu Ca(OH)₂ (Sönmüş kireç) yapısı elde edilir." },
-                    { q: "Kemik erimesi (Osteoporoz) neden olur?", a: "Kanda kalsiyum seviyesi düştüğünde vücut kemiklerdeki kalsiyumu çekmeye başlar, bu da kemik yoğunluğunu azaltır." }
-                ];
-            }
-            // 🌟 26: DEMİR
-            else if(num === 26) {
-                eng = "Iron"; state = "Katı"; group = 8; period = 4;
-                desc = "Sanayinin ve ağır endüstrinin temel taşıdır. Dünya çekirdeğinin ana bileşenidir. Ferromanyetik özellik gösterir.";
-                config = "[Ar] 3d⁶ 4s²"; shells = "2 | 8 | 14 | 2"; density = "7.87 g/cm³"; electronegativity = "1.83"; melt = "1538 °C"; boil = "2862 °C"; discoverer = "Antik çağ";
-                historyText = "İnsanlık tarihi demir madeninin eritilip işlenmesiyle çağ atlamıştır (Demir Çağı). Meteoritlerden elde edilen demir, antik mısırda 'cennetin metali' olarak adlandırılırdı.";
-                isotopeText = "⁵⁶Fe (%91.7), ⁵⁴Fe, ⁵⁷Fe, ⁵⁸Fe.";
-                usages = ["Çelik ve font döküm imalatı (İnşaat omurgaları)", "Köprü, ray ve gemi yapımı", "Elektromıknatıs çekirdekleri", "Haber (Amonyak) prosesinde katalizör"];
-                bioText = "Kanın yapısındaki hemoglobin proteininin merkez atomudur. Dokulara oksijen taşınmasını koordine eder.";
-                interesting = ["Dünyanın kütlece en büyük kısmını oluşturur (Çekirdekteki devasa eriyik demir kütlesi).", "Yeryüzünün manyetik kalkanı (Magnetosfer) çekirdekteki eriyik demirin dönme hareketiyle oluşur."];
-                notes = ["d-bloğu geçiş metalidir. Bileşiklerinde +2 (Ferro) ve +3 (Ferrik) gibi değişken pozitif yükseltgenme basamakları alabilir.", "Korozyon (Paslanma) reaksiyonu elektrokimya ünitelerinde temel redoks örneğidir."];
-                sss = [
-                    { q: "Demir neden paslanır?", a: "Nemli hava ortamında oksijenle reaksiyona girerek hidrate demir(III) oksit oluşturur." },
-                    { q: "Çelik ile demir arasındaki fark nedir?", a: "Çelik, ham demirin içine belirli oranlarda Karbon eklenerek mukavemeti artırılmış alaşımdır." }
-                ];
-            }
-            // 🌟 29: BAKIR
-            else if(num === 29) {
-                eng = "Copper"; state = "Katı"; group = 11; period = 4;
-                desc = "Gümüşten sonra elektrik ve ısıyı en iyi ileten metaldir. Yarı soy metaldir.";
-                config = "[Ar] 3d¹⁰ 4s¹"; shells = "2 | 8 | 18 | 1"; density = "8.96 g/cm³"; electronegativity = "1.90"; melt = "1084.6 °C"; boil = "2562 °C"; discoverer = "Antik çağ";
-                historyText = "İnsanlığın altınla birlikte işlediği ilk metallerdendir. Kalay ile karıştırılarak Bronz Çağı'nın başlamasına vesile olmuştur.";
-                isotopeText = "⁶³Cu (%69.1), ⁶⁵Cu (%30.9).";
-                usages = ["Elektrik kabloları ve elektronik kart yolları", "Su tesisat boruları ve alaşımlar", "Pirinç (Cu-Zn) ve Bronz (Cu-Sn) alaşımları"];
-                bioText = "Birçok enzimin yapısında kofaktör olarak yer alır. Sülüklerin kanında hemosiyanin molekülü bakır içerir.";
-                interesting = ["Elektron konfigürasyonunda küresel simetri kararlılığı nedeniyle anomalili dizilime sahiptir.", "Oksitlendiğinde özgürlük heykeli gibi şık bir mat yeşil tabakaya bürünür."];
-                notes = ["Müfredatta Yarı Soy Metal başlığında işlenir. Oksijensiz asitlerle reaksiyona girmez; kuvvetli oksijenli asitlerle SO₂ gazı açığa çıkarır."];
-                sss = [
-                    { q: "Bakır neden değişken değerlik alır?", a: "Geçiş metali olduğu için +1 veya +2 değerlik alabilir." },
-                    { q: "Pirinç alaşımı nelerin karışımıdır?", a: "Bakır metali içerisine Çinko katılarak elde edilen parlak sarı bir alaşımdır." }
-                ];
-            }
-            // 🌟 79: ALTIN
-            else if(num === 79) {
-                eng = "Gold"; state = "Katı"; group = 11; period = 6;
-                desc = "Soy metal, korozyona dayanıklı. Elektronik bağlantılarda, mücevhercilikte and para sisteminde kullanılır. Rölatiflik etkisi altın rengi verir.";
-                config = "[Xe] 4f¹⁴ 5d¹⁰ 6s¹"; shells = "2 | 8 | 18 | 32 | 18 | 1"; density = "19.3 g/cm³"; electronegativity = "2.54"; melt = "1064.2 °C"; boil = "2855.8 °C"; discoverer = "Antik çağ";
-                historyText = "Altın, insanlığın işlediği ilk metallerden biridir; en erken buluntular yaklaşık MÖ 5000 yılına tarihlenmektedir. Sembolü Au, Latince \"aurum\" sözcüğünden gelir.";
-                isotopeText = "¹⁹⁷Au - Doğal bolluk: %100. Tek doğal izotop yapısındadır.";
-                usages = ["Elektronik bağlantı elemanları: Au altın bağlama teli (bond wire) og kontak kaplama.", "Altın nanopartiküller (AuNP): Gebelik testi LFIA bandı kırmızı çizgisi.", "Uzay yüzey kaplaması: James Webb Uzay Teleskobu'nun ayna yüzey kaplaması."];
-                bioText = "Elemental altın biyolojik açıdan inert ve genellikle toksik değildir. Altın nanopartiküller tıbbi tanı ve tedavilerde kullanılmaktadır.";
-                interesting = ["Altının sarı rengi relativistik kuantum etkisiyle açıklanır: Z=79'daki elektronlar ışık hızının %58'ine yakın bir hızla döner.", "James Webb Uzay Teleskobu'nun 18 berilliyum aynasında toplam Au miktarı 48,25 gramdır."];
-                notes = ["6. Periyot geçiş metali; elektron dizilimi anomalilidir.", "Monoisotopik: ¹⁹⁷Au %100; sarı renk mavi ışığı emer."];
-                sss = [
-                    { q: "Altın atom numarası kaçtır?", a: "Altın elementinin atom numarası 79'dur." },
-                    { q: "Altın elektron dizilimi nedir?", a: "Altın elementinin elektron dizilimi [Xe] 4f¹⁴ 5d¹⁰ 6s¹ şeklindedir." }
-                ];
-            }
-            // 🌟 80: CIVA
-            else if(num === 80) {
-                eng = "Mercury"; state = "Sıvı"; group = 12; period = 6;
-                desc = "Oda sıcaklığında sıvı halde bulunan tek metaldir. Ağır ve son derece toksik bir geçiş elementidir.";
-                config = "[Xe] 4f¹⁴ 5d¹⁰ 6s²"; shells = "2 | 8 | 18 | 32 | 18 | 2"; density = "13.53 g/cm³"; electronegativity = "2.00"; melt = "-38.8 °C"; boil = "356.7 °C"; discoverer = "Antik çağ";
-                historyText = "Antik mısır mezarlarında MÖ 1500 yıllarına ait kalıntıları bulunmuştur. Simgesi Hg, 'sıvı gümüş' anlamına gelen Hydrargyrum'dan gelir.";
-                isotopeText = "²⁰²Hg (%29.8), ²00Hg, ¹⁹⁹Hg, ²01Hg.";
-                usages = ["Barometre ve eski nesil termometre tüpleri", "Floresan aydınlatma lambaları", "Diş dolgusu amalgam alaşımları"];
-                bioText = "Biyolojik sistemler için ağır metal zehirlenmesine yol açan ciddi bir nörondoksin maddedir.";
-                interesting = ["Tam dolu d ve s orbitalleri arasındaki büzülme nedeniyle oda sıcaklığında sıvı kalır.", "Yoğunluğu o kadar yüksektir ki üzerinde bir demir gülle batmadan rahatlıkla yüzebilir."];
-                notes = ["Müfredatta oda sıcaklığında sıvı olan metal olarak ezberletilir. 2B grubunda yer alır.", "Atık pillerin doğaya bırakılmaması kirlilik üzerinden anlatılır."];
-                sss = [
-                    { q: "Cıva termometreleri neden yasaklandı?", a: "Kırıldığında oda sıcaklığında hızla buharlaşarak solunum yoluyla vücuda geçer ve kalıcı sinir hasarı yapar." },
-                    { q: "Amalgam dolgu tehlikeli midir?", a: "Amalgam içerisindeki cıva gümüş ile bağlanarak katılaşır ve kararlı hale gelir." }
-                ];
-            }
-
-            // MODAL DOM GÜNCELLEMELERİ
-            document.getElementById('m-eng').innerText = eng;
-            document.getElementById('m-desc').innerText = desc;
-            document.getElementById('sss-heading').innerText = `${el.name} SSS`;
-
-            document.getElementById('m-tags').innerHTML = `
-                <span class="text-[10px] bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-full text-white font-medium">${el.cat}</span>
-                <span class="text-[10px] bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-full text-slate-400">Periyot ${period}</span>
-                <span class="text-[10px] bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-full text-slate-400">Grup ${group}</span>
-                <span class="text-[10px] bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-full text-slate-400">${state}</span>
-            `;
-            
-            document.getElementById('m-grid-props').innerHTML = `
-                <div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Atom Numarası</div><div class="text-sm font-black mt-1 text-white">${el.n}</div></div>
-                <div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Atom Kütlesi</div><div class="text-sm font-black mt-1 text-white">${el.m} g/mol</div></div>
-                <div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-blue-500 font-bold uppercase">Elektron Konfigürasyonu</div><div class="text-xs font-bold mt-1 text-white">${config}</div></div>
-                <div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-blue-500 font-bold uppercase">Kabuklar</div><div class="text-xs font-bold mt-1 text-white">${shells}</div></div>
-                <div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-blue-500 font-bold uppercase">Elektronegatiflik</div><div class="text-sm font-black mt-1 text-white">${electronegativity}</div></div>
-                <div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-blue-500 font-bold uppercase">Yoğunluk</div><div class="text-sm font-black mt-1 text-white">${density}</div></div>
-                <div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-blue-500 font-bold uppercase">Erime Noktası</div><div class="text-sm font-black mt-1 text-white">${melt}</div></div>
-                <div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-blue-500 font-bold uppercase">Kaynama Noktası</div><div class="text-sm font-black mt-1 text-white">${boil}</div></div>
-                <div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl col-span-2"><div class="text-[9px] text-blue-500 font-bold uppercase">Keşfeden</div><div class="text-xs font-bold mt-1 text-slate-300">${discoverer}</div></div>
-            `;
-
-            document.getElementById('m-history-text').innerText = historyText;
-            document.getElementById('m-isotope-text').innerText = isotopeText;
-            document.getElementById('m-bio-text').innerText = bioText;
-            
-            document.getElementById('m-usages-list').innerHTML = usages.map(x => `<li class="text-xs text-slate-300 leading-relaxed">• ${x}</li>`).join('');
-            document.getElementById('m-interesting-list').innerHTML = interesting.map(x => `<li>${x}</li>`).join('');
-            document.getElementById('m-notes-list').innerHTML = notes.map(x => `<li class="text-xs text-slate-300 leading-relaxed">• ${x}</li>`).join('');
-            
-            const sssBox = document.getElementById('m-sss-container'); sssBox.innerHTML = '';
-            sss.forEach((item) => {
-                sssBox.innerHTML += `
-                    <div class="bg-[#0a0d16] border border-slate-850 rounded-xl p-3">
-                        <div class="text-xs font-bold text-white mb-1">${item.q}</div>
-                        <div class="text-xs text-slate-400 leading-relaxed">${item.a}</div>
-                    </div>`;
-            });
-
-            const prevEl = globalElements.find(x => x.n === num - 1); const nextEl = globalElements.find(x => x.n === num + 1);
-            const btnPrev = document.getElementById('modal-btn-prev');
-            if(prevEl) { btnPrev.innerText = `← ${prevEl.name}`; btnPrev.style.opacity = "1"; } else { btnPrev.style.opacity = "0.2"; btnPrev.innerText = "Başlangıç"; }
-            const btnNext = document.getElementById('modal-btn-next');
-            if(nextEl) { btnNext.innerText = `${nextEl.name} →`; btnNext.style.opacity = "1"; } else { btnNext.style.opacity = "0.2"; btnNext.innerText = "Bitiş"; }
-
-            document.getElementById('element-modal').classList.remove('hidden');
-            document.getElementById('modal-scroll-content').scrollTop = 0;
-        }
-
-        function closeModal() { document.getElementById('element-modal').classList.add('hidden'); }
-        function navigateElement(direction) { let targetNum = currentModalElementNum + direction; if(targetNum >= 1 && targetNum <= 118) { openElementDetail(targetNum); } }
-        function toggleFullScreenContainer() { if (!document.fullscreenElement) { document.documentElement.requestFullscreen(); } else if (document.exitFullscreen) { document.exitFullscreen(); } }
-
-        // --- 🔒 AKORDEON DERS SİSTEMİ MOTORU 🔒 ---
-        const defaultTopics = [
-            { id: "t1", name: "01 Modern Atom Modeli", desc: "Kuantum sayıları og elektron dizilimleri.", checked: false, link: "" },
-            { id: "t2", name: "02 Gazlar", desc: "İdeal gas yasaları ve kinetik teori.", checked: false, link: "" }
-        ];
-        function renderAytTopics() {
-            let list = JSON.parse(localStorage.getItem('custom_topic_list')) || defaultTopics;
-            const container = document.getElementById('ayt-topics-container'); container.innerHTML = '';
-            list.forEach(topic => {
-                const hasLink = topic.link && topic.link.trim().startsWith('http');
-                container.innerHTML += `
-                    <div class="bg-slate-900 rounded-lg border border-slate-800 shadow overflow-hidden">
-                        <div class="p-3 flex items-center justify-between bg-slate-950/40 hover:bg-slate-950/80 cursor-pointer" onclick="toggleAccordion('${topic.id}')">
-                            <div class="flex items-center space-x-3 min-w-0 flex-1">
-                                <input type="checkbox" id="check-${topic.id}" ${topic.checked ? 'checked' : ''} onchange="toggleTopicCheck('${topic.id}', this.checked)" onclick="event.stopPropagation();" class="w-4.5 h-4.5 rounded text-blue-600 bg-slate-700">
-                                <span class="text-xs font-bold text-slate-200 truncate" id="title-text-${topic.id}">${topic.name}</span>
-                            </div>
-                            <div class="flex items-center space-x-2.5 shrink-0" onclick="event.stopPropagation();">
-                                <button onclick="openTopicLink('${topic.id}')" class="text-[10px] bg-slate-800 hover:bg-blue-900 text-slate-400 hover:text-white px-2 py-1 rounded border border-slate-700 ${hasLink ? '' : 'hidden'}" id="go-${topic.id}">Aç</button>
-                                <i class="fa-solid fa-chevron-down text-slate-500 text-xs" id="arrow-${topic.id}"></i>
-                            </div>
-                        </div>
-                        <div id="body-${topic.id}" class="hidden p-3 border-t border-slate-850 bg-slate-900/40 space-y-3">
-                            <input type="text" value="${topic.name}" oninput="updateTopicName('${topic.id}', this.value)" class="bg-slate-800 border border-slate-700 rounded px-2.5 py-1.5 text-xs w-full text-white focus:outline-none">
-                            <input type="text" value="${topic.link || ''}" placeholder="Goodnotes veya Drive Linki..." oninput="updateTopicLink('${topic.id}', this.value)" class="bg-slate-800 border border-slate-700 rounded px-2.5 py-1.5 text-xs w-full text-white focus:outline-none">
-                            <button onclick="deleteTopic('${topic.id}')" class="text-[10px] text-rose-400 underline">Bu Başlığı Sil</button>
-                        </div>
-                    </div>`;
-            });
-        }
-        function toggleAccordion(id) { const b = document.getElementById(`body-${id}`); const a = document.getElementById(`arrow-${id}`); if (b && a) { if (b.classList.contains('hidden')) { b.classList.remove('hidden'); a.classList.add('rotate-180'); } else { b.classList.add('hidden'); a.classList.remove('rotate-180'); } } }
-        function updateTopicName(id, val) { let list = JSON.parse(localStorage.getItem('custom_topic_list')) || defaultTopics; let t = list.find(x => x.id === id); if(t) { t.name = val; localStorage.setItem('custom_topic_list', JSON.stringify(list)); document.getElementById(`title-text-${id}`).innerText = val; } }
-        function updateTopicLink(id, val) { let list = JSON.parse(localStorage.getItem('custom_topic_list')) || defaultTopics; let t = list.find(x => x.id === id); if(t) { t.link = val; localStorage.setItem('custom_topic_list', JSON.stringify(list)); const btn = document.getElementById(`go-${id}`); if(btn) { if(val.trim().startsWith('http')) btn.classList.remove('hidden'); else btn.classList.add('hidden'); } } }
-        function openTopicLink(id) { let list = JSON.parse(localStorage.getItem('custom_topic_list')); let t = list.find(x => x.id === id); if(t && t.link) { window.open(t.link.trim(), '_blank'); } }
-        function toggleTopicCheck(id, chk) { let list = JSON.parse(localStorage.getItem('custom_topic_list')); let t = list.find(x => x.id === id); if(t) { t.checked = chk; localStorage.setItem('custom_topic_list', JSON.stringify(list)); } }
-        function addNewTopic() { const n = document.getElementById('new-topic-name'); if(!n.value.trim()) return; let list = JSON.parse(localStorage.getItem('custom_topic_list')) || []; list.push({ id: "topic_" + Date.now(), name: n.value.trim(), checked: false, link: "" }); localStorage.setItem('custom_topic_list', JSON.stringify(list)); n.value = ''; renderAytTopics(); }
-        function resetTopicsToDefault() { localStorage.setItem('custom_topic_list', JSON.stringify(defaultTopics)); renderAytTopics(); }
-        function deleteTopic(id) { let list = JSON.parse(localStorage.getItem('custom_topic_list')); list = list.filter(x => x.id !== id); localStorage.setItem('custom_topic_list', JSON.stringify(list)); renderAytTopics(); }
-
-        // --- 🎥 VİDEO MODÜLÜ MOTORU 🎥 ---
-        const defaultVideos = [{ name: "1. Sodyum Klorür Kristal Örgüsü (Tuz-Su)", file: "NaCl-H2O.MP4" }, { name: "2. Laboratuvar Güvenlik Kuralları", file: "deney1.mp4" }];
-        function renderVideoList() {
-            let list = JSON.parse(localStorage.getItem('custom_video_list')) || defaultVideos;
-            const container = document.getElementById('dynamic-video-container'); container.innerHTML = '';
-            list.forEach((item, index) => {
-                container.innerHTML += `
-                    <div class="w-full bg-slate-900 rounded border border-slate-850 flex justify-between items-center p-2.5">
-                        <button onclick="playCloudVideo('${item.file}')" class="text-xs font-medium text-slate-300 truncate hover:text-cyan-400 text-left"><i class="fa-solid fa-circle-play mr-2 text-cyan-400"></i>${item.name}</button>
-                        <button onclick="deleteVideo(${index})" class="text-slate-500 hover:text-rose-400 text-xs px-2"><i class="fa-solid fa-trash-can"></i></button>
-                    </div>`;
-            });
-        }
-        function playCloudVideo(f) { const v = document.getElementById('main-panel-video'); v.src = `./videos/${f}`; document.getElementById('video-player-container').classList.remove('hidden'); v.play(); }
-        function addNewVideoToList() { const n = document.getElementById('new-video-name'); const f = document.getElementById('new-video-file'); if(!n.value.trim() || !f.value.trim()) return; let list = JSON.parse(localStorage.getItem('custom_video_list')) || defaultVideos; list.push({ name: n.value.trim(), file: f.value.trim() }); localStorage.setItem('custom_video_list', JSON.stringify(list)); n.value = ''; f.value = ''; renderVideoList(); }
-        function deleteVideo(i) { let list = JSON.parse(localStorage.getItem('custom_video_list')); list.splice(i,1); localStorage.setItem('custom_video_list', JSON.stringify(list)); renderVideoList(); }
-
-        // --- 🔬 THREE.JS 3D LABORATUVAR MOTORU 🔬 ---
-        let scene, camera, renderer, currentGroup;
-        const glassMat = new THREE.MeshPhongMaterial({ color: 0xffffff, transparent: true, opacity: 0.25, shininess: 120, side: THREE.DoubleSide });
-        const blueLiquidMat = new THREE.MeshPhongMaterial({ color: 0x0284c7, transparent: true, opacity: 0.8 });
-        const pinkLiquidMat = new THREE.MeshPhongMaterial({ color: 0xdb2777, transparent: true, opacity: 0.85 });
-        const yellowLiquidMat = new THREE.MeshPhongMaterial({ color: 0xeab308, transparent: true, opacity: 0.75 });
-
-        function init3D() {
-            const container = document.getElementById('canvas-3d'); if(!container) return;
-            scene = new THREE.Scene(); scene.background = new THREE.Color(0x05070f);
-            camera = new THREE.PerspectiveCamera(65, container.clientWidth / container.clientHeight, 0.1, 1000); camera.position.set(0, 0, 7);
-            scene.add(new THREE.AmbientLight(0xffffff, 1.2));
-            const pLight = new THREE.PointLight(0xffffff, 1.5, 15); pLight.position.set(2, 4, 3); scene.add(pLight);
-            renderer = new THREE.WebGLRenderer({ antialias: true }); renderer.setSize(container.clientWidth, container.clientHeight);
-            container.appendChild(renderer.domElement); change3DModel('beherglas');
-            function animate() { requestAnimationFrame(animate); if (currentGroup && !isDragging && activeTabId === '3d') { currentGroup.rotation.y += 0.005; } renderer.render(scene, camera); } animate();
-            window.addEventListener('resize', onWindowResize);
-        }
-
-        function change3DModel(type) {
-            if (currentGroup) scene.remove(currentGroup); currentGroup = new THREE.Group();
-            if (type === 'beherglas') {
-                currentGroup.add(new THREE.Mesh(new THREE.CylinderGeometry(1.4, 1.4, 3.2, 32, 1, true), glassMat));
-                const b = new THREE.Mesh(new THREE.CylinderGeometry(1.4, 1.4, 0.05, 32), glassMat); b.position.y = -1.6; currentGroup.add(b);
-                const l = new THREE.Mesh(new THREE.CylinderGeometry(1.36, 1.36, 1.8, 32), blueLiquidMat); l.position.y = -0.7; currentGroup.add(l);
-            } else if (type === 'erlenmayer') {
-                const b = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 1.6, 2.6, 32, 1, true), glassMat); b.position.y = -0.2;
-                const n = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.4, 0.8, 32, 1, true), glassMat); n.position.y = 1.5;
-                const l = new THREE.Mesh(new THREE.CylinderGeometry(0.7, 1.5, 1.4, 32), pinkLiquidMat); l.position.y = -0.8; currentGroup.add(b, n, l);
-            } else if (type === 'cambalon') {
-                currentGroup.add(new THREE.Mesh(new THREE.SphereGeometry(1.5, 32, 32), glassMat));
-                const n = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.4, 1.6, 32, 1, true), glassMat); n.position.y = 1.3;
-                const l = new THREE.Mesh(new THREE.SphereGeometry(1.46, 32, 16, 0, Math.PI*2, Math.PI/2, Math.PI/2), yellowLiquidMat); l.position.y = -0.4; currentGroup.add(n, l);
-            } else if (type === 'deneytupu') {
-                const t = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.4, 3.4, 32, 1, true), glassMat);
-                const l = new THREE.Mesh(new THREE.CylinderGeometry(0.37, 0.37, 2.0, 32), blueLiquidMat); l.position.y = -0.5; currentGroup.add(t, l);
-            } else if (type === 'balonjoje') {
-                const s = new THREE.Mesh(new THREE.SphereGeometry(1.2, 32, 32), glassMat); s.position.y = -1.0;
-                const n = new THREE.Mesh(new THREE.CylinderGeometry(0.25, 0.25, 2.6, 32, 1, true), glassMat); n.position.y = 0.9;
-                const r = new THREE.Mesh(new THREE.TorusGeometry(0.26, 0.02, 8, 32), new THREE.MeshBasicMaterial({ color: 0xffffff })); r.rotation.x = Math.PI/2; r.position.y = 0.8; currentGroup.add(s, n, r);
-            } else if (type === 'ayirmahunisi') {
-                const b = new THREE.Mesh(new THREE.CylinderGeometry(1.2, 0.2, 2.4, 32, 1, true), glassMat); b.position.y = 0.6;
-                const l1 = new THREE.Mesh(new THREE.CylinderGeometry(1.1, 0.6, 1.0, 32), yellowLiquidMat); l1.position.y = 1.0;
-                const l2 = new THREE.Mesh(new THREE.CylinderGeometry(0.6, 0.2, 1.0, 32), blueLiquidMat); l2.position.y = 0.0; currentGroup.add(b, l1, l2);
-            } else if (type === 'derecelisilindir') {
-                const c = new THREE.Mesh(new THREE.CylinderGeometry(0.45, 0.45, 4.6, 32, 1, true), glassMat);
-                const l = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.42, 3.0, 32), blueLiquidMat); l.position.y = -0.9; currentGroup.add(c, l);
-            } else if (type === 'buret') {
-                const t = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.15, 5.8, 16, 1, true), glassMat);
-                const l = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.13, 4.0, 16), pinkLiquidMat); l.position.y = 0.6; currentGroup.add(t, l);
-            } else if (type === 'pipet') {
-                const b = new THREE.Mesh(new THREE.SphereGeometry(0.35, 16, 16), glassMat); b.scale.set(1, 2.2, 1); currentGroup.add(b);
-            } else if (type === 'dalton') {
-                currentGroup.add(new THREE.Mesh(new THREE.SphereGeometry(1.8, 32, 32), new THREE.MeshPhongMaterial({ color: 0x475569 })));
-            } else if (type === 'thomson') {
-                currentGroup.add(new THREE.Mesh(new THREE.SphereGeometry(1.8, 32, 32), new THREE.MeshPhongMaterial({ color: 0xf43f5e, transparent: true, opacity: 0.4 })));
-            } else if (type === 'rutherford') {
-                currentGroup.add(new THREE.Mesh(new THREE.SphereGeometry(0.4, 16, 16), new THREE.MeshPhongMaterial({ color: 0xef4444 })));
-            } else if (type === 'bohr') {
-                currentGroup.add(new THREE.Mesh(new THREE.SphereGeometry(0.5, 16, 16), new THREE.MeshPhongMaterial({ color: 0xef4444 })));
-            }
-            scene.add(currentGroup);
-        }
-        function onWindowResize() { const c = document.getElementById('canvas-3d'); if(c && renderer) { camera.aspect = c.clientWidth / c.clientHeight; camera.updateProjectionMatrix(); renderer.setSize(c.clientWidth, c.clientHeight); } }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            renderAytTopics(); renderElementsGrid(globalElements); renderVideoList(); init3D();
-            document.querySelectorAll('.text-save').forEach(i => { const id = i.getAttribute('data-id'); const s = localStorage.getItem(id); if (s) i.value = s; i.addEventListener('input', () => localStorage.setItem(id, i.value)); });
-        });
-    </script>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
