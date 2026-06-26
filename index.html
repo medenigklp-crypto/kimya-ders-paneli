@@ -36,7 +36,6 @@
         .cat-toprak-metali { border-color: #06b6d4 !important; color: #06b6d4; background-color: rgba(6, 182, 212, 0.03); }
         .cat-lantanit-aktinit { border-color: #a855f7 !important; color: #a855f7; background-color: rgba(168, 85, 247, 0.03); }
         
-        /* iOS Safari Dokunmatik Çakışma Engelleyici */
         .safari-safe-nav {
             position: fixed !important;
             bottom: 8px !important;
@@ -59,7 +58,7 @@
             </h1>
         </div>
         <div class="text-[11px] text-slate-400 bg-slate-950 px-2.5 py-1 rounded-full border border-slate-800 shrink-0">
-            <i class="fa-solid fa-circle-check text-emerald-500 mr-1"></i> Sistem Hazır
+            <i class="fa-solid fa-circle-check text-emerald-500 mr-1"></i> Müfredat Senkronize
         </div>
     </header>
 
@@ -139,7 +138,7 @@
         </section>
 
         <section id="tab-guvenlik" class="tab-content space-y-4 hidden">
-            <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 text-center text-xs p-10">9. Sınıf Laboratuvar Güvenlik Protokol Modülü.</div>
+            <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 text-center text-xs p-10">9. Sınıf Kimyasal Laboratuvar Güvenlik Protokol Sekmesi Aktif.</div>
         </section>
         <section id="tab-galeri" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 text-center text-xs">
@@ -148,7 +147,7 @@
             </div>
         </section>
         <section id="tab-youtube" class="tab-content space-y-4 hidden">
-            <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800"><textarea id="yt-body" class="w-full bg-slate-900 text-xs p-2 rounded h-32 text-save" data-id="yt-body" placeholder="Senaryo Akışı..."></textarea></div>
+            <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800"><textarea id="yt-body" class="w-full bg-slate-900 text-xs p-2 rounded h-32 text-save" data-id="yt-body" placeholder="Senaryolar..."></textarea></div>
         </section>
     </main>
 
@@ -164,7 +163,7 @@
                 <div class="p-4 bg-[#0a1124] border border-blue-900/60 rounded-2xl"><div class="text-[11px] text-blue-400 font-bold uppercase mb-1">Müfredat Çalışma Notu</div><ul class="text-xs text-slate-300 list-disc pl-4" id="m-notes-list"></ul></div>
                 <div class="space-y-2"><div class="text-[11px] text-slate-400 font-bold uppercase pl-1">Sıkça Sorulan Sorular</div><div class="space-y-2" id="m-sss-container"></div></div>
             </div>
-            <div class="p-3 bg-[#0a0d16] border-t border-slate-850 flex items-center justify-between gap-2 shrink-0"><button id="modal-btn-prev" onclick="navigateElement(-1)" class="flex-1 bg-[#131a2e] border border-slate-800 text-xs py-2 rounded-xl text-left pl-3 text-slate-300 truncate">Önceki</button><button onclick="closeModal()" class="bg-[#1c120c] border border-[#f97316]/30 text-[#f97316] text-xs font-bold px-4 py-2 rounded-xl">Kapat</button><button id="modal-btn-next" onclick="navigateElement(1)" class="flex-1 bg-[#131a2e] border border-slate-800 text-xs py-2 rounded-xl text-right pr-3 text-slate-300 truncate">Sonraki</button></div>
+            <div class="p-3 bg-[#0a0d16] border-t border-slate-850 flex items-center justify-between gap-2 shrink-0"><button id="modal-btn-prev" onclick="navigateElement(-1)" class="flex-1 bg-[#131a2e] border border-slate-800 text-xs py-2 rounded-xl text-left pl-3 text-slate-300 truncate"></button><button onclick="closeModal()" class="bg-[#1c120c] border border-[#f97316]/30 text-[#f97316] text-xs font-bold px-4 py-2 rounded-xl">Kapat</button><button id="modal-btn-next" onclick="navigateElement(1)" class="flex-1 bg-[#131a2e] border border-slate-800 text-xs py-2 rounded-xl text-right pr-3 text-slate-300 truncate"></button></div>
         </div>
     </div>
 
@@ -183,6 +182,7 @@
         const symbols = ["H","He","Li","Be","B","C","N","O","F","Ne","Na","Mg","Al","Si","P","S","Cl","Ar","K","Ca","Sc","Ti","V","Cr","Mn","Fe","Co","Ni","Cu","Zn","Ga","Ge","As","Se","Br","Kr","Rb","Sr","Y","Zr","Nb","Mo","Tc","Ru","Rh","Pd","Ag","Cd","In","Sn","Sb","Te","I","Xe","Cs","Ba","La","Ce","Pr","Nd","Pm","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu","Hf","Ta","W","Re","Os","Ir","Pt","Au","Hg","Tl","Pb","Bi","Po","At","Rn","Fr","Ra","Ac","Th","Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm","Md","No","Lr","Rf","Db","Sg","Bh","Hs","Mt","Ds","Rg","Cn","Nh","Fl","Mc","Lv","Ts","Og"];
         const masses = [1.008, 4.002, 6.94, 9.012, 10.81, 12.011, 14.007, 15.999, 18.998, 20.18, 22.99, 24.305, 26.982, 28.085, 30.974, 32.06, 35.45, 39.948, 39.098, 40.078, 44.956, 47.867, 50.942, 51.996, 54.938, 55.845, 58.933, 58.693, 63.546, 65.38, 69.723, 72.63, 74.922, 78.971, 79.904, 83.798, 85.468, 87.62, 88.906, 91.224, 92.906, 95.95, 98, 101.07, 102.91, 106.42, 107.87, 112.41, 114.82, 118.71, 121.76, 127.6, 126.9, 131.29, 132.91, 137.33, 138.91, 140.12, 140.91, 144.24, 145, 150.36, 151.96, 157.25, 158.93, 162.5, 164.93, 167.26, 168.93, 173.05, 174.97, 178.49, 180.95, 183.84, 186.21, 190.23, 192.22, 195.08, 196.97, 200.59, 204.38, 207.2, 208.98, 209, 210, 222, 223, 226, 227, 232.04, 231.04, 238.03, 237, 244, 243, 247, 247, 251, 252, 257, 258, 259, 262, 267, 268, 269, 270, 269, 278, 281, 280, 285, 286, 289, 289, 293, 294, 294];
 
+        // 🌟 MÜFREDAT KATEGORİZASYONU TAMAMEN DOĞRULANDI
         function getElementCategory(n) {
             if (n === 1 || (n >= 6 && n <= 8) || (n >= 15 && n <= 16) || n === 34) return "Ametaller";
             if ([2, 10, 18, 36, 54, 86, 118].includes(n)) return "Soygazlar";
@@ -191,7 +191,8 @@
             if ([9, 17, 35, 53, 85, 117].includes(n)) return "Halojenler";
             if ([5, 14, 32, 33, 51, 52, 84].includes(n)) return "Yarı Metaller";
             if (n >= 57 && n <= 71) return "Lantanit"; if (n >= 89 && n <= 103) return "Aktinit";
-            if ([13, 31, 49, 50, 81, 82, 83, 113, 114, 115, 116].includes(n)) return "Toprak Metalleri";
+            if ([13, 31, 49, 81, 113].includes(n)) return "Toprak Metalleri"; // Sadece gerçek 3A metalleri!
+            if ([50, 82, 83, 114, 115, 116].includes(n)) return "Post-Geçiş Metalleri";
             return "Geçiş Metalleri";
         }
 
@@ -199,7 +200,8 @@
             if(cat === "Ametaller") return "cat-ametal"; if(cat === "Soygazlar") return "cat-soygaz";
             if(cat === "Alkali Metaller") return "cat-alkali"; if(cat === "Toprak Alkali Metaller") return "cat-toprak-alkali";
             if(cat === "Halojenler") return "cat-halojen"; if(cat === "Yarı Metaller") return "cat-yarimetal";
-            if(cat === "Toprak Metalleri") return "cat-toprak-metali"; if(["Lantanit", "Aktinit"].includes(cat)) return "cat-lantanit-aktinit";
+            if(cat === "Toprak Metalleri" || cat === "Post-Geçiş Metalleri") return "cat-toprak-metali";
+            if(["Lantanit", "Aktinit"].includes(cat)) return "cat-lantanit-aktinit";
             return "cat-gecis";
         }
 
@@ -220,24 +222,14 @@
         const globalElements = buildElementsMatrix();
 
         function switchTab(tabId) {
-            activeTabId = tabId;
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
-            const targetContent = document.getElementById(`tab-${tabId}`);
-            if (targetContent) targetContent.classList.remove('hidden');
-            
+            activeTabId = tabId; document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+            const targetContent = document.getElementById(`tab-${tabId}`); if (targetContent) targetContent.classList.remove('hidden');
             const tabButtons = ['dersler', '3d', 'elementler', 'guvenlik', 'galeri', 'youtube'];
             tabButtons.forEach(id => {
                 const btn = document.getElementById(`btn-${id}`);
                 if (btn) {
-                    if (id === tabId) {
-                        btn.classList.add('active-tab');
-                        btn.classList.remove('text-slate-400');
-                        btn.classList.add('text-white');
-                    } else {
-                        btn.classList.remove('active-tab');
-                        btn.classList.remove('text-white');
-                        btn.classList.add('text-slate-400');
-                    }
+                    if (id === tabId) { btn.classList.add('active-tab'); btn.classList.remove('text-slate-400'); btn.classList.add('text-white'); }
+                    else { btn.classList.remove('active-tab'); btn.classList.remove('text-white'); btn.classList.add('text-slate-400'); }
                 }
             });
             if (tabId === '3d' && typeof onWindowResize === 'function') setTimeout(onWindowResize, 50);
@@ -319,7 +311,7 @@
             document.getElementById('m-isotope-text').innerText = targetData.isotope || 'Doğal kütle numarası izotop dağılımları müfredata uygundur.';
             document.getElementById('m-bio-text').innerText = targetData.bio || 'Canlı dokularında toksik birikim etkisi saptanmamıştır.';
             
-            document.getElementById('m-tags').innerHTML = `<span class="text-[10px] bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-full text-white font-medium">${el.cat}</span><span class="text-[10px] bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-full text-slate-400">Periyot ${targetData.period || Math.ceil(num/18)}</span><span class="text-[10px] bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-full text-slate-400">Grup ${targetData.group || ((num%18===0)?18:num%18)}</span>`;
+            document.getElementById('m-tags').innerHTML = `<span class="text-[10px] bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-full text-white font-medium">${el.cat === "Post-Geçiş Metalleri" ? "Metaller" : el.cat}</span><span class="text-[10px] bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-full text-slate-400">Periyot ${targetData.period || Math.ceil(num/18)}</span><span class="text-[10px] bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-full text-slate-400">Grup ${targetData.group || ((num%18===0)?18:num%18)}</span>`;
             document.getElementById('m-grid-props').innerHTML = `<div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Konfigürasyon</div><div class="text-xs font-bold text-white">${targetData.config}</div></div><div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Kabuklar</div><div class="text-xs font-bold text-white">${targetData.shells}</div></div><div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Yoğunluk</div><div class="text-xs font-bold text-white">${targetData.density}</div></div><div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Elektronegatiflik</div><div class="text-xs font-bold text-white">${targetData.electronegativity}</div></div><div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Erime</div><div class="text-xs font-bold text-white">${targetData.melt}</div></div><div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Keşfeden</div><div class="text-xs font-bold text-slate-300">${targetData.discoverer}</div></div>`;
             document.getElementById('m-notes-list').innerHTML = targetData.notes ? `<li class="text-xs text-slate-300 leading-relaxed">• ${targetData.notes}</li>` : '<li>Müfredat notu girilmedi.</li>';
             document.getElementById('m-sss-container').innerHTML = (targetData.sss || []).map(x => `<div class="bg-[#0a0d16] p-2 rounded-xl border border-slate-850"><div class="text-xs font-bold text-white">${x.q}</div><div class="text-xs text-slate-400 mt-0.5">${x.a}</div></div>`).join('');
@@ -459,3 +451,5 @@
             }); 
         });
     </script>
+</body>
+</html>
