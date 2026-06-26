@@ -42,7 +42,6 @@
 </head>
 <body class="text-slate-100 font-sans min-h-screen flex flex-col overflow-x-hidden">
 
-    <!-- ÜST NAV BAR -->
     <header class="bg-[#0b0f19] border-b border-slate-800 p-4 sticky top-0 z-40 shadow-md flex justify-between items-center w-full">
         <div class="flex items-center space-x-3">
             <img src="logo .png" alt="Medeni Gökalp Logo" class="h-8 w-auto object-contain select-none rounded">
@@ -57,7 +56,6 @@
 
     <main class="flex-1 p-3 max-w-7xl w-full mx-auto pb-24 box-border overflow-x-hidden">
         
-        <!-- 1. DERS SEKMESİ -->
         <section id="tab-dersler" class="tab-content space-y-4">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
                 <h2 class="text-base font-bold mb-1 text-blue-400 flex items-center"><i class="fa-solid fa-graduation-cap mr-2"></i> Müfredat & Ders Yönetimi</h2>
@@ -78,7 +76,6 @@
             </div>
         </section>
 
-        <!-- 2. 3D STÜDYO SEKMESİ -->
         <section id="tab-3d" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
                 <h2 class="text-base font-bold text-emerald-400 flex items-center mb-2"><i class="fa-solid fa-flask mr-2"></i> Interaktif 3D Stüdyo</h2>
@@ -122,7 +119,6 @@
             </div>
         </section>
 
-        <!-- 3. PERİYODİK TABLO SEKMESİ -->
         <section id="tab-elementler" class="tab-content space-y-4 hidden">
             <div class="bg-[#0a0d16] p-4 rounded-xl border border-slate-800 shadow-lg space-y-4">
                 
@@ -144,13 +140,11 @@
 
                 <div class="overflow-x-auto w-full pb-3">
                     <div id="periodic-matrix-container" class="grid gap-1.5 p-1 min-w-[1240px]" style="grid-template-columns: 28px repeat(18, minmax(64px, 1fr));">
-                        <!-- JS Dolduracak -->
-                    </div>
+                        </div>
                 </div>
             </div>
         </section>
 
-        <!-- 4. GÜVENLİK SEKMESİ -->
         <section id="tab-guvenlik" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
                 <h2 class="text-base font-bold mb-1 text-amber-400 flex items-center"><i class="fa-solid fa-triangle-exclamation mr-2"></i> Kimyasal Tehlike İşaretleri</h2>
@@ -168,7 +162,6 @@
             </div>
         </section>
 
-        <!-- 5. VİDEOLAR SEKMESİ -->
         <section id="tab-galeri" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg space-y-3">
                 <h2 class="text-base font-bold text-cyan-400 flex items-center"><i class="fa-solid fa-video mr-2"></i> Videolar & Deney Listesi</h2>
@@ -184,7 +177,6 @@
             </div>
         </section>
 
-        <!-- 6. SENARYO SEKMESİ -->
         <section id="tab-youtube" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg flex flex-col h-[calc(100vh-12rem)]">
                 <h2 class="text-base font-bold mb-2 text-rose-400 flex items-center"><i class="fa-brands fa-youtube mr-2"></i> YouTube Senaryo Üretici</h2>
@@ -195,7 +187,6 @@
 
     </main>
 
-    <!-- FERRUMONE BİREBİR DETAY MODALI -->
     <div id="element-modal" class="fixed inset-0 bg-slate-950/95 backdrop-blur-sm z-50 hidden flex items-center justify-center p-0 sm:p-4">
         <div class="bg-[#05070f] w-full h-full sm:max-w-2xl sm:h-[90vh] sm:rounded-2xl border-t sm:border border-slate-800 flex flex-col shadow-2xl overflow-hidden">
             
@@ -266,7 +257,6 @@
         </div>
     </div>
 
-    <!-- ALT SEKMELER -->
     <nav class="bg-slate-800 border-t border-slate-700 fixed bottom-0 left-0 right-0 p-1 flex justify-between items-center shadow-2xl z-40 w-full overflow-x-auto">
         <button onclick="switchTab('dersler')" id="btn-dersler" class="flex-1 flex flex-col items-center justify-center py-1 rounded-lg text-slate-400 active-tab min-w-[55px]"><i class="fa-solid fa-list-check text-xs mb-0.5"></i><span class="text-[8px]">Ders</span></button>
         <button onclick="switchTab('3d')" id="btn-3d" class="flex-1 flex flex-col items-center justify-center py-1 rounded-lg text-slate-400 min-w-[55px]"><i class="fa-solid fa-cube text-xs mb-0.5"></i><span class="text-[8px]">3D Stüdyo</span></button>
@@ -280,7 +270,6 @@
         let activeTabId = 'dersler';
         let isDragging = false; 
         let currentModalElementNum = 79;
-        let activeCategoryFilter = null; 
 
         function switchTab(tabId) {
             activeTabId = tabId;
@@ -375,28 +364,21 @@
             for (let p = 1; p <= 7; p++) { container.innerHTML += `<div class="flex items-center justify-center text-[10px] font-bold text-slate-600 pr-1" style="grid-row: ${p + 1}; grid-column: 1;">${p}</div>`; }
 
             const legends = [
-                { id: "Alkali Metaller", name: "Alkali Metaller", count: "6 element", color: "#ef4444", row: 3, col: 4 },
-                { id: "Toprak Alkali Metaller", name: "Toprak Alkali Metaller", count: "6 element", color: "#f97316", row: 3, col: 6 },
+                { id: "Alkali Metaller", name: "Alkali Metal", count: "6 element", color: "#ef4444", row: 3, col: 4 },
+                { id: "Toprak Alkali Metaller", name: "Toprak Alkali Metal", count: "6 element", color: "#f97316", row: 3, col: 6 },
                 { id: "Lantanit/Aktinit", name: "Lantanit & Aktinit", count: "30 element", color: "#a855f7", row: 3, col: 8 },
-                { id: "Geçiş Metalleri", name: "Geçiş Metalleri", count: "35 element", color: "#3b82f6", row: 3, col: 10 },
-                { id: "Toprak Metalleri", name: "Toprak Metalleri", count: "12 element", color: "#06b6d4", row: 3, col: 12 },
-                { id: "Yarı Metaller", name: "Yarı Metaller", count: "6 element", color: "#eab308", row: 4, col: 4 },
-                { id: "Ametaller", name: "Ametaller", count: "7 element", color: "#10b981", row: 4, col: 6 },
-                { id: "Halojenler", name: "Halojenler", count: "6 element", color: "#84cc16", row: 4, col: 8 },
-                { id: "Soygazlar", name: "Soygazlar", count: "7 element", color: "#ec4899", row: 4, col: 10 },
+                { id: "Geçiş Metalleri", name: "Geçiş Metali", count: "35 element", color: "#3b82f6", row: 3, col: 10 },
+                { id: "Toprak Metalleri", name: "Toprak Metali", count: "12 element", color: "#06b6d4", row: 3, col: 12 },
+                { id: "Yarı Metaller", name: "Yarı Metal", count: "6 element", color: "#eab308", row: 4, col: 4 },
+                { id: "Ametaller", name: "Ametal", count: "7 element", color: "#10b981", row: 4, col: 6 },
+                { id: "Halojenler", name: "Halojen", count: "6 element", color: "#84cc16", row: 4, col: 8 },
+                { id: "Soygazlar", name: "Soy Gaz", count: "7 element", color: "#ec4899", row: 4, col: 10 },
                 { id: "Bilinmiyor", name: "Bilinmiyor", count: "3 element", color: "#64748b", row: 4, col: 12 }
             ];
 
             legends.forEach(l => {
-                let activeStyle = "border-slate-850 bg-[#0a0d16]/40 opacity-50";
-                if (activeCategoryFilter === l.id) {
-                    activeStyle = "border-white bg-slate-900 shadow-xl scale-105 opacity-100 ring-1 ring-white/30";
-                } else if (!activeCategoryFilter) {
-                    activeStyle = "border-slate-850 bg-[#0a0d16]/40 hover:border-slate-700 opacity-100";
-                }
-                
                 container.innerHTML += `
-                    <div onclick="toggleCategoryFilter('${l.id}')" class="border rounded-xl p-1 flex flex-col items-center justify-center text-center select-none cursor-pointer transition-all ${activeStyle}" style="grid-row: ${l.row}; grid-column: ${l.col} / span 2;">
+                    <div onclick="toggleCategoryFilter('${l.id}')" class="border border-slate-850 rounded-xl p-1 flex flex-col items-center justify-center text-center bg-[#0a0d16]/40 select-none cursor-pointer transition-all hover:scale-105" style="grid-row: ${l.row}; grid-column: ${l.col} / span 2;">
                         <div class="w-5 h-0.5 mb-1 rounded" style="background-color: ${l.color};"></div>
                         <span class="text-[9px] font-black tracking-tight" style="color: ${l.color};">${l.name}</span>
                         <span class="text-[7px] text-slate-500 font-medium">${l.count}</span>
@@ -482,7 +464,7 @@
                 historyText = "Tarih öncesi çağlardan beri kömür ve is formunda insanlık tarafından kullanılmaktadır. Elmas ve grafitin aynı elementten oluştuğu 18. yüzyılda kanıtlanmıştır.";
                 isotopeText = "¹²C (Kararlı - %98.9), ¹³C (Kararlı - %1.1), ¹⁴C (Radyoaktif - Arkeolojik yaş tayininde kullanılır).";
                 usages = ["Çelik üretimi (karbon katkısı)", "Nano-teknoloji (Grafen, Karbon Nanotüpler)", "Plastik ve polimer sanayisi", "Aktif karbon filtreleri"];
-                bioText = "Organik kimyanın omurgasıdır. Karbonhidratlar, lipidler, proteinler ve DNA'nın iskelet yapısını kurar.";
+                bioText = "Organik kimyanın omurgasıdır. Karbonhidratlar, lipidler, proteinler og DNA'nın iskelet yapısını kurar.";
                 interesting = ["Aynı element hem yeryüzünün en yumuşak malzemelerinden birini (grafit) hem de en sert malzemesini (elmas) oluşturabilir. Bu duruma allotropi denir.", "Karbon atomları kendi aralarında sonsuz zincirler oluşturma yeteneğine (katenasyon) sahiptir."];
                 notes = ["AYT Kimya Organik Giriş konusunun temelidir. Hibritleşme (sp³, sp², sp) teorileri bu element üzerinden anlatılır.", "Kovalent bağ kapasitesi en yüksek 2. periyot elementidir."];
                 sss = [
@@ -501,7 +483,7 @@
                 interesting = ["Oksijen gazı (O₂) şeffaftır ancak sıvı ve katı formdayken çok şık soluk mavi bir renk alır.", "Oksijen allotropu olan Ozon (O₃), stratosferde Dünya'yı UV ışınlarından korur."];
                 notes = ["Oksidasyon (yükseltgenme) kavramının isim babasıdır. Fluor (F) hariç tüm elementlerle reaksiyonlarında negatif yükseltgenme basamağı alır.", "Müfredatta gazlar ve redoks başlıklarında sıkça incelenir."];
                 sss = [
-                    { q: "Oksijen yanıcı mıdır?", a: "Hayır, oksijen yanıcı değil, yakıcı bir gazdır. Yanma reaksiyonlarının gerçekleşmesi için ortamda bulunması şarttır." },
+                    { q: "Oksijen yakıcı mıdır?", a: "Evet, oksijen yanıcı değil, yanma reaksiyonlarının gerçekleşmesi için ortamda bulunması gereken yakıcı bir gazdır." },
                     { q: "Ozon tabakası neden delinir?", a: "Kloroflorokarbon (CFC) gazları stratosfere ulaştığında klor radikalleri salarak O₃ moleküllerini hızla parçalar." }
                 ];
             }
@@ -556,20 +538,10 @@
                 config = "[Xe] 4f¹⁴ 5d¹⁰ 6s¹"; shells = "2 | 8 | 18 | 32 | 18 | 1"; density = "19.3 g/cm³"; electronegativity = "2.54"; melt = "1064.2 °C"; boil = "2855.8 °C"; discoverer = "Antik çağ";
                 historyText = "Altın, insanlığın işlediği ilk metallerden biridir; en erken buluntular yaklaşık MÖ 5000 yılına tarihlenmektedir. Sembolü Au, Latince \"aurum\" sözcüğünden gelir.";
                 isotopeText = "¹⁹⁷Au - Doğal bolluk: %100. Tek doğal izotop yapısındadır.";
-                usages = [
-                    "Elektronik bağlantı elemanları: Au altın bağlama teli (bond wire) og kontak kaplama.",
-                    "Altın nanopartiküller (AuNP): Gebelik testi LFIA bandı kırmızı çizgisi.",
-                    "Uzay yüzey kaplaması: James Webb Uzay Teleskobu'nun ayna yüzey kaplaması."
-                ];
+                usages = ["Elektronik bağlantı elemanları: Au altın bağlama teli (bond wire) og kontak kaplama.", "Altın nanopartiküller (AuNP): Gebelik testi LFIA bandı kırmızı çizgisi.", "Uzay yüzey kaplaması: James Webb Uzay Teleskobu'nun ayna yüzey kaplaması."];
                 bioText = "Elemental altın biyolojik açıdan inert ve genellikle toksik değildir. Altın nanopartiküller tıbbi tanı ve tedavilerde kullanılmaktadır.";
-                interesting = [
-                    "Altının sarı rengi relativistik kuantum etkisiyle açıklanır: Z=79'daki elektronlar ışık hızının %58'ine yakın bir hızla döner.",
-                    "James Webb Uzay Teleskobu'nun 18 berilliyum aynasında toplam Au miktarı 48,25 gramdır."
-                ];
-                notes = [
-                    "6. Periyot geçiş metali; elektron dizilimi anomalilidir.",
-                    "Monoisotopik: ¹⁹⁷Au %100; sarı renk mavi ışığı emer."
-                ];
+                interesting = ["Altının sarı rengi relativistik kuantum etkisiyle açıklanır: Z=79'daki elektronlar ışık hızının %58'ine yakın bir hızla döner.", "James Webb Uzay Teleskobu'nun 18 berilliyum aynasında toplam Au miktarı 48,25 gramdır."];
+                notes = ["6. Periyot geçiş metali; elektron dizilimi anomalilidir.", "Monoisotopik: ¹⁹⁷Au %100; sarı renk mavi ışığı emer."];
                 sss = [
                     { q: "Altın atom numarası kaçtır?", a: "Altın elementinin atom numarası 79'dur." },
                     { q: "Altın elektron dizilimi nedir?", a: "Altın elementinin elektron dizilimi [Xe] 4f¹⁴ 5d¹⁰ 6s¹ şeklindedir." }
