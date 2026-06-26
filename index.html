@@ -151,7 +151,7 @@
                         <div class="grid grid-cols-4 gap-1.5">
                             <button onclick="change3DModel('s_orbital')" class="bg-slate-800 hover:bg-slate-700 text-[10px] py-1.5 rounded">s orb.</button>
                             <button onclick="change3DModel('px_orbital')" class="bg-slate-800 hover:bg-slate-700 text-[10px] py-1.5 rounded">pₓ orb.</button>
-                            <button onclick="change3DModel('py_orbital')" class="bg-slate-800 hover:bg-slate-700 text-[10px] py-1.5 rounded">p_y orb.</button>
+                            <button onclick="change3DModel('py_orbital')" class="bg-slate-800 hover:bg-slate-700 text-[10px] py-1.5 rounded">p_y font-semibold">p_y orb.</button>
                             <button onclick="change3DModel('pz_orbital')" class="bg-slate-800 hover:bg-slate-700 text-[10px] py-1.5 rounded">p_z orb.</button>
                         </div>
                         <div class="grid grid-cols-5 gap-1">
@@ -173,81 +173,116 @@
         <section id="tab-guvenlik" class="tab-content space-y-4 hidden">
             <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-lg">
                 <h2 class="text-base font-bold mb-1 text-amber-400 flex items-center">
-                    <i class="fa-solid fa-triangle-exclamation mr-2"></i> Kimyasal Tehlike İşaretleri
+                    <i class="fa-solid fa-triangle-exclamation mr-2"></i> Kimyasal Tehlike İşaretleri (MEB Standart)
                 </h2>
-                <p class="text-[11px] text-slate-400 mb-4">MEB 9. Sınıf Sayfa 38-39'da bulunan piktogramlar. Kartlara dokunarak detayları inceleyebilirsiniz.</p>
+                <p class="text-[11px] text-slate-400 mb-4">MEB 9. Sınıf Kitabı Sayfa 38-39 formatındaki resmi piktogramlar (Kırmızı Çerçeve - Beyaz Zemin - Siyah Amblem).</p>
                 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                     
-                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex items-start space-x-3 active:bg-slate-950/90 transition-colors cursor-pointer">
-                        <div class="w-12 h-12 bg-amber-950/40 rounded-lg border border-amber-500/30 flex items-center justify-center shrink-0 text-amber-500 text-xl"><i class="fa-solid fa-fire"></i></div>
+                    <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center space-x-3 hover:bg-slate-950/90 transition-colors cursor-pointer">
+                        <div class="flex items-center justify-center shrink-0 w-16 h-16">
+                            <div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow-md">
+                                <div class="-rotate-45 text-slate-900 text-lg flex items-center justify-center"><i class="fa-solid fa-fire"></i></div>
+                            </div>
+                        </div>
                         <div class="min-w-0 flex-1">
-                            <h3 class="text-xs font-bold text-amber-400">Yanıcı Madde (Flammable)</h3>
-                            <p class="text-[10px] text-slate-300 mt-0.5 leading-relaxed">Isı, kıvılcım ve ateşten uzak tutulmalıdır. Kolay tutuşur.</p>
-                            <p class="text-[9px] text-slate-500 mt-1 font-semibold">Örnek: Alkol, Aseton, LPG</p>
+                            <h3 class="text-xs font-bold text-slate-200">Yanıcı Madde (Flammable)</h3>
+                            <p class="text-[10px] text-slate-400 leading-relaxed">Isı ve ateşten uzak tutulmalıdır. Kolay tutuşur.</p>
+                            <p class="text-[9px] text-amber-400 font-semibold mt-0.5">Örnek: Alkol, Aseton, LPG</p>
                         </div>
                     </div>
 
-                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex items-start space-x-3 active:bg-slate-950/90 transition-colors cursor-pointer">
-                        <div class="w-12 h-12 bg-orange-950/40 rounded-lg border border-orange-500/30 flex items-center justify-center shrink-0 text-orange-500 text-xl relative"><i class="fa-solid fa-circle text-[8px] absolute top-4"></i><i class="fa-solid fa-fire mt-[-4px]"></i></div>
+                    <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center space-x-3 hover:bg-slate-950/90 transition-colors cursor-pointer">
+                        <div class="flex items-center justify-center shrink-0 w-16 h-16">
+                            <div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow-md">
+                                <div class="-rotate-45 text-slate-900 text-base flex items-center justify-center relative w-6 h-6">
+                                    <i class="fa-regular fa-circle text-xs absolute bottom-0.5 font-bold"></i>
+                                    <i class="fa-solid fa-fire text-[10px] absolute top-0"></i>
+                                </div>
+                            </div>
+                        </div>
                         <div class="min-w-0 flex-1">
-                            <h3 class="text-xs font-bold text-orange-400">Yakıcı / Oksitleyici (Oxidizing)</h3>
-                            <p class="text-[10px] text-slate-300 mt-0.5 leading-relaxed">Yanabilen maddelerle temas ettirilmemeli, kağıt/ahşaptan uzak tutulmalı.</p>
-                            <p class="text-[9px] text-slate-500 mt-1 font-semibold">Örnek: Oksijen, Hidrojen Peroksit, Nitrik Asit</p>
+                            <h3 class="text-xs font-bold text-slate-200">Yakıcı / Oksitleyici (Oxidizing)</h3>
+                            <p class="text-[10px] text-slate-400 leading-relaxed">Oksijen deposudur, yanıcı maddelerle temas etmemelidir.</p>
+                            <p class="text-[9px] text-orange-400 font-semibold mt-0.5">Örnek: Oksijen Gazı, Nitrik Asit, H₂O₂</p>
                         </div>
                     </div>
 
-                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex items-start space-x-3 active:bg-slate-950/90 transition-colors cursor-pointer">
-                        <div class="w-12 h-12 bg-rose-950/40 rounded-lg border border-rose-500/30 flex items-center justify-center shrink-0 text-rose-500 text-xl"><i class="fa-solid fa-flask-vial"></i></div>
+                    <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center space-x-3 hover:bg-slate-950/90 transition-colors cursor-pointer">
+                        <div class="flex items-center justify-center shrink-0 w-16 h-16">
+                            <div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow-md">
+                                <div class="-rotate-45 text-slate-900 text-base flex items-center justify-center"><i class="fa-solid fa-flask-vial"></i></div>
+                            </div>
+                        </div>
                         <div class="min-w-0 flex-1">
-                            <h3 class="text-xs font-bold text-rose-400">Aşındırıcı / Korozif (Corrosive)</h3>
-                            <p class="text-[10px] text-slate-300 mt-0.5 leading-relaxed">Göz, cilt ve giysilerle temasından kaçınılmalı. Metal yüzeyleri aşındırır.</p>
-                            <p class="text-[9px] text-slate-500 mt-1 font-semibold">Örnek: Sülfürik Asit, Çamaşır Sodası, Kezzap</p>
+                            <h3 class="text-xs font-bold text-slate-200">Aşındırıcı / Korozif (Corrosive)</h3>
+                            <p class="text-[10px] text-slate-400 leading-relaxed">Cilt ve gözle temasından kaçınılmalıdır, metalleri aşındırır.</p>
+                            <p class="text-[9px] text-rose-400 font-semibold mt-0.5">Örnek: Sülfürik Asit, Tuz Ruhu, Çamaşır Suyu</p>
                         </div>
                     </div>
 
-                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex items-start space-x-3 active:bg-slate-950/90 transition-colors cursor-pointer">
-                        <div class="w-12 h-12 bg-yellow-950/40 rounded-lg border border-yellow-500/30 flex items-center justify-center shrink-0 text-yellow-500 text-xl"><i class="fa-solid fa-burst"></i></div>
+                    <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center space-x-3 hover:bg-slate-950/90 transition-colors cursor-pointer">
+                        <div class="flex items-center justify-center shrink-0 w-16 h-16">
+                            <div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow-md">
+                                <div class="-rotate-45 text-slate-900 text-xl flex items-center justify-center"><i class="fa-solid fa-burst"></i></div>
+                            </div>
+                        </div>
                         <div class="min-w-0 flex-1">
-                            <h3 class="text-xs font-bold text-yellow-400">Patlayıcı Madde (Explosive)</h3>
-                            <p class="text-[10px] text-slate-300 mt-0.5 leading-relaxed">Kıvılcım, darbe, sürtünme ve yüksek ısıdan mutlak surette korunmalıdır.</p>
-                            <p class="text-[9px] text-slate-500 mt-1 font-semibold">Örnek: TNT, Nitroglesirin, Dinamit</p>
+                            <h3 class="text-xs font-bold text-slate-200">Patlayıcı Madde (Explosive)</h3>
+                            <p class="text-[10px] text-slate-400 leading-relaxed">Kıvılcım, darbe ve sürtünmeden kesinlikle korunmalıdır.</p>
+                            <p class="text-[9px] text-yellow-400 font-semibold mt-0.5">Örnek: TNT, Dinamit, Barut</p>
                         </div>
                     </div>
 
-                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex items-start space-x-3 active:bg-slate-950/90 transition-colors cursor-pointer">
-                        <div class="w-12 h-12 bg-amber-950/30 rounded-lg border border-amber-400/20 flex items-center justify-center shrink-0 text-amber-400 text-xl"><i class="fa-solid fa-circle-exclamation"></i></div>
+                    <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center space-x-3 hover:bg-slate-950/90 transition-colors cursor-pointer">
+                        <div class="flex items-center justify-center shrink-0 w-16 h-16">
+                            <div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow-md">
+                                <div class="-rotate-45 text-slate-900 text-xl font-sans font-black flex items-center justify-center select-none leading-none">!</div>
+                            </div>
+                        </div>
                         <div class="min-w-0 flex-1">
-                            <h3 class="text-xs font-bold text-amber-300">Tahriş Edici Madde (Irritant)</h3>
-                            <p class="text-[10px] text-slate-300 mt-0.5 leading-relaxed">Ciltte, gözde kızarıklık ve alerji yapar. Buharı kesinlikle solunmamalıdır.</p>
-                            <p class="text-[9px] text-slate-500 mt-1 font-semibold">Örnek: Çamaşır Suyu, Deterjanlar, Tuz Ruhu</p>
+                            <h3 class="text-xs font-bold text-slate-200">Tahriş Edici Madde (Irritant)</h3>
+                            <p class="text-[10px] text-slate-400 leading-relaxed">Alerji ve kızarıklık yapar, buharı kesinlikle solunmamalıdır.</p>
+                            <p class="text-[9px] text-amber-300 font-semibold mt-0.5">Örnek: Çamaşır Suyu, Deterjan, Eter</p>
                         </div>
                     </div>
 
-                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex items-start space-x-3 active:bg-slate-950/90 transition-colors cursor-pointer">
-                        <div class="w-12 h-12 bg-red-950/40 rounded-lg border border-red-500/30 flex items-center justify-center shrink-0 text-red-500 text-xl"><i class="fa-solid fa-skull-crossbones"></i></div>
+                    <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center space-x-3 hover:bg-slate-950/90 transition-colors cursor-pointer">
+                        <div class="flex items-center justify-center shrink-0 w-16 h-16">
+                            <div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow-md">
+                                <div class="-rotate-45 text-slate-900 text-base flex items-center justify-center"><i class="fa-solid fa-skull-crossbones"></i></div>
+                            </div>
+                        </div>
                         <div class="min-w-0 flex-1">
-                            <h3 class="text-xs font-bold text-red-400">Zehirli / Toksik Madde (Toxic)</h3>
-                            <p class="text-[10px] text-slate-300 mt-0.5 leading-relaxed">Ağız, solunum veya cilt yoluyla zehirlenmelere ve ölüme yol açabilir.</p>
-                            <p class="text-[9px] text-slate-500 mt-1 font-semibold">Örnek: Klor Gazı, Cıva, Karbonmonoksit</p>
+                            <h3 class="text-xs font-bold text-slate-200">Zehirli / Toksik Madde (Toxic)</h3>
+                            <p class="text-[10px] text-slate-400 leading-relaxed">Solunum, ağız veya cilt yoluyla ölüme yol açabilir.</p>
+                            <p class="text-[9px] text-red-400 font-semibold mt-0.5">Örnek: Klor Gazı, Cıva, Siyanür</p>
                         </div>
                     </div>
 
-                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex items-start space-x-3 active:bg-slate-950/90 transition-colors cursor-pointer">
-                        <div class="w-12 h-12 bg-yellow-950/20 rounded-lg border border-yellow-400/20 flex items-center justify-center shrink-0 text-yellow-400 text-xl animate-pulse"><i class="fa-solid fa-radiation animate-spin-slow"></i></div>
+                    <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center space-x-3 hover:bg-slate-950/90 transition-colors cursor-pointer">
+                        <div class="flex items-center justify-center shrink-0 w-16 h-16">
+                            <div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow-md">
+                                <div class="-rotate-45 text-slate-900 text-base flex items-center justify-center animate-pulse"><i class="fa-solid fa-radiation animate-spin-slow"></i></div>
+                            </div>
+                        </div>
                         <div class="min-w-0 flex-1">
-                            <h3 class="text-xs font-bold text-yellow-300">Radyoaktif Madde (Radioactive)</h3>
-                            <p class="text-[10px] text-slate-300 mt-0.5 leading-relaxed">Canlı dokulara kalıcı hasar veren görünmez ışınlar yayar. Özel zırh şarttır.</p>
-                            <p class="text-[9px] text-slate-500 mt-1 font-semibold">Örnek: Uranyum, Radyum, Röntgen Işınları</p>
+                            <h3 class="text-xs font-bold text-slate-200">Radyoaktif Madde (Radioactive)</h3>
+                            <p class="text-[10px] text-slate-400 leading-relaxed">Canlı dokuya kalıcı hasar veren görünmez radyasyon yayar.</p>
+                            <p class="text-[9px] text-yellow-300 font-semibold mt-0.5">Örnek: Uranyum, Plütonyum, Röntgen Cihazları</p>
                         </div>
                     </div>
 
-                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-800 flex items-start space-x-3 active:bg-slate-950/90 transition-colors cursor-pointer">
-                        <div class="w-12 h-12 bg-emerald-950/40 rounded-lg border border-emerald-500/30 flex items-center justify-center shrink-0 text-emerald-400 text-xl"><i class="fa-solid fa-fish"></i></div>
+                    <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-800 flex items-center space-x-3 hover:bg-slate-950/90 transition-colors cursor-pointer">
+                        <div class="flex items-center justify-center shrink-0 w-16 h-16">
+                            <div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow-md">
+                                <div class="-rotate-45 text-slate-900 text-base flex items-center justify-center"><i class="fa-solid fa-fish"></i></div>
+                            </div>
+                        </div>
                         <div class="min-w-0 flex-1">
-                            <h3 class="text-xs font-bold text-emerald-400">Çevreye Zararlı / Ekotoksik</h3>
-                            <p class="text-[10px] text-slate-300 mt-0.5 leading-relaxed">Suya ve toprağa karışması canlılara kalıcı zarar verir. Lavaboya dökülmez.</p>
-                            <p class="text-[9px] text-slate-500 mt-1 font-semibold">Örnek: Ağır Metaller, Motor Yağları, Piller</p>
+                            <h3 class="text-xs font-bold text-slate-200">Çevreye Zararlı Madde (Ekotoksik)</h3>
+                            <p class="text-[10px] text-slate-400 leading-relaxed">Su ve toprağa karışması canlılara kalıcı hasardır. Lavaboya dökülmez.</p>
+                            <p class="text-[9px] text-emerald-400 font-semibold mt-0.5">Örnek: Piller, Plastikler, Ağır Metaller</p>
                         </div>
                     </div>
 
@@ -350,7 +385,7 @@
             { id: "t3", name: "03 Çözeltiler", desc: "Sıvı çözeltilerde derişim birimleri, çözünürlük ve koligatif özellikler.", checked: false, link: "" },
             { id: "t4", name: "04 Kimyasal Tep. Enerji", desc: "Tepkime entalpileri, Hess yasası, oluşum entalpileri ve bağ enerjileri.", checked: false, link: "" },
             { id: "t5", name: "05 Kimyasal Tep. Hız", desc: "Çarpışma teorisi, tepkime hızını etkileyen faktörler ve mekanizmalar.", checked: false, link: "" },
-            { id: "t6", name: "06 Kimyasal Tep. Denge", desc: "Maksimum düzensizlik, minimum energy dengesi ve Le Chatelier ilkesi.", checked: false, link: "" },
+            { id: "t6", name: "06 Kimyasal Tep. Denge", desc: "Maksimum düzensizlik, minimum enerji dengesi ve Le Chatelier ilkesi.", checked: false, link: "" },
             { id: "t7", name: "07 Asit Baz Dengesi", desc: "Otoiyonizasyon, pH/pOH, zayıf asit/baz dengeleri ve titrasyon.", checked: false, link: "" },
             { id: "t8", name: "08 Çözünürlük Dengesi", desc: "Çözünürlük çarpımı (Kçç) hesaplamaları ve ortak iyon etkisi.", checked: false, link: "" },
             { id: "t9", name: "09 Elektrokimya", desc: "Redoks tepkimeleri, aktiflik, galvanik/elektrolitik hücreler ve Faraday yasaları.", checked: false, link: "" }
@@ -521,17 +556,7 @@
             if (activeModelType === 'dynamic_simulation') rebuildDynamicSimulation();
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            renderAytTopics();
-            document.querySelectorAll('.text-save').forEach(input => {
-                const id = input.getAttribute('data-id'); const savedValue = localStorage.getItem(id);
-                if (savedValue !== null) { input.value = savedValue; }
-                input.addEventListener('input', () => { localStorage.setItem(id, input.value); });
-            });
-            renderVideoList(); init3D();
-        });
-
-        // --- THREE.JS GRAFİK VE LABORATUVAR MOTORU ---
+        // --- THREE.JS MOTORU ---
         let scene, camera, renderer, currentGroup; let isDragging = false; let previousMousePosition = { x: 0, y: 0 }; let simulationParticles = [];
 
         function init3D() {
@@ -590,40 +615,9 @@
         const pinkLiquidMat = new THREE.MeshPhongMaterial({ color: 0xdb2777, emissive: 0xbe185d, transparent: true, opacity: 0.85, shininess: 80 });
         const yellowLiquidMat = new THREE.MeshPhongMaterial({ color: 0xeab308, emissive: 0xca8a04, transparent: true, opacity: 0.75, shininess: 90 });
 
-        function createQuantumAxes() {
-            const axesGroup = new THREE.Group(); const axisGeo = new THREE.CylinderGeometry(0.012, 0.012, 6.0, 8); const axisMat = new THREE.MeshBasicMaterial({ color: 0x334155, transparent: true, opacity: 0.4 });
-            const xAxis = new THREE.Mesh(axisGeo, axisMat); xAxis.rotation.z = Math.PI / 2; const yAxis = new THREE.Mesh(axisGeo, axisMat); const zAxis = new THREE.Mesh(axisGeo, axisMat); zAxis.rotation.x = Math.PI / 2;
-            axesGroup.add(xAxis, yAxis, zAxis); return axesGroup;
-        }
-
-        function createQuantumLobe(isPositive) {
-            const lobeGroup = new THREE.Group(); const mainColor = isPositive ? 0x10b981 : 0xf43f5e;
-            const coreGeo = new THREE.SphereGeometry(0.62, 24, 24); coreGeo.scale(1.0, 2.0, 1.0); coreGeo.translate(0, 0.9, 0);
-            lobeGroup.add(new THREE.Mesh(coreGeo, new THREE.MeshPhongMaterial({ color: mainColor, emissive: mainColor, emissiveIntensity: 0.9, transparent: true, opacity: 0.75, shininess: 100, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide }))); return lobeGroup;
-        }
-        function createOrientedLobe(dirX, dirY, dirZ, isPositive) { const lobe = createQuantumLobe(isPositive); lobe.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), new THREE.Vector3(dirX, dirY, dirZ).normalize()); return lobe; }
-
-        function rebuildDynamicSimulation() {
-            if (!currentGroup || activeModelType !== 'dynamic_simulation') return;
-            simulationParticles.forEach(p => currentGroup.remove(p.mesh)); simulationParticles = []; const pGeo = new THREE.SphereGeometry(0.18, 16, 16);
-            for (let i = 0; i < simMaxParticles; i++) {
-                const color = i % 2 === 0 ? 0x10b981 : 0xf43f5e;
-                const mesh = new THREE.Mesh(pGeo, new THREE.MeshPhongMaterial({ color: color, emissive: color, emissiveIntensity: 0.8, transparent: true, opacity: 0.85, blending: THREE.AdditiveBlending }));
-                mesh.position.set((Math.random() - 0.5) * 4, (Math.random() - 0.5) * 4, (Math.random() - 0.5) * 4); currentGroup.add(mesh);
-                simulationParticles.push({ mesh: mesh, velocity: new THREE.Vector3((Math.random() - 0.5) * 0.1, (Math.random() - 0.5) * 0.1, (Math.random() - 0.5) * 0.1).normalize() });
-            }
-        }
-
         function change3DModel(type) {
             activeModelType = type; if (currentGroup) scene.remove(currentGroup); currentGroup = new THREE.Group();
-            const ctrlPanel = document.getElementById('simulation-controls'); const indicator = document.getElementById('sim-indicator');
             
-            if (type === 'dynamic_simulation') {
-                ctrlPanel.classList.remove('hidden'); indicator.classList.remove('hidden');
-                currentGroup.add(new THREE.Mesh(new THREE.BoxGeometry(4.8, 4.8, 4.8), new THREE.MeshBasicMaterial({ color: 0x334155, wireframe: true, transparent: true, opacity: 0.3 })));
-                scene.add(currentGroup); rebuildDynamicSimulation(); return;
-            } else { ctrlPanel.classList.add('hidden'); indicator.classList.add('hidden'); }
-
             if (type === 'beherglas') {
                 const glass = new THREE.Mesh(new THREE.CylinderGeometry(1.4, 1.4, 3.2, 32, 1, true), glassMat);
                 const bottom = new THREE.Mesh(new THREE.CylinderGeometry(1.4, 1.4, 0.05, 32), glassMat); bottom.position.y = -1.6;
@@ -685,6 +679,7 @@
                 const liquid = new THREE.Mesh(new THREE.SphereGeometry(0.33, 16, 16), blueLiquidMat); liquid.scale.set(1, 2.0, 1); liquid.position.y = -0.2;
                 currentGroup.add(topStem, btmStem, centerBulb, liquid);
             }
+            // Atomlar ve Orbitaller
             else if (type === 'dalton') { currentGroup.add(new THREE.Mesh(new THREE.SphereGeometry(2, 32, 32), new THREE.MeshPhongMaterial({ color: 0x475569, emissive: 0x1e293b, shininess: 90, specular: 0x38bdf8 }))); }
             else if (type === 'thomson') {
                 currentGroup.add(new THREE.Mesh(new THREE.SphereGeometry(2.0, 32, 32), new THREE.MeshPhongMaterial({ color: 0xf43f5e, transparent: true, opacity: 0.35, blending: THREE.AdditiveBlending }))); const eMat = new THREE.MeshPhongMaterial({ color: 0x38bdf8, emissive: 0x0284c7, emissiveIntensity: 0.8 });
@@ -701,23 +696,9 @@
                     const r = new THREE.Mesh(new THREE.RingGeometry(radii[i],radii[i]+0.02,64), new THREE.MeshBasicMaterial({ color: colors[i], side: THREE.DoubleSide, transparent: true, opacity: 0.6 })); r.rotation.x = Math.PI/2.3; currentGroup.add(r);
                     const e = new THREE.Mesh(new THREE.SphereGeometry(0.14,16,16), new THREE.MeshPhongMaterial({ color: 0xffffff, emissive: colors[i] })); e.position.x = radii[i]; r.add(e);
                 }
-            } else if (type === 's_orbital') { currentGroup.add(createQuantumAxes(), new THREE.Mesh(new THREE.SphereGeometry(2.1,32,16), new THREE.MeshPhongMaterial({ color: 0x3b82f6, transparent: true, opacity: 0.3, wireframe: true })), new THREE.Mesh(new THREE.SphereGeometry(1.2,32,32), new THREE.MeshPhongMaterial({ color: 0x1d4ed8, emissive: 0x1e40af, transparent: true, opacity: 0.75 }))); }
-            else if (type === 'px_orbital') { currentGroup.add(createQuantumAxes(), createOrientedLobe(1,0,0,true), createOrientedLobe(-1,0,0,false)); }
-            else if (type === 'py_orbital') { currentGroup.add(createQuantumAxes(), createOrientedLobe(0,1,0,true), createOrientedLobe(0,-1,0,false)); }
-            else if (type === 'pz_orbital') { currentGroup.add(createQuantumAxes(), createOrientedLobe(0,0,1,true), createOrientedLobe(0,0,-1,false)); }
-            else if (type === 'd_xy') { currentGroup.add(createQuantumAxes(), createOrientedLobe(1,1,0,true), createOrientedLobe(-1,1,0,false), createOrientedLobe(-1,-1,0,true), createOrientedLobe(1,-1,0,false)); }
-            else if (type === 'd_yz') { currentGroup.add(createQuantumAxes(), createOrientedLobe(0,1,1,true), createOrientedLobe(0,-1,1,false), createOrientedLobe(0,-1,-1,true), createOrientedLobe(0,1,-1,false)); }
-            else if (type === 'd_xz') { currentGroup.add(createQuantumAxes(), createOrientedLobe(1,0,1,true), createOrientedLobe(-1,0,1,false), createOrientedLobe(-1,0,-1,true), createOrientedLobe(1,0,-1,false)); }
-            else if (type === 'd_x2y2') { currentGroup.add(createQuantumAxes(), createOrientedLobe(1,0,0,true), createOrientedLobe(0,1,0,false), createOrientedLobe(-1,0,0,true), createOrientedLobe(0,-1,0,false)); }
-            else if (type === 'd_z2') {
-                currentGroup.add(createQuantumAxes(), createOrientedLobe(0,1,0,true), createOrientedLobe(0,-1,0,true)); const tg = new THREE.Group();
-                tg.add(new THREE.Mesh(new THREE.TorusGeometry(1.05,0.32,24,64), new THREE.MeshPhongMaterial({ color: 0xf43f5e, emissive: 0xe11d48, transparent: true, opacity: 0.8, shininess: 90 })), new THREE.Mesh(new THREE.TorusGeometry(1.05,0.35,8,32), new THREE.MeshPhongMaterial({ color: 0xf43f5e, transparent: true, opacity: 0.2, wireframe: true })));
-                tg.rotation.x = Math.PI/2; currentGroup.add(tg);
             }
             scene.add(currentGroup);
         }
-
-        if ('serviceWorker' in navigator) { navigator.serviceWorker.getRegistrations().then(sws => { sws.forEach(s => s.unregister()); }); }
     </script>
 </body>
 </html>
