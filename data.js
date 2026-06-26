@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Medeni Gökalp Kimya Paneli</title>
     
-    <link class="icon" type="image/png" href="logo .png">
-    <link class="apple-touch-icon" href="logo .png">
+    <link rel="icon" type="image/png" href="logo .png">
+    <link rel="apple-touch-icon" href="logo .png">
     
     <meta name="theme-color" content="#060813">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -67,7 +67,7 @@
                         <input type="text" id="new-topic-name" placeholder="Konu/Ünite Adı (Örn: 02 Gazlar)" class="bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white focus:outline-none">
                         <input type="text" id="new-topic-desc" placeholder="Kısa Açıklama Veya İçerik Notu (Opsiyonel)" class="bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white focus:outline-none">
                     </div>
-                    <div class="w-full bg-blue-600 text-xs font-bold py-2 rounded shadow-md cursor-pointer text-center" onclick="addNewTopic()"><i class="fa-solid fa-plus mr-1.5"></i> Başlık Ekle</div>
+                    <button onclick="addNewTopic()" class="w-full bg-blue-600 text-xs font-bold py-2 rounded shadow-md"><i class="fa-solid fa-plus mr-1.5"></i> Başlık Ekle</button>
                 </div>
                 <div id="ayt-topics-container" class="space-y-2"></div>
             </div>
@@ -169,9 +169,9 @@
                 <div id="ferrum-history-block" class="p-4 bg-[#0a0d16] border border-slate-850 rounded-2xl"><div class="text-[11px] text-blue-400 font-bold uppercase mb-2"><i class="fa-regular fa-clock"></i> Keşif Tarihi</div><p class="text-xs text-slate-300 leading-relaxed" id="m-history-text"></p></div>
                 <div id="ferrum-isotope-block" class="p-4 bg-[#0a0d16] border border-slate-850 rounded-2xl"><div class="text-[11px] text-purple-400 font-bold uppercase mb-2"><i class="fa-solid fa-circle-nodes"></i> İzotoplar</div><p class="text-xs text-slate-300 leading-relaxed" id="m-isotope-text"></p></div>
                 <div id="ferrum-usages-block" class="p-4 bg-[#0a0d16] border border-slate-850 rounded-2xl"><div class="text-[11px] text-cyan-400 font-bold uppercase mb-2">Kullanım Alanları</div><ul class="space-y-1.5 list-none" id="m-usages-list"></ul></div>
-                <div id="ferrum-bio-block" class="p-4 bg-[#06100d] border border-emerald-900/60 rounded-2xl"><div class="text-[11px] text-emerald-400 font-bold uppercase flex items-center gap-1.5 mb-2"><i class="fa-solid fa-heart-pulse"></i> Biyolojik Rol</div><p class="text-xs text-slate-300 leading-relaxed" id="m-bio-text"></p></div>
-                <div id="ferrum-interesting-block" class="p-4 bg-[#191307] border border-amber-900/60 rounded-2xl"><div class="text-[11px] text-[#f97316] font-bold uppercase flex items-center gap-1.5 mb-2"><i class="fa-regular fa-star"></i> İlginç Bilgiler</div><ul class="space-y-2 list-disc pl-4 text-xs text-slate-300" id="m-interesting-list"></ul></div>
-                <div id="ferrum-notes-block" class="p-4 bg-[#0a1124] border border-blue-900/60 rounded-2xl"><div class="text-[11px] text-blue-400 font-bold uppercase flex items-center gap-1.5 mb-2"><i class="fa-solid fa-bolt"></i> Çalışma Notları</div><ul class="space-y-1.5 text-xs text-slate-300" id="m-notes-list"></ul></div>
+                <div id="ferrum-bio-block" class="p-4 bg-[#06100d] border border-emerald-900/60 rounded-2xl"><div class="text-[11px] text-emerald-400 font-bold uppercase mb-2"><i class="fa-solid fa-heart-pulse"></i> Biyolojik Rol</div><p class="text-xs text-slate-300 leading-relaxed" id="m-bio-text"></p></div>
+                <div id="ferrum-interesting-block" class="p-4 bg-[#191307] border border-amber-900/60 rounded-2xl"><div class="text-[11px] text-[#f97316] font-bold uppercase mb-2"><i class="fa-regular fa-star"></i> İlginç Bilgiler</div><ul class="space-y-2 list-disc pl-4 text-xs text-slate-300" id="m-interesting-list"></ul></div>
+                <div id="ferrum-notes-block" class="p-4 bg-[#0a1124] border border-blue-900/60 rounded-2xl"><div class="text-[11px] text-blue-400 font-bold uppercase mb-2"><i class="fa-solid fa-bolt"></i> Çalışma Notları</div><ul class="space-y-1.5 text-xs text-slate-300" id="m-notes-list"></ul></div>
                 <div class="space-y-2"><div class="text-[11px] text-slate-400 font-bold uppercase pl-1" id="sss-heading">SSS</div><div class="space-y-2" id="m-sss-container"></div></div>
             </div>
             <div class="p-3 bg-[#0a0d16] border-t border-slate-850 flex items-center justify-between gap-2 shrink-0"><button id="modal-btn-prev" onclick="navigateElement(-1)" class="flex-1 bg-[#131a2e] border border-slate-800 text-xs py-2 rounded-xl text-left pl-3 text-slate-300 truncate"></button><button onclick="closeModal()" class="bg-[#1c120c] border border-[#f97316]/30 text-[#f97316] text-xs font-bold px-4 py-2 rounded-xl"><i class="fa-solid fa-table-cells mr-2"></i>Periyodik Tablo</button><button id="modal-btn-next" onclick="navigateElement(1)" class="flex-1 bg-[#131a2e] border border-slate-800 text-xs py-2 rounded-xl text-right pr-3 text-slate-300 truncate"></button></div>
@@ -188,7 +188,6 @@
         <button onclick="switchTab('youtube')" id="btn-youtube" class="flex-1 flex flex-col items-center justify-center py-1 rounded-lg text-slate-400 min-w-[55px]"><i class="fa-brands fa-youtube text-xs mb-0.5"></i><span class="text-[8px]">Senaryo</span></button>
     </nav>
 
-    <!-- CORE ENGINE MOTOR JAVASCRIPT -->
     <script>
         let activeTabId = 'dersler'; let isDragging = false; let currentModalElementNum = 79; let activeCategoryFilter = null;
         const names = ["Hidrojen","Helyum","Lityum","Berilyum","Bor","Karbon","Azot","Oksijen","Flor","Neon","Sodyum","Magnezyum","Alüminyum","Silisyum","Fosfor","Kükürt","Klor","Argon","Potasyum","Kalsiyum","Skandiyum","Titanyum","Vanadyum","Krom","Manganez","Demir","Kobalt","Nikel","Bakır","Çinko","Galyum","Germanyum","Arsenik","Selenyum","Brom","Kripton","Rubidyum","Stronsiyum","İtriyum","Zirkonyum","Niyobyum","Molibden","Teknesyum","Rutenyum","Rodyum","Paladyum","Gümüş","Kadmiyum","İndiyum","Kalay","Antimon","Tellür","İyot","Ksenon","Sezyum","Baryum","Lantan","Seryum","Praseodim","Neodimyum","Prometyum","Samaryum","Europiyum","Gadolinyum","Terbiyum","Disprozyum","Holmiyum","Erbiyum","Tulyum","İterbiyum","Lutesyum","Hafniyum","Tantal","Volfram","Renyum","Osmiyum","İridyum","Platin","Altın","Cıva","Talyum","Kurşun","Bizmuth","Polonyum","Astat","Radon","Fransiyum","Radyum","Aktinyum","Toryum","Protaktinyum","Uranyum","Neptünyum","Plutonyum","Amerikyum","Küriyum","Berkelyum","Kaliforniyum","Aynştaynyum","Fermiyum","Mendelevyum","Nobelyum","Lavrensiyum","Rutherfordiyum","Dubniyum","Seaborgeyum","Bohriyum","Hassiyum","Maytneriyum","Darmstadtiyum","Röntgenyum","Kopernikyum","Nihonyum","Flerovyum","Moskovyum","Livermoryum","Tennessin","Oganesson"];
@@ -212,6 +211,17 @@
             79: { p:6, g:11, state:"Katı", desc: "Tam soy metal. Korozyona aşırı dayanıklıdır. Asitlerden etkilenmez.", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s¹", shells: "2|8|18|32|18|1", density: "19.3 g/cm³", electronegativity: "2.54", melt: "1064.2 °C", discoverer: "Antik çağ", notes: "Kral suyu hariç asitlerden etkilenmez. Elektron dizilimi anomalilidir.", sss: [{q:"Kral suyu formülü?", a:"3 hacim HCl ile 1 hacim HNO3 karışımı güçlü asit kokteylidir."}] },
             80: { p:6, g:12, state:"Sıvı", desc: "Oda sıcaklığında sıvı kalan tek metalik geçiş elementidir.", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s²", shells: "2|8|18|32|18|2", density: "13.53 g/cm³", electronegativity: "2.00", melt: "-38.8 °C", discoverer: "Antik çağ", notes: "Ağır metal zehirlenmesi ve Minamata nörolojik sendromu yaratır, toksiktir.", sss: [{q:"Yoğunluğu fazla mıdır?", a:"Evet, demir somunlar cıva sıvısı üstünde batmadan batmadan yüzer."}] }
         };
+
+        function getGridCoords(num) {
+            if (num === 1) return { row: 2, col: 2 }; if (num === 2) return { row: 2, col: 19 };
+            if (num >= 3 && num <= 4) return { row: 3, col: num - 1 }; if (num >= 5 && num <= 10) return { row: 3, col: num + 9 };
+            if (num >= 11 && num <= 12) return { row: 4, col: num - 9 }; if (num >= 13 && num <= 18) return { row: 4, col: num + 1 };
+            if (num >= 19 && num <= 36) return { row: 5, col: num - 17 }; if (num >= 37 && num <= 54) return { row: 6, col: num - 35 };
+            if (num === 55) return { row: 7, col: 2 }; if (num === 56) return { row: 7, col: 3 };
+            if (num >= 57 && num <= 71) return { row: 10, col: num - 57 + 4 }; if (num >= 72 && num <= 86) return { row: 7, col: num - 72 + 5 };
+            if (num === 87) return { row: 8, col: 2 }; if (num === 88) return { row: 8, col: 3 };
+            if (num >= 89 && num <= 103) return { row: 11, col: num - 89 + 4 }; return { row: 8, col: num - 104 + 5 };
+        }
 
         function switchTab(tabId) {
             activeTabId = tabId; document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
@@ -259,7 +269,7 @@
 
             const searchVal = document.getElementById('element-search') ? document.getElementById('element-search').value.toLowerCase() : "";
 
-            list.forEach(el => {
+            globalElements.forEach(el => {
                 const coords = getGridCoords(el.n); let colorStyle = getCatStyle(el.cat);
                 let isCatMatch = activeCategoryFilter === "Lantanit/Aktinit" ? ["Lantanit", "Aktinit"].includes(el.cat) : el.cat === activeCategoryFilter;
                 let matchesCategory = !activeCategoryFilter || isCatMatch;
@@ -287,7 +297,7 @@
             
             document.getElementById('m-tags').innerHTML = `<span class="text-[10px] bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-full text-white font-medium">${el.cat}</span><span class="text-[10px] bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-full text-slate-400">Periyot ${targetData.period || Math.ceil(num/18)}</span><span class="text-[10px] bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-full text-slate-400">Grup ${targetData.group || ((num%18===0)?18:num%18)}</span>`;
             document.getElementById('m-grid-props').innerHTML = `<div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Konfigürasyon</div><div class="text-xs font-bold text-white">${targetData.config}</div></div><div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Kabuklar</div><div class="text-xs font-bold text-white">${targetData.shells}</div></div><div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Yoğunluk</div><div class="text-xs font-bold text-white">${targetData.density}</div></div><div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Elektronegatiflik</div><div class="text-xs font-bold text-white">${targetData.electronegativity}</div></div><div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Erime</div><div class="text-xs font-bold text-white">${targetData.melt}</div></div><div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Keşfeden</div><div class="text-xs font-bold text-slate-300">${targetData.discoverer}</div></div>`;
-            document.getElementById('m-notes-text').innerText = targetData.notes;
+            document.getElementById('m-notes-list').innerHTML = targetData.notes ? `<li class="text-xs text-slate-300 leading-relaxed">• ${targetData.notes}</li>` : '<li>Müfredat notu girilmedi.</li>';
             document.getElementById('m-sss-container').innerHTML = targetData.sss.map(x => `<div class="bg-[#0a0d16] p-2 rounded-xl border border-slate-850"><div class="text-xs font-bold text-white">${x.q}</div><div class="text-xs text-slate-400 mt-0.5">${x.a}</div></div>`).join('');
             
             const prevEl = globalElements.find(x => x.n === num - 1); const nextEl = globalElements.find(x => x.n === num + 1);
