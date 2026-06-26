@@ -19,14 +19,14 @@
     <style>
         body { -webkit-tap-highlight-color: transparent; user-select: none; overflow-x: hidden; background-color: #060813; padding-bottom: 95px; }
         .active-tab { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; }
-        #canvas-3d { width: 100%; height: 360px; background-color: #05070f; border-radius: 0.75rem; }
+        #canvas-3d, #canvas-orbital-3d { width: 100%; height: 360px; background-color: #05070f; border-radius: 0.75rem; border: 1px solid #1e293b; }
         .animate-spin-slow { animation: spin 8s linear infinite; }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         ::-webkit-scrollbar { width: 4px; height: 5px; }
         ::-webkit-scrollbar-track { background: #060813; }
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 9px; }
 
-        /* Kategori Renk Matrisleri */
+        /* Kategori Renk Tanımlamaları */
         .cat-ametal { border-color: #10b981 !important; color: #10b981; background-color: rgba(16, 185, 129, 0.03); }
         .cat-soygaz { border-color: #ec4899 !important; color: #ec4899; background-color: rgba(236, 72, 153, 0.03); }
         .cat-alkali { border-color: #ef4444 !important; color: #ef4444; background-color: rgba(239, 68, 68, 0.03); }
@@ -37,7 +37,7 @@
         .cat-toprak-metali { border-color: #06b6d4 !important; color: #06b6d4; background-color: rgba(6, 182, 212, 0.03); }
         .cat-lantanit-aktinit { border-color: #a855f7 !important; color: #a855f7; background-color: rgba(168, 85, 247, 0.03); }
         
-        /* Güvenli Navigasyon Bar Alanı */
+        /* Mobil Tarayıcı Taban Katman Hizalaması */
         .safari-safe-nav {
             position: fixed !important;
             bottom: 12px !important;
@@ -57,21 +57,20 @@
         <div class="flex items-center space-x-3">
             <img src="logo .png" alt="Logo" class="h-8 w-auto object-contain select-none rounded">
             <h1 class="text-md font-bold tracking-wide bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
-                Medeni Gökalp Kimya Paneli <span class="text-xs font-semibold text-slate-400">v2.7</span>
+                Medeni Gökalp Kimya Paneli <span class="text-xs font-semibold text-slate-400">v2.7 Master</span>
             </h1>
         </div>
         <div class="text-[11px] text-slate-400 bg-slate-950 px-2.5 py-1 rounded-full border border-slate-800 shrink-0">
-            <i class="fa-solid fa-circle-check text-emerald-500 mr-1"></i> Sistem Senkronize
+            <i class="fa-solid fa-cube text-blue-400 mr-1"></i> Tüm Sistemler Entegre
         </div>
     </header>
 
     <main class="flex-1 p-3 max-w-7xl w-full mx-auto pb-24 box-border overflow-x-hidden">
         
-        <!-- Tab 1: Dersler -->
         <section id="tab-dersler" class="tab-content space-y-4">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
                 <h2 class="text-base font-bold mb-1 text-blue-400 flex items-center"><i class="fa-solid fa-graduation-cap mr-2"></i> Müfredat & Ders Yönetimi</h2>
-                <p class="text-[11px] text-slate-400 mb-3">Konuların üzerine tıklayarak detayları açabilir, Goodnotes isimlerini og linklerini düzenleyebilirsiniz.</p>
+                <p class="text-[11px] text-slate-400 mb-3">Konuların üzerine tıklayarak detayları açabilir, Goodnotes isimlerini ve linklerini düzenleyebilirsiniz.</p>
                 <div class="p-3 bg-slate-950 rounded-lg border border-slate-900 space-y-2 mb-4">
                     <div class="text-xs font-bold text-slate-400 tracking-wider uppercase flex justify-between items-center">
                         <span>Yeni Konu / Başlık Ekle</span>
@@ -87,14 +86,13 @@
             </div>
         </section>
 
-        <!-- Tab 2: 3D Stüdyo -->
         <section id="tab-3d" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
-                <h2 class="text-base font-bold text-emerald-400 flex items-center mb-2"><i class="fa-solid fa-flask mr-2"></i> Interaktif 3D Stüdyo</h2>
+                <h2 class="text-base font-bold text-emerald-400 flex items-center mb-2"><i class="fa-solid fa-flask mr-2"></i> İnteraktif 3D Laboratuvar</h2>
                 <div id="canvas-3d"></div>
                 <div class="space-y-3 mt-3">
                     <div class="space-y-1">
-                        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Cam Laboratuvar Malzemeleri</div>
+                        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Cam Malzemeler</div>
                         <div class="grid grid-cols-3 gap-1.5">
                             <button onclick="change3DModel('beherglas')" class="bg-teal-950/60 border border-teal-800 text-[10px] py-1.5 rounded font-semibold text-white">Beherglas</button>
                             <button onclick="change3DModel('erlenmayer')" class="bg-teal-950/60 border border-teal-800 text-[10px] py-1.5 rounded font-semibold text-white">Erlenmayer</button>
@@ -112,7 +110,7 @@
                         </div>
                     </div>
                     <div class="space-y-1">
-                        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Kuantum Atom Modelleri</div>
+                        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Tarihsel Atom Teorileri</div>
                         <div class="grid grid-cols-4 gap-1.5">
                             <button onclick="change3DModel('dalton')" class="bg-slate-800 border border-slate-700 text-[10px] py-1.5 rounded text-white">Dalton</button>
                             <button onclick="change3DModel('thomson')" class="bg-slate-800 border border-slate-700 text-[10px] py-1.5 rounded text-white">Thomson</button>
@@ -124,7 +122,31 @@
             </div>
         </section>
 
-        <!-- Tab 3: Elementler -->
+        <section id="tab-orbitaller" class="tab-content space-y-4 hidden">
+            <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
+                <h2 class="text-base font-bold text-purple-400 flex items-center mb-2"><i class="fa-solid fa-circle-nodes mr-2"></i> Kuantum Orbital Simülatörü</h2>
+                <div id="canvas-orbital-3d"></div>
+                <div class="grid grid-cols-4 gap-1.5 mt-3">
+                    <button onclick="changeOrbitalModel('s')" class="bg-blue-950/60 border border-blue-900 text-xs py-2 rounded font-black text-blue-400 active:scale-95 transition-all">s Orbitali</button>
+                    <button onclick="changeOrbitalModel('p')" class="bg-emerald-950/60 border border-emerald-900 text-xs py-2 rounded font-black text-emerald-400 active:scale-95 transition-all">p Orbitali</button>
+                    <button onclick="changeOrbitalModel('d')" class="bg-amber-950/60 border border-amber-900 text-xs py-2 rounded font-black text-amber-400 active:scale-95 transition-all">d Orbitali</button>
+                    <button onclick="changeOrbitalModel('f')" class="bg-purple-950/60 border border-purple-900 text-xs py-2 rounded font-black text-purple-400 active:scale-95 transition-all">f Orbitali</button>
+                </div>
+                <div class="mt-4 p-4 bg-slate-950/80 rounded-xl border border-slate-850 space-y-3">
+                    <div class="flex justify-between items-center border-b border-slate-850 pb-2">
+                        <h3 id="orb-title" class="text-sm font-black text-white">s Orbitali Kuantum Analizi</h3>
+                        <span id="orb-badge" class="text-[10px] bg-blue-900/40 text-blue-400 border border-blue-800/60 px-2.5 py-0.5 rounded-full font-bold">l = 0</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 text-[11px]">
+                        <div class="p-2 bg-[#0a0d16] rounded-lg border border-slate-900"><span class="text-slate-500 block">Manyetik Kuantum (m_l)</span><span id="orb-ml" class="font-bold text-white mt-0.5 block">0</span></div>
+                        <div class="p-2 bg-[#0a0d16] rounded-lg border border-slate-900"><span class="text-slate-500 block">Maksimum Elektron</span><span id="orb-max-e" class="font-bold text-white mt-0.5 block">2 Elektron</span></div>
+                    </div>
+                    <p id="orb-desc" class="text-xs text-slate-300 leading-relaxed pt-1">Çekirdek etrafında tamamen küresel bir simetriye sahiptir. Baş kuantum sayısı arttıkça elektron bulutunun hacmi büyür.</p>
+                    <div class="p-3 bg-blue-950/20 border border-blue-900/40 rounded-xl text-[11px] text-blue-300 leading-relaxed"><i class="fa-solid fa-bolt mr-1.5"></i><strong>AYT Bilgisi:</strong> <span id="orb-ayt">Her enerji düzeyinde mutlaka bir tane s orbitali bulunur. Küresel simetri karakterine etki eder.</span></div>
+                </div>
+            </div>
+        </section>
+
         <section id="tab-elementler" class="tab-content space-y-4 hidden">
             <div class="bg-[#0a0d16] p-4 rounded-xl border border-slate-800 shadow-lg space-y-4">
                 <div class="flex items-center justify-between gap-2">
@@ -143,70 +165,42 @@
             </div>
         </section>
 
-        <!-- Tab 4: Laboratuvar Güvenliği (PREMIUM RESMİ MEB TASARIMINA GERİ DÖNDÜ) -->
         <section id="tab-guvenlik" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
                 <h2 class="text-base font-bold mb-1 text-amber-400 flex items-center"><i class="fa-solid fa-triangle-exclamation mr-2"></i> Kimyasal Tehlike İşaretleri</h2>
                 <p class="text-[11px] text-slate-400 mb-4">MEB 9. Sınıf Kimya müfredatındaki resmi piktogram sembolleri.</p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="piktogram-container">
-                    
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-4">
                         <div class="shrink-0 w-12 h-12 flex items-center justify-center bg-white border-2 border-red-600 rotate-45 shadow"><div class="-rotate-45 text-slate-900 text-base"><i class="fa-solid fa-fire text-red-600"></i></div></div>
                         <div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Yanıcı Madde (F)</h3><p class="text-[10px] text-slate-400 leading-tight mt-0.5">Isı ve ateşten uzak tutulur. Örnek: Alkol, Aseton.</p></div>
                     </div>
-                    
                     <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-4">
                         <div class="shrink-0 w-12 h-12 flex items-center justify-center bg-white border-2 border-red-600 rotate-45 shadow"><div class="-rotate-45 text-slate-900 text-sm font-black text-red-600">O</div></div>
                         <div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Yakıcı / Oksitleyici Madde</h3><p class="text-[10px] text-slate-400 leading-tight mt-0.5">Yanıcı maddelerle temas ettirilmez. Örnek: Oksijen.</p></div>
                     </div>
-
                     <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-4">
                         <div class="shrink-0 w-12 h-12 flex items-center justify-center bg-white border-2 border-red-600 rotate-45 shadow"><div class="-rotate-45 text-slate-900 text-base"><i class="fa-solid fa-skull-crossbones text-red-600"></i></div></div>
-                        <div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Zehirli / Toksik Madde (T)</h3><p class="text-[10px] text-slate-400 leading-tight mt-0.5">Ağız, cilt ve solunum yoluyla zehirler. Örnek: Siyanür.</p></div>
+                        <div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Zehirli / Toksik Madde (T)</h3><p class="text-[10px] text-slate-400 leading-tight mt-0.5">Vücutla temas etmesi ölümcüldür. Örnek: Siyanür.</p></div>
                     </div>
-
                     <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-4">
                         <div class="shrink-0 w-12 h-12 flex items-center justify-center bg-white border-2 border-red-600 rotate-45 shadow"><div class="-rotate-45 text-slate-900 text-base"><i class="fa-solid fa-flask-vial text-red-600"></i></div></div>
                         <div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Aşındırıcı / Korozif Madde</h3><p class="text-[10px] text-slate-400 leading-tight mt-0.5">Canlı dokuyu yakar, metalleri aşındırır. Örnek: Asitler.</p></div>
                     </div>
-
-                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-4">
-                        <div class="shrink-0 w-12 h-12 flex items-center justify-center bg-white border-2 border-red-600 rotate-45 shadow"><div class="-rotate-45 text-slate-900 text-base"><i class="fa-solid fa-burst text-red-600"></i></div></div>
-                        <div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Patlayıcı Madde (E)</h3><p class="text-[10px] text-slate-400 leading-tight mt-0.5">Kıvılcım ve darbeden korunmalıdır. Örnek: TNT.</p></div>
-                    </div>
-
-                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-4">
-                        <div class="shrink-0 w-12 h-12 flex items-center justify-center bg-white border-2 border-red-600 rotate-45 shadow"><div class="-rotate-45 text-slate-900 text-base"><i class="fa-solid fa-biohazard text-red-600"></i></div></div>
-                        <div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Tahriş Edici Madde (Xi)</h3><p class="text-[10px] text-slate-400 leading-tight mt-0.5">Göz ve cilt temasından kaçınılmalıdır. Örnek: Çam.Suyu.</p></div>
-                    </div>
-
-                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-4">
-                        <div class="shrink-0 w-12 h-12 flex items-center justify-center bg-white border-2 border-red-600 rotate-45 shadow"><div class="-rotate-45 text-slate-900 text-base animate-spin-slow"><i class="fa-solid fa-radiation text-red-600"></i></div></div>
-                        <div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Radyoaktif Madde</h3><p class="text-[10px] text-slate-400 leading-tight mt-0.5">Görünmez zararlı ışınlar yayar. Örnek: Uranyum.</p></div>
-                    </div>
-
-                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-4">
-                        <div class="shrink-0 w-12 h-12 flex items-center justify-center bg-white border-2 border-red-600 rotate-45 shadow"><div class="-rotate-45 text-slate-900 text-base"><i class="fa-solid fa-tree text-red-600"></i></div></div>
-                        <div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Çevreye Zararlı (N)</h3><p class="text-[10px] text-slate-400 leading-tight mt-0.5">Doğaya ve sulara dökülmemelidir. Örnek: Ağır Metaller.</p></div>
-                    </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- Tab 5 & Tab 6 -->
         <section id="tab-galeri" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 text-center text-xs">
-                <div class="bg-black rounded-lg overflow-hidden hidden mb-2" id="video-player-container"><video id="main-panel-video" controls class="w-full max-h-[300px]"></video></div>
+                <div class="bg-black rounded-lg overflow-hidden hidden mb-2" id="video-player-container"><video id="main-panel-video" controls class="w-full h-auto max-h-[300px]"></video></div>
                 <div id="dynamic-video-container" class="space-y-1"></div>
             </div>
         </section>
         <section id="tab-youtube" class="tab-content space-y-4 hidden">
-            <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800"><textarea id="yt-body" class="w-full bg-slate-900 text-xs p-2 rounded h-32 text-save" data-id="yt-body" placeholder="Senaryolar..."></textarea></div>
+            <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800"><textarea id="yt-body" class="w-full bg-slate-900 text-xs p-2 rounded h-32 text-save" data-id="yt-body" placeholder="Senaryo Akışı..."></textarea></div>
         </section>
     </main>
 
-    <!-- FERRUMONE MASTER LAYER MODAL (Z-INDEX 10020 YAPILDI ASLA KİLİTLENMEZ) -->
     <div id="element-modal" onclick="if(event.target===this) closeModal()" class="fixed inset-0 bg-slate-950/95 backdrop-blur-sm modal-master-layer hidden flex items-center justify-center p-0 sm:p-4">
         <div class="bg-[#05070f] w-full h-full sm:max-w-2xl sm:h-[90vh] sm:rounded-2xl border-t sm:border border-slate-800 flex flex-col shadow-2xl overflow-hidden" onclick="event.stopPropagation()">
             <div class="p-4 bg-[#0a0d16] border-b border-slate-850 flex justify-between items-center shrink-0">
@@ -230,23 +224,44 @@
         </div>
     </div>
 
-    <!-- SAFARI GÜVENLİ ALT BAR SİSTEMİ -->
     <nav class="bg-slate-900 border border-slate-800 safari-safe-nav flex justify-between items-center p-1.5">
         <button onclick="switchTab('dersler')" id="btn-dersler" class="flex-1 flex flex-col items-center justify-center py-2 rounded-xl text-white active-tab"><i class="fa-solid fa-list-check text-xs mb-0.5"></i><span class="text-[9px] font-bold">Ders</span></button>
-        <button onclick="switchTab('3d')" id="btn-3d" class="flex-1 flex flex-col items-center justify-center py-2 rounded-xl text-slate-400"><i class="fa-solid fa-cube text-xs mb-0.5"></i><span class="text-[9px] font-bold">3D Stüdyo</span></button>
+        <button onclick="switchTab('3d')" id="btn-3d" class="flex-1 flex flex-col items-center justify-center py-2 rounded-xl text-slate-400"><i class="fa-solid fa-flask text-xs mb-0.5"></i><span class="text-[9px] font-bold">3D Lab</span></button>
+        <button onclick="switchTab('orbitaller')" id="btn-orbitaller" class="flex-1 flex flex-col items-center justify-center py-2 rounded-xl text-slate-400"><i class="fa-solid fa-circle-nodes text-xs mb-0.5"></i><span class="text-[9px] font-bold">Orbital</span></button>
         <button onclick="switchTab('elementler')" id="btn-elementler" class="flex-1 flex flex-col items-center justify-center py-2 rounded-xl text-slate-400"><i class="fa-solid fa-table-cells text-xs mb-0.5"></i><span class="text-[8px] font-bold">118 El.</span></button>
         <button onclick="switchTab('guvenlik')" id="btn-guvenlik" class="flex-1 flex flex-col items-center justify-center py-2 rounded-xl text-slate-400"><i class="fa-solid fa-triangle-exclamation text-xs mb-0.5"></i><span class="text-[8px] font-bold">Güvenlik</span></button>
-        <button onclick="switchTab('galeri')" id="btn-galeri" class="flex-1 flex flex-col items-center justify-center py-2 rounded-xl text-slate-400 min-w-[50px]"><i class="fa-solid fa-video text-xs mb-0.5"></i><span class="text-[8px] font-bold">Videolar</span></button>
+        <button onclick="switchTab('galeri')" id="btn-galeri" class="flex-1 flex flex-col items-center justify-center py-2 rounded-xl text-slate-400"><i class="fa-solid fa-video text-xs mb-0.5"></i><span class="text-[8px] font-bold">Videolar</span></button>
         <button onclick="switchTab('youtube')" id="btn-youtube" class="flex-1 flex flex-col items-center justify-center py-2 rounded-xl text-slate-400"><i class="fa-brands fa-youtube text-xs mb-0.5"></i><span class="text-[8px] font-bold">Senaryo</span></button>
     </nav>
 
-    <!-- CORE ENGINE JAVASCRIPT MASTER MOTORU -->
     <script>
         let activeTabId = 'dersler'; let isDragging = false; let currentModalElementNum = 79; let activeCategoryFilter = null;
         const names = ["Hidrojen","Helyum","Lityum","Berilyum","Bor","Karbon","Azot","Oksijen","Flor","Neon","Sodyum","Magnezyum","Alüminyum","Silisyum","Fosfor","Kükürt","Klor","Argon","Potasyum","Kalsiyum","Skandiyum","Titanyum","Vanadyum","Krom","Manganez","Demir","Kobalt","Nikel","Bakır","Çinko","Galyum","Germanyum","Arsenik","Selenyum","Brom","Kripton","Rubidyum","Stronsiyum","İtriyum","Zirkonyum","Niyobyum","Molibden","Teknesyum","Rutenyum","Rodyum","Paladyum","Gümüş","Kadmiyum","İndiyum","Kalay","Antimon","Tellür","İyot","Ksenon","Sezyum","Baryum","Lantan","Seryum","Praseodim","Neodimyum","Prometyum","Samaryum","Europiyum","Gadolinyum","Terbiyum","Disprozyum","Holmiyum","Erbiyum","Tulyum","İterbiyum","Lutesyum","Hafniyum","Tantal","Volfram","Renyum","Osmiyum","İridyum","Platin","Altın","Cıva","Talyum","Kurşun","Bizmuth","Polonyum","Astat","Radon","Fransiyum","Radyum","Aktinyum","Toryum","Protaktinyum","Uranyum","Neptünyum","Plutonyum","Amerikyum","Küriyum","Berkelyum","Kaliforniyum","Aynştaynyum","Fermiyum","Mendelevyum","Nobelyum","Lavrensiyum","Rutherfordiyum","Dubniyum","Seaborgeyum","Bohriyum","Hassiyum","Maytneriyum","Darmstadtiyum","Röntgenyum","Kopernikyum","Nihonyum","Flerovyum","Moskovyum","Livermoryum","Tennessin","Oganesson"];
         const symbols = ["H","He","Li","Be","B","C","N","O","F","Ne","Na","Mg","Al","Si","P","S","Cl","Ar","K","Ca","Sc","Ti","V","Cr","Mn","Fe","Co","Ni","Cu","Zn","Ga","Ge","As","Se","Br","Kr","Rb","Sr","Y","Zr","Nb","Mo","Tc","Ru","Rh","Pd","Ag","Cd","In","Sn","Sb","Te","I","Xe","Cs","Ba","La","Ce","Pr","Nd","Pm","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu","Hf","Ta","W","Re","Os","Ir","Pt","Au","Hg","Tl","Pb","Bi","Po","At","Rn","Fr","Ra","Ac","Th","Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm","Md","No","Lr","Rf","Db","Sg","Bh","Hs","Mt","Ds","Rg","Cn","Nh","Fl","Mc","Lv","Ts","Og"];
         const masses = [1.008, 4.002, 6.94, 9.012, 10.81, 12.011, 14.007, 15.999, 18.998, 20.18, 22.99, 24.305, 26.982, 28.085, 30.974, 32.06, 35.45, 39.948, 39.098, 40.078, 44.956, 47.867, 50.942, 51.996, 54.938, 55.845, 58.933, 58.693, 63.546, 65.38, 69.723, 72.63, 74.922, 78.971, 79.904, 83.798, 85.468, 87.62, 88.906, 91.224, 92.906, 95.95, 98, 101.07, 102.91, 106.42, 107.87, 112.41, 114.82, 118.71, 121.76, 127.6, 126.9, 131.29, 132.91, 137.33, 138.91, 140.12, 140.91, 144.24, 145, 150.36, 151.96, 157.25, 158.93, 162.5, 164.93, 167.26, 168.93, 173.05, 174.97, 178.49, 180.95, 183.84, 186.21, 190.23, 192.22, 195.08, 196.97, 200.59, 204.38, 207.2, 208.98, 209, 210, 222, 223, 226, 227, 232.04, 231.04, 238.03, 237, 244, 243, 247, 247, 251, 252, 257, 258, 259, 262, 267, 268, 269, 270, 269, 278, 281, 280, 285, 286, 289, 289, 293, 294, 294];
 
+        // 🌟 MASTER SEKME GEÇİŞ DESTEĞİ
+        function switchTab(tabId) {
+            activeTabId = tabId;
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+            const targetContent = document.getElementById(`tab-${tabId}`);
+            if (targetContent) targetContent.classList.remove('hidden');
+            
+            const tabButtons = ['dersler', '3d', 'orbitaller', 'elementler', 'guvenlik', 'galeri', 'youtube'];
+            tabButtons.forEach(id => {
+                const btn = document.getElementById(`btn-${id}`);
+                if (btn) {
+                    if (id === tabId) { btn.classList.add('active-tab'); btn.classList.remove('text-slate-400'); btn.classList.add('text-white'); }
+                    else { btn.classList.remove('active-tab'); btn.classList.remove('text-white'); btn.classList.add('text-slate-400'); }
+                }
+            });
+            if (tabId === 'elementler') renderElementsGrid(globalElements);
+            if (tabId === 'orbitaller') { if(!orbRenderer) { initOrbital3D(); } else { setTimeout(onWindowResizeOrbital, 40); } }
+            if (tabId === '3d' && typeof onWindowResize === 'function') setTimeout(onWindowResize, 40);
+            document.activeElement.blur(); window.scrollTo(0, 0);
+        }
+
+        // MÜFREDAT GRUPLAMA MOTORU (3A GRUBU TAM DOĞRULUKLU FİLTRE)
         function getElementCategory(n) {
             if (n === 1 || (n >= 6 && n <= 8) || (n >= 15 && n <= 16) || n === 34) return "Ametaller";
             if ([2, 10, 18, 36, 54, 86, 118].includes(n)) return "Soygazlar";
@@ -255,7 +270,7 @@
             if ([9, 17, 35, 53, 85, 117].includes(n)) return "Halojenler";
             if ([5, 14, 32, 33, 51, 52, 84].includes(n)) return "Yarı Metaller";
             if (n >= 57 && n <= 71) return "Lantanit"; if (n >= 89 && n <= 103) return "Aktinit";
-            if ([13, 31, 49, 81, 113].includes(n)) return "Toprak Metalleri"; // 3A Grubu
+            if ([13, 31, 49, 81, 113].includes(n)) return "Toprak Metalleri"; // Net 3A Grubu!
             if ([50, 82, 83, 114, 115, 116].includes(n)) return "Post-Geçiş Metalleri";
             return "Geçiş Metalleri";
         }
@@ -269,41 +284,10 @@
             return "cat-gecis";
         }
 
-        function getGridCoords(num) {
-            if (num === 1) return { row: 2, col: 2 }; if (num === 2) return { row: 2, col: 19 };
-            if (num >= 3 && num <= 4) return { row: 3, col: num - 1 }; if (num >= 5 && num <= 10) return { row: 3, col: num + 9 };
-            if (num >= 11 && num <= 12) return { row: 4, col: num - 9 }; if (num >= 13 && num <= 18) return { row: 4, col: num + 1 };
-            if (num >= 19 && num <= 36) return { row: 5, col: num - 17 }; if (num >= 37 && num <= 54) return { row: 6, col: num - 35 };
-            if (num === 55) return { row: 7, col: 2 }; if (num === 56) return { row: 7, col: 3 };
-            if (num >= 57 && num <= 71) return { row: 10, col: num - 57 + 4 }; if (num >= 72 && num <= 86) return { row: 7, col: num - 72 + 5 };
-            if (num === 87) return { row: 8, col: 2 }; if (num === 88) return { row: 8, col: 3 };
-            if (num >= 89 && num <= 103) return { row: 11, col: num - 89 + 4 }; return { row: 8, col: num - 104 + 5 };
-        }
-
         function buildElementsMatrix() {
             let list = []; for(let i=0; i<118; i++) { let n = i + 1; list.push({ n: n, s: symbols[i], name: names[i], m: masses[i], cat: getElementCategory(n) }); } return list;
         }
         const globalElements = buildElementsMatrix();
-
-        // 🌟 ENJEKSİYONLU SEKME GEÇİŞ MOTORU (SAFARI İÇİN TAB DEĞİŞİNCE MATRİSİ ZORUNLU YENİLER)
-        function switchTab(tabId) {
-            activeTabId = tabId;
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
-            const targetContent = document.getElementById(`tab-${tabId}`);
-            if (targetContent) targetContent.classList.remove('hidden');
-            
-            const tabButtons = ['dersler', '3d', 'elementler', 'guvenlik', 'galeri', 'youtube'];
-            tabButtons.forEach(id => {
-                const btn = document.getElementById(`btn-${id}`);
-                if (btn) {
-                    if (id === tabId) { btn.classList.add('active-tab'); btn.classList.remove('text-slate-400'); btn.classList.add('text-white'); }
-                    else { btn.classList.remove('active-tab'); btn.classList.remove('text-white'); btn.classList.add('text-slate-400'); }
-                }
-            });
-            if (tabId === 'elementler') renderElementsGrid(globalElements);
-            if (tabId === '3d' && typeof onWindowResize === 'function') setTimeout(onWindowResize, 50);
-            document.activeElement.blur(); window.scrollTo(0, 0);
-        }
 
         function toggleCategoryFilter(catName) { activeCategoryFilter = (activeCategoryFilter === catName) ? null : catName; renderElementsGrid(globalElements); }
 
@@ -336,7 +320,7 @@
 
             const searchVal = document.getElementById('element-search') ? document.getElementById('element-search').value.toLowerCase() : "";
 
-            globalElements.forEach(el => {
+            list.forEach(el => {
                 const coords = getGridCoords(el.n); let colorStyle = getCatStyle(el.cat);
                 let isCatMatch = activeCategoryFilter === "Lantanit/Aktinit" ? ["Lantanit", "Aktinit"].includes(el.cat) : el.cat === activeCategoryFilter;
                 let matchesCategory = !activeCategoryFilter || isCatMatch;
@@ -351,12 +335,14 @@
         const elementDatabase = {
             1: { p:1, g:1, state:"Gaz", desc: "Evrenin en hafif elementidir. Yıldızların füzyon yakıtıdır.", config: "1s¹", shells: "1", density: "0.089 g/L", electronegativity: "2.20", melt: "-259.1 °C", discoverer: "Henry Cavendish", notes: "1A grubundadır ama alkali metal değil ametaldir. Sulu asitlerin katyon temelidir.", sss: [{q:"Yanıcı mıdır?", a:"Evet, yüksek derecede yanıcı temiz bir yakıttır."}] },
             2: { p:1, g:18, state:"Gaz", desc: "Reaksiyona girmeyen tamamen inert bir soy gazdır.", config: "1s²", shells: "2", density: "0.178 g/L", electronegativity: "n/a", melt: "-272.2 °C", discoverer: "Lockyer", notes: "Dublet kararlılığı gösterir. İyonlaşma enerjisi en yüksek olan elementtir.", sss: [{q:"Neden ses inceltir?", a:"Ses bu gazda havaya oranla 3 kat daha hızlı yayılır."}] },
-            6: { p:2, g:14, state:"Katı", desc: "Yaşamın temel taşıdır. Allotropları grafit og elmastır.", config: "[He] 2s² 2p²", shells: "2|4", density: "2.26 g/cm³", electronegativity: "2.55", melt: "3550 °C", discoverer: "Antik çağ", notes: "AYT organik kimyanın temeli hibritleşme (sp3, sp2, sp) teorilerini barındırır.", sss: [{q:"Allotrop nedir?", a:"Aynı atomun uzayda farklı geometride dizilmesidir."}] },
+            6: { p:2, g:14, state:"Katı", desc: "Yaşamın temel taşıdır. Allotropları grafit ve elmastır.", config: "[He] 2s² 2p²", shells: "2|4", density: "2.26 g/cm³", electronegativity: "2.55", melt: "3550 °C", discoverer: "Antik çağ", notes: "AYT organik kimyanın temeli hibritleşme (sp3, sp2, sp) teorilerini barındırır.", sss: [{q:"Allotrop nedir?", a:"Aynı atomun uzayda farklı geometride dizilmesidir."}] },
             11: { p:3, g:1, state:"Katı", desc: "Aktif alkali metaldir. Suyla temas edeceği an alevli ve şiddetli patlar.", config: "[Ne] 3s¹", shells: "2|8|1", density: "0.97 g/cm³", electronegativity: "0.93", melt: "97.8 °C", discoverer: "Humphry Davy", notes: "1A grubu aktif alkali metalidir. Havadan ve nemden korumak için gaz yağında saklanır.", sss: [{q:"Alev testi rengi?", a:"Alev testinde kendine has parlak sarı bir renk karakteri verir."}] },
             12: { p:3, g:2, state:"Katı", desc: "Klorofil molekülünün merkez atomudur. Hafif alaşım metalidir.", config: "[Ne] 3s²", shells: "2|8|2", density: "1.74 g/cm³", electronegativity: "1.31", melt: "650 °C", discoverer: "Davy", notes: "Bileşiklerinde sadece +2 değerlik alır. Sert sularda Ca ile birlikte bulunur.", sss: [{q:"Yangını nasıl söner?", a:"Su molekülünü parçaladığı için suyla söndürülemez, CO2 gerekir."}] },
             13: { p:3, g:13, state:"Katı", desc: "Yerkabuğunda en bol bulunan amfoter geçiş önü metalidir.", config: "[Ne] 3s² 3p¹", shells: "2|8|3", density: "2.70 g/cm³", electronegativity: "1.61", melt: "660.3 °C", discoverer: "Ørsted", notes: "Amfoter yapısıyla hem kuvvetli asitlerle hem kuvvetli bazlarla H2 üretir.", sss: [{q:"Neden korozyona dirençli?", a:"Yüzeyinde anında oluşan koruyucu Al2O3 film tabakası sayesinde."}] },
             26: { p:4, g:8, state:"Katı", desc: "Ağır sanayinin yapı taşı ferromanyetik geçiş metalidir.", config: "[Ar] 3d⁶ 4s²", shells: "2|8|14|2", density: "7.87 g/cm³", electronegativity: "1.83", melt: "1538 °C", discoverer: "Antik çağ", notes: "Hemoglobinin merkez atomudur. Bileşiklerinde +2 ve +3 değişken değerlik alır.", sss: [{q:"Paslanma redoks mudur?", a:"Evet, demirin oksijenle yaptığı yavaş elektrokimyasal yanmadır."}] },
-            79: { p:6, g:11, state:"Katı", desc: "Tam soy metal. Korozyona aşırı dayanıklıdır. Asitlerden etkilenmez.", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s¹", shells: "2|8|18|32|18|1", density: "19.3 g/cm³", electronegativity: "2.54", melt: "1064.2 °C", discoverer: "Antik çağ", notes: "Kral suyu hariç asitlerden etkilenmez. Elektron dizilimi anomalilidir.", sss: [{q:"Kral suyu formülü?", a:"3 hacim HCl ile 1 hacim HNO3 karışımı güçlü asit kokteylidir."}] }
+            29: { p:4, g:11, state:"Katı", desc: "Elektrik iletkenliği çok yüksek kızıl renkli yarı soy metaldir.", config: "[Ar] 3d¹⁰ 4s¹", shells: "2|8|18|1", density: "8.96 g/cm³", electronegativity: "1.90", melt: "1084.6 °C", boil: "2562 °C", discoverer: "Antik çağ", notes: "Oksijensiz saf asitlerle tepkime vermez, hno3 ile NO2 gazı açığa çıkarır.", sss:[{q:"Anomali dizilim nedir?", a:"Açık elektron diziliminin kendiliğinden küresel simetriye uymasıdır."}] },
+            79: { p:6, g:11, state:"Katı", desc: "Tam soy metal. Korozyona aşırı dayanıklıdır. Asitlerden etkilenmez.", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s¹", shells: "2|8|18|32|18|1", density: "19.3 g/cm³", electronegativity: "2.54", melt: "1064.2 °C", discoverer: "Antik çağ", notes: "Kral suyu hariç asitlerden etkilenmez. Elektron dizilimi anomalilidir.", sss: [{q:"Kral suyu formülü?", a:"3 hacim HCl ile 1 hacim HNO3 karışımı güçlü asit kokteylidir."}] },
+            80: { p:6, g:12, state:"Sıvı", desc: "Oda sıcaklığında sıvı kalan tek metalik geçiş elementidir.", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s²", shells: "2|8|18|32|18|2", density: "13.53 g/cm³", electronegativity: "2.00", melt: "-38.8 °C", discoverer: "Antik çağ", notes: "Ağır metal zehirlenmesi ve Minamata nörolojik sendromu yaratır, toksiktir.", sss: [{q:"Yoğunluğu fazla mıdır?", a:"Evet, demir somunlar cıva sıvısı üstünde batmadan batmadan yüzer."}] }
         };
 
         function openElementDetail(num) {
@@ -385,6 +371,7 @@
         function filterElements(q) { renderElementsGrid(globalElements); }
         function toggleFullScreenContainer() { if (!document.fullscreenElement) document.documentElement.requestFullscreen(); else document.exitFullscreen(); }
 
+        // --- 🔒 AYT DERS MANTIĞI VE EMEN KORUMA ---
         const defaultTopics = [{ id: "t1", name: "01 Modern Atom Modeli", desc: "Elektron konfigürasyonları.", checked: false, link: "" }, { id: "t2", name: "02 Gazlar", desc: "Kinetik teori bağıntıları.", checked: false, link: "" }];
         function renderAytTopics() {
             let list = defaultTopics; try { list = JSON.parse(localStorage.getItem('custom_topic_list')) || defaultTopics; } catch(e) { list = defaultTopics; }
@@ -433,6 +420,7 @@
         }
         function playCloudVideo(f) { const v = document.getElementById('main-panel-video'); if(v) { v.src = `./videos/${f}`; document.getElementById('video-player-container').classList.remove('hidden'); v.play(); } }
 
+        // --- 🌐 3D CAM MALZEMELER + ATOM SAHNESİ ---
         let scene, camera, renderer, currentGroup;
         const glassMat = new THREE.MeshPhongMaterial({ color: 0xffffff, transparent: true, opacity: 0.25, shininess: 120, side: THREE.DoubleSide });
         const blueLiquidMat = new THREE.MeshPhongMaterial({ color: 0x0284c7, transparent: true, opacity: 0.8 });
@@ -509,11 +497,55 @@
         }
         function onWindowResize() { const c = document.getElementById('canvas-3d'); if(c && renderer) { camera.aspect = c.clientWidth / c.clientHeight; camera.updateProjectionMatrix(); renderer.setSize(c.clientWidth, c.clientHeight); } }
 
-        // 🌟 ARTIK YARIŞ DURUMUNA DÜŞMEDEN DOĞRUDAN ÇALIŞAN GÜVENLİ TETİKLEYİCİLER
-        switchTab('dersler'); 
-        renderAytTopics(); 
-        renderElementsGrid(globalElements); 
-        renderVideoList(); 
+        // --- 🌌 3D QUANTUM ORBİTAL BULUT SAHNESİ MOTORU ---
+        let orbScene, orbCamera, orbRenderer, orbParticles;
+        const orbitalData = {
+            s: { title: "s Orbitali Kuantum Analizi", badge: "l = 0", ml: "0 (1 Alt Orbital)", maxE: "2 Elektron", desc: "Çekirdek etrafında tamamen küresel bir yoğunluk bulutuna sahiptir. Yönelimi yoktur.", ayt: "Bütün enerji düzeylerinde bulunur. Küresel simetri karakterine etki eder." },
+            p: { title: "p Orbitali Kuantum Analizi", badge: "l = 1", ml: "-1, 0, +1 (3 Alt Orbital)", maxE: "6 Elektron", desc: "Çekirdeğin iki zıt tarafında yönlenmiş dambıl veya iki loblu yapıdadır. Eksen yönelimlerine göre p_x, p_y, p_z alt orbitallerinden oluşur.", ayt: "2. enerji düzeyinden itibaren başlar. Düğüm düzlemi içerir." },
+            d: { title: "d Orbitali Kuantum Analizi", badge: "l = 2", ml: "-2, -1, 0, +1, +2 (5 Alt Orbital)", maxE: "10 Elektron", desc: "Genellikle dört loblu (yonca yaprağı) geometrik yapılara sahiptir. Manyetik kuantum uzayında 5 farklı yönelime ayrılır.", ayt: "3. enerji düzeyinden itibaren başlar. Geçiş metallerinin kimyasal reaksiyon karakterini belirler." },
+            f: { title: "f Orbitali Kuantum Analizi", badge: "l = 3", ml: "-3, -2, -1, 0, +1, +2, +3 (7 Alt Orbital)", maxE: "14 Elektron", desc: "Kuantum mekaniksel olarak en karmaşık, çoklu halkalı veya loblu geometrilere sahiptir. Yüksek enerjili iç geçiş serilerini oluşturur.", ayt: "4. enerji düzeyinden itibaren başlar. Lantanit ve aktinitlerin temelini kurar." }
+        };
+
+        function initOrbital3D() {
+            const container = document.getElementById('canvas-orbital-3d'); if (!container || orbRenderer) return;
+            orbScene = new THREE.Scene(); orbScene.background = new THREE.Color(0x05070f);
+            orbCamera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 1000); orbCamera.position.z = 5;
+            orbRenderer = new THREE.WebGLRenderer({ antialias: true }); orbRenderer.setSize(container.clientWidth, container.clientHeight);
+            container.appendChild(orbRenderer.domElement); generateOrbitalCloud('s');
+            function animateOrbital() { requestAnimationFrame(animateOrbital); if (orbParticles && activeTabId === 'orbitaller') { orbParticles.rotation.y += 0.008; orbParticles.rotation.x += 0.003; } if (orbRenderer && orbScene && orbCamera) orbRenderer.render(orbScene, orbCamera); } animateOrbital();
+            window.addEventListener('resize', onWindowResizeOrbital);
+        }
+
+        function generateOrbitalCloud(type) {
+            if (orbParticles) orbScene.remove(orbParticles);
+            const particleCount = type === 's' ? 3000 : (type === 'p' ? 4200 : 5500);
+            const geometry = new THREE.BufferGeometry(); const positions = new Float32Array(particleCount * 3); const colors = new Float32Array(particleCount * 3);
+            const colorMap = { s: [0.2, 0.5, 1], p: [0.1, 0.8, 0.5], d: [1, 0.6, 0.1], f: [0.6, 0.3, 0.9] }[type];
+            for (let i = 0; i < particleCount; i++) {
+                let x, y, z;
+                if (type === 's') {
+                    const u = Math.random(), v = Math.random(); const theta = u * 2.0 * Math.PI, phi = Math.acos(2.0 * v - 1.0); const r = (Math.random() + Math.random() + Math.random()) * 0.6;
+                    x = r * Math.sin(phi) * Math.cos(theta); y = r * Math.sin(phi) * Math.sin(theta); z = r * Math.cos(phi);
+                } else if (type === 'p') {
+                    const r = Math.random() * 1.8; const theta = Math.random() * Math.PI * 2;
+                    x = (Math.random() > 0.5 ? 1 : -1) * (0.3 + r * 0.8); y = Math.sin(theta) * (0.4 / (Math.abs(x) + 0.5)); z = Math.cos(theta) * (0.4 / (Math.abs(x) + 0.5));
+                } else {
+                    const theta = Math.random() * Math.PI * 2; const phi = Math.random() * Math.PI; const r = 0.5 + Math.random() * 1.5;
+                    x = r * Math.sin(phi) * Math.cos(theta); y = r * Math.sin(phi) * Math.sin(theta); z = r * Math.cos(phi) * Math.sin(theta * 2);
+                }
+                positions[i * 3] = x; positions[i * 3 + 1] = y; positions[i * 3 + 2] = z;
+                colors[i * 3] = colorMap[0] * (1.5 - Math.random() * 0.5); colors[i * 3 + 1] = colorMap[1] * (1.5 - Math.random() * 0.5); colors[i * 3 + 2] = colorMap[2] * (1.5 - Math.random() * 0.5);
+            }
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3)); geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+            orbParticles = new THREE.Points(geometry, new THREE.PointsMaterial({ size: 0.035, vertexColors: true, transparent: true, opacity: 0.75, blending: THREE.AdditiveBlending }));
+            orbScene.add(orbParticles);
+        }
+
+        function changeOrbitalModel(type) { generateOrbitalCloud(type); const data = orbitalData[type]; document.getElementById('orb-title').innerText = data.title; document.getElementById('orb-badge').innerText = data.badge; document.getElementById('orb-ml').innerText = data.ml; document.getElementById('orb-max-e').innerText = data.maxE; document.getElementById('orb-desc').innerText = data.desc; document.getElementById('orb-ayt').innerText = data.ayt; }
+        function onWindowResizeOrbital() { const c = document.getElementById('canvas-orbital-3d'); if(c && orbRenderer) { orbCamera.aspect = c.clientWidth / c.clientHeight; orbCamera.updateProjectionMatrix(); orbRenderer.setSize(c.clientWidth, c.clientHeight); } }
+
+        // --- 🚀 ADRES REAKSİYON SÜRÜCÜSÜ VE AÇILIŞ TETİKLEMELERİ ---
+        switchTab('dersler'); renderAytTopics(); renderVideoList();
         try { init3D(); } catch(e) { console.log('3D pasif'); }
         document.querySelectorAll('.text-save').forEach(i => { 
             try {
