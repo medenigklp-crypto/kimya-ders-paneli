@@ -41,19 +41,18 @@
 
     <header class="bg-[#0b0f19] border-b border-slate-800 p-4 sticky top-0 z-40 shadow-md flex justify-between items-center w-full">
         <div class="flex items-center space-x-3">
-            <img src="logo .png" alt="Medeni Gökalp Logo" class="h-8 w-auto object-contain select-none rounded">
+            <img src="logo .png" alt="Logo" class="h-8 w-auto object-contain select-none rounded">
             <h1 class="text-md font-bold tracking-wide bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
                 Medeni Gökalp Kimya Paneli <span class="text-xs font-semibold text-slate-400">v2.7</span>
             </h1>
         </div>
-        <div id="save-status" class="text-[11px] text-slate-400 bg-slate-950 px-2.5 py-1 rounded-full border border-slate-800 shrink-0">
-            <i class="fa-solid fa-cloud text-emerald-500 mr-1"></i> Sistem Hazır
+        <div class="text-[11px] text-slate-400 bg-slate-950 px-2.5 py-1 rounded-full border border-slate-800 shrink-0">
+            <i class="fa-solid fa-cloud text-emerald-500 mr-1"></i> Sistem Golyosuz Hazır
         </div>
     </header>
 
     <main class="flex-1 p-3 max-w-7xl w-full mx-auto pb-24 box-border overflow-x-hidden">
         
-        <!-- 1. DERS SEKMESİ -->
         <section id="tab-dersler" class="tab-content space-y-4">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
                 <h2 class="text-base font-bold mb-1 text-blue-400 flex items-center"><i class="fa-solid fa-graduation-cap mr-2"></i> Müfredat & Ders Yönetimi</h2>
@@ -61,26 +60,25 @@
                 <div class="p-3 bg-slate-950 rounded-lg border border-slate-900 space-y-2 mb-4">
                     <div class="text-xs font-bold text-slate-400 tracking-wider uppercase flex justify-between items-center">
                         <span>Yeni Konu / Başlık Ekle</span>
-                        <button onclick="resetTopicsToDefault()" class="text-[10px] text-slate-500 hover:text-rose-400 underline">Sıfırla</button>
+                        <button onclick="resetTopicsToDefault()" class="text-[10px] text-rose-400 underline">Sıfırla</button>
                     </div>
                     <div class="grid grid-cols-1 gap-2">
-                        <input type="text" id="new-topic-name" placeholder="Konu/Ünite Adı (Örn: 02 Gazlar)" class="bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white focus:outline-none">
-                        <input type="text" id="new-topic-desc" placeholder="Kısa Açıklama Veya İçerik Notu (Opsiyonel)" class="bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white focus:outline-none">
+                        <input type="text" id="new-topic-name" placeholder="Konu Başlığı (Örn: 02 Gazlar)" class="bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white focus:outline-none">
+                        <input type="text" id="new-topic-desc" placeholder="Kısa Açıklama Notu (Opsiyonel)" class="bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white focus:outline-none">
                     </div>
-                    <button onclick="addNewTopic()" class="w-full bg-blue-600 text-xs font-bold py-2 rounded shadow-md"><i class="fa-solid fa-plus mr-1.5"></i> Başlık Ekle</button>
+                    <button onclick="addNewTopic()" class="w-full bg-blue-600 text-xs font-bold py-2 rounded shadow-md">Konu Ekle</button>
                 </div>
                 <div id="ayt-topics-container" class="space-y-2"></div>
             </div>
         </section>
 
-        <!-- 2. 3D STÜDYO SEKMESİ -->
         <section id="tab-3d" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
                 <h2 class="text-base font-bold text-emerald-400 flex items-center mb-2"><i class="fa-solid fa-flask mr-2"></i> Interaktif 3D Stüdyo</h2>
                 <div id="canvas-3d"></div>
                 <div class="space-y-3 mt-3">
                     <div class="space-y-1">
-                        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider"><i class="fa-solid fa-vial text-teal-400 mr-1"></i> Cam Malzemeler</div>
+                        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Cam Laboratuvar Malzemeleri</div>
                         <div class="grid grid-cols-3 gap-1.5">
                             <button onclick="change3DModel('beherglas')" class="bg-teal-950/60 border border-teal-800 text-[10px] py-1.5 rounded font-semibold text-white">Beherglas</button>
                             <button onclick="change3DModel('erlenmayer')" class="bg-teal-950/60 border border-teal-800 text-[10px] py-1.5 rounded font-semibold text-white">Erlenmayer</button>
@@ -98,19 +96,18 @@
                         </div>
                     </div>
                     <div class="space-y-1">
-                        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider"><i class="fa-solid fa-atom text-blue-400 mr-1"></i> Modeller & Orbitaller</div>
+                        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Kuantum Atom Modelleri</div>
                         <div class="grid grid-cols-4 gap-1.5">
-                            <button onclick="change3DModel('dalton')" class="bg-slate-800 border border-slate-700 text-[10px] py-1 rounded text-white">Dalton</button>
-                            <button onclick="change3DModel('thomson')" class="bg-slate-800 border border-slate-700 text-[10px] py-1 rounded text-white">Thomson</button>
-                            <button onclick="change3DModel('rutherford')" class="bg-slate-800 border border-slate-700 text-[10px] py-1 rounded text-white">Rutherf.</button>
-                            <button onclick="change3DModel('bohr')" class="bg-slate-800 border border-slate-700 text-[10px] py-1 rounded text-white">Bohr</button>
+                            <button onclick="change3DModel('dalton')" class="bg-slate-800 text-[10px] py-1.5 rounded text-white">Dalton</button>
+                            <button onclick="change3DModel('thomson')" class="bg-slate-800 text-[10px] py-1.5 rounded text-white">Thomson</button>
+                            <button onclick="change3DModel('rutherford')" class="bg-slate-800 text-[10px] py-1.5 rounded text-white">Rutherf.</button>
+                            <button onclick="change3DModel('bohr')" class="bg-slate-800 text-[10px] py-1.5 rounded text-white">Bohr</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 3. PERİYODİK TABLO SEKMESİ -->
         <section id="tab-elementler" class="tab-content space-y-4 hidden">
             <div class="bg-[#0a0d16] p-4 rounded-xl border border-slate-800 shadow-lg space-y-4">
                 <div class="flex items-center justify-between gap-2">
@@ -119,7 +116,7 @@
                         <input type="text" id="element-search" oninput="filterElements(this.value)" placeholder="Element ara..." class="bg-[#0f1422] border border-slate-800 rounded-lg pl-9 pr-3 py-2 text-xs text-white focus:outline-none w-full">
                     </div>
                     <div class="flex items-center space-x-2">
-                        <button class="bg-[#1c120c] border border-[#eab308]/30 text-[#f97316] font-bold text-xs px-3 py-2 rounded-lg flex items-center space-x-1.5"><i class="fa-solid fa-temperature-half"></i><span>Sıcaklık Modu</span></button>
+                        <button class="bg-[#1c120c] border border-[#eab308]/30 text-[#f97316] font-bold text-xs px-3 py-2 rounded-lg"><i class="fa-solid fa-temperature-half mr-1.5"></i>Sıcaklık Modu</button>
                         <button onclick="toggleFullScreenContainer()" class="bg-[#0f1422] border border-slate-800 text-slate-400 p-2.5 rounded-lg text-xs"><i class="fa-solid fa-expand"></i></button>
                     </div>
                 </div>
@@ -129,56 +126,36 @@
             </div>
         </section>
 
-        <!-- 4. GÜVENLİK SEKMESİ -->
         <section id="tab-guvenlik" class="tab-content space-y-4 hidden">
-            <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg"><h2 class="text-base font-bold mb-1 text-amber-400 flex items-center"><i class="fa-solid fa-triangle-exclamation mr-2"></i> Kimyasal Tehlike İşaretleri</h2><p class="text-[11px] text-slate-400 mb-4">MEB 9. Sınıf Sayfa 38-39 formatındaki resmi piktogramlar.</p><div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5" id="piktogram-container"><div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-3"><div class="shrink-0 w-14 h-14 flex items-center justify-center"><div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow"><div class="-rotate-45 text-slate-900 text-lg"><i class="fa-solid fa-fire"></i></div></div></div><div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Yanıcı Madde</h3><p class="text-[10px] text-slate-400 leading-relaxed">Isı ve ateşten uzak tutulur. Örnek: Alkol, Aseton</p></div></div><div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-3"><div class="shrink-0 w-14 h-14 flex items-center justify-center"><div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow"><div class="-rotate-45 text-slate-900 text-base"><i class="fa-solid fa-skull-crossbones"></i></div></div></div><div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Zehirli Madde</h3><p class="text-[10px] text-slate-400 leading-relaxed">Ciddi zehirlenmelere yol açar. Örnek: Siyanür, Klor Gazı</p></div></div></div></div>
+            <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 text-center text-xs">9. Sınıf Kimyasal Laboratuvar Güvenlik Protokol Sekmesi Aktif.</div>
         </section>
-
-        <!-- 5. VİDEOLAR SEKMESİ -->
         <section id="tab-galeri" class="tab-content space-y-4 hidden">
-            <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg space-y-3">
-                <div class="p-3 bg-slate-950 rounded-lg border border-slate-900 space-y-2">
-                    <input type="text" id="new-video-name" placeholder="Ekrandaki İsim..." class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white focus:outline-none">
-                    <input type="text" id="new-video-file" placeholder="GitHub Dosya Adı..." class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white focus:outline-none">
-                    <button onclick="addNewVideoToList()" class="w-full bg-cyan-600 text-xs font-bold py-2 rounded shadow-md">Listeye Sabitle</button>
-                </div>
-                <div class="bg-black rounded-lg overflow-hidden border border-slate-700 hidden" id="video-player-container"><video id="main-panel-video" controls class="w-full h-auto max-h-[300px]"></video></div>
-                <div id="dynamic-video-container" class="space-y-1.5"></div>
+            <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 text-center text-xs">
+                <div class="bg-black rounded-lg overflow-hidden hidden mb-2" id="video-player-container"><video id="main-panel-video" controls class="w-full max-h-[300px]"></video></div>
+                <div id="dynamic-video-container" class="space-y-1"></div>
             </div>
         </section>
-
-        <!-- 6. SENARYO SEKMESİ -->
         <section id="tab-youtube" class="tab-content space-y-4 hidden">
-            <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg flex flex-col h-[calc(100vh-12rem)]">
-                <input type="text" id="yt-title" placeholder="Video Başlığı..." class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-save mb-2" data-id="yt-title">
-                <textarea id="yt-body" placeholder="Senaryo akışı..." class="w-full flex-1 bg-slate-900 border border-slate-800 rounded p-2 text-xs resize-none text-save" data-id="yt-body"></textarea>
-            </div>
+            <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800"><textarea id="yt-body" class="w-full bg-slate-900 text-xs p-2 rounded h-32 text-save" data-id="yt-body" placeholder="Senaryolar..."></textarea></div>
         </section>
     </main>
 
-    <!-- FERRUMONE DETAY MODAL -->
     <div id="element-modal" class="fixed inset-0 bg-slate-950/95 backdrop-blur-sm z-50 hidden flex items-center justify-center p-0 sm:p-4">
         <div class="bg-[#05070f] w-full h-full sm:max-w-2xl sm:h-[90vh] sm:rounded-2xl border-t sm:border border-slate-800 flex flex-col shadow-2xl overflow-hidden">
-            <div class="p-4 bg-[#0a0d16] border-b border-slate-850 flex justify-between items-center shrink-0"><span class="text-xs font-semibold text-slate-400" id="modal-breadcrumb">Periyodik Tablo / Element</span><button onclick="closeModal()" class="text-slate-400 text-xs bg-[#131a2e] px-3 py-1.5 rounded-lg border border-slate-800 font-bold">Kapat</button></div>
+            <div class="p-4 bg-[#0a0d16] border-b border-slate-850 flex justify-between items-center"><span class="text-xs font-semibold text-slate-400" id="modal-breadcrumb">Element Detayı</span><button onclick="closeModal()" class="text-slate-400 text-xs bg-[#131a2e] px-3 py-1.5 rounded-lg border border-slate-800 font-bold">Kapat</button></div>
             <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-[#05070f]" id="modal-scroll-content">
                 <div class="bg-[#0a0d16] p-5 rounded-2xl border border-slate-850 flex flex-col items-start space-y-4">
                     <div id="m-badge-container" class="w-24 h-24 border rounded-2xl flex flex-col items-center justify-center text-center shadow-lg bg-slate-950/50"><span class="text-xs text-slate-400 font-bold self-start pl-3 pt-1" id="m-num"></span><span class="text-3xl font-black tracking-tight mt-[-2px]" id="m-sym"></span><span class="text-[10px] text-slate-500 font-bold pb-1" id="m-mass"></span></div>
                     <div class="space-y-2 w-full"><h2 class="text-xl font-black text-white" id="m-name"></h2><div class="flex flex-wrap gap-1.5" id="m-tags"></div><p class="text-xs text-slate-300 leading-relaxed pt-2 border-t border-slate-850" id="m-desc"></p></div>
                 </div>
                 <div class="grid grid-cols-2 gap-2" id="m-grid-props"></div>
-                <div id="ferrum-history-block" class="p-4 bg-[#0a0d16] border border-slate-850 rounded-2xl"><div class="text-[11px] text-blue-400 font-bold uppercase mb-2"><i class="fa-regular fa-clock"></i> Keşif Tarihi</div><p class="text-xs text-slate-300 leading-relaxed" id="m-history-text"></p></div>
-                <div id="ferrum-isotope-block" class="p-4 bg-[#0a0d16] border border-slate-850 rounded-2xl"><div class="text-[11px] text-purple-400 font-bold uppercase mb-2"><i class="fa-solid fa-circle-nodes"></i> İzotoplar</div><p class="text-xs text-slate-300 leading-relaxed" id="m-isotope-text"></p></div>
-                <div id="ferrum-usages-block" class="p-4 bg-[#0a0d16] border border-slate-850 rounded-2xl"><div class="text-[11px] text-cyan-400 font-bold uppercase mb-2">Kullanım Alanları</div><ul class="space-y-1.5 list-none" id="m-usages-list"></ul></div>
-                <div id="ferrum-bio-block" class="p-4 bg-[#06100d] border border-emerald-900/60 rounded-2xl"><div class="text-[11px] text-emerald-400 font-bold uppercase mb-2"><i class="fa-solid fa-heart-pulse"></i> Biyolojik Rol</div><p class="text-xs text-slate-300 leading-relaxed" id="m-bio-text"></p></div>
-                <div id="ferrum-interesting-block" class="p-4 bg-[#191307] border border-amber-900/60 rounded-2xl"><div class="text-[11px] text-[#f97316] font-bold uppercase mb-2"><i class="fa-regular fa-star"></i> İlginç Bilgiler</div><ul class="space-y-2 list-disc pl-4 text-xs text-slate-300" id="m-interesting-list"></ul></div>
-                <div id="ferrum-notes-block" class="p-4 bg-[#0a1124] border border-blue-900/60 rounded-2xl"><div class="text-[11px] text-blue-400 font-bold uppercase mb-2"><i class="fa-solid fa-bolt"></i> Çalışma Notları</div><ul class="space-y-1.5 text-xs text-slate-300" id="m-notes-list"></ul></div>
-                <div class="space-y-2"><div class="text-[11px] text-slate-400 font-bold uppercase pl-1" id="sss-heading">SSS</div><div class="space-y-2" id="m-sss-container"></div></div>
+                <div class="p-4 bg-[#0a1124] border border-blue-900/60 rounded-2xl"><div class="text-[11px] text-blue-400 font-bold uppercase mb-1">Müfredat Notu</div><ul class="text-xs text-slate-300 list-disc pl-4" id="m-notes-list"></ul></div>
+                <div class="space-y-2"><div class="text-[11px] text-slate-400 font-bold uppercase pl-1">Sıkça Sorulan Sorular</div><div class="space-y-2" id="m-sss-container"></div></div>
             </div>
-            <div class="p-3 bg-[#0a0d16] border-t border-slate-850 flex items-center justify-between gap-2 shrink-0"><button id="modal-btn-prev" onclick="navigateElement(-1)" class="flex-1 bg-[#131a2e] border border-slate-800 text-xs py-2 rounded-xl text-left pl-3 text-slate-300 truncate"></button><button onclick="closeModal()" class="bg-[#1c120c] border border-[#f97316]/30 text-[#f97316] text-xs font-bold px-4 py-2 rounded-xl"><i class="fa-solid fa-table-cells mr-2"></i>Periyodik Tablo</button><button id="modal-btn-next" onclick="navigateElement(1)" class="flex-1 bg-[#131a2e] border border-slate-800 text-xs py-2 rounded-xl text-right pr-3 text-slate-300 truncate"></button></div>
+            <div class="p-3 bg-[#0a0d16] border-t border-slate-850 flex items-center justify-between gap-2"><button id="modal-btn-prev" onclick="navigateElement(-1)" class="flex-1 bg-[#131a2e] border border-slate-800 text-xs py-2 rounded-xl text-left pl-3 text-slate-300 truncate"></button><button onclick="closeModal()" class="bg-[#1c120c] border border-[#f97316]/30 text-[#f97316] text-xs font-bold px-4 py-2 rounded-xl">Kapat</button><button id="modal-btn-next" onclick="navigateElement(1)" class="flex-1 bg-[#131a2e] border border-slate-800 text-xs py-2 rounded-xl text-right pr-3 text-slate-300 truncate"></button></div>
         </div>
     </div>
 
-    <!-- ALT SEKMELER -->
     <nav class="bg-slate-800 border-t border-slate-700 fixed bottom-0 left-0 right-0 p-1 flex justify-between items-center shadow-2xl z-40 w-full overflow-x-auto">
         <button onclick="switchTab('dersler')" id="btn-dersler" class="flex-1 flex flex-col items-center justify-center py-1 rounded-lg text-slate-400 active-tab min-w-[55px]"><i class="fa-solid fa-list-check text-xs mb-0.5"></i><span class="text-[8px]">Ders</span></button>
         <button onclick="switchTab('3d')" id="btn-3d" class="flex-1 flex flex-col items-center justify-center py-1 rounded-lg text-slate-400 min-w-[55px]"><i class="fa-solid fa-cube text-xs mb-0.5"></i><span class="text-[8px]">3D Stüdyo</span></button>
@@ -194,23 +171,25 @@
         const symbols = ["H","He","Li","Be","B","C","N","O","F","Ne","Na","Mg","Al","Si","P","S","Cl","Ar","K","Ca","Sc","Ti","V","Cr","Mn","Fe","Co","Ni","Cu","Zn","Ga","Ge","As","Se","Br","Kr","Rb","Sr","Y","Zr","Nb","Mo","Tc","Ru","Rh","Pd","Ag","Cd","In","Sn","Sb","Te","I","Xe","Cs","Ba","La","Ce","Pr","Nd","Pm","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu","Hf","Ta","W","Re","Os","Ir","Pt","Au","Hg","Tl","Pb","Bi","Po","At","Rn","Fr","Ra","Ac","Th","Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm","Md","No","Lr","Rf","Db","Sg","Bh","Hs","Mt","Ds","Rg","Cn","Nh","Fl","Mc","Lv","Ts","Og"];
         const masses = [1.008, 4.002, 6.94, 9.012, 10.81, 12.011, 14.007, 15.999, 18.998, 20.18, 22.99, 24.305, 26.982, 28.085, 30.974, 32.06, 35.45, 39.948, 39.098, 40.078, 44.956, 47.867, 50.942, 51.996, 54.938, 55.845, 58.933, 58.693, 63.546, 65.38, 69.723, 72.63, 74.922, 78.971, 79.904, 83.798, 85.468, 87.62, 88.906, 91.224, 92.906, 95.95, 98, 101.07, 102.91, 106.42, 107.87, 112.41, 114.82, 118.71, 121.76, 127.6, 126.9, 131.29, 132.91, 137.33, 138.91, 140.12, 140.91, 144.24, 145, 150.36, 151.96, 157.25, 158.93, 162.5, 164.93, 167.26, 168.93, 173.05, 174.97, 178.49, 180.95, 183.84, 186.21, 190.23, 192.22, 195.08, 196.97, 200.59, 204.38, 207.2, 208.98, 209, 210, 222, 223, 226, 227, 232.04, 231.04, 238.03, 237, 244, 243, 247, 247, 251, 252, 257, 258, 259, 262, 267, 268, 269, 270, 269, 278, 281, 280, 285, 286, 289, 289, 293, 294, 294];
 
-        const elementDatabase = {
-            1: { p:1, g:1, state:"Gaz", desc: "Evrenin en hafif elementidir. Yıldızların füzyon yakıtıdır.", config: "1s¹", shells: "1", density: "0.089 g/L", electronegativity: "2.20", melt: "-259.1 °C", discoverer: "Henry Cavendish", notes: "1A grubundadır ama alkali metal değil ametaldir. Sulu asitlerin katyon temelidir.", sss: [{q:"Yanıcı mıdır?", a:"Evet, yüksek derecede yanıcı temiz bir yakıttır."}] },
-            2: { p:1, g:18, state:"Gaz", desc: "Reaksiyona girmeyen tamamen inert bir soy gazdır.", config: "1s²", shells: "2", density: "0.178 g/L", electronegativity: "n/a", melt: "-272.2 °C", discoverer: "Lockyer", notes: "Dublet kararlılığı gösterir. İyonlaşma enerjisi en yüksek olan elementtir.", sss: [{q:"Neden ses inceltir?", a:"Ses bu gazda havaya oranla 3 kat daha hızlı yayılır."}] },
-            6: { p:2, g:14, state:"Katı", desc: "Yaşamın temel taşıdır. Allotropları grafit ve elmastır.", config: "[He] 2s² 2p²", shells: "2|4", density: "2.26 g/cm³", electronegativity: "2.55", melt: "3550 °C", discoverer: "Antik çağ", notes: "AYT organik kimyanın temeli hibritleşme (sp3, sp2, sp) teorilerini barındırır.", sss: [{q:"Allotrop nedir?", a:"Aynı atomun uzayda farklı geometride dizilmesidir."}] },
-            7: { p:2, g:15, state:"Gaz", desc: "Atmosferin %78'ini oluşturan oda koşullarında kararlı bir gazdır.", config: "[He] 2s² 2p³", shells: "2|5", density: "1.251 g/L", electronegativity: "3.04", melt: "-210 °C", discoverer: "Rutherford", notes: "p3 küresel simetri yapısı taşır. Üçlü bağ (N≡N) nedeniyle çok asaldır.", sss: [{q:"Nasıl aktifleşir?", a:"Şimşek ve yıldırım enerjisiyle bağı kırılarak toprağa bağlanır."}] },
-            8: { p:2, g:16, state:"Gaz", desc: "Solunum ve yanma reaksiyonlarının temel yakıcı elementidir.", config: "[He] 2s² 2p⁴", shells: "2|6", density: "1.429 g/L", electronegativity: "3.44", melt: "-218.7 °C", discoverer: "Priestley", notes: "Flor hariç tüm bileşiklerinde negatif yükseltgenme basamağı alır.", sss: [{q:"Oksijen yanar mı?", a:"Hayır, kendisi yanmaz sadece yakıcı gazdır."}] },
-            9: { p:2, g:17, state:"Gaz", desc: "Tablonun en elektronegatif elementidir. Sadece -1 değerlik alır.", config: "[He] 2s² 2p⁵", shells: "2|7", density: "1.696 g/L", electronegativity: "3.98", melt: "-219.6 °C", discoverer: "Moissan", notes: "Elektron ilgisi klordan düşüktür ancak elektronegatifliği en yüksektir.", sss: [{q:"HF asidi özelliği?", a:"Camı aşındırabilen ve eritebilen tek asit türüdür."}] },
-            11: { p:3, g:1, state:"Katı", desc: "Aktif alkali metaldir. Suyla temas edince alevli patlar.", config: "[Ne] 3s¹", shells: "2|8|1", density: "0.97 g/cm³", electronegativity: "0.93", melt: "97.8 °C", discoverer: "Davy", notes: "Hava ve nemle hızlı reaksiyona girdiğinden laboratuvarda gaz yağında saklanır.", sss: [{q:"Yumuşak mıdır?", a:"Evet, balmumu kıvamında olup bıçakla rahatça kesilir."}] },
-            12: { p:3, g:2, state:"Katı", desc: "Klorofil molekülünün merkez atomudur. Hafif alaşım metalidir.", config: "[Ne] 3s²", shells: "2|8|2", density: "1.74 g/cm³", electronegativity: "1.31", melt: "650 °C", discoverer: "Davy", notes: "Bileşiklerinde sadece +2 değerlik alır. Sert sularda Ca ile birlikte bulunur.", sss: [{q:"Yangını nasıl söner?", a:"Su molekülünü parçaladığı için suyla söndürülemez, CO2 gerekir."}] },
-            13: { p:3, g:13, state:"Katı", desc: "Yerkabuğunda en bol bulunan amfoter geçiş önü metalidir.", config: "[Ne] 3s² 3p¹", shells: "2|8|3", density: "2.70 g/cm³", electronegativity: "1.61", melt: "660.3 °C", discoverer: "Ørsted", notes: "Amfoter yapısıyla hem kuvvetli asitlerle hem kuvvetli bazlarla H2 üretir.", sss: [{q:"Neden korozyona dirençli?", a:"Yüzeyinde anında oluşan koruyucu Al2O3 film tabakası sayesinde."}] },
-            17: { p:3, g:17, state:"Gaz", desc: "Yeşilimsi sarı renkli halojen sınıfı zehirli boğucu gazdır.", config: "[Ne] 3s² 3p⁵", shells: "2|8|7", density: "3.21 g/L", electronegativity: "3.16", melt: "-101.5 °C", discoverer: "Scheele", notes: "Tablonun elektron ilgisi en yüksek elementidir (İstisna olarak Floru geçer).", sss: [{q:"Tuz ruhuyla karışırsa?", a:"Ölümcül derecede zehirli saf klor gazı açığa çıkar, karıştırılmamalıdır."}] },
-            20: { p:4, g:2, state:"Katı", desc: "Kemik ve dişlerin ana yapı taşı aktif toprak alkali metalidir.", config: "[Ar] 4s²", shells: "2|8|8|2", density: "1.55 g/cm³", electronegativity: "1.00", melt: "842 °C", discoverer: "Davy", notes: "Suya geçici sertlik veren iyondur. Çimento ve kireç endüstrisi temelidir.", sss: [{q:"Kireç sönmesi nedir?", a:"Kalsiyum oksidin suyla ekzotermik reaksiyon verip Ca(OH)2 oluşturmasıdır."}] },
-            26: { p:4, g:8, state:"Katı", desc: "Ağır sanayinin yapı taşı ferromanyetik geçiş metalidir.", config: "[Ar] 3d⁶ 4s²", shells: "2|8|14|2", density: "7.87 g/cm³", electronegativity: "1.83", melt: "1538 °C", discoverer: "Antik çağ", notes: "Hemoglobinin merkez atomudur. Bileşiklerinde +2 ve +3 değişken değerlik alır.", sss: [{q:"Paslanma redoks mudur?", a:"Evet, demirin oksijenle yaptığı yavaş elektrokimyasal yanmadır."}] },
-            29: { p:4, g:11, state:"Katı", desc: "Elektrik iletkenliği çok yüksek kızıl renkli yarı soy metaldir.", config: "[Ar] 3d¹⁰ 4s¹", shells: "2|8|18|1", density: "8.96 g/cm³", electronegativity: "1.90", melt: "1084.6 °C", boil: "2562 °C", discoverer: "Antik çağ", notes: "Tunç çağında kalay ile eritilerek silahlarda kullanılmıştır.", isotope:"63Cu, 65Cu", usages:["Elektrik kablolama hatları", "Pirinç ve bronz alaşımları"], bio:"Hemosiyanin yapısında bazı canlılarda mavi kan proteini oluşturur.", inter=["Küresel simetriye uyması için s orbitalinden bir elektron d'ye kayar (Anomali)."], notes=["Oksijensiz saf asitlerle tepkime vermez, hno3 ile NO2 gazı açığa çıkarır."], sss:[{q:"Anomali dizilim nedir?", a:"Açık elektron diziliminin kendiliğinden küresel simetriye uymasıdır."}] },
-            79: { p:6, g:11, state:"Katı", desc: "Tam soy metal. Korozyona aşırı dayanıklıdır. Asitlerden etkilenmez.", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s¹", shells: "2|8|18|32|18|1", density: "19.3 g/cm³", electronegativity: "2.54", melt: "1064.2 °C", discoverer: "Antik çağ", notes: "Kral suyu hariç asitlerden etkilenmez. Elektron dizilimi anomalilidir.", sss: [{q:"Kral suyu formülü?", a:"3 hacim HCl ile 1 hacim HNO3 karışımı güçlü asit kokteylidir."}] },
-            80: { p:6, g:12, state:"Sıvı", desc: "Oda sıcaklığında sıvı kalan tek metalik geçiş elementidir.", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s²", shells: "2|8|18|32|18|2", density: "13.53 g/cm³", electronegativity: "2.00", melt: "-38.8 °C", discoverer: "Antik çağ", notes: "Ağır metal zehirlenmesi ve Minamata nörolojik sendromu yaratır, toksiktir.", sss: [{q:"Yoğunluğu fazla mıdır?", a:"Evet, demir somunlar cıva sıvısı üstünde batmadan batmadan yüzer."}] }
-        };
+        function getElementCategory(n) {
+            if (n === 1 || (n >= 6 && n <= 8) || (n >= 15 && n <= 16) || n === 34) return "Ametaller";
+            if ([2, 10, 18, 36, 54, 86, 118].includes(n)) return "Soygazlar";
+            if ([3, 11, 19, 37, 55, 87].includes(n)) return "Alkali Metaller";
+            if ([4, 12, 20, 38, 56, 88].includes(n)) return "Toprak Alkali Metaller";
+            if ([9, 17, 35, 53, 85, 117].includes(n)) return "Halojenler";
+            if ([5, 14, 32, 33, 51, 52, 84].includes(n)) return "Yarı Metaller";
+            if (n >= 57 && n <= 71) return "Lantanit"; if (n >= 89 && n <= 103) return "Aktinit";
+            if ([13, 31, 49, 50, 81, 82, 83, 113, 114, 115, 116].includes(n)) return "Toprak Metalleri";
+            return "Geçiş Metalleri";
+        }
+
+        function getCatStyle(cat) {
+            if(cat === "Ametaller") return "cat-ametal"; if(cat === "Soygazlar") return "cat-soygaz";
+            if(cat === "Alkali Metaller") return "cat-alkali"; if(cat === "Toprak Alkali Metaller") return "cat-toprak-alkali";
+            if(cat === "Halojenler") return "cat-halojen"; if(cat === "Yarı Metaller") return "cat-yarimetal";
+            if(cat === "Toprak Metalleri") return "cat-toprak-metali"; if(["Lantanit", "Aktinit"].includes(cat)) return "cat-lantanit-aktinit";
+            return "cat-gecis";
+        }
 
         function getGridCoords(num) {
             if (num === 1) return { row: 2, col: 2 }; if (num === 2) return { row: 2, col: 19 };
@@ -222,6 +201,11 @@
             if (num === 87) return { row: 8, col: 2 }; if (num === 88) return { row: 8, col: 3 };
             if (num >= 89 && num <= 103) return { row: 11, col: num - 89 + 4 }; return { row: 8, col: num - 104 + 5 };
         }
+
+        function buildElementsMatrix() {
+            let list = []; for(let i=0; i<118; i++) { let n = i + 1; list.push({ n: n, s: symbols[i], name: names[i], m: masses[i], cat: getElementCategory(n) }); } return list;
+        }
+        const globalElements = buildElementsMatrix();
 
         function switchTab(tabId) {
             activeTabId = tabId; document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
@@ -281,12 +265,30 @@
             });
         }
 
+        const elementDatabase = {
+            1: { p:1, g:1, state:"Gaz", desc: "Evrenin en hafif elementidir. Yıldızların füzyon yakıtıdır.", config: "1s¹", shells: "1", density: "0.089 g/L", electronegativity: "2.20", melt: "-259.1 °C", discoverer: "Henry Cavendish", notes: "1A grubundadır ama alkali metal değil ametaldir. Sulu asitlerin katyon temelidir.", sss: [{q:"Yanıcı mıdır?", a:"Evet, yüksek derecede yanıcı temiz bir yakıttır."}] },
+            2: { p:1, g:18, state:"Gaz", desc: "Reaksiyona girmeyen tamamen inert bir soy gazdır.", config: "1s²", shells: "2", density: "0.178 g/L", electronegativity: "n/a", melt: "-272.2 °C", discoverer: "Lockyer", notes: "Dublet kararlılığı gösterir. İyonlaşma enerjisi en yüksek olan elementtir.", sss: [{q:"Neden ses inceltir?", a:"Ses bu gazda havaya oranla 3 kat daha hızlı yayılır."}] },
+            6: { p:2, g:14, state:"Katı", desc: "Yaşamın temel taşıdır. Allotropları grafit ve elmastır.", config: "[He] 2s² 2p²", shells: "2|4", density: "2.26 g/cm³", electronegativity: "2.55", melt: "3550 °C", discoverer: "Antik çağ", notes: "AYT organik kimyanın temeli hibritleşme (sp3, sp2, sp) teorilerini barındırır.", sss: [{q:"Allotrop nedir?", a:"Aynı atomun uzayda farklı geometride dizilmesidir."}] },
+            7: { p:2, g:15, state:"Gaz", desc: "Atmosferin %78'ini oluşturan oda koşullarında kararlı bir gazdır.", config: "[He] 2s² 2p³", shells: "2|5", density: "1.251 g/L", electronegativity: "3.04", melt: "-210 °C", discoverer: "Rutherford", notes: "p3 küresel simetri yapısı taşır. Üçlü bağ (N≡N) nedeniyle çok asaldır.", sss: [{q:"Nasıl aktifleşir?", a:"Şimşek ve yıldırım enerjisiyle bağı kırılarak toprağa bağlanır."}] },
+            8: { p:2, g:16, state:"Gaz", desc: "Solunum ve yanma reaksiyonlarının temel yakıcı elementidir.", config: "[He] 2s² 2p⁴", shells: "2|6", density: "1.429 g/L", electronegativity: "3.44", melt: "-218.7 °C", discoverer: "Priestley", notes: "Flor hariç tüm bileşiklerinde negatif yükseltgenme basamağı alır.", sss: [{q:"Oksijen yanar mı?", a:"Hayır, kendisi yanmaz sadece yakıcı gazdır."}] },
+            9: { p:2, g:17, state:"Gaz", desc: "Tablonun en elektronegatif elementidir. Sadece -1 değerlik alır.", config: "[He] 2s² 2p⁵", shells: "2|7", density: "1.696 g/L", electronegativity: "3.98", melt: "-219.6 °C", discoverer: "Moissan", notes: "Elektron ilgisi klordan düşüktür ancak elektronegatifliği en yüksektir.", sss: [{q:"HF asidi özelligi?", a:"Camı aşındırabilen ve eritebilen tek asit türüdür."}] },
+            11: { p:3, g:1, state:"Katı", desc: "Aktif alkali metaldir. Suyla temas edince alevli patlar.", config: "[Ne] 3s¹", shells: "2|8|1", density: "0.97 g/cm³", electronegativity: "0.93", melt: "97.8 °C", discoverer: "Davy", notes: "Hava ve nemle hızlı reaksiyona girdiğinden laboratuvarda gaz yağında saklanır.", sss: [{q:"Yumuşak mıdır?", a:"Evet, balmumu kıvamında olup bıçakla rahatça kesilir."}] },
+            12: { p:3, g:2, state:"Katı", desc: "Klorofil molekülünün merkez atomudur. Hafif alaşım metalidir.", config: "[Ne] 3s²", shells: "2|8|2", density: "1.74 g/cm³", electronegativity: "1.31", melt: "650 °C", discoverer: "Davy", notes: "Bileşiklerinde sadece +2 değerlik alır. Sert sularda Ca ile birlikte bulunur.", sss: [{q:"Yangını nasıl söner?", a:"Su molekülünü parçaladığı için suyla söndürülemez, CO2 gerekir."}] },
+            13: { p:3, g:13, state:"Katı", desc: "Yerkabuğunda en bol bulunan amfoter geçiş önü metalidir.", config: "[Ne] 3s² 3p¹", shells: "2|8|3", density: "2.70 g/cm³", electronegativity: "1.61", melt: "660.3 °C", discoverer: "Ørsted", notes: "Amfoter yapısıyla hem kuvvetli asitlerle hem kuvvetli bazlarla H2 üretir.", sss: [{q:"Neden korozyona dirençli?", a:"Yüzeyinde anında oluşan koruyucu Al2O3 film tabakası sayesinde."}] },
+            17: { p:3, g:17, state:"Gaz", desc: "Yeşilimsi sarı renkli halojen sınıfı zehirli boğucu gazdır.", config: "[Ne] 3s² 3p⁵", shells: "2|8|7", density: "3.21 g/L", electronegativity: "3.16", melt: "-101.5 °C", discoverer: "Scheele", notes: "Tablonun elektron ilgisi en yüksek elementidir (İstisna olarak Floru geçer).", sss: [{q:"Tuz ruhuyla karışırsa?", a:"Ölümcül derecede zehirli saf klor gazı açığa çıkar, karıştırılmamalıdır."}] },
+            20: { p:4, g:2, state:"Katı", desc: "Kemik ve dişlerin ana yapı taşı aktif toprak alkali metalidir.", config: "[Ar] 4s²", shells: "2|8|8|2", density: "1.55 g/cm³", electronegativity: "1.00", melt: "842 °C", discoverer: "Davy", notes: "Suya geçici sertlik veren iyondur. Çimento ve kireç endüstrisi temelidir.", sss: [{q:"Kireç sönmesi nedir?", a:"Kalsiyum oksidin suyla ekzotermik reaksiyon verip Ca(OH)2 oluşturmasıdır."}] },
+            26: { p:4, g:8, state:"Katı", desc: "Ağır sanayinin yapı taşı ferromanyetik geçiş metalidir.", config: "[Ar] 3d⁶ 4s²", shells: "2|8|14|2", density: "7.87 g/cm³", electronegativity: "1.83", melt: "1538 °C", discoverer: "Antik çağ", notes: "Hemoglobinin merkez atomudur. Bileşiklerinde +2 ve +3 değişken değerlik alır.", sss: [{q:"Paslanma redoks mudur?", a:"Evet, demirin oksijenle yaptığı yavaş elektrokimyasal yanmadır."}] },
+            29: { p:4, g:11, state:"Katı", desc: "Elektrik iletkenliği çok yüksek kızıl renkli yarı soy metaldir.", config: "[Ar] 3d¹⁰ 4s¹", shells: "2|8|18|1", density: "8.96 g/cm³", electronegativity: "1.90", melt: "1084.6 °C", discoverer: "Antik çağ", notes: "Oksijensiz saf asitlerle tepkime vermez, hno3 ile NO2 gazı açığa çıkarır.", sss:[{q:"Anomali dizilim nedir?", a:"Açık elektron diziliminin kendiliğinden küresel simetriye uymasıdır."}] },
+            79: { p:6, g:11, state:"Katı", desc: "Tam soy metal. Korozyona aşırı dayanıklıdır. Asitlerden etkilenmez.", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s¹", shells: "2|8|18|32|18|1", density: "19.3 g/cm³", electronegativity: "2.54", melt: "1064.2 °C", discoverer: "Antik çağ", notes: "Kral suyu hariç asitlerden etkilenmez. Elektron dizilimi anomalilidir.", sss: [{q:"Kral suyu formülü?", a:"3 hacim HCl ile 1 hacim HNO3 karışımı güçlü asit kokteylidir."}] },
+            80: { p:6, g:12, state:"Sıvı", desc: "Oda sıcaklığında sıvı kalan tek metalik geçiş elementidir.", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s²", shells: "2|8|18|32|18|2", density: "13.53 g/cm³", electronegativity: "2.00", melt: "-38.8 °C", discoverer: "Antik çağ", notes: "Ağır metal zehirlenmesi ve Minamata nörolojik sendromu yaratır, toksiktir.", sss: [{q:"Yoğunluğu fazla mıdır?", a:"Evet, demir somunlar cıva sıvısı üstünde batmadan batmadan yüzer."}] }
+        };
+
         function openElementDetail(num) {
             currentModalElementNum = num; const el = globalElements.find(x => x.n === num); if (!el) return;
             let colorStyle = getCatStyle(el.cat); document.getElementById('m-badge-container').className = `w-24 h-24 border rounded-2xl flex flex-col items-center justify-center text-center shadow-lg bg-slate-950/50 ${colorStyle}`;
             document.getElementById('modal-breadcrumb').innerText = `Periyodik Tablo / ${el.name}`;
             document.getElementById('m-num').innerText = el.n; document.getElementById('m-sym').innerText = el.s; document.getElementById('m-mass').innerText = el.m;
-            document.getElementById('m-name').innerHTML = `${el.name} (${el.s})`;
+            document.getElementById('m-name').innerHTML = `${el.name} (${el.s}) Nedir?`;
             
             let targetData = elementDatabase[num] || { eng: "Element", state: "Katı", period: Math.ceil(num/18), group: (num%18===0)?18:num%18, desc: `${el.name} müfredat analiz verisidir.`, config: "n/a", shells: "n/a", density: "n/a", electronegativity: "n/a", melt: "n/a", discoverer: "Bilinmiyor", notes: "Grup periyodik özellik trendlerine uyumludur.", sss: [{ q: "Atom numarası?", a: "Çekirdeğindeki resmi proton sayısıdır." }] };
 
@@ -298,7 +300,7 @@
             document.getElementById('m-tags').innerHTML = `<span class="text-[10px] bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-full text-white font-medium">${el.cat}</span><span class="text-[10px] bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-full text-slate-400">Periyot ${targetData.period || Math.ceil(num/18)}</span><span class="text-[10px] bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-full text-slate-400">Grup ${targetData.group || ((num%18===0)?18:num%18)}</span>`;
             document.getElementById('m-grid-props').innerHTML = `<div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Konfigürasyon</div><div class="text-xs font-bold text-white">${targetData.config}</div></div><div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Kabuklar</div><div class="text-xs font-bold text-white">${targetData.shells}</div></div><div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Yoğunluk</div><div class="text-xs font-bold text-white">${targetData.density}</div></div><div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Elektronegatiflik</div><div class="text-xs font-bold text-white">${targetData.electronegativity}</div></div><div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Erime</div><div class="text-xs font-bold text-white">${targetData.melt}</div></div><div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Keşfeden</div><div class="text-xs font-bold text-slate-300">${targetData.discoverer}</div></div>`;
             document.getElementById('m-notes-list').innerHTML = targetData.notes ? `<li class="text-xs text-slate-300 leading-relaxed">• ${targetData.notes}</li>` : '<li>Müfredat notu girilmedi.</li>';
-            document.getElementById('m-sss-container').innerHTML = targetData.sss.map(x => `<div class="bg-[#0a0d16] p-2 rounded-xl border border-slate-850"><div class="text-xs font-bold text-white">${x.q}</div><div class="text-xs text-slate-400 mt-0.5">${x.a}</div></div>`).join('');
+            document.getElementById('m-sss-container').innerHTML = (targetData.sss || []).map(x => `<div class="bg-[#0a0d16] p-2 rounded-xl border border-slate-850"><div class="text-xs font-bold text-white">${x.q}</div><div class="text-xs text-slate-400 mt-0.5">${x.a}</div></div>`).join('');
             
             const prevEl = globalElements.find(x => x.n === num - 1); const nextEl = globalElements.find(x => x.n === num + 1);
             document.getElementById('modal-btn-prev').innerText = prevEl ? `← ${prevEl.name}` : "Başlangıç";
@@ -308,13 +310,13 @@
 
         function closeModal() { document.getElementById('element-modal').classList.add('hidden'); }
         function navigateElement(dir) { let t = currentModalElementNum + dir; if(t >= 1 && t <= 118) openElementDetail(t); }
-        function filterElements(q) { renderElementsGrid(globalElements); }
         function toggleFullScreenContainer() { if (!document.fullscreenElement) document.documentElement.requestFullscreen(); else document.exitFullscreen(); }
 
-        // --- 🔒 DERS SİSTEMİ MANTIĞI ---
+        // --- 🔒 AYT DERS MANTIĞI VE EMEN KORUMA ---
         const defaultTopics = [{ id: "t1", name: "01 Modern Atom Modeli", desc: "Elektron konfigürasyonları.", checked: false, link: "" }, { id: "t2", name: "02 Gazlar", desc: "Kinetik teori bağıntıları.", checked: false, link: "" }];
         function renderAytTopics() {
-            let list = JSON.parse(localStorage.getItem('custom_topic_list')) || defaultTopics;
+            let list = defaultTopics;
+            try { list = JSON.parse(localStorage.getItem('custom_topic_list')) || defaultTopics; } catch(e) { list = defaultTopics; }
             const container = document.getElementById('ayt-topics-container'); if(!container) return; container.innerHTML = '';
             list.forEach(topic => {
                 const hasLink = topic.link && topic.link.trim().startsWith('http');
@@ -322,24 +324,43 @@
             });
         }
         function toggleAccordion(id) { const b = document.getElementById(`body-${id}`), a = document.getElementById(`arrow-${id}`); if(b && a) { b.classList.toggle('hidden'); a.classList.toggle('rotate-180'); } }
-        function updateTopicName(id, val) { let list = JSON.parse(localStorage.getItem('custom_topic_list')) || defaultTopics; let t = list.find(x => x.id === id); if(t) { t.name = val; localStorage.setItem('custom_topic_list', JSON.stringify(list)); document.getElementById(`title-text-${id}`).innerText = val; } }
-        function updateTopicLink(id, val) { let list = JSON.parse(localStorage.getItem('custom_topic_list')) || defaultTopics; let t = list.find(x => x.id === id); if(t) { t.link = val; localStorage.setItem('custom_topic_list', JSON.stringify(list)); const btn = document.getElementById(`go-${id}`); if(btn) { if(val.trim().startsWith('http')) btn.classList.remove('hidden'); else btn.classList.add('hidden'); } } }
-        function openTopicLink(id) { let list = JSON.parse(localStorage.getItem('custom_topic_list')); let t = list.find(x => x.id === id); if(t && t.link) window.open(t.link.trim(), '_blank'); }
-        function toggleTopicCheck(id, chk) { let list = JSON.parse(localStorage.getItem('custom_topic_list')); let t = list.find(x => x.id === id); if(t) { t.checked = chk; localStorage.setItem('custom_topic_list', JSON.stringify(list)); } }
-        function addNewTopic() { const n = document.getElementById('new-topic-name'); if(!n.value.trim()) return; let list = JSON.parse(localStorage.getItem('custom_topic_list')) || []; list.push({ id: "topic_" + Date.now(), name: n.value.trim(), checked: false, link: "" }); localStorage.setItem('custom_topic_list', JSON.stringify(list)); n.value = ''; renderAytTopics(); }
+        function updateTopicName(id, val) { 
+            let list = defaultTopics; try { list = JSON.parse(localStorage.getItem('custom_topic_list')) || defaultTopics; } catch(e) { list = defaultTopics; }
+            let t = list.find(x => x.id === id); if(t) { t.name = val; localStorage.setItem('custom_topic_list', JSON.stringify(list)); document.getElementById(`title-text-${id}`).innerText = val; } 
+        }
+        function updateTopicLink(id, val) { 
+            let list = defaultTopics; try { list = JSON.parse(localStorage.getItem('custom_topic_list')) || defaultTopics; } catch(e) { list = defaultTopics; }
+            let t = list.find(x => x.id === id); if(t) { t.link = val; localStorage.setItem('custom_topic_list', JSON.stringify(list)); const btn = document.getElementById(`go-${id}`); if(btn) { if(val.trim().startsWith('http')) btn.classList.remove('hidden'); else btn.classList.add('hidden'); } } 
+        }
+        function openTopicLink(id) { 
+            let list = defaultTopics; try { list = JSON.parse(localStorage.getItem('custom_topic_list')); } catch(e) { return; }
+            let t = list.find(x => x.id === id); if(t && t.link) window.open(t.link.trim(), '_blank'); 
+        }
+        function toggleTopicCheck(id, chk) { 
+            let list = defaultTopics; try { list = JSON.parse(localStorage.getItem('custom_topic_list')); } catch(e) { return; }
+            let t = list.find(x => x.id === id); if(t) { t.checked = chk; localStorage.setItem('custom_topic_list', JSON.stringify(list)); } 
+        }
+        function addNewTopic() { 
+            const n = document.getElementById('new-topic-name'); if(!n || !n.value.trim()) return; 
+            let list = []; try { list = JSON.parse(localStorage.getItem('custom_topic_list')) || []; } catch(e) { list = []; }
+            list.push({ id: "topic_" + Date.now(), name: n.value.trim(), checked: false, link: "" }); localStorage.setItem('custom_topic_list', JSON.stringify(list)); n.value = ''; renderAytTopics(); 
+        }
         function resetTopicsToDefault() { localStorage.setItem('custom_topic_list', JSON.stringify(defaultTopics)); renderAytTopics(); }
-        function deleteTopic(id) { let list = JSON.parse(localStorage.getItem('custom_topic_list')); list = list.filter(x => x.id !== id); localStorage.setItem('custom_topic_list', JSON.stringify(list)); renderAytTopics(); }
+        function deleteTopic(id) { 
+            let list = []; try { list = JSON.parse(localStorage.getItem('custom_topic_list')); } catch(e) { return; }
+            list = list.filter(x => x.id !== id); localStorage.setItem('custom_topic_list', JSON.stringify(list)); renderAytTopics(); 
+        }
 
-        // --- 🎥 VİDEO & 3D REPLİKA MOTORLARI ---
+        // --- 🎥 VİDEO LİSTESİ VE 3D GEOMETRİK İNŞA SİSTEMİ ---
         const defaultVideos = [{ name: "1. Sodyum Klorür Kristal Örgüsü (Tuz-Su)", file: "NaCl-H2O.MP4" }];
         function renderVideoList() {
-            let list = JSON.parse(localStorage.getItem('custom_video_list')) || defaultVideos;
+            let list = defaultVideos; try { list = JSON.parse(localStorage.getItem('custom_video_list')) || defaultVideos; } catch(e) { list = defaultVideos; }
             const container = document.getElementById('dynamic-video-container'); if(!container) return; container.innerHTML = '';
             list.forEach((item) => {
                 container.innerHTML += `<div class="w-full bg-slate-900 rounded border border-slate-850 flex justify-between items-center p-2.5"><button onclick="playCloudVideo('${item.file}')" class="text-xs font-medium text-slate-300 truncate hover:text-cyan-400 text-left"><i class="fa-solid fa-circle-play mr-2 text-cyan-400"></i>${item.name}</button></div>`;
             });
         }
-        function playCloudVideo(f) { const v = document.getElementById('main-panel-video'); v.src = `./videos/${f}`; document.getElementById('video-player-container').classList.remove('hidden'); v.play(); }
+        function playCloudVideo(f) { const v = document.getElementById('main-panel-video'); if(v) { v.src = `./videos/${f}`; document.getElementById('video-player-container').classList.remove('hidden'); v.play(); } }
 
         let scene, camera, renderer, currentGroup;
         const glassMat = new THREE.MeshPhongMaterial({ color: 0xffffff, transparent: true, opacity: 0.25, shininess: 120, side: THREE.DoubleSide });
@@ -355,12 +376,12 @@
             const pLight = new THREE.PointLight(0xffffff, 1.5, 15); pLight.position.set(2, 4, 3); scene.add(pLight);
             renderer = new THREE.WebGLRenderer({ antialias: true }); renderer.setSize(container.clientWidth, container.clientHeight);
             container.appendChild(renderer.domElement); change3DModel('beherglas');
-            function animate() { requestAnimationFrame(animate); if (currentGroup && !isDragging && activeTabId === '3d') currentGroup.rotation.y += 0.005; renderer.render(scene, camera); } animate();
+            function animate() { requestAnimationFrame(animate); if (currentGroup && !isDragging && activeTabId === '3d') currentGroup.rotation.y += 0.005; if(renderer && scene && camera) renderer.render(scene, camera); } animate();
             window.addEventListener('resize', onWindowResize);
         }
 
         function change3DModel(type) {
-            if (currentGroup) scene.remove(currentGroup); currentGroup = new THREE.Group();
+            if (!scene) return; if (currentGroup) scene.remove(currentGroup); currentGroup = new THREE.Group();
             if (type === 'beherglas') {
                 currentGroup.add(new THREE.Mesh(new THREE.CylinderGeometry(1.4, 1.4, 3.2, 32, 1, true), glassMat));
                 const b = new THREE.Mesh(new THREE.CylinderGeometry(1.4, 1.4, 0.05, 32), glassMat); b.position.y = -1.6; currentGroup.add(b);
@@ -405,7 +426,19 @@
         }
         function onWindowResize() { const c = document.getElementById('canvas-3d'); if(c && renderer) { camera.aspect = c.clientWidth / c.clientHeight; camera.updateProjectionMatrix(); renderer.setSize(c.clientWidth, c.clientHeight); } }
 
-        document.addEventListener('DOMContentLoaded', () => { switchTab('dersler'); renderAytTopics(); renderElementsGrid(globalElements); renderVideoList(); init3D(); document.querySelectorAll('.text-save').forEach(i => { const id = i.getAttribute('data-id'); const s = localStorage.getItem(id); if (s) i.value = s; i.addEventListener('input', () => localStorage.setItem(id, i.value)); }); });
+        document.addEventListener('DOMContentLoaded', () => { 
+            switchTab('dersler'); 
+            renderAytTopics(); 
+            renderElementsGrid(globalElements); 
+            renderVideoList(); 
+            try { init3D(); } catch(e) { console.log('3D pasif'); }
+            document.querySelectorAll('.text-save').forEach(i => { 
+                const id = i.getAttribute('data-id'); 
+                const s = localStorage.getItem(id); 
+                if (s) i.value = s; 
+                i.addEventListener('input', () => localStorage.setItem(id, i.value)); 
+            }); 
+        });
     </script>
 </body>
 </html>
