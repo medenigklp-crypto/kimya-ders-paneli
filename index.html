@@ -23,12 +23,12 @@
         .animate-spin-slow { animation: spin 8s linear infinite; }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         
-        /* Kaydırma Çubukları */
+        /* Gelişmiş Kaydırma Çubukları */
         ::-webkit-scrollbar { width: 4px; height: 5px; }
         ::-webkit-scrollbar-track { background: #060813; }
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 9px; }
 
-        /* Ferrumone Neon Kategori Renkleri */
+        /* Ferrumone Canlı Renk Skalası */
         .cat-ametal { border-color: #10b981 !important; color: #10b981; background-color: rgba(16, 185, 129, 0.03); }
         .cat-soygaz { border-color: #ec4899 !important; color: #ec4899; background-color: rgba(236, 72, 153, 0.03); }
         .cat-alkali { border-color: #ef4444 !important; color: #ef4444; background-color: rgba(239, 68, 68, 0.03); }
@@ -42,7 +42,6 @@
 </head>
 <body class="text-slate-100 font-sans min-h-screen flex flex-col overflow-x-hidden">
 
-    <!-- Üst Başlık -->
     <header class="bg-[#0b0f19] border-b border-slate-800 p-4 sticky top-0 z-40 shadow-md flex justify-between items-center w-full">
         <div class="flex items-center space-x-3">
             <img src="logo .png" alt="Medeni Gökalp Logo" class="h-8 w-auto object-contain select-none rounded">
@@ -57,7 +56,6 @@
 
     <main class="flex-1 p-3 max-w-7xl w-full mx-auto pb-24 box-border overflow-x-hidden">
         
-        <!-- 1. DERS SEKMESİ -->
         <section id="tab-dersler" class="tab-content space-y-4">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
                 <h2 class="text-base font-bold mb-1 text-blue-400 flex items-center"><i class="fa-solid fa-graduation-cap mr-2"></i> Müfredat & Ders Yönetimi</h2>
@@ -78,7 +76,6 @@
             </div>
         </section>
 
-        <!-- 2. 3D STÜDYO SEKMESİ -->
         <section id="tab-3d" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
                 <h2 class="text-base font-bold text-emerald-400 flex items-center mb-2"><i class="fa-solid fa-flask mr-2"></i> Interaktif 3D Stüdyo</h2>
@@ -122,11 +119,9 @@
             </div>
         </section>
 
-        <!-- 3. PERİYODİK TABLO SEKMESİ (BİREBİR MATRİS VE KAYDIRMA) -->
         <section id="tab-elementler" class="tab-content space-y-4 hidden">
             <div class="bg-[#0a0d16] p-4 rounded-xl border border-slate-800 shadow-lg space-y-4">
                 
-                <!-- Üst Nav Kontrolleri -->
                 <div class="flex items-center justify-between gap-2">
                     <div class="relative flex-1 max-w-xs">
                         <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-500 text-xs"></i>
@@ -143,17 +138,13 @@
                     </div>
                 </div>
 
-                <!-- MOBİL KAYDIRILABİLİR 18 SÜTUNLU GRİD YAPISI -->
                 <div class="overflow-x-auto w-full pb-3">
                     <div id="periodic-matrix-container" class="grid gap-1.5 p-1 min-w-[1240px]" style="grid-template-columns: 28px repeat(18, minmax(64px, 1fr));">
-                        <!-- JavaScript buraya başlıkları, elementleri ve orta açıklama kutularını dolduracak -->
-                    </div>
+                        </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- 4. GÜVENLİK SEKMESİ -->
         <section id="tab-guvenlik" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
                 <h2 class="text-base font-bold mb-1 text-amber-400 flex items-center"><i class="fa-solid fa-triangle-exclamation mr-2"></i> Kimyasal Tehlike İşaretleri</h2>
@@ -171,7 +162,6 @@
             </div>
         </section>
 
-        <!-- 5. VİDEOLAR SEKMESİ -->
         <section id="tab-galeri" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg space-y-3">
                 <h2 class="text-base font-bold text-cyan-400 flex items-center"><i class="fa-solid fa-video mr-2"></i> Videolar & Deney Listesi</h2>
@@ -180,14 +170,13 @@
                     <input type="text" id="new-video-file" placeholder="GitHub Dosya Adı (NaCl-H2O.MP4)..." class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white focus:outline-none">
                     <button onclick="addNewVideoToList()" class="w-full bg-cyan-600 text-xs font-bold py-2 rounded shadow-md">Listeye Sabitle</button>
                 </div>
-                <div class="bg-black rounded-lg overflow-hidden border border-slate-800 hidden" id="video-player-container">
+                <div class="bg-black rounded-lg overflow-hidden border border-slate-700 hidden" id="video-player-container">
                     <video id="main-panel-video" controls class="w-full h-auto max-h-[300px]"></video>
                 </div>
                 <div id="dynamic-video-container" class="space-y-1.5"></div>
             </div>
         </section>
 
-        <!-- 6. SENARYO SEKMESİ -->
         <section id="tab-youtube" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg flex flex-col h-[calc(100vh-12rem)]">
                 <h2 class="text-base font-bold mb-2 text-rose-400 flex items-center"><i class="fa-brands fa-youtube mr-2"></i> YouTube Senaryo Üretici</h2>
@@ -198,20 +187,16 @@
 
     </main>
 
-    <!-- FERRUMONE BİREBİR DETAY MODALI -->
     <div id="element-modal" class="fixed inset-0 bg-slate-950/95 backdrop-blur-sm z-50 hidden flex items-center justify-center p-0 sm:p-4">
         <div class="bg-[#05070f] w-full h-full sm:max-w-2xl sm:h-[90vh] sm:rounded-2xl border-t sm:border border-slate-800 flex flex-col shadow-2xl overflow-hidden">
             
-            <!-- Üst Başlık Kısmı -->
             <div class="p-4 bg-[#0a0d16] border-b border-slate-850 flex justify-between items-center shrink-0">
                 <span class="text-xs font-semibold text-slate-400" id="modal-breadcrumb">Periyodik Tablo / Element</span>
                 <button onclick="closeModal()" class="text-slate-400 text-xs bg-[#131a2e] px-3 py-1.5 rounded-lg border border-slate-800 font-bold">Kapat</button>
             </div>
             
-            <!-- İçerik Alanı -->
             <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-[#05070f]" id="modal-scroll-content">
                 
-                <!-- Üst Element Amblem Alanı -->
                 <div class="bg-[#0a0d16] p-5 rounded-2xl border border-slate-850 flex flex-col items-start space-y-4">
                     <div id="m-badge-container" class="w-24 h-24 border rounded-2xl flex flex-col items-center justify-center text-center shadow-lg bg-slate-950/50">
                         <span class="text-xs text-slate-400 font-bold self-start pl-3 pt-1" id="m-num">79</span>
@@ -220,16 +205,14 @@
                     </div>
                     
                     <div class="space-y-2 w-full">
-                        <h2 class="text-xl font-black text-white" id="m-name">Altın (Au) Nedir?</h2>
+                        <h2 class="text-xl font-black text-white" id="m-name">Element Nedir?</h2>
                         <div class="flex flex-wrap gap-1.5" id="m-tags"></div>
                         <p class="text-xs text-slate-300 leading-relaxed pt-2 border-t border-slate-850" id="m-desc"></p>
                     </div>
                 </div>
 
-                <!-- 9'lu Metrik Veri Izgarası -->
                 <div class="grid grid-cols-2 gap-2" id="m-grid-props"></div>
 
-                <!-- Detay Blokları -->
                 <div id="ferrum-history-block" class="p-4 bg-[#0a0d16] border border-slate-850 rounded-2xl">
                     <div class="text-[11px] text-blue-400 font-bold uppercase flex items-center gap-1.5 mb-2"><i class="fa-regular fa-clock"></i> Keşif Tarihi</div>
                     <p class="text-xs text-slate-300 leading-relaxed" id="m-history-text"></p>
@@ -260,14 +243,12 @@
                     <ul class="space-y-1.5 text-xs text-slate-300 leading-relaxed" id="m-notes-list"></ul>
                 </div>
 
-                <!-- Element SSS Bölümü -->
                 <div class="space-y-2">
                     <div class="text-[11px] text-slate-400 font-bold uppercase tracking-wider pl-1" id="sss-heading">SSS</div>
                     <div class="space-y-2" id="m-sss-container"></div>
                 </div>
             </div>
 
-            <!-- Alt Değiştirme Butonları -->
             <div class="p-3 bg-[#0a0d16] border-t border-slate-850 flex items-center justify-between gap-2 shrink-0">
                 <button id="modal-btn-prev" onclick="navigateElement(-1)" class="flex-1 bg-[#131a2e] border border-slate-800 text-xs py-2 rounded-xl text-slate-300 text-left pl-3 truncate">← Önceki</button>
                 <button onclick="closeModal()" class="bg-[#1c120c] border border-[#f97316]/30 text-[#f97316] text-xs font-bold px-4 py-2 rounded-xl flex items-center gap-2"><i class="fa-solid fa-table-cells"></i> Periyodik Tablo</button>
@@ -276,7 +257,6 @@
         </div>
     </div>
 
-    <!-- ALT SEKMELER -->
     <nav class="bg-slate-800 border-t border-slate-700 fixed bottom-0 left-0 right-0 p-1 flex justify-between items-center shadow-2xl z-40 w-full overflow-x-auto">
         <button onclick="switchTab('dersler')" id="btn-dersler" class="flex-1 flex flex-col items-center justify-center py-1 rounded-lg text-slate-400 active-tab min-w-[55px]"><i class="fa-solid fa-list-check text-xs mb-0.5"></i><span class="text-[8px]">Ders</span></button>
         <button onclick="switchTab('3d')" id="btn-3d" class="flex-1 flex flex-col items-center justify-center py-1 rounded-lg text-slate-400 min-w-[55px]"><i class="fa-solid fa-cube text-xs mb-0.5"></i><span class="text-[8px]">3D Stüdyo</span></button>
@@ -287,7 +267,6 @@
     </nav>
 
     <script>
-        // Global Kontroller
         let activeTabId = 'dersler';
         let isDragging = false; 
         let currentModalElementNum = 79;
@@ -350,7 +329,6 @@
             return "cat-gecis";
         }
 
-        // Matris Yerleşim Hesaplama Motoru (Satır/Sütun Atamaları)
         function getGridCoords(num) {
             if (num === 1) return { row: 2, col: 2 }; 
             if (num === 2) return { row: 2, col: 19 }; 
@@ -362,11 +340,11 @@
             if (num >= 37 && num <= 54) return { row: 6, col: num - 35 }; 
             if (num === 55) return { row: 7, col: 2 }; 
             if (num === 56) return { row: 7, col: 3 }; 
-            if (num >= 57 && num <= 71) return { row: 10, col: num - 57 + 4 }; // Alt Lantanit sırası
+            if (num >= 57 && num <= 71) return { row: 10, col: num - 57 + 4 }; 
             if (num >= 72 && num <= 86) return { row: 7, col: num - 72 + 5 }; 
             if (num === 87) return { row: 8, col: 2 }; 
             if (num === 88) return { row: 8, col: 3 }; 
-            if (num >= 89 && num <= 103) return { row: 11, col: num - 89 + 4 }; // Alt Aktinit sırası
+            if (num >= 89 && num <= 103) return { row: 11, col: num - 89 + 4 }; 
             if (num >= 104 && num <= 118) return { row: 8, col: num - 104 + 5 }; 
         }
 
@@ -381,20 +359,10 @@
         const globalElements = buildElementsMatrix();
 
         function renderElementsGrid(list) {
-            const container = document.getElementById('periodic-matrix-container');
-            container.innerHTML = '';
+            const container = document.getElementById('periodic-matrix-container'); container.innerHTML = '';
+            for (let g = 1; g <= 18; g++) { container.innerHTML += `<div class="text-center text-[10px] font-bold text-slate-600 self-end pb-1" style="grid-row: 1; grid-column: ${g + 1};">${g}</div>`; }
+            for (let p = 1; p <= 7; p++) { container.innerHTML += `<div class="flex items-center justify-center text-[10px] font-bold text-slate-600 pr-1" style="grid-row: ${p + 1}; grid-column: 1;">${p}</div>`; }
 
-            // Sütun Numaralarını Ekle (1-18)
-            for (let g = 1; g <= 18; g++) {
-                container.innerHTML += `<div class="text-center text-[10px] font-bold text-slate-600 self-end pb-1" style="grid-row: 1; grid-column: ${g + 1};">${g}</div>`;
-            }
-
-            // Satır Numaralarını Ekle (1-7)
-            for (let p = 1; p <= 7; p++) {
-                container.innerHTML += `<div class="flex items-center justify-center text-[10px] font-bold text-slate-600 pr-1" style="grid-row: ${p + 1}; grid-column: 1;">${p}</div>`;
-            }
-
-            // Ortadaki Boşluğa Ferrumone Kategori Kılavuz Kartlarını Enjekte Et
             const legends = [
                 { name: "Alkali Metal", count: "6 element", color: "#ef4444", row: 3, col: 4 },
                 { name: "Toprak Alkali", count: "6 element", color: "#f97316", row: 3, col: 6 },
@@ -407,33 +375,22 @@
                 { name: "Soy Gaz", count: "7 element", color: "#ec4899", row: 4, col: 10 },
                 { name: "Bilinmiyor", count: "3 element", color: "#64748b", row: 4, col: 12 }
             ];
-
             legends.forEach(l => {
                 container.innerHTML += `
                     <div class="border border-slate-850 rounded-xl p-1 flex flex-col items-center justify-center text-center bg-[#0a0d16]/40 select-none" style="grid-row: ${l.row}; grid-column: ${l.col} / span 2;">
                         <div class="w-5 h-0.5 mb-1 rounded" style="background-color: ${l.color};"></div>
                         <span class="text-[9px] font-black tracking-tight" style="color: ${l.color};">${l.name}</span>
                         <span class="text-[7px] text-slate-500 font-medium">${l.count}</span>
-                    </div>
-                `;
+                    </div>`;
             });
 
-            // Tablo İçi "57-71" ve "89-103" Yer Tutucu Kutuları
             container.innerHTML += `
-                <div class="border border-dashed border-purple-950 rounded-xl flex items-center justify-center text-center bg-purple-950/5 select-none" style="grid-row: 7; grid-column: 4;">
-                    <span class="text-[9px] font-bold text-purple-500/70">57-71</span>
-                </div>
-                <div class="border border-dashed border-purple-950 rounded-xl flex items-center justify-center text-center bg-purple-950/5 select-none" style="grid-row: 8; grid-column: 4;">
-                    <span class="text-[9px] font-bold text-purple-500/70">89-103</span>
-                </div>
-                <div style="grid-row: 9; grid-column: 1 / span 19; height: 12px;"></div>
-            `;
+                <div class="border border-dashed border-purple-950 rounded-xl flex items-center justify-center text-center bg-purple-950/5 select-none" style="grid-row: 7; grid-column: 4;"><span class="text-[9px] font-bold text-purple-500/70">57-71</span></div>
+                <div class="border border-dashed border-purple-950 rounded-xl flex items-center justify-center text-center bg-purple-950/5 select-none" style="grid-row: 8; grid-column: 4;"><span class="text-[9px] font-bold text-purple-500/70">89-103</span></div>
+                <div style="grid-row: 9; grid-column: 1 / span 19; height: 12px;"></div>`;
 
-            // Element Hücrelerini Konumlandır
             list.forEach(el => {
-                const coords = getGridCoords(el.n);
-                let colorStyle = getCatStyle(el.cat);
-                
+                const coords = getGridCoords(el.n); let colorStyle = getCatStyle(el.cat);
                 container.innerHTML += `
                     <div onclick="openElementDetail(${el.n})" class="p-1 bg-[#0f1422] border rounded-xl flex flex-col items-center justify-center text-center shadow-md hover:scale-105 transition-all cursor-pointer ${colorStyle}" style="grid-row: ${coords.row}; grid-column: ${coords.col};">
                         <span class="text-[8px] text-slate-500 font-bold self-start pl-0.5">${el.n}</span>
@@ -444,41 +401,132 @@
         }
         function filterElements(q) { renderElementsGrid(globalElements.filter(x => x.name.toLowerCase().includes(q.toLowerCase()) || x.s.toLowerCase().includes(q.toLowerCase()))); }
 
-        // --- 🔘 INTERAKTİF GEZİNTİ VE DİNAMİK DETAY ENJEKTÖRÜ 🔘 ---
+        // --- 🔘 FERRUMONE DERİN VERİ ENJEKTÖRÜ (700+ SATIR DESTEĞİ) 🔘 ---
         function openElementDetail(num) {
-            currentModalElementNum = num;
-            const el = globalElements.find(x => x.n === num); if(!el) return;
-            
-            let colorStyle = getCatStyle(el.cat);
-            const badge = document.getElementById('m-badge-container');
+            currentModalElementNum = num; const el = globalElements.find(x => x.n === num); if(!el) return;
+            let colorStyle = getCatStyle(el.cat); const badge = document.getElementById('m-badge-container');
             badge.className = `w-24 h-24 border rounded-2xl flex flex-col items-center justify-center text-center shadow-lg bg-slate-950/50 ${colorStyle}`;
 
             document.getElementById('modal-breadcrumb').innerText = `Periyodik Tablo / ${el.name}`;
-            document.getElementById('m-num').innerText = el.n;
-            document.getElementById('m-sym').innerText = el.s;
-            document.getElementById('m-mass').innerText = el.m;
+            document.getElementById('m-num').innerText = el.n; document.getElementById('m-sym').innerText = el.s; document.getElementById('m-mass').innerText = el.m;
             document.getElementById('m-name').innerHTML = `${el.name} (${el.s}) Nedir? <span class="text-xs font-normal text-slate-500" id="m-eng">Element</span>`;
             
-            // Varsayılan Dinamik Kimya Şablon Verileri
+            // Global Dinamik Şablon Verileri
             let eng = "Chemical Element"; let state = "Katı"; let period = Math.ceil(num/18); let group = (num % 18 === 0) ? 18 : num % 18;
-            let desc = `${el.name}, periyodik tablonun ${el.cat} sınıfına ait kararlı bir elementtir.`;
+            let desc = `${el.name}, periyodik tablonun ${el.cat} sınıfına ait bir elementtir.`;
             let config = "n/a"; let shells = "n/a"; let density = "n/a"; let discoverer = "Bilinmiyor";
             let electronegativity = "n/a"; let melt = "n/a"; let boil = "n/a";
-            let historyText = "Antik çağlardan beri bilinen veya laboratuvarda sentezlenen element sınıfındandır.";
-            let isotopeText = "Doğal izotoplarının bolluk oranları ve nükleer kararlılıkları müfredat kapsamında incelenir.";
-            let usages = ["Endüstriyel imalat", "Laboratuvar araştırma süreçleri"];
-            let bioText = "Canlı mekanizmalarında spesifik toksik etki göstermez, eser miktarda bulunabilir.";
-            let interesting = ["Müfredatta kararlı özellikleri ile işlenir."];
-            let notes = ["Yüksek oda sıcaklığında kararlılık gösterir."];
+            let historyText = "Müfredat kapsamında kimyasal özellikleri incelenen elementler sınıfındandır.";
+            let isotopeText = "Kararlı izotop yapısı ve kütle numarası bağıntıları AYT müfredatında yer alır.";
+            let usages = ["Endüstriyel alaşımlar ve laboratuvar test reaktifleri."];
+            let bioText = "Canlı dokularda iz miktar düzeyinde fonksiyon üstlenebilir.";
+            let interesting = ["AYT/TYT müfredatında soru potansiyeli yüksek elementlerdendir."];
+            let notes = ["Reaksiyon yatkınlıkları periyodik özellik trendlerine göre değişim gösterir."];
             let sss = [
-                { q: `${el.name} atom numarası kaçtır?`, a: `${el.name} elementinin atom numarası ${el.n}'dir.` },
-                { q: `${el.name} nerelerde kullanılır?`, a: `Genel kimya sanayi ve eğitim teknolojilerinde tercih edilir.` }
+                { q: `${el.name} atom numarası kaçtır?`, a: `${el.name} elementinin periyodik tablodaki atom numarası ${el.n}'dir.` },
+                { q: `${el.name} elektron dizilimi nasıldır?`, a: `Müfredat kuantum sayıları kurallarına uygun dizilim gösterir.` }
             ];
 
-            // 🌟 79 NUMARALI ALTIN (Au) ELEMENTİNİN BİREBİR DETAY VERİLERİ 🌟
-            if(num === 79) {
+            // 🌟 ELEMENT 1: HİDROJEN
+            if(num === 1) {
+                eng = "Hydrogen"; state = "Gaz"; group = 1; period = 1;
+                desc = "Evrenin en hafif, en basit ve en bol bulunan elementidir. Yıldızların temel füzyon yakıtıdır. Ametal özellik taşır.";
+                config = "1s¹"; shells = "1"; density = "0.089 g/L"; electronegativity = "2.20"; melt = "-259.1 °C"; boil = "-252.9 °C"; discoverer = "Henry Cavendish";
+                historyText = "1766 yılında Henry Cavendish tarafından metal-asit reaksiyonları esnasında keşfedildi. Antoine Lavoisier, elemente su üreten anlamına gelen 'Hydrogen' ismini verdi.";
+                isotopeText = "¹H (Protium - %99.98), ²H (Deuterium - Ağır Hidrojen), ³H (Tritium - Radyoaktif).";
+                usages = ["Amonyak (Haber-Bosch) sentezi", "Roket yakıtları (sıvı H₂)", "Bitkisel yağların hidrojenasyonu", "Temiz enerji (Hidrojen yakıt pilleri)"];
+                bioText = "Su molekülünün yapısında yer alarak insan vücudunun kütlece %10'unu oluşturur. Organik bileşiklerin omurgasını tamamlar.";
+                interesting = ["1A grubunda yer almasına rağmen alkali metal değildir, ametaldir.", "Evrendeki tüm atomların yaklaşık %90'ını tek başına oluşturur."];
+                notes = ["Yalnızca 1 proton ve 1 elektrondan oluşur, nötronu olmayan tek kararlı elementtir.", "Katyonu (H⁺) saf sulu asit çözeltilerinin temel belirleyicisidir."];
+                sss = [
+                    { q: "Hidrojen neden 1A grubundadır?", a: "Valans katmanında 1 elektron barındırdığı için s-blok 1A grubunda yer alır; ancak kimyasal özellikleri metallere benzemez." },
+                    { q: "Hidrojen yakıtı çevre dostu mudur?", a: "Evet, hidrojen yandığında yan ürün olarak sadece su buharı (H₂O) açığa çıkarır, karbon salınımı sıfırdır." }
+                ];
+            }
+            // 🌟 ELEMENT 6: KARBON
+            else if(num === 6) {
+                eng = "Carbon"; state = "Katı"; group = 14; period = 2;
+                desc = "Yaşamın temel taşıdır. Dört bağ yapabilme yeteneği (tetravalan) sayesinde milyonlarca farklı kararlı organik molekül oluşturabilir.";
+                config = "[He] 2s² 2p²"; shells = "2 | 4"; density = "2.26 g/cm³"; electronegativity = "2.55"; melt = "3550 °C"; boil = "4027 °C"; discoverer = "Antik çağ";
+                historyText = "Tarih öncesi çağlardan beri kömür ve is formunda insanlık tarafından kullanılmaktadır. Elmas ve grafitin aynı elementten oluştuğu 18. yüzyılda kanıtlanmıştır.";
+                isotopeText = "¹²C (Kararlı - %98.9), ¹³C (Kararlı - %1.1), ¹⁴C (Radyoaktif - Arkeolojik yaş tayininde kullanılır).";
+                usages = ["Çelik üretimi (karbon katkısı)", "Nano-teknoloji (Grafen, Karbon Nanotüpler)", "Plastik ve polimer sanayisi", "Aktif karbon filtreleri"];
+                bioText = "Organik kimyanın omurgasıdır. Karbonhidratlar, lipidler, proteinler ve DNA'nın iskelet yapısını kurar.";
+                interesting = ["Aynı element hem yeryüzünün en yumuşak malzemelerinden birini (grafit) hem de en sert malzemesini (elmas) oluşturabilir. Bu duruma allotropi denir.", "Karbon atomları kendi aralarında sonsuz zincirler oluşturma yeteneğine (katenasyon) sahiptir."];
+                notes = ["AYT Kimya Organik Giriş konusunun temelidir. Hibritleşme (sp³, sp², sp) teorileri bu element üzerinden anlatılır.", "Kovalent bağ kapasitesi en yüksek 2. periyot elementidir."];
+                sss = [
+                    { q: "Karbon allotropları nelerdir?", a: "Doğal allotropları elmas ve grafittir. Yapay allotropları ise fullerene, karbon nanotüp ve grafendir." },
+                    { q: "Karbon-14 yöntemi nasıl çalışır?", a: "Radyoaktif ¹⁴C izotopunun yarılanma ömrü (5730 yıl) kullanılarak fosillerin ve antik kalıntıların yaş tayini yapılır." }
+                ];
+            }
+            // 🌟 ELEMENT 8: OKSİJEN
+            else if(num === 8) {
+                eng = "Oxygen"; state = "Gaz"; group = 16; period = 2;
+                desc = "Solunum ve yanma reaksiyonlarının temel elementidir. Yerkabuğunda kütlece en çok bulunan elementtir (%46.6).";
+                config = "[He] 2s² 2p⁴"; shells = "2 | 6"; density = "1.429 g/L"; electronegativity = "3.44"; melt = "-218.7 °C"; boil = "-182.9 °C"; discoverer = "Carl Wilhelm Scheele / Joseph Priestley";
+                historyText = "1772-1774 yılları arasında Scheele ve Priestley tarafından bağımsız olarak keşfedildi. Lavoisier, elementin asit oluşturma özelliklerini inceleyerek 'oksijen' adını verdi.";
+                isotopeText = "¹⁶O (%99.76), ¹⁷O, ¹⁸O (Oksijen izotopları kararlı yapılardadır).";
+                usages = ["Çelik ergitme fırınları (oksidasyon)", "Tıbbi solunum tüpleri", "Oksiasetilen kaynağı", "Su arıtma (Ozonizasyon süreçleri)"];
+                bioText = "Hücresel solunumda ATP sentezi için son elektron alıcıdır. İnsan vücudunun kütlece %65'ini oluşturur.";
+                interesting = ["Oksijen gazı (O₂) şeffaftır ancak sıvı ve katı formdayken çok şık soluk mavi bir renk alır.", "Oksijen allotropu olan Ozon (O₃), stratosferde Dünya'yı UV ışınlarından korur."];
+                notes = ["Oksidasyon (yükseltgenme) kavramının isim babasıdır. Fluor (F) hariç tüm elementlerle reaksiyonlarında negatif yükseltgenme basamağı alır.", "Müfredatta gazlar ve redoks başlıklarında sıkça incelenir."];
+                sss = [
+                    { q: "Oksijen yanıcı mıdır?", a: "Hayır, oksijen yanıcı değil, yakıcı bir gazdır. Yanma reaksiyonlarının gerçekleşmesi için ortamda bulunması şarttır." },
+                    { q: "Ozon tabakası neden delinir?", a: "Kloroflorokarbon (CFC) gazları stratosfere ulaştığında klor radikalleri salarak O₃ moleküllerini hızla parçalar." }
+                ];
+            }
+            // 🌟 ELEMENT 13: ALÜMİNYUM
+            else if(num === 13) {
+                eng = "Aluminium"; state = "Katı"; group = 13; period = 3;
+                desc = "Yerkabuğunda en bol bulunan metaldir (kütlece ~%8,1). Düşük yoğunluğu ve korozyon direnci ile havacılık sanayisinin vazgeçilmezidir. Amfoter metaldir.";
+                config = "[Ne] 3s² 3p¹"; shells = "2 | 8 | 3"; density = "2.70 g/cm³"; electronegativity = "1.61"; melt = "660.3 °C"; boil = "2470 °C"; discoverer = "Hans Christian Ørsted";
+                historyText = "1825 yılında şanslı bir deneyle Ørsted tarafından izole edildi. 19. yüzyılda altından daha değerli bir metal muamelesi görüyordu, Hall-Héroult yöntemiyle üretimi kolaylaştı.";
+                isotopeText = "²⁷Al (Doğal form - %100 kararlı izotop yapısı).";
+                usages = ["Uçak ve uzay mekiği gövdeleri", "Yüksek gerilim elektrik hat iletim kabloları", "Mutfak folyoları ve içecek kutuları", "Termit kaynak reaksiyonları (Al + Fe₂O₃)"];
+                bioText = "Biyolojik olarak bilinen bir fonksiyonu yoktur, yüksek dozda merkezi sinir sistemine toksik etkiler yapabilir.";
+                interesting = ["19. yüzyılda Napolyon, en değerli misafirlerine alüminyum çatal bıçak takımı verirken diğerlerine altın takım sunuyordu.", "Yüzeyinde anında oluşan mikro Al₂O₃ pas tabakası altındaki metali tamamen korur (pasifleşme)."];
+                notes = ["Müfredatta amfoter metal olarak işlenir. Hem kuvvetli asitlerle hem de kuvvetli bazlarla reaksiyona girerek H₂ gazı açığa çıkarır.", "Elektroliz konusu Hall-Héroult eldesi üzerinden örneklendirilir."];
+                sss = [
+                    { q: "Alüminyum neden paslanmaz?", a: "Hava ile temas ettiği an yüzeyinde görünmez, çok kararlı bir Alüminyum Oksit (Al₂O₃) tabakası oluşur ve iç kısımların oksitlenmesini engeller." },
+                    { q: "Alüminyum amfoter metal ne demektir?", a: "Hem asitlere karşı baz, hem de kuvvetli bazlara karşı asit gibi davranarak her iki sınıfla da reaksiyona girebilen metal demektir." }
+                ];
+            }
+            // 🌟 ELEMENT 26: DEMİR
+            else if(num === 26) {
+                eng = "Iron"; state = "Katı"; group = 8; period = 4;
+                desc = "Sanayinin ve ağır endüstrinin temel taşıdır. Dünya çekirdeğinin ana bileşenidir. Ferromanyetik özellik gösterir.";
+                config = "[Ar] 3d⁶ 4s²"; shells = "2 | 8 | 14 | 2"; density = "7.87 g/cm³"; electronegativity = "1.83"; melt = "1538 °C"; boil = "2862 °C"; discoverer = "Antik çağ";
+                historyText = "İnsanlık tarihi demir madeninin eritilip işlenmesiyle çağ atlamıştır (Demir Çağı). Meteoritlerden elde edilen demir, antik mısırda 'cennetin metali' olarak adlandırılırdı.";
+                isotopeText = "⁵⁶Fe (%91.7), ⁵⁴Fe, ⁵⁷Fe, ⁵⁸Fe (⁵⁶Fe evrende nükleer füzyonun son kararlı durağıdır).";
+                usages = ["Çelik ve font döküm imalatı (İnşaat omurgaları)", "Köprü, ray ve gemi yapımı", "Elektromıknatıs çekirdekleri", "Haber (Amonyak) prosesinde katalizör"];
+                bioText = "Kanın yapısındaki hemoglobin proteininin merkez atomudur. Dokulara oksijen taşınmasını koordine eder.";
+                interesting = ["Dünyanın kütlece en büyük kısmını oluşturur (Çekirdekteki devasa eriyik demir kütlesi).", "Yeryüzünün manyetik kalkanı (Magnetosfer) çekirdekteki eriyik demirin dönme hareketiyle oluşur."];
+                notes = ["d-bloğu geçiş metalidir. Bileşiklerinde +2 (Ferro) ve +3 (Ferrik) gibi değişken pozitif yükseltgenme basamakları alabilir.", "Korozyon (Paslanma) reaksiyonu elektrokimya ünitelerinde temel redoks örneğidir."];
+                sss = [
+                    { q: "Demir neden paslanır?", a: "Nemli hava ortamında oksijenle reaksiyona girerek hidrate demir(III) oksit (Fe₂O₃·nH₂O) yani kırılgan pas tabakası oluşturur." },
+                    { q: "Çelik ile demir arasındaki fark nedir?", a: "Çelik, ham demirin içine belirli oranlarda (~%0.2 - %2) Karbon (C) eklenerek mukavemeti artırılmış çok daha sert bir alaşımdır." }
+                ];
+            }
+            // 🌟 ELEMENT 29: BAKIR
+            else if(num === 29) {
+                eng = "Copper"; state = "Katı"; group = 11; period = 4;
+                desc = "Gümüşten sonra elektrik ve ısıyı en iyi ileten metaldir. Kızıl-turuncu rengiyle ayırt edilir. Yarı soy metaldir.";
+                config = "[Ar] 3d¹⁰ 4s¹"; shells = "2 | 8 | 18 | 1"; density = "8.96 g/cm³"; electronegativity = "1.90"; melt = "1084.6 °C"; boil = "2562 °C"; discoverer = "Antik çağ";
+                historyText = "İnsanlığın altınla birlikte işlediği ilk metallerdendir. Kalay ile karıştırılarak Bronz (Tunç) Çağı'nın başlamasına vesile olmuştur. Kıbrıs adasından (Cuprum) ismini alır.";
+                isotopeText = "⁶³Cu (%69.1), ⁶⁵Cu (%30.9) (Her iki izotop da kararlıdır).";
+                usages = ["Elektrik kabloları ve elektronik kart yolları", "Su tesisat boruları ve ısı değiştiriciler", "Pirinç (Cu-Zn) ve Bronz (Cu-Sn) alaşımları", "Madeni para imalatı"];
+                bioText = "Birçok enzimin yapısında kofaktör olarak yer alır. Sülük ve ahtapot gibi bazı omurgasızların kanında oksijen taşıyan hemosiyanin molekülü bakır içerir (Mavi kan).";
+                interesting = ["Elektron konfigürasyonunda küresel simetri kararlılığı nedeniyle anomalili dizilime ([Ar] 3d¹⁰ 4s¹) sahiptir.", "Özgün rengi kızıldır fakat oksitlendiğinde özgürlük heykeli gibi şık bir mat yeşil (patina) tabakaya bürünür."];
+                notes = ["Müfredatta Yarı Soy Metal başlığında işlenir. Oksijensiz asitlerle (HCl) reaksiyona girmez; ancak HNO₃ ve H₂SO₄ gibi oksijenli kuvvetli asitlerle NO₂ veya SO₂ gazı açığa çıkarır.", "Küresel simetri konusunda orbital şeması en çok sorulan elementtir."];
+                sss = [
+                    { q: "Bakır neden değişken değerlik alır?", a: "Geçiş metali olduğu için reaksiyonlarda hem 4s orbitalindeki hem de 3d orbitalindeki elektronları kısmen vererek +1 veya +2 değerlik alabilir." },
+                    { q: "Pirinç alaşımı nelerin karışımıdır?", a: "Bakır (Cu) metali içerisine Çinko (Zn) katılarak elde edilen parlak sarı renkli mukavemetli bir alaşımdır." }
+                ];
+            }
+            // 🌟 ELEMENT 79: ALTIN
+            else if(num === 79) {
                 eng = "Gold"; state = "Katı"; group = 11; period = 6;
-                desc = "Soy metal, korozyona dayanıklı. Elektronik bağlantılarda, mücevhercilikte ve para sisteminde kullanılır. Rölatiflik etkisi altın rengi verir.";
+                desc = "Soy metal, korozyona dayanıklı. Elektronik bağlantılarda, mücevhercilikte and para sisteminde kullanılır. Rölatiflik etkisi altın rengi verir.";
                 config = "[Xe] 4f¹⁴ 5d¹⁰ 6s¹"; shells = "2 | 8 | 18 | 32 | 18 | 1"; density = "19.3 g/cm³"; electronegativity = "2.54"; melt = "1064.2 °C"; boil = "2855.8 °C"; discoverer = "Antik çağ";
                 historyText = "Altın, insanlığın işlediği ilk metallerden biridir; en erken buluntular yaklaşık MÖ 5000 yılına tarihlenmektedir (Varna nekropolü, Bulgaristan). Sembolü Au, Latince \"aurum\" sözcüğünden gelir. Antik Mısır, Anadolu altın madenleri (Lidia elektrum sikkeleri, MÖ 600), Roma ve Keza İnka İmparatorluğu büyük altın kültürleri geliştirdi. Altın standardı 19-20. yüzyıl para sistemlerini şekillendirdi; Bretton Woods anlaşmasıyla (1944) ABD Doları altına bağlı rezerv para birimi ilan edildi, 1971'de Nixon bu bağı kesti.";
                 isotopeText = "¹⁹⁷Au - Doğal bolluk: %100. Tek doğal izotop (monoisotopik element); spin-3/2; NMR aktif.";
@@ -503,6 +551,22 @@
                     { q: "Altın atom numarası kaçtır?", a: "Altın elementinin atom numarası 79'dur." },
                     { q: "Altın elektron dizilimi nedir?", a: "Altın elementinin elektron dizilimi [Xe] 4f¹⁴ 5d¹⁰ 6s¹ şeklindedir." },
                     { q: "Altın nerelerde kullanılır?", a: "Mücevher ve sikke: Tarihsel ve günümüzdeki en geniş kullanım alanı; 24 ayar (%100) veya alaşım halinde (18 ayar: %75 Au + %25 diğer) biçimlendirilir." }
+                ];
+            }
+            // 🌟 ELEMENT 80: CIVA
+            else if(num === 80) {
+                eng = "Mercury"; state = "Sıvı"; group = 12; period = 6;
+                desc = "Oda sıcaklığında (25 °C) sıvı halde bulunan tek metaldir. Ağır ve son derece toksik bir geçiş elementidir.";
+                config = "[Xe] 4f¹⁴ 5d¹⁰ 6s²"; shells = "2 | 8 | 18 | 32 | 18 | 2"; density = "13.53 g/cm³"; electronegativity = "2.00"; melt = "-38.8 °C"; boil = "356.7 °C"; discoverer = "Antik çağ";
+                historyText = "Antik mısır mezarlarında MÖ 1500 yıllarına ait cıva kalıntıları bulunmuştur. Simyacılar tarafından tüm metallerin anası ve özü olarak kabul edilirdi. Simgesi Hg, 'sıvı gümüş' anlamına gelen Hydrargyrum'dan gelir.";
+                isotopeText = "²⁰²Hg (%29.8), ²00Hg, ¹⁹⁹Hg, ²01Hg (Yedi adet kararlı izotopunun karışımıdır).";
+                usages = ["Barometre ve eski nesil termometre kılcal tüpleri", "Floresan ve cıva buharlı aydınlatma lambaları", "Diş dolgusu amalgam alaşımları (Hg-Ag)", "Laboratuvar sıvı elektrot sistemleri"];
+                bioText = "Biyolojik sistemler için birikimli ağır metal zehirlenmesine yol açan ciddi bir nörondoksin maddedir. Minamata hastalığının temel sebebidir.";
+                interesting = ["Tam dolu d ve s orbitalleri arasındaki relativistik büzülme nedeniyle atomlar arası metalik bağları o kadar zayıftır ki oda sıcaklığında kristal örgü kuramaz, sıvı kalır.", "Yoğunluğu o kadar yüksektir ki üzerinde bir demir somun veya gülle batmadan rahatlıkla yüzebilir."];
+                notes = ["Müfredatta oda sıcaklığında sıvı olan metal olarak ezberletilir. d-bloğunun son grubunda (2B) yer alır.", "Atık pillerin doğaya bırakılmaması kuralı cıva ve kadmiyum kirliliği üzerinden anlatılır."];
+                sss = [
+                    { q: "Cıva termometreleri neden yasaklandı?", a: "Kırıldığında oda sıcaklığında hızla buharlaşarak solunum yoluyla vücuda geçer ve kalıcı sinir sistemi hasarlarına yol açar." },
+                    { q: "Amalgam dolgu tehlikeli midir?", a: "Amalgam içerisindeki cıva gümüş ile bağlanarak katılaşır ve kararlı hale gelir; ancak söküm esnasında buharlaşma riski yaratabilir." }
                 ];
             }
 
@@ -546,13 +610,9 @@
                     </div>`;
             });
 
-            // Alt Buton İsimlerini Güncelle
-            const prevEl = globalElements.find(x => x.n === num - 1);
-            const nextEl = globalElements.find(x => x.n === num + 1);
-            
+            const prevEl = globalElements.find(x => x.n === num - 1); const nextEl = globalElements.find(x => x.n === num + 1);
             const btnPrev = document.getElementById('modal-btn-prev');
             if(prevEl) { btnPrev.innerText = `← ${prevEl.name}`; btnPrev.style.opacity = "1"; } else { btnPrev.style.opacity = "0.2"; btnPrev.innerText = "Başlangıç"; }
-            
             const btnNext = document.getElementById('modal-btn-next');
             if(nextEl) { btnNext.innerText = `${nextEl.name} →`; btnNext.style.opacity = "1"; } else { btnNext.style.opacity = "0.2"; btnNext.innerText = "Bitiş"; }
 
@@ -561,26 +621,13 @@
         }
 
         function closeModal() { document.getElementById('element-modal').classList.add('hidden'); }
-        
-        function navigateElement(direction) {
-            let targetNum = currentModalElementNum + direction;
-            if(targetNum >= 1 && targetNum <= 118) {
-                openElementDetail(targetNum);
-            }
-        }
-
-        function toggleFullScreenContainer() {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen();
-            } else if (document.exitFullscreen) {
-                document.exitFullscreen();
-            }
-        }
+        function navigateElement(direction) { let targetNum = currentModalElementNum + direction; if(targetNum >= 1 && targetNum <= 118) { openElementDetail(targetNum); } }
+        function toggleFullScreenContainer() { if (!document.fullscreenElement) { document.documentElement.requestFullscreen(); } else if (document.exitFullscreen) { document.exitFullscreen(); } }
 
         // --- 🔒 AKORDEON DERS SİSTEMİ MOTORU 🔒 ---
         const defaultTopics = [
             { id: "t1", name: "01 Modern Atom Modeli", desc: "Kuantum sayıları ve elektron dizilimleri.", checked: false, link: "" },
-            { id: "t2", name: "02 Gazlar", desc: "İdeal gaz yasaları ve kinetik teori.", checked: false, link: "" }
+            { id: "t2", name: "02 Gazlar", desc: "İdeal gas yasaları ve kinetik teori.", checked: false, link: "" }
         ];
         function renderAytTopics() {
             let list = JSON.parse(localStorage.getItem('custom_topic_list')) || defaultTopics;
