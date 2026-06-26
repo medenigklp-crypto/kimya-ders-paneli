@@ -197,6 +197,51 @@
     </nav>
 
     <script>
+        // --- 🔘 SEKME (TAB) YÖNETİM MOTORU & EKSİK TANIMLAMALAR 🔘 ---
+        let activeTabId = 'dersler';
+        let isDragging = false; 
+
+        function switchTab(tabId) {
+            activeTabId = tabId;
+            
+            // 1. Tüm tab-content yapılarını gizle
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // 2. Tıklanan hedef tabı göster
+            const targetContent = document.getElementById(`tab-${tabId}`);
+            if (targetContent) {
+                targetContent.classList.remove('hidden');
+            }
+            
+            // 3. Butonların aktiflik sınıflarını (Mavi gradient) güncelle
+            const tabButtons = ['dersler', '3d', 'elementler', 'guvenlik', 'galeri', 'youtube'];
+            tabButtons.forEach(id => {
+                const btn = document.getElementById(`btn-${id}`);
+                if (btn) {
+                    if (id === tabId) {
+                        btn.classList.add('active-tab');
+                        btn.classList.remove('text-slate-400');
+                        btn.classList.add('text-white');
+                    } else {
+                        btn.classList.remove('active-tab');
+                        btn.classList.remove('text-white');
+                        btn.classList.add('text-slate-400');
+                    }
+                }
+            });
+
+            // 3D Stüdyoya geçiş yapıldığında boyut sapıtmasını önlemek için canvas'ı tazele
+            if (tabId === '3d' && typeof onWindowResize === 'function') {
+                setTimeout(onWindowResize, 50);
+            }
+
+            // Sayfayı üste odakla ve mobil klavye açıksa kapat
+            document.activeElement.blur();
+            window.scrollTo(0, 0);
+        }
+
         // --- 📂 SIKIŞTIRILMIŞ 118 ELEMENT MATRİS MOTORU 📂 ---
         const names = ["Hidrojen","Helyum","Lityum","Berilyum","Bor","Karbon","Azot","Oksijen","Flor","Neon","Sodyum","Magnezyum","Alüminyum","Silisyum","Fosfor","Kükürt","Klor","Argon","Potasyum","Kalsiyum","Skandiyum","Titanyum","Vanadyum","Krom","Manganez","Demir","Kobalt","Nikel","Bakır","Çinko","Galyum","Germanyum","Arsenik","Selenyum","Brom","Kripton","Rubidyum","Stronsiyum","İtriyum","Zirkonyum","Niyobyum","Molibden","Teknesyum","Rutenyum","Rodyum","Paladyum","Gümüş","Kadmiyum","İndiyum","Kalay","Antimon","Tellür","İyot","Ksenon","Sezyum","Baryum","Lantan","Seryum","Praseodim","Neodimyum","Prometyum","Samaryum","Europiyum","Gadolinyum","Terbiyum","Disprozyum","Holmiyum","Erbiyum","Tulyum","İterbiyum","Lutesyum","Hafniyum","Tantal","Volfram","Renyum","Osmiyum","İridyum","Platin","Altın","Cıva","Talyum","Kurşun","Bizmuth","Polonyum","Astat","Radon","Fransiyum","Radyum","Aktinyum","Toryum","Protaktinyum","Uranyum","Neptünyum","Plutonyum","Amerikyum","Küriyum","Berkelyum","Kaliforniyum","Aynştaynyum","Fermiyum","Mendelevyum","Nobelyum","Lavrensiyum","Rutherfordiyum","Dubniyum","Seaborgeyum","Bohriyum","Hassiyum","Maytneriyum","Darmstadtiyum","Röntgenyum","Kopernikyum","Nihonyum","Flerovyum","Moskovyum","Livermoryum","Tennessin","Oganesson"];
         const symbols = ["H","He","Li","Be","B","C","N","O","F","Ne","Na","Mg","Al","Si","P","S","Cl","Ar","K","Ca","Sc","Ti","V","Cr","Mn","Fe","Co","Ni","Cu","Zn","Ga","Ge","As","Se","Br","Kr","Rb","Sr","Y","Zr","Nb","Mo","Tc","Ru","Rh","Pd","Ag","Cd","In","Sn","Sb","Te","I","Xe","Cs","Ba","La","Ce","Pr","Nd","Pm","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu","Hf","Ta","W","Re","Os","Ir","Pt","Au","Hg","Tl","Pb","Bi","Po","At","Rn","Fr","Ra","Ac","Th","Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm","Md","No","Lr","Rf","Db","Sg","Bh","Hs","Mt","Ds","Rg","Cn","Nh","Fl","Mc","Lv","Ts","Og"];
