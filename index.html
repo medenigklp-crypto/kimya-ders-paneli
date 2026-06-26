@@ -453,3 +453,194 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Medeni Gökalp Kimya Paneli</title>
+    
+    <link rel="icon" type="image/png" href="logo .png">
+    <link rel="apple-touch-icon" href="logo .png">
+    
+    <meta name="theme-color" content="#060813">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Harici CDN Bağımlılıkları -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Harici Stil Enjeksiyonu -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="text-slate-100 font-sans min-h-screen flex flex-col overflow-x-hidden">
+
+    <header class="bg-[#0b0f19] border-b border-slate-800 p-4 sticky top-0 z-40 shadow-md flex justify-between items-center w-full">
+        <div class="flex items-center space-x-3">
+            <img src="logo .png" alt="Logo" class="h-8 w-auto object-contain select-none rounded">
+            <h1 class="text-md font-bold tracking-wide bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
+                Medeni Gökalp Kimya Paneli <span class="text-xs font-semibold text-slate-400">v2.7</span>
+            </h1>
+        </div>
+        <div class="text-[11px] text-slate-400 bg-slate-950 px-2.5 py-1 rounded-full border border-slate-800 shrink-0">
+            <i class="fa-solid fa-circle-check text-emerald-500 mr-1"></i> Master Sürüm Aktif
+        </div>
+    </header>
+
+    <main class="flex-1 p-3 max-w-7xl w-full mx-auto pb-24 box-border overflow-x-hidden">
+        
+        <!-- Tab 1: Dersler -->
+        <section id="tab-dersler" class="tab-content space-y-4">
+            <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
+                <h2 class="text-base font-bold mb-1 text-blue-400 flex items-center"><i class="fa-solid fa-graduation-cap mr-2"></i> Müfredat & Ders Yönetimi</h2>
+                <p class="text-[11px] text-slate-400 mb-3">Konuların üzerine tıklayarak detayları açabilir, Goodnotes isimlerini ve linklerini düzenleyebilirsiniz.</p>
+                <div class="p-3 bg-slate-950 rounded-lg border border-slate-900 space-y-2 mb-4">
+                    <div class="text-xs font-bold text-slate-400 tracking-wider uppercase flex justify-between items-center">
+                        <span>Yeni Konu / Başlık Ekle</span>
+                        <button onclick="resetTopicsToDefault()" class="text-[10px] text-rose-400 underline">Sıfırla</button>
+                    </div>
+                    <div class="grid grid-cols-1 gap-2">
+                        <input type="text" id="new-topic-name" placeholder="Konu Başlığı (Örn: 02 Gazlar)" class="bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white focus:outline-none">
+                        <input type="text" id="new-topic-desc" placeholder="Kısa Açıklama Notu (Opsiyonel)" class="bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white focus:outline-none">
+                    </div>
+                    <button onclick="addNewTopic()" class="w-full bg-blue-600 text-xs font-bold py-2 rounded shadow-md mt-1">Konu Ekle</button>
+                </div>
+                <div id="ayt-topics-container" class="space-y-2"></div>
+            </div>
+        </section>
+
+        <!-- Tab 2: 3D Stüdyo -->
+        <section id="tab-3d" class="tab-content space-y-4 hidden">
+            <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
+                <h2 class="text-base font-bold text-emerald-400 flex items-center mb-2"><i class="fa-solid fa-flask mr-2"></i> Interaktif 3D Stüdyo</h2>
+                <div id="canvas-3d"></div>
+                <div class="space-y-3 mt-3">
+                    <div class="space-y-1">
+                        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Cam Laboratuvar Malzemeleri</div>
+                        <div class="grid grid-cols-3 gap-1.5">
+                            <button onclick="change3DModel('beherglas')" class="bg-teal-950/60 border border-teal-800 text-[10px] py-1.5 rounded font-semibold text-white">Beherglas</button>
+                            <button onclick="change3DModel('erlenmayer')" class="bg-teal-950/60 border border-teal-800 text-[10px] py-1.5 rounded font-semibold text-white">Erlenmayer</button>
+                            <button onclick="change3DModel('cambalon')" class="bg-teal-950/60 border border-teal-800 text-[10px] py-1.5 rounded font-semibold text-white">Cam Balon</button>
+                        </div>
+                        <div class="grid grid-cols-3 gap-1.5">
+                            <button onclick="change3DModel('deneytupu')" class="bg-teal-950/60 border border-teal-800 text-[10px] py-1.5 rounded font-semibold text-white">Deney Tüpü</button>
+                            <button onclick="change3DModel('balonjoje')" class="bg-teal-950/60 border border-teal-800 text-[10px] py-1.5 rounded font-semibold text-white">Balon Joje</button>
+                            <button onclick="change3DModel('ayirmahunisi')" class="bg-teal-950/60 border border-teal-800 text-[10px] py-1.5 rounded font-semibold text-white">Ayırma Hunisi</button>
+                        </div>
+                        <div class="grid grid-cols-3 gap-1.5">
+                            <button onclick="change3DModel('derecelisilindir')" class="bg-teal-950/60 border border-teal-800 text-[10px] py-1.5 rounded font-semibold text-white">D. Silindir</button>
+                            <button onclick="change3DModel('buret')" class="bg-teal-950/60 border border-teal-800 text-[10px] py-1.5 rounded font-semibold text-white">Büret</button>
+                            <button onclick="change3DModel('pipet')" class="bg-teal-950/60 border border-teal-800 text-[10px] py-1.5 rounded font-semibold text-white">Pipet</button>
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Kuantum Atom Modelleri</div>
+                        <div class="grid grid-cols-4 gap-1.5">
+                            <button onclick="change3DModel('dalton')" class="bg-slate-800 border border-slate-700 text-[10px] py-1.5 rounded text-white">Dalton</button>
+                            <button onclick="change3DModel('thomson')" class="bg-slate-800 border border-slate-700 text-[10px] py-1.5 rounded text-white">Thomson</button>
+                            <button onclick="change3DModel('rutherford')" class="bg-slate-800 border border-slate-700 text-[10px] py-1.5 rounded text-white">Rutherf.</button>
+                            <button onclick="change3DModel('bohr')" class="bg-slate-800 border border-slate-700 text-[10px] py-1.5 rounded text-white">Bohr</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 3: Elementler -->
+        <section id="tab-elementler" class="tab-content space-y-4 hidden">
+            <div class="bg-[#0a0d16] p-4 rounded-xl border border-slate-800 shadow-lg space-y-4">
+                <div class="flex items-center justify-between gap-2">
+                    <div class="relative flex-1 max-w-xs">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-500 text-xs"></i>
+                        <input type="text" id="element-search" oninput="filterElements(this.value)" placeholder="Element ara..." class="bg-[#0f1422] border border-slate-800 rounded-lg pl-9 pr-3 py-2 text-xs text-white focus:outline-none w-full">
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button class="bg-[#1c120c] border border-[#eab308]/30 text-[#f97316] font-bold text-xs px-3 py-2 rounded-lg"><i class="fa-solid fa-temperature-half mr-1.5"></i><span>Sıcaklık Modu</span></button>
+                        <button onclick="toggleFullScreenContainer()" class="bg-[#0f1422] border border-slate-800 text-slate-400 p-2.5 rounded-lg text-xs"><i class="fa-solid fa-expand"></i></button>
+                    </div>
+                </div>
+                <div class="overflow-x-auto w-full pb-3">
+                    <div id="periodic-matrix-container" class="grid gap-1.5 p-1 min-w-[1240px]" style="grid-template-columns: 28px repeat(18, minmax(64px, 1fr));"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 4: Laboratuvar Güvenliği (Facia Durum Tamamen Giderildi) -->
+        <section id="tab-guvenlik" class="tab-content space-y-4 hidden">
+            <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
+                <h2 class="text-base font-bold mb-1 text-amber-400 flex items-center"><i class="fa-solid fa-triangle-exclamation mr-2"></i> Kimyasal Tehlike İşaretleri</h2>
+                <p class="text-[11px] text-slate-400 mb-4">MEB 9. Sınıf Kimya müfredatındaki 8 resmi piktogram sembolü.</p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                    <!-- 1 -->
+                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-4">
+                        <div class="shrink-0 w-14 h-14 flex items-center justify-center bg-white border-2 border-red-500 rounded-lg shadow-inner text-red-600 text-2xl"><i class="fa-solid fa-fire"></i></div>
+                        <div><h3 class="text-xs font-bold text-slate-200">Yanıcı Madde (F)</h3><p class="text-[10px] text-slate-400 leading-relaxed">Ateş ve kıvılcımdan uzak tutulmalıdır. Örnek: Etanol, Aseton.</p></div>
+                    </div>
+                    <!-- 2 -->
+                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-4">
+                        <div class="shrink-0 w-14 h-14 flex items-center justify-center bg-white border-2 border-red-500 rounded-lg shadow-inner text-red-600 text-2xl flex flex-col items-center justify-center font-black">O</div>
+                        <div><h3 class="text-xs font-bold text-slate-200">Yakıcı / Oksitleyici Madde (O)</h3><p class="text-[10px] text-slate-400 leading-relaxed">Yanıcı maddelerle temas ettirilmemelidir. Örnek: Oksijen, Nitrik Asit.</p></div>
+                    </div>
+                    <!-- 3 -->
+                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-4">
+                        <div class="shrink-0 w-14 h-14 flex items-center justify-center bg-white border-2 border-red-500 rounded-lg shadow-inner text-red-600 text-2xl"><i class="fa-solid fa-skull-crossbones"></i></div>
+                        <div><h3 class="text-xs font-bold text-slate-200">Zehirli / Toksik Madde (T)</h3><p class="text-[10px] text-slate-400 leading-relaxed">Ağız, cilt ve solunum yoluyla zehirler. Örnek: Hidrojen Siyanür, Karbon monoksit.</p></div>
+                    </div>
+                    <!-- 4 -->
+                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-4">
+                        <div class="shrink-0 w-14 h-14 flex items-center justify-center bg-white border-2 border-red-500 rounded-lg shadow-inner text-red-600 text-2xl"><i class="fa-solid fa-biohazard"></i></div>
+                        <div><h3 class="text-xs font-bold text-slate-200">Tahriş Edici Madde (Xi)</h3><p class="text-[10px] text-slate-400 leading-relaxed">Ciltte ve gözde kızarıklık yapar, solunmamalıdır. Örnek: Çamaşır Suyu, Alkol.</p></div>
+                    </div>
+                    <!-- 5 -->
+                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-4">
+                        <div class="shrink-0 w-14 h-14 flex items-center justify-center bg-white border-2 border-red-500 rounded-lg shadow-inner text-red-600 text-2xl"><i class="fa-solid fa-flask-vial"></i></div>
+                        <div><h3 class="text-xs font-bold text-slate-200">Aşındırıcı / Korozif Madde (C)</h3><p class="text-[10px] text-slate-400 leading-relaxed">Canlı dokuyu yakar, metalleri aşındırır. Örnek: Sülfürik Asit, Tuz Ruhu.</p></div>
+                    </div>
+                    <!-- 6 -->
+                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-4">
+                        <div class="shrink-0 w-14 h-14 flex items-center justify-center bg-white border-2 border-red-500 rounded-lg shadow-inner text-red-600 text-2xl"><i class="fa-solid fa-burst"></i></div>
+                        <div><h3 class="text-xs font-bold text-slate-200">Patlayıcı Madde (E)</h3><p class="text-[10px] text-slate-400 leading-relaxed">Sürtünme, darbe ve yüksek ısıdan korunmalıdır. Örnek: TNT, Nitrogliserin.</p></div>
+                    </div>
+                    <!-- 7 -->
+                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-4">
+                        <div class="shrink-0 w-14 h-14 flex items-center justify-center bg-white border-2 border-red-500 rounded-lg shadow-inner text-red-600 text-2xl animate-spin-slow"><i class="fa-solid fa-radiation"></i></div>
+                        <div><h3 class="text-xs font-bold text-slate-200">Radyoaktif Madde</h3><p class="text-[10px] text-slate-400 leading-relaxed">Görünmez radyasyon yayar, özel zırhlı kalkan gerektirir. Örnek: Uranyum, Radyum.</p></div>
+                    </div>
+                    <!-- 8 -->
+                    <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-4">
+                        <div class="shrink-0 w-14 h-14 flex items-center justify-center bg-white border-2 border-red-500 rounded-lg shadow-inner text-red-600 text-2xl"><i class="fa-solid fa-tree"></i></div>
+                        <div><h3 class="text-xs font-bold text-slate-200">Çevreye Zararlı / Ekotoksik (N)</h3><p class="text-[10px] text-slate-400 leading-relaxed">Doğaya, suya ve canlılara uzun vadeli zarar verir. Örnek: Cıva, Kurşun atıkları.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 5 & Tab 6 -->
+        <section id="tab-galeri" class="tab-content space-y-4 hidden">
+            <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 text-center text-xs">
+                <div class="bg-black rounded-lg overflow-hidden hidden mb-2" id="video-player-container"><video id="main-panel-video" controls class="w-full max-h-[300px]"></video></div>
+                <div id="dynamic-video-container" class="space-y-1"></div>
+            </div>
+        </section>
+        <section id="tab-youtube" class="tab-content space-y-4 hidden">
+            <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800"><textarea id="yt-body" class="w-full bg-slate-900 text-xs p-2 rounded h-32" placeholder="Senaryo Notları..."></textarea></div>
+        </section>
+    </main>
+
+    <!-- FERRUMONE GÜVENLİ SEÇİCİ NAVİGASYON BARI -->
+    <nav class="bg-slate-900 border border-slate-800 safari-safe-nav flex justify-between items-center p-1.5">
+        <button onclick="switchTab('dersler')" id="btn-dersler" class="flex-1 flex flex-col items-center justify-center py-2 rounded-xl text-white active-tab"><i class="fa-solid fa-list-check text-xs mb-0.5"></i><span class="text-[9px] font-bold">Ders</span></button>
+        <button onclick="switchTab('3d')" id="btn-3d" class="flex-1 flex flex-col items-center justify-center py-2 rounded-xl text-slate-400"><i class="fa-solid fa-cube text-xs mb-0.5"></i><span class="text-[9px] font-bold">3D Stüdyo</span></button>
+        <button onclick="switchTab('elementler')" id="btn-elementler" class="flex-1 flex flex-col items-center justify-center py-2 rounded-xl text-slate-400"><i class="fa-solid fa-table-cells text-xs mb-0.5"></i><span class="text-[8px] font-bold">118 El.</span></button>
+        <button onclick="switchTab('guvenlik')" id="btn-guvenlik" class="flex-1 flex flex-col items-center justify-center py-2 rounded-xl text-slate-400"><i class="fa-solid fa-triangle-exclamation text-xs mb-0.5"></i><span class="text-[8px] font-bold">Güvenlik</span></button>
+        <button onclick="switchTab('galeri')" id="btn-galeri" class="flex-1 flex flex-col items-center justify-center py-2 rounded-xl text-slate-400"><i class="fa-solid fa-video text-xs mb-0.5"></i><span class="text-[8px] font-bold">Videolar</span></button>
+        <button onclick="switchTab('youtube')" id="btn-youtube" class="flex-1 flex flex-col items-center justify-center py-2 rounded-xl text-slate-400"><i class="fa-brands fa-youtube text-xs mb-0.5"></i><span class="text-[8px] font-bold">Senaryo</span></button>
+    </nav>
+
+    <!-- Master Script Bağlantıları -->
+    <script src="app.js"></script>
+</body>
+</html>
