@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Medeni Gökalp Kimya Paneli</title>
     
+    <!-- ETİKET HATASI TAMAMEN DÜZELTİLDİ -->
     <link rel="icon" type="image/png" href="logo .png">
     <link rel="apple-touch-icon" href="logo .png">
     
@@ -47,12 +48,13 @@
             </h1>
         </div>
         <div class="text-[11px] text-slate-400 bg-slate-950 px-2.5 py-1 rounded-full border border-slate-800 shrink-0">
-            <i class="fa-solid fa-cloud text-emerald-500 mr-1"></i> Sistem Golyosuz Hazır
+            <i class="fa-solid fa-cloud text-emerald-500 mr-1"></i> Sistem Güvenli Modda Hazır
         </div>
     </header>
 
     <main class="flex-1 p-3 max-w-7xl w-full mx-auto pb-24 box-border overflow-x-hidden">
         
+        <!-- Tab 1: Dersler -->
         <section id="tab-dersler" class="tab-content space-y-4">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
                 <h2 class="text-base font-bold mb-1 text-blue-400 flex items-center"><i class="fa-solid fa-graduation-cap mr-2"></i> Müfredat & Ders Yönetimi</h2>
@@ -72,6 +74,7 @@
             </div>
         </section>
 
+        <!-- Tab 2: 3D Stüdyo -->
         <section id="tab-3d" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
                 <h2 class="text-base font-bold text-emerald-400 flex items-center mb-2"><i class="fa-solid fa-flask mr-2"></i> Interaktif 3D Stüdyo</h2>
@@ -98,16 +101,17 @@
                     <div class="space-y-1">
                         <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Kuantum Atom Modelleri</div>
                         <div class="grid grid-cols-4 gap-1.5">
-                            <button onclick="change3DModel('dalton')" class="bg-slate-800 text-[10px] py-1.5 rounded text-white">Dalton</button>
-                            <button onclick="change3DModel('thomson')" class="bg-slate-800 text-[10px] py-1.5 rounded text-white">Thomson</button>
-                            <button onclick="change3DModel('rutherford')" class="bg-slate-800 text-[10px] py-1.5 rounded text-white">Rutherf.</button>
-                            <button onclick="change3DModel('bohr')" class="bg-slate-800 text-[10px] py-1.5 rounded text-white">Bohr</button>
+                            <button onclick="change3DModel('dalton')" class="bg-slate-800 border border-slate-700 text-[10px] py-1.5 rounded text-white">Dalton</button>
+                            <button onclick="change3DModel('thomson')" class="bg-slate-800 border border-slate-700 text-[10px] py-1.5 rounded text-white">Thomson</button>
+                            <button onclick="change3DModel('rutherford')" class="bg-slate-800 border border-slate-700 text-[10px] py-1.5 rounded text-white">Rutherf.</button>
+                            <button onclick="change3DModel('bohr')" class="bg-slate-800 border border-slate-700 text-[10px] py-1.5 rounded text-white">Bohr</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Tab 3: Elementler -->
         <section id="tab-elementler" class="tab-content space-y-4 hidden">
             <div class="bg-[#0a0d16] p-4 rounded-xl border border-slate-800 shadow-lg space-y-4">
                 <div class="flex items-center justify-between gap-2">
@@ -126,6 +130,7 @@
             </div>
         </section>
 
+        <!-- Tab 4, 5, 6 Sabit Kalıplar -->
         <section id="tab-guvenlik" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 text-center text-xs">9. Sınıf Kimyasal Laboratuvar Güvenlik Protokol Sekmesi Aktif.</div>
         </section>
@@ -140,22 +145,24 @@
         </section>
     </main>
 
+    <!-- FERRUMONE DETAY PANEL MODAL -->
     <div id="element-modal" class="fixed inset-0 bg-slate-950/95 backdrop-blur-sm z-50 hidden flex items-center justify-center p-0 sm:p-4">
         <div class="bg-[#05070f] w-full h-full sm:max-w-2xl sm:h-[90vh] sm:rounded-2xl border-t sm:border border-slate-800 flex flex-col shadow-2xl overflow-hidden">
-            <div class="p-4 bg-[#0a0d16] border-b border-slate-850 flex justify-between items-center"><span class="text-xs font-semibold text-slate-400" id="modal-breadcrumb">Element Detayı</span><button onclick="closeModal()" class="text-slate-400 text-xs bg-[#131a2e] px-3 py-1.5 rounded-lg border border-slate-800 font-bold">Kapat</button></div>
+            <div class="p-4 bg-[#0a0d16] border-b border-slate-850 flex justify-between items-center shrink-0"><span class="text-xs font-semibold text-slate-400" id="modal-breadcrumb">Periyodik Tablo</span><button onclick="closeModal()" class="text-slate-400 text-xs bg-[#131a2e] px-3 py-1.5 rounded-lg border border-slate-800 font-bold">Kapat</button></div>
             <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-[#05070f]" id="modal-scroll-content">
                 <div class="bg-[#0a0d16] p-5 rounded-2xl border border-slate-850 flex flex-col items-start space-y-4">
                     <div id="m-badge-container" class="w-24 h-24 border rounded-2xl flex flex-col items-center justify-center text-center shadow-lg bg-slate-950/50"><span class="text-xs text-slate-400 font-bold self-start pl-3 pt-1" id="m-num"></span><span class="text-3xl font-black tracking-tight mt-[-2px]" id="m-sym"></span><span class="text-[10px] text-slate-500 font-bold pb-1" id="m-mass"></span></div>
                     <div class="space-y-2 w-full"><h2 class="text-xl font-black text-white" id="m-name"></h2><div class="flex flex-wrap gap-1.5" id="m-tags"></div><p class="text-xs text-slate-300 leading-relaxed pt-2 border-t border-slate-850" id="m-desc"></p></div>
                 </div>
                 <div class="grid grid-cols-2 gap-2" id="m-grid-props"></div>
-                <div class="p-4 bg-[#0a1124] border border-blue-900/60 rounded-2xl"><div class="text-[11px] text-blue-400 font-bold uppercase mb-1">Müfredat Notu</div><ul class="text-xs text-slate-300 list-disc pl-4" id="m-notes-list"></ul></div>
+                <div class="p-4 bg-[#0a1124] border border-blue-900/60 rounded-2xl"><div class="text-[11px] text-blue-400 font-bold uppercase mb-1">Müfredat Çalışma Notu</div><ul class="text-xs text-slate-300 list-disc pl-4" id="m-notes-list"></ul></div>
                 <div class="space-y-2"><div class="text-[11px] text-slate-400 font-bold uppercase pl-1">Sıkça Sorulan Sorular</div><div class="space-y-2" id="m-sss-container"></div></div>
             </div>
-            <div class="p-3 bg-[#0a0d16] border-t border-slate-850 flex items-center justify-between gap-2"><button id="modal-btn-prev" onclick="navigateElement(-1)" class="flex-1 bg-[#131a2e] border border-slate-800 text-xs py-2 rounded-xl text-left pl-3 text-slate-300 truncate"></button><button onclick="closeModal()" class="bg-[#1c120c] border border-[#f97316]/30 text-[#f97316] text-xs font-bold px-4 py-2 rounded-xl">Kapat</button><button id="modal-btn-next" onclick="navigateElement(1)" class="flex-1 bg-[#131a2e] border border-slate-800 text-xs py-2 rounded-xl text-right pr-3 text-slate-300 truncate"></button></div>
+            <div class="p-3 bg-[#0a0d16] border-t border-slate-850 flex items-center justify-between gap-2 shrink-0"><button id="modal-btn-prev" onclick="navigateElement(-1)" class="flex-1 bg-[#131a2e] border border-slate-800 text-xs py-2 rounded-xl text-left pl-3 text-slate-300 truncate"></button><button onclick="closeModal()" class="bg-[#1c120c] border border-[#f97316]/30 text-[#f97316] text-xs font-bold px-4 py-2 rounded-xl">Kapat</button><button id="modal-btn-next" onclick="navigateElement(1)" class="flex-1 bg-[#131a2e] border border-slate-800 text-xs py-2 rounded-xl text-right pr-3 text-slate-300 truncate"></button></div>
         </div>
     </div>
 
+    <!-- ALT SEKMELER NAVİGASYON BARI -->
     <nav class="bg-slate-800 border-t border-slate-700 fixed bottom-0 left-0 right-0 p-1 flex justify-between items-center shadow-2xl z-40 w-full overflow-x-auto">
         <button onclick="switchTab('dersler')" id="btn-dersler" class="flex-1 flex flex-col items-center justify-center py-1 rounded-lg text-slate-400 active-tab min-w-[55px]"><i class="fa-solid fa-list-check text-xs mb-0.5"></i><span class="text-[8px]">Ders</span></button>
         <button onclick="switchTab('3d')" id="btn-3d" class="flex-1 flex flex-col items-center justify-center py-1 rounded-lg text-slate-400 min-w-[55px]"><i class="fa-solid fa-cube text-xs mb-0.5"></i><span class="text-[8px]">3D Stüdyo</span></button>
@@ -165,6 +172,7 @@
         <button onclick="switchTab('youtube')" id="btn-youtube" class="flex-1 flex flex-col items-center justify-center py-1 rounded-lg text-slate-400 min-w-[55px]"><i class="fa-brands fa-youtube text-xs mb-0.5"></i><span class="text-[8px]">Senaryo</span></button>
     </nav>
 
+    <!-- CORE LOGIC CORE SCRIPT MOTORU -->
     <script>
         let activeTabId = 'dersler'; let isDragging = false; let currentModalElementNum = 79; let activeCategoryFilter = null;
         const names = ["Hidrojen","Helyum","Lityum","Berilyum","Bor","Karbon","Azot","Oksijen","Flor","Neon","Sodyum","Magnezyum","Alüminyum","Silisyum","Fosfor","Kükürt","Klor","Argon","Potasyum","Kalsiyum","Skandiyum","Titanyum","Vanadyum","Krom","Manganez","Demir","Kobalt","Nikel","Bakır","Çinko","Galyum","Germanyum","Arsenik","Selenyum","Brom","Kripton","Rubidyum","Stronsiyum","İtriyum","Zirkonyum","Niyobyum","Molibden","Teknesyum","Rutenyum","Rodyum","Paladyum","Gümüş","Kadmiyum","İndiyum","Kalay","Antimon","Tellür","İyot","Ksenon","Sezyum","Baryum","Lantan","Seryum","Praseodim","Neodimyum","Prometyum","Samaryum","Europiyum","Gadolinyum","Terbiyum","Disprozyum","Holmiyum","Erbiyum","Tulyum","İterbiyum","Lutesyum","Hafniyum","Tantal","Volfram","Renyum","Osmiyum","İridyum","Platin","Altın","Cıva","Talyum","Kurşun","Bizmuth","Polonyum","Astat","Radon","Fransiyum","Radyum","Aktinyum","Toryum","Protaktinyum","Uranyum","Neptünyum","Plutonyum","Amerikyum","Küriyum","Berkelyum","Kaliforniyum","Aynştaynyum","Fermiyum","Mendelevyum","Nobelyum","Lavrensiyum","Rutherfordiyum","Dubniyum","Seaborgeyum","Bohriyum","Hassiyum","Maytneriyum","Darmstadtiyum","Röntgenyum","Kopernikyum","Nihonyum","Flerovyum","Moskovyum","Livermoryum","Tennessin","Oganesson"];
@@ -206,6 +214,24 @@
             let list = []; for(let i=0; i<118; i++) { let n = i + 1; list.push({ n: n, s: symbols[i], name: names[i], m: masses[i], cat: getElementCategory(n) }); } return list;
         }
         const globalElements = buildElementsMatrix();
+
+        const elementDatabase = {
+            1: { p:1, g:1, state:"Gaz", desc: "Evrenin en hafif elementidir. Yıldızların füzyon yakıtıdır.", config: "1s¹", shells: "1", density: "0.089 g/L", electronegativity: "2.20", melt: "-259.1 °C", discoverer: "Henry Cavendish", notes: "1A grubundadır ama alkali metal değil ametaldir. Sulu asitlerin katyon temelidir.", sss: [{q:"Yanıcı mıdır?", a:"Evet, yüksek derecede yanıcı temiz bir yakıttır."}] },
+            2: { p:1, g:18, state:"Gaz", desc: "Reaksiyona girmeyen tamamen inert bir soy gazdır.", config: "1s²", shells: "2", density: "0.178 g/L", electronegativity: "n/a", melt: "-272.2 °C", discoverer: "Lockyer", notes: "Dublet kararlılığı gösterir. İyonlaşma enerjisi en yüksek olan elementtir.", sss: [{q:"Neden ses inceltir?", a:"Ses bu gazda havaya oranla 3 kat daha hızlı yayılır."}] },
+            6: { p:2, g:14, state:"Katı", desc: "Yaşamın temel taşıdır. Allotropları grafit ve elmastır.", config: "[He] 2s² 2p²", shells: "2|4", density: "2.26 g/cm³", electronegativity: "2.55", melt: "3550 °C", discoverer: "Antik çağ", notes: "AYT organik kimyanın temeli hibritleşme (sp3, sp2, sp) teorilerini barındırır.", sss: [{q:"Allotrop nedir?", a:"Aynı atomun uzayda farklı geometride dizilmesidir."}] },
+            7: { p:2, g:15, state:"Gaz", desc: "Atmosferin %78'ini oluşturan oda koşullarında kararlı bir gazdır.", config: "[He] 2s² 2p³", shells: "2|5", density: "1.251 g/L", electronegativity: "3.04", melt: "-210 °C", discoverer: "Rutherford", notes: "p3 küresel simetri yapısı taşır. Üçlü bağ (N≡N) nedeniyle çok asaldır.", sss: [{q:"Nasıl aktifleşir?", a:"Şimşek ve yıldırım enerjisiyle bağı kırılarak toprağa bağlanır."}] },
+            8: { p:2, g:16, state:"Gaz", desc: "Solunum ve yanma reaksiyonlarının temel yakıcı elementidir.", config: "[He] 2s² 2p⁴", shells: "2|6", density: "1.429 g/L", electronegativity: "3.44", melt: "-218.7 °C", discoverer: "Priestley", notes: "Flor hariç tüm bileşiklerinde negatif yükseltgenme basamağı alır.", sss: [{q:"Oksijen yanar mı?", a:"Hayır, kendisi yanmaz sadece yakıcı gazdır."}] },
+            9: { p:2, g:17, state:"Gaz", desc: "Tablonun en elektronegatif elementidir. Sadece -1 değerlik alır.", config: "[He] 2s² 2p⁵", shells: "2|7", density: "1.696 g/L", electronegativity: "3.98", melt: "-219.6 °C", discoverer: "Moissan", notes: "Elektron ilgisi klordan düşüktür ancak elektronegatifliği en yüksektir.", sss: [{q:"HF asidi özelliği?", a:"Camı aşındırabilen ve eritebilen tek asit türüdür."}] },
+            11: { p:3, g:1, state:"Katı", desc: "Aktif alkali metaldir. Suyla temas edince alevli patlar.", config: "[Ne] 3s¹", shells: "2|8|1", density: "0.97 g/cm³", electronegativity: "0.93", melt: "97.8 °C", discoverer: "Davy", notes: "Hava ve nemle hızlı reaksiyona girdiğinden laboratuvarda gaz yağında saklanır.", sss: [{q:"Yumuşak mıdır?", a:"Evet, balmumu kıvamında olup bıçakla rahatça kesilir."}] },
+            12: { p:3, g:2, state:"Katı", desc: "Klorofil molekülünün merkez atomudur. Hafif alaşım metalidir.", config: "[Ne] 3s²", shells: "2|8|2", density: "1.74 g/cm³", electronegativity: "1.31", melt: "650 °C", discoverer: "Davy", notes: "Bileşiklerinde sadece +2 değerlik alır. Sert sularda Ca ile birlikte bulunur.", sss: [{q:"Yangını nasıl söner?", a:"Su molekülünü parçaladığı için suyla söndürülemez, CO2 gerekir."}] },
+            13: { p:3, g:13, state:"Katı", desc: "Yerkabuğunda en bol bulunan amfoter geçiş önü metalidir.", config: "[Ne] 3s² 3p¹", shells: "2|8|3", density: "2.70 g/cm³", electronegativity: "1.61", melt: "660.3 °C", discoverer: "Ørsted", notes: "Amfoter yapısıyla hem kuvvetli asitlerle hem kuvvetli bazlarla H2 üretir.", sss: [{q:"Neden korozyona dirençli?", a:"Yüzeyinde anında oluşan koruyucu Al2O3 film tabakası sayesinde."}] },
+            17: { p:3, g:17, state:"Gaz", desc: "Yeşilimsi sarı renkli halojen sınıfı zehirli boğucu gazdır.", config: "[Ne] 3s² 3p⁵", shells: "2|8|7", density: "3.21 g/L", electronegativity: "3.16", melt: "-101.5 °C", discoverer: "Scheele", notes: "Tablonun elektron ilgisi en yüksek elementidir (İstisna olarak Floru geçer).", sss: [{q:"Tuz ruhuyla karışırsa?", a:"Ölümcül derecede zehirli saf klor gazı açığa çıkar, karıştırılmamalıdır."}] },
+            20: { p:4, g:2, state:"Katı", desc: "Kemik ve dişlerin ana yapı taşı aktif toprak alkali metalidir.", config: "[Ar] 4s²", shells: "2|8|8|2", density: "1.55 g/cm³", electronegativity: "1.00", melt: "842 °C", discoverer: "Davy", notes: "Suya geçici sertlik veren iyondur. Çimento ve kireç endüstrisi temelidir.", sss: [{q:"Kireç sönmesi nedir?", a:"Kalsiyum oksidin suyla ekzotermik reaksiyon verip Ca(OH)2 oluşturmasıdır."}] },
+            26: { p:4, g:8, state:"Katı", desc: "Ağır sanayinin yapı taşı ferromanyetik geçiş metalidir.", config: "[Ar] 3d⁶ 4s²", shells: "2|8|14|2", density: "7.87 g/cm³", electronegativity: "1.83", melt: "1538 °C", discoverer: "Antik çağ", notes: "Hemoglobinin merkez atomudur. Bileşiklerinde +2 ve +3 değişken değerlik alır.", sss: [{q:"Paslanma redoks mudur?", a:"Evet, demirin oksijenle yaptığı yavaş elektrokimyasal yanmadır."}] },
+            29: { p:4, g:11, state:"Katı", desc: "Elektrik iletkenliği çok yüksek kızıl renkli yarı soy metaldir.", config: "[Ar] 3d¹⁰ 4s¹", shells: "2|8|18|1", density: "8.96 g/cm³", electronegativity: "1.90", melt: "1084.6 °C", discoverer: "Antik çağ", notes: "Oksijensiz saf asitlerle tepkime vermez, hno3 ile NO2 gazı açığa çıkarır.", sss:[{q:"Anomali dizilim nedir?", a:"Açık elektron diziliminin kendiliğinden küresel simetriye uymasıdır."}] },
+            79: { p:6, g:11, state:"Katı", desc: "Tam soy metal. Korozyona aşırı dayanıklıdır. Asitlerden etkilenmez.", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s¹", shells: "2|8|18|32|18|1", density: "19.3 g/cm³", electronegativity: "2.54", melt: "1064.2 °C", discoverer: "Antik çağ", notes: "Kral suyu hariç asitlerden etkilenmez. Elektron dizilimi anomalilidir.", sss: [{q:"Kral suyu formülü?", a:"3 hacim HCl ile 1 hacim HNO3 karışımı güçlü asit kokteylidir."}] },
+            80: { p:6, g:12, state:"Sıvı", desc: "Oda sıcaklığında sıvı kalan tek metalik geçiş elementidir.", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s²", shells: "2|8|18|32|18|2", density: "13.53 g/cm³", electronegativity: "2.00", melt: "-38.8 °C", discoverer: "Antik çağ", notes: "Ağır metal zehirlenmesi ve Minamata nörolojik sendromu yaratır, toksiktir.", sss: [{q:"Yoğunluğu fazla mıdır?", a:"Evet, demir somunlar cıva sıvısı üstünde batmadan batmadan yüzer."}] }
+        };
 
         function switchTab(tabId) {
             activeTabId = tabId; document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
@@ -264,24 +290,6 @@
                 container.innerHTML += `<div onclick="openElementDetail(${el.n})" class="p-1 bg-[#0f1422] border rounded-xl flex flex-col items-center justify-center text-center shadow-md hover:scale-105 transition-all cursor-pointer ${colorStyle}" style="grid-row: ${coords.row}; grid-column: ${coords.col}; ${dimmingStyle}"><span class="text-[8px] text-slate-500 font-bold self-start pl-0.5">${el.n}</span><span class="text-xs font-black tracking-tight text-white mt-[-2px]">${el.s}</span><span class="text-[8px] font-medium text-slate-400 truncate w-full mt-0.5">${el.name}</span></div>`;
             });
         }
-
-        const elementDatabase = {
-            1: { p:1, g:1, state:"Gaz", desc: "Evrenin en hafif elementidir. Yıldızların füzyon yakıtıdır.", config: "1s¹", shells: "1", density: "0.089 g/L", electronegativity: "2.20", melt: "-259.1 °C", discoverer: "Henry Cavendish", notes: "1A grubundadır ama alkali metal değil ametaldir. Sulu asitlerin katyon temelidir.", sss: [{q:"Yanıcı mıdır?", a:"Evet, yüksek derecede yanıcı temiz bir yakıttır."}] },
-            2: { p:1, g:18, state:"Gaz", desc: "Reaksiyona girmeyen tamamen inert bir soy gazdır.", config: "1s²", shells: "2", density: "0.178 g/L", electronegativity: "n/a", melt: "-272.2 °C", discoverer: "Lockyer", notes: "Dublet kararlılığı gösterir. İyonlaşma enerjisi en yüksek olan elementtir.", sss: [{q:"Neden ses inceltir?", a:"Ses bu gazda havaya oranla 3 kat daha hızlı yayılır."}] },
-            6: { p:2, g:14, state:"Katı", desc: "Yaşamın temel taşıdır. Allotropları grafit ve elmastır.", config: "[He] 2s² 2p²", shells: "2|4", density: "2.26 g/cm³", electronegativity: "2.55", melt: "3550 °C", discoverer: "Antik çağ", notes: "AYT organik kimyanın temeli hibritleşme (sp3, sp2, sp) teorilerini barındırır.", sss: [{q:"Allotrop nedir?", a:"Aynı atomun uzayda farklı geometride dizilmesidir."}] },
-            7: { p:2, g:15, state:"Gaz", desc: "Atmosferin %78'ini oluşturan oda koşullarında kararlı bir gazdır.", config: "[He] 2s² 2p³", shells: "2|5", density: "1.251 g/L", electronegativity: "3.04", melt: "-210 °C", discoverer: "Rutherford", notes: "p3 küresel simetri yapısı taşır. Üçlü bağ (N≡N) nedeniyle çok asaldır.", sss: [{q:"Nasıl aktifleşir?", a:"Şimşek ve yıldırım enerjisiyle bağı kırılarak toprağa bağlanır."}] },
-            8: { p:2, g:16, state:"Gaz", desc: "Solunum ve yanma reaksiyonlarının temel yakıcı elementidir.", config: "[He] 2s² 2p⁴", shells: "2|6", density: "1.429 g/L", electronegativity: "3.44", melt: "-218.7 °C", discoverer: "Priestley", notes: "Flor hariç tüm bileşiklerinde negatif yükseltgenme basamağı alır.", sss: [{q:"Oksijen yanar mı?", a:"Hayır, kendisi yanmaz sadece yakıcı gazdır."}] },
-            9: { p:2, g:17, state:"Gaz", desc: "Tablonun en elektronegatif elementidir. Sadece -1 değerlik alır.", config: "[He] 2s² 2p⁵", shells: "2|7", density: "1.696 g/L", electronegativity: "3.98", melt: "-219.6 °C", discoverer: "Moissan", notes: "Elektron ilgisi klordan düşüktür ancak elektronegatifliği en yüksektir.", sss: [{q:"HF asidi özelligi?", a:"Camı aşındırabilen ve eritebilen tek asit türüdür."}] },
-            11: { p:3, g:1, state:"Katı", desc: "Aktif alkali metaldir. Suyla temas edince alevli patlar.", config: "[Ne] 3s¹", shells: "2|8|1", density: "0.97 g/cm³", electronegativity: "0.93", melt: "97.8 °C", discoverer: "Davy", notes: "Hava ve nemle hızlı reaksiyona girdiğinden laboratuvarda gaz yağında saklanır.", sss: [{q:"Yumuşak mıdır?", a:"Evet, balmumu kıvamında olup bıçakla rahatça kesilir."}] },
-            12: { p:3, g:2, state:"Katı", desc: "Klorofil molekülünün merkez atomudur. Hafif alaşım metalidir.", config: "[Ne] 3s²", shells: "2|8|2", density: "1.74 g/cm³", electronegativity: "1.31", melt: "650 °C", discoverer: "Davy", notes: "Bileşiklerinde sadece +2 değerlik alır. Sert sularda Ca ile birlikte bulunur.", sss: [{q:"Yangını nasıl söner?", a:"Su molekülünü parçaladığı için suyla söndürülemez, CO2 gerekir."}] },
-            13: { p:3, g:13, state:"Katı", desc: "Yerkabuğunda en bol bulunan amfoter geçiş önü metalidir.", config: "[Ne] 3s² 3p¹", shells: "2|8|3", density: "2.70 g/cm³", electronegativity: "1.61", melt: "660.3 °C", discoverer: "Ørsted", notes: "Amfoter yapısıyla hem kuvvetli asitlerle hem kuvvetli bazlarla H2 üretir.", sss: [{q:"Neden korozyona dirençli?", a:"Yüzeyinde anında oluşan koruyucu Al2O3 film tabakası sayesinde."}] },
-            17: { p:3, g:17, state:"Gaz", desc: "Yeşilimsi sarı renkli halojen sınıfı zehirli boğucu gazdır.", config: "[Ne] 3s² 3p⁵", shells: "2|8|7", density: "3.21 g/L", electronegativity: "3.16", melt: "-101.5 °C", discoverer: "Scheele", notes: "Tablonun elektron ilgisi en yüksek elementidir (İstisna olarak Floru geçer).", sss: [{q:"Tuz ruhuyla karışırsa?", a:"Ölümcül derecede zehirli saf klor gazı açığa çıkar, karıştırılmamalıdır."}] },
-            20: { p:4, g:2, state:"Katı", desc: "Kemik ve dişlerin ana yapı taşı aktif toprak alkali metalidir.", config: "[Ar] 4s²", shells: "2|8|8|2", density: "1.55 g/cm³", electronegativity: "1.00", melt: "842 °C", discoverer: "Davy", notes: "Suya geçici sertlik veren iyondur. Çimento ve kireç endüstrisi temelidir.", sss: [{q:"Kireç sönmesi nedir?", a:"Kalsiyum oksidin suyla ekzotermik reaksiyon verip Ca(OH)2 oluşturmasıdır."}] },
-            26: { p:4, g:8, state:"Katı", desc: "Ağır sanayinin yapı taşı ferromanyetik geçiş metalidir.", config: "[Ar] 3d⁶ 4s²", shells: "2|8|14|2", density: "7.87 g/cm³", electronegativity: "1.83", melt: "1538 °C", discoverer: "Antik çağ", notes: "Hemoglobinin merkez atomudur. Bileşiklerinde +2 ve +3 değişken değerlik alır.", sss: [{q:"Paslanma redoks mudur?", a:"Evet, demirin oksijenle yaptığı yavaş elektrokimyasal yanmadır."}] },
-            29: { p:4, g:11, state:"Katı", desc: "Elektrik iletkenliği çok yüksek kızıl renkli yarı soy metaldir.", config: "[Ar] 3d¹⁰ 4s¹", shells: "2|8|18|1", density: "8.96 g/cm³", electronegativity: "1.90", melt: "1084.6 °C", discoverer: "Antik çağ", notes: "Oksijensiz saf asitlerle tepkime vermez, hno3 ile NO2 gazı açığa çıkarır.", sss:[{q:"Anomali dizilim nedir?", a:"Açık elektron diziliminin kendiliğinden küresel simetriye uymasıdır."}] },
-            79: { p:6, g:11, state:"Katı", desc: "Tam soy metal. Korozyona aşırı dayanıklıdır. Asitlerden etkilenmez.", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s¹", shells: "2|8|18|32|18|1", density: "19.3 g/cm³", electronegativity: "2.54", melt: "1064.2 °C", discoverer: "Antik çağ", notes: "Kral suyu hariç asitlerden etkilenmez. Elektron dizilimi anomalilidir.", sss: [{q:"Kral suyu formülü?", a:"3 hacim HCl ile 1 hacim HNO3 karışımı güçlü asit kokteylidir."}] },
-            80: { p:6, g:12, state:"Sıvı", desc: "Oda sıcaklığında sıvı kalan tek metalik geçiş elementidir.", config: "[Xe] 4f¹⁴ 5d¹⁰ 6s²", shells: "2|8|18|32|18|2", density: "13.53 g/cm³", electronegativity: "2.00", melt: "-38.8 °C", discoverer: "Antik çağ", notes: "Ağır metal zehirlenmesi ve Minamata nörolojik sendromu yaratır, toksiktir.", sss: [{q:"Yoğunluğu fazla mıdır?", a:"Evet, demir somunlar cıva sıvısı üstünde batmadan batmadan yüzer."}] }
-        };
 
         function openElementDetail(num) {
             currentModalElementNum = num; const el = globalElements.find(x => x.n === num); if (!el) return;
