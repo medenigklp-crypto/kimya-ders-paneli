@@ -42,6 +42,7 @@
 </head>
 <body class="text-slate-100 font-sans min-h-screen flex flex-col overflow-x-hidden">
 
+    <!-- ÜST NAV BAR -->
     <header class="bg-[#0b0f19] border-b border-slate-800 p-4 sticky top-0 z-40 shadow-md flex justify-between items-center w-full">
         <div class="flex items-center space-x-3">
             <img src="logo .png" alt="Medeni Gökalp Logo" class="h-8 w-auto object-contain select-none rounded">
@@ -56,6 +57,7 @@
 
     <main class="flex-1 p-3 max-w-7xl w-full mx-auto pb-24 box-border overflow-x-hidden">
         
+        <!-- 1. DERS SEKMESİ -->
         <section id="tab-dersler" class="tab-content space-y-4">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
                 <h2 class="text-base font-bold mb-1 text-blue-400 flex items-center"><i class="fa-solid fa-graduation-cap mr-2"></i> Müfredat & Ders Yönetimi</h2>
@@ -70,12 +72,13 @@
                         <input type="text" id="new-topic-name" placeholder="Konu/Ünite Adı (Örn: 02 Gazlar)" class="bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white focus:outline-none">
                         <input type="text" id="new-topic-desc" placeholder="Kısa Açıklama Veya İçerik Notu (Opsiyonel)" class="bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white focus:outline-none">
                     </div>
-                    <button onclick="addNewTopic()" class="w-full bg-blue-600 text-xs font-bold py-2 rounded shadow-md"><i class="fa-solid fa-plus mr-1.5"></i> Başlık Ekle</button>
+                    <div class="w-full bg-blue-600 text-xs font-bold py-2 rounded shadow-md cursor-pointer text-center" onclick="addNewTopic()"><i class="fa-solid fa-plus mr-1.5"></i> Başlık Ekle</div>
                 </div>
                 <div id="ayt-topics-container" class="space-y-2"></div>
             </div>
         </section>
 
+        <!-- 2. 3D STÜDYO SEKMESİ -->
         <section id="tab-3d" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
                 <h2 class="text-base font-bold text-emerald-400 flex items-center mb-2"><i class="fa-solid fa-flask mr-2"></i> Interaktif 3D Stüdyo</h2>
@@ -119,6 +122,7 @@
             </div>
         </section>
 
+        <!-- 3. PERİYODİK TABLO SEKMESİ -->
         <section id="tab-elementler" class="tab-content space-y-4 hidden">
             <div class="bg-[#0a0d16] p-4 rounded-xl border border-slate-800 shadow-lg space-y-4">
                 
@@ -140,11 +144,13 @@
 
                 <div class="overflow-x-auto w-full pb-3">
                     <div id="periodic-matrix-container" class="grid gap-1.5 p-1 min-w-[1240px]" style="grid-template-columns: 28px repeat(18, minmax(64px, 1fr));">
-                        </div>
+                        <!-- JS Dolduracak -->
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- 4. GÜVENLİK SEKMESİ -->
         <section id="tab-guvenlik" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
                 <h2 class="text-base font-bold mb-1 text-amber-400 flex items-center"><i class="fa-solid fa-triangle-exclamation mr-2"></i> Kimyasal Tehlike İşaretleri</h2>
@@ -162,6 +168,7 @@
             </div>
         </section>
 
+        <!-- 5. VİDEOLAR SEKMESİ -->
         <section id="tab-galeri" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg space-y-3">
                 <h2 class="text-base font-bold text-cyan-400 flex items-center"><i class="fa-solid fa-video mr-2"></i> Videolar & Deney Listesi</h2>
@@ -177,6 +184,7 @@
             </div>
         </section>
 
+        <!-- 6. SENARYO SEKMESİ -->
         <section id="tab-youtube" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg flex flex-col h-[calc(100vh-12rem)]">
                 <h2 class="text-base font-bold mb-2 text-rose-400 flex items-center"><i class="fa-brands fa-youtube mr-2"></i> YouTube Senaryo Üretici</h2>
@@ -187,6 +195,7 @@
 
     </main>
 
+    <!-- FERRUMONE BİREBİR DETAY MODALI -->
     <div id="element-modal" class="fixed inset-0 bg-slate-950/95 backdrop-blur-sm z-50 hidden flex items-center justify-center p-0 sm:p-4">
         <div class="bg-[#05070f] w-full h-full sm:max-w-2xl sm:h-[90vh] sm:rounded-2xl border-t sm:border border-slate-800 flex flex-col shadow-2xl overflow-hidden">
             
@@ -257,6 +266,7 @@
         </div>
     </div>
 
+    <!-- ALT SEKMELER -->
     <nav class="bg-slate-800 border-t border-slate-700 fixed bottom-0 left-0 right-0 p-1 flex justify-between items-center shadow-2xl z-40 w-full overflow-x-auto">
         <button onclick="switchTab('dersler')" id="btn-dersler" class="flex-1 flex flex-col items-center justify-center py-1 rounded-lg text-slate-400 active-tab min-w-[55px]"><i class="fa-solid fa-list-check text-xs mb-0.5"></i><span class="text-[8px]">Ders</span></button>
         <button onclick="switchTab('3d')" id="btn-3d" class="flex-1 flex flex-col items-center justify-center py-1 rounded-lg text-slate-400 min-w-[55px]"><i class="fa-solid fa-cube text-xs mb-0.5"></i><span class="text-[8px]">3D Stüdyo</span></button>
@@ -270,7 +280,7 @@
         let activeTabId = 'dersler';
         let isDragging = false; 
         let currentModalElementNum = 79;
-        let activeCategoryFilter = null; // Aktif filtreleme durum takibi
+        let activeCategoryFilter = null; 
 
         function switchTab(tabId) {
             activeTabId = tabId;
@@ -300,7 +310,7 @@
             window.scrollTo(0, 0);
         }
 
-        // --- 📂 MEB MÜFREDATINA UYGUN KATEGORİ MOTORU 📂 ---
+        // --- 📂 ELEMENT VE GRUP COĞRAFYASI 📂 ---
         const names = ["Hidrojen","Helyum","Lityum","Berilyum","Bor","Karbon","Azot","Oksijen","Flor","Neon","Sodyum","Magnezyum","Alüminyum","Silisyum","Fosfor","Kükürt","Klor","Argon","Potasyum","Kalsiyum","Skandiyum","Titanyum","Vanadyum","Krom","Manganez","Demir","Kobalt","Nikel","Bakır","Çinko","Galyum","Germanyum","Arsenik","Selenyum","Brom","Kripton","Rubidyum","Stronsiyum","İtriyum","Zirkonyum","Niyobyum","Molibden","Teknesyum","Rutenyum","Rodyum","Paladyum","Gümüş","Kadmiyum","İndiyum","Kalay","Antimon","Tellür","İyot","Ksenon","Sezyum","Baryum","Lantan","Seryum","Praseodim","Neodimyum","Prometyum","Samaryum","Europiyum","Gadolinyum","Terbiyum","Disprozyum","Holmiyum","Erbiyum","Tulyum","İterbiyum","Lutesyum","Hafniyum","Tantal","Volfram","Renyum","Osmiyum","İridyum","Platin","Altın","Cıva","Talyum","Kurşun","Bizmuth","Polonyum","Astat","Radon","Fransiyum","Radyum","Aktinyum","Toryum","Protaktinyum","Uranyum","Neptünyum","Plutonyum","Amerikyum","Küriyum","Berkelyum","Kaliforniyum","Aynştaynyum","Fermiyum","Mendelevyum","Nobelyum","Lavrensiyum","Rutherfordiyum","Dubniyum","Seaborgeyum","Bohriyum","Hassiyum","Maytneriyum","Darmstadtiyum","Röntgenyum","Kopernikyum","Nihonyum","Flerovyum","Moskovyum","Livermoryum","Tennessin","Oganesson"];
         const symbols = ["H","He","Li","Be","B","C","N","O","F","Ne","Na","Mg","Al","Si","P","S","Cl","Ar","K","Ca","Sc","Ti","V","Cr","Mn","Fe","Co","Ni","Cu","Zn","Ga","Ge","As","Se","Br","Kr","Rb","Sr","Y","Zr","Nb","Mo","Tc","Ru","Rh","Pd","Ag","Cd","In","Sn","Sb","Te","I","Xe","Cs","Ba","La","Ce","Pr","Nd","Pm","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu","Hf","Ta","W","Re","Os","Ir","Pt","Au","Hg","Tl","Pb","Bi","Po","At","Rn","Fr","Ra","Ac","Th","Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm","Md","No","Lr","Rf","Db","Sg","Bh","Hs","Mt","Ds","Rg","Cn","Nh","Fl","Mc","Lv","Ts","Og"];
         const masses = [1.008, 4.002, 6.94, 9.012, 10.81, 12.011, 14.007, 15.999, 18.998, 20.18, 22.99, 24.305, 26.982, 28.085, 30.974, 32.06, 35.45, 39.948, 39.098, 40.078, 44.956, 47.867, 50.942, 51.996, 54.938, 55.845, 58.933, 58.693, 63.546, 65.38, 69.723, 72.63, 74.922, 78.971, 79.904, 83.798, 85.468, 87.62, 88.906, 91.224, 92.906, 95.95, 98, 101.07, 102.91, 106.42, 107.87, 112.41, 114.82, 118.71, 121.76, 127.6, 126.9, 131.29, 132.91, 137.33, 138.91, 140.12, 140.91, 144.24, 145, 150.36, 151.96, 157.25, 158.93, 162.5, 164.93, 167.26, 168.93, 173.05, 174.97, 178.49, 180.95, 183.84, 186.21, 190.23, 192.22, 195.08, 196.97, 200.59, 204.38, 207.2, 208.98, 209, 210, 222, 223, 226, 227, 232.04, 231.04, 238.03, 237, 244, 243, 247, 247, 251, 252, 257, 258, 259, 262, 267, 268, 269, 270, 269, 278, 281, 280, 285, 286, 289, 289, 293, 294, 294];
@@ -343,28 +353,17 @@
             if (num === 56) return { row: 7, col: 3 }; 
             if (num >= 57 && num <= 71) return { row: 10, col: num - 57 + 4 }; 
             if (num >= 72 && num <= 86) return { row: 7, col: num - 72 + 5 }; 
-            |if (num === 87) return { row: 8, col: 2 }; 
+            if (num === 87) return { row: 8, col: 2 }; 
             if (num === 88) return { row: 8, col: 3 }; 
             if (num >= 89 && num <= 103) return { row: 11, col: num - 89 + 4 }; 
             if (num >= 104 && num <= 118) return { row: 8, col: num - 104 + 5 }; 
         }
 
-        function buildElementsMatrix() {
-            let list = [];
-            for(let i=0; i<118; i++) {
-                let n = i + 1;
-                list.push({ n: n, s: symbols[i], name: names[i], m: masses[i], cat: getElementCategory(n) });
-            }
-            return list;
-        }
-        const globalElements = buildElementsMatrix();
-
-        // Tıklanan Kategoriyi Aktif/Pasif Yapan Filtre Fonksiyonu
         function toggleCategoryFilter(catName) {
             if (activeCategoryFilter === catName) {
-                activeCategoryFilter = null; // Filtreyi kaldır
+                activeCategoryFilter = null; 
             } else {
-                activeCategoryFilter = catName; // Yeni filtre uygula
+                activeCategoryFilter = catName; 
             }
             renderElementsGrid(globalElements);
         }
@@ -375,7 +374,6 @@
             for (let g = 1; g <= 18; g++) { container.innerHTML += `<div class="text-center text-[10px] font-bold text-slate-600 self-end pb-1" style="grid-row: 1; grid-column: ${g + 1};">${g}</div>`; }
             for (let p = 1; p <= 7; p++) { container.innerHTML += `<div class="flex items-center justify-center text-[10px] font-bold text-slate-600 pr-1" style="grid-row: ${p + 1}; grid-column: 1;">${p}</div>`; }
 
-            // Birebir Aktif Buton Listesi Şablonu
             const legends = [
                 { id: "Alkali Metaller", name: "Alkali Metaller", count: "6 element", color: "#ef4444", row: 3, col: 4 },
                 { id: "Toprak Alkali Metaller", name: "Toprak Alkali Metaller", count: "6 element", color: "#f97316", row: 3, col: 6 },
@@ -410,7 +408,6 @@
                 <div class="border border-dashed border-purple-950 rounded-xl flex items-center justify-center text-center bg-purple-950/5 select-none" style="grid-row: 8; grid-column: 4;"><span class="text-[9px] font-bold text-purple-500/70">89-103</span></div>
                 <div style="grid-row: 9; grid-column: 1 / span 19; height: 12px;"></div>`;
 
-            // Element Karartma/Aydınlatma Mantığı
             list.forEach(el => {
                 const coords = getGridCoords(el.n); let colorStyle = getCatStyle(el.cat);
                 let isMatch = false;
@@ -438,7 +435,7 @@
         }
         function filterElements(q) { renderElementsGrid(globalElements.filter(x => x.name.toLowerCase().includes(q.toLowerCase()) || x.s.toLowerCase().includes(q.toLowerCase()))); }
 
-        // --- 🔘 FERRUMONE DERİN VERİ ENJEKTÖRÜ 🔘 ---
+        // --- 🔘 DETAY PANEL ENJEKTÖRÜ 🔘 ---
         function openElementDetail(num) {
             currentModalElementNum = num; const el = globalElements.find(x => x.n === num); if(!el) return;
             let colorStyle = getCatStyle(el.cat); const badge = document.getElementById('m-badge-container');
@@ -463,7 +460,6 @@
                 { q: `${el.name} elektron dizilimi nasıldır?`, a: `Müfredat kuantum sayıları kurallarına uygun dizilim gösterir.` }
             ];
 
-            // 🌟 ELEMENT 1: HİDROJEN
             if(num === 1) {
                 eng = "Hydrogen"; state = "Gaz"; group = 1; period = 1;
                 desc = "Evrenin en hafif, en basit ve en bol bulunan elementidir. Yıldızların temel füzyon yakıtıdır. Ametal özellik taşır.";
@@ -479,7 +475,6 @@
                     { q: "Hidrojen yakıtı çevre dostu mudur?", a: "Evet, hidrojen yandığında yan ürün olarak sadece su buharı (H₂O) açığa çıkarır, karbon salınımı sıfırdır." }
                 ];
             }
-            // 🌟 ELEMENT 6: KARBON
             else if(num === 6) {
                 eng = "Carbon"; state = "Katı"; group = 14; period = 2;
                 desc = "Yaşamın temel taşıdır. Dört bağ yapabilme yeteneği (tetravalan) sayesinde milyonlarca farklı kararlı organik molekül oluşturabilir.";
@@ -492,10 +487,9 @@
                 notes = ["AYT Kimya Organik Giriş konusunun temelidir. Hibritleşme (sp³, sp², sp) teorileri bu element üzerinden anlatılır.", "Kovalent bağ kapasitesi en yüksek 2. periyot elementidir."];
                 sss = [
                     { q: "Karbon allotropları nelerdir?", a: "Doğal allotropları elmas ve grafittir. Yapay allotropları ise fullerene, karbon nanotüp og grafendir." },
-                    { q: "Karbon-14 yöntemi nasıl çalışır?", a: "Radyoaktif ¹⁴C izotopunun yarılanma ömrü (5730 yıl) kullanılarak fosillerin ve antik kalıntıların yaş tayini yapılır." }
+                    { q: "Karbon-14 yöntemi nasıl çalışır?", a: "Radyoaktif ¹⁴C izotopunun yarılanma ömrü (5730 yıl) kullanılarak fosillerin og kalıntıların yaş tayini yapılır." }
                 ];
             }
-            // 🌟 ELEMENT 8: OKSİJEN
             else if(num === 8) {
                 eng = "Oxygen"; state = "Gaz"; group = 16; period = 2;
                 desc = "Solunum ve yanma reaksiyonlarının temel elementidir. Yerkabuğunda kütlece en çok bulunan elementtir (%46.6).";
@@ -511,30 +505,21 @@
                     { q: "Ozon tabakası neden delinir?", a: "Kloroflorokarbon (CFC) gazları stratosfere ulaştığında klor radikalleri salarak O₃ moleküllerini hızla parçalar." }
                 ];
             }
-            // 🌟 ELEMENT 13: ALÜMİNYUM
             else if(num === 13) {
                 eng = "Aluminium"; state = "Katı"; group = 13; period = 3;
                 desc = "Yerkabuğunda en bol bulunan metaldir (kütlece ~%8,1). Düşük yoğunluğu ve korozyon direnci ile havacılık sanayisinin vazgeçilmezidir. Amfoter metaldir.";
                 config = "[Ne] 3s² 3p¹"; shells = "2 | 8 | 3"; density = "2.70 g/cm³"; electronegativity = "1.61"; melt = "660.3 °C"; boil = "2470 °C"; discoverer = "Hans Christian Ørsted";
                 historyText = "1825 yılında şanslı bir deneyle Hans Christian Ørsted tarafından keşfedilmiştir. Alüminyum folyo, içecek kutuları ve uçak gövdelerinde yaygın olarak kullanılır.";
-                isotopeText = "²⁷Au - Doğal bolluk: %100 kararlıdır.";
-                usages = [
-                    "Ambalaj sanayisi ve ulaşım (Uçak gövdesi, hafif şaseler).",
-                    "Elektrik iletim hatlarında yüksek iletkenlik sağlamak amacıyla bakır alternatifi olarak.",
-                    "Termit reaksiyonları (Al + Fe₂O₃) ile yüksek sıcaklıkta demiryolu kaynağı yapımında."
-                ];
+                isotopeText = "²⁷Al - Doğal bolluk: %100 kararlıdır.";
+                usages = ["Ambalaj sanayisi ve ulaşım (Uçak gövdesi, hafif şaseler).", "Elektrik iletim hatlarında yüksek iletkenlik kablosu.", "Termit reaksiyonları ile yüksek sıcaklıkta demiryolu kaynağı yapımında."];
                 bioText = "Elemental alüminyum vücut fonksiyonları için temel bir rol oynamaz, yüksek miktarda birikmesi sinir sistemi üzerinde nörotoksik etki yaratabilir.";
-                interesting = [
-                    "19. yüzyılda alüminyum elde etmek altından daha pahalıydı; Napolyon'un en prestijli misafirlerine alüminyum çatal bıçak takımı sunduğu bilinir.",
-                    "Amfoterik yapısı sayesinde hem kuvvetli asitlerle hem de kuvvetli bazlarla reaksiyona girerek H₂ gazı açığa çıkarır."
-                ];
+                interesting = ["19. yüzyılda alüminyum elde etmek altından daha pahalıydı; Napolyon'un misafirlerine alüminyum çatal sunduğu bilinir.", "Yüzeyinde anında oluşan koruyucu Al₂O₃ film tabakası metali paslanmaya karşı kilitler."];
                 notes = ["Müfredatta 3A grubu 'Toprak Metalleri' başlığının ilk ve en karizmatik amfoterik metal örneğidir.", "Bazlarla tepkime verme denklemleri AYT kimya testlerinde tuzak soru olarak kullanılır."];
                 sss = [
-                    { q: "Alüminyum neden paslanmaz?", a: "Hava ile temas ettiği anda yüzeyinde koruyucu, çok ince ve gözeneksiz bir Al₂O₃ film tabakası oluşur. Bu süreç metali paslanmaya karşı kilitler." },
+                    { q: "Alüminyum neden paslanmaz?", a: "Hava ile temas ettiği anda yüzeyinde koruyucu, çok ince ve gözeneksiz bir Al₂O₃ film tabakası oluşur." },
                     { q: "Alüminyum bazlarla neden reaksiyona girer?", a: "Amfoter özellik gösterdiği için bazik ortamlarda asit gibi davranarak çözünür alüminat kompleksleri oluşturur." }
                 ];
             }
-            // 🌟 ELEMENT 26: DEMİR
             else if(num === 26) {
                 eng = "Iron"; state = "Katı"; group = 8; period = 4;
                 desc = "Sanayinin ve ağır endüstrinin temel taşıdır. Dünya çekirdeğinin ana bileşenidir. Ferromanyetik özellik gösterir.";
@@ -546,70 +531,63 @@
                 interesting = ["Dünyanın kütlece en büyük kısmını oluşturur (Çekirdekteki devasa eriyik demir kütlesi).", "Yeryüzünün manyetik kalkanı (Magnetosfer) çekirdekteki eriyik demirin dönme hareketiyle oluşur."];
                 notes = ["d-bloğu geçiş metalidir. Bileşiklerinde +2 (Ferro) ve +3 (Ferrik) gibi değişken pozitif yükseltgenme basamakları alabilir.", "Korozyon (Paslanma) reaksiyonu elektrokimya ünitelerinde temel redoks örneğidir."];
                 sss = [
-                    { q: "Demir neden paslanır?", a: "Nemli hava ortamında oksijenle reaksiyona girerek hidrate demir(III) oksit (Fe₂O₃·nH₂O) yani kırılgan pas tabakası oluşturur." },
-                    { q: "Çelik ile demir arasındaki fark nedir?", a: "Çelik, ham demirin içine belirli oranlarda (~%0.2 - %2) Karbon (C) eklenerek mukavemeti artırılmış çok daha sert bir alaşımdır." }
+                    { q: "Demir neden paslanır?", a: "Nemli hava ortamında oksijenle reaksiyona girerek hidrate demir(III) oksit oluşturur." },
+                    { q: "Çelik ile demir arasındaki fark nedir?", a: "Çelik, ham demirin içine belirli oranlarda Karbon eklenerek mukavemeti artırılmış alaşımdır." }
                 ];
             }
-            // 🌟 ELEMENT 29: BAKIR
             else if(num === 29) {
                 eng = "Copper"; state = "Katı"; group = 11; period = 4;
-                desc = "Gümüşten sonra elektrik og ısıyı en iyi ileten metaldir. Kızıl-turuncu rengiyle ayırt edilir. Yarı soy metaldir.";
+                desc = "Gümüşten sonra elektrik ve ısıyı en iyi ileten metaldir. Yarı soy metaldir.";
                 config = "[Ar] 3d¹⁰ 4s¹"; shells = "2 | 8 | 18 | 1"; density = "8.96 g/cm³"; electronegativity = "1.90"; melt = "1084.6 °C"; boil = "2562 °C"; discoverer = "Antik çağ";
-                historyText = "İnsanlığın altınla birlikte işlediği ilk metallerdendir. Kalay ile karıştırılarak Bronz (Tunç) Çağı'nın başlamasına vesile olmuştur. Kıbrıs adasından (Cuprum) ismini alır.";
+                historyText = "İnsanlığın altınla birlikte işlediği ilk metallerdendir. Kalay ile karıştırılarak Bronz Çağı'nın başlamasına vesile olmuştur.";
                 isotopeText = "⁶³Cu (%69.1), ⁶⁵Cu (%30.9).";
-                usages = ["Elektrik kabloları ve elektronik kart yolları", "Su tesisat boruları ve ısı değiştiriciler", "Pirinç (Cu-Zn) ve Bronz (Cu-Sn) alaşımları", "Madeni para imalatı"];
-                bioText = "Birçok enzimin yapısında kofaktör olarak yer alır. Sülük ve ahtapot gibi bazı omurgasızların kanında oksijen taşıyan hemosiyanin molekülü bakır içerir (Mavi kan).";
-                interesting = ["Elektron konfigürasyonunda küresel simetri kararlılığı nedeniyle anomalili dizilime ([Ar] 3d¹⁰ 4s¹) sahiptir.", "Özgün rengi kızıldır fakat oksitlendiğinde özgürlük heykeli gibi şık bir mat yeşil (patina) tabakaya bürünür."];
-                notes = ["Müfredatta Yarı Soy Metal başlığında işlenir. Oksijensiz asitlerle (HCl) reaksiyona girmez; ancak HNO₃ ve H₂SO₄ gibi oksijenli kuvvetli asitlerle NO₂ veya SO₂ gazı açığa çıkarır.", "Küresel simetri konusunda orbital şeması en çok sorulan elementtir."];
+                usages = ["Elektrik kabloları ve elektronik kart yolları", "Su tesisat boruları ve alaşımlar", "Pirinç (Cu-Zn) ve Bronz (Cu-Sn) alaşımları"];
+                bioText = "Birçok enzimin yapısında kofaktör olarak yer alır. Sülüklerin kanında hemosiyanin molekülü bakır içerir.";
+                interesting = ["Elektron konfigürasyonunda küresel simetri kararlılığı nedeniyle anomalili dizilime sahiptir.", "Oksitlendiğinde özgürlük heykeli gibi şık bir mat yeşil tabakaya bürünür."];
+                notes = ["Müfredatta Yarı Soy Metal başlığında işlenir. Oksijensiz asitlerle reaksiyona girmez; kuvvetli oksijenli asitlerle SO₂ gazı açığa çıkarır."];
                 sss = [
-                    { q: "Bakır neden değişken değerlik alır?", a: "Geçiş metali olduğu için reaksiyonlarda hem 4s orbitalindeki hem de 3d orbitalindeki elektronları kısmen vererek +1 veya +2 değerlik alabilir." },
-                    { q: "Pirinç alaşımı nelerin karışımıdır?", a: "Bakır (Cu) metali içerisine Çinko (Zn) katılarak elde edilen parlak sarı renkli mukavemetli bir alaşımdır." }
+                    { q: "Bakır neden değişken değerlik alır?", a: "Geçiş metali olduğu için +1 veya +2 değerlik alabilir." },
+                    { q: "Pirinç alaşımı nelerin karışımıdır?", a: "Bakır metali içerisine Çinko katılarak elde edilen parlak sarı bir alaşımdır." }
                 ];
             }
-            // 🌟 ELEMENT 79: ALTIN
             else if(num === 79) {
                 eng = "Gold"; state = "Katı"; group = 11; period = 6;
                 desc = "Soy metal, korozyona dayanıklı. Elektronik bağlantılarda, mücevhercilikte and para sisteminde kullanılır. Rölatiflik etkisi altın rengi verir.";
                 config = "[Xe] 4f¹⁴ 5d¹⁰ 6s¹"; shells = "2 | 8 | 18 | 32 | 18 | 1"; density = "19.3 g/cm³"; electronegativity = "2.54"; melt = "1064.2 °C"; boil = "2855.8 °C"; discoverer = "Antik çağ";
-                historyText = "Altın, insanlığın işlediği ilk metallerden biridir; en erken buluntular yaklaşık MÖ 5000 yılına tarihlenmektedir (Varna nekropolü, Bulgaristan). Sembolü Au, Latince \"aurum\" sözcüğünden gelir. Antik Mısır, Anadolu altın madenleri (Lidia elektrum sikkeleri, MÖ 600), Roma ve Keza İnka İmparatorluğu büyük altın kültürleri geliştirdi. Altın standardı 19-20. yüzyıl para sistemlerini şekillendirdi; Bretton Woods anlaşmasıyla (1944) ABD Doları altına bağlı rezerv para birimi ilan edildi, 1971'de Nixon bu bağı kesti.";
-                isotopeText = "¹⁹⁷Au - Doğal bolluk: %100. Tek doğal izotop (monoisotopik element); spin-3/2; NMR aktif.";
+                historyText = "Altın, insanlığın işlediği ilk metallerden biridir; en erken buluntular yaklaşık MÖ 5000 yılına tarihlenmektedir. Sembolü Au, Latince \"aurum\" sözcüğünden gelir.";
+                isotopeText = "¹⁹⁷Au - Doğal bolluk: %100. Tek doğal izotop yapısındadır.";
                 usages = [
-                    "Elektronik bağlantı elemanları: Au altın bağlama teli (bond wire) og kontak kaplama; mükemmel elektrik iletkenliği ve korozyon direnci; entegre devre paketleme, konnektör ve anten kaplama.",
-                    "Altın nanopartiküller (AuNP): Gebelik testi LFIA bandı kırmızı çizgisi (20-40 nm AuNP); kanser fototermal terapi (NIR lazerle uyarılan AuNP tümörü ısıtır); ilaç salım taşıyıcısı.",
-                    "Uzay yüzey kaplaması: İnce Au film IR yansıtıcısı; James Webb Uzay Teleskobu'nun ayna yüzey kaplaması (18 berilliyum ayna üzerine ~100 nm Au) kızılötesi gözlemi optimize eder.",
-                    "Diş hekimliği: Au-Ag-Pd-Cu alaşımları diş dolgusu, kron ve implant çerçevesi; biyouyumlu, aşınma dirençli."
+                    "Elektronik bağlantı elemanları: Au altın bağlama teli (bond wire) og kontak kaplama.",
+                    "Altın nanopartiküller (AuNP): Gebelik testi LFIA bandı kırmızı çizgisi.",
+                    "Uzay yüzey kaplaması: James Webb Uzay Teleskobu'nun ayna yüzey kaplaması."
                 ];
-                bioText = "Elemental altın biyolojik açıdan inert ve genellikle toksik değildir. Altın nanopartiküller (AuNP) tıbbi tanı ve tedavilerde kullanılmaktadır: gebelik testi, HIV testi ve grip testi gibi lateral akış immünodeney (LFIA) platformları kırmızı renkli AuNP sinyalinden yararlanır. Romatoid artrit tedavisinde auranofin (Au(I)) kullanılmaktadır.";
+                bioText = "Elemental altın biyolojik açıdan inert ve genellikle toksik değildir. Altın nanopartiküller tıbbi tanı ve tedavilerde kullanılmaktadır.";
                 interesting = [
-                    "Altının sarı rengi relativistik kuantum etkisiyle açıklanır: Z=79'daki elektronlar ışık hızının %58'ine yakın bir hızla döner; relativistik kütle artışı 6s orbitalini daraltır ve energy seviyesini düşürür. Sonuç olarak 5d→6s geçiş enerji mavi ışık (~450 nm) bölgesine düşer; mavi emilir, sarı yansır. Gümüş bu etkiyi daha az gösterir ve beyaz kalır.",
-                    "James Webb Uzay Teleskobu'nun 18 berilliyum aynasındaki çok ince Au kaplama (yaklaşık 100 nm; toplam Au miktarı 48,25 g) kızılötesi gözlem için optimize edilmiştir; 1 mm kalınlığındaki Au bloğunun yaklaşık 18 000 kat inceltilebilir dövme özelliği bu uygulamayı mümkün kılar.",
-                    "Gebelik testi şeridindeki (LFIA) kırmızı çizgi, hCG hormona bağlı altın nanopartiküllerinin göz ile görülebilen plazmoniğinden ibarettir; kimya, biyokimya ve nanoteknolojinin gündelik hayattaki en yaygın kesişim noktasıdır."
+                    "Altının sarı rengi relativistik kuantum etkisiyle açıklanır: Z=79'daki elektronlar ışık hızının %58'ine yakın bir hızla döner.",
+                    "James Webb Uzay Teleskobu'nun 18 berilliyum aynasında toplam Au miktarı 48,25 gramdır."
                 ];
                 notes = [
-                    "6. Periyot geçiş metali; elektron dizilimi [Xe] 4f¹⁴ 5d¹⁰ 6s¹ (anomali — Cu ve Ag gibi; tam dolu d → 6s'ye geçiş); +1 ve +3 baskın yükseltgenme basamakları.",
-                    "Monoisotopik: ¹⁹⁷Au %100; sarı renk: relativistik etki (5d→6s geçişi mavi ışığı emer).",
-                    "AuNP gebelik testi LFIA; Au elektronik bağlama teli; JWST IR ayna kaplaması."
+                    "6. Periyot geçiş metali; elektron dizilimi anomalilidir.",
+                    "Monoisotopik: ¹⁹⁷Au %100; sarı renk mavi ışığı emer."
                 ];
                 sss = [
                     { q: "Altın atom numarası kaçtır?", a: "Altın elementinin atom numarası 79'dur." },
-                    { q: "Altın elektron dizilimi nedir?", a: "Altın elementinin elektron dizilimi [Xe] 4f¹⁴ 5d¹⁰ 6s¹ şeklindedir." },
-                    { q: "Altın nerelerde kullanılır?", a: "Mücevher ve sikke: Tarihsel ve günümüzdeki en geniş kullanım alanı; 24 ayar (%100) veya alaşım halinde (18 ayar: %75 Au + %25 diğer) biçimlendirilir." }
+                    { q: "Altın elektron dizilimi nedir?", a: "Altın elementinin elektron dizilimi [Xe] 4f¹⁴ 5d¹⁰ 6s¹ şeklindedir." }
                 ];
             }
-            // 🌟 ELEMENT 80: CIVA
             else if(num === 80) {
                 eng = "Mercury"; state = "Sıvı"; group = 12; period = 6;
-                desc = "Oda sıcaklığında (25 °C) sıvı halde bulunan tek metaldir. Ağır ve son derece toksik bir geçiş elementidir.";
+                desc = "Oda sıcaklığında sıvı halde bulunan tek metaldir. Ağır ve son derece toksik bir geçiş elementidir.";
                 config = "[Xe] 4f¹⁴ 5d¹⁰ 6s²"; shells = "2 | 8 | 18 | 32 | 18 | 2"; density = "13.53 g/cm³"; electronegativity = "2.00"; melt = "-38.8 °C"; boil = "356.7 °C"; discoverer = "Antik çağ";
-                historyText = "Antik mısır mezarlarında MÖ 1500 yıllarına ait cıva kalıntıları bulunmuştur. Simyacılar tarafından tüm metallerin anası ve özü olarak kabul edilirdi. Simgesi Hg, 'sıvı gümüş' anlamına gelen Hydrargyrum'dan gelir.";
+                historyText = "Antik mısır mezarlarında MÖ 1500 yıllarına ait kalıntıları bulunmuştur. Simgesi Hg, 'sıvı gümüş' anlamına gelen Hydrargyrum'dan gelir.";
                 isotopeText = "²⁰²Hg (%29.8), ²00Hg, ¹⁹⁹Hg, ²01Hg.";
-                usages = ["Barometre ve eski nesil termometre kılcal tüpleri", "Floresan ve cıva buharlı aydınlatma lambaları", "Diş dolgusu amalgam alaşımları (Hg-Ag)", "Laboratuvar sıvı elektrot sistemleri"];
-                bioText = "Biyolojik sistemler için birikimli ağır metal zehirlenmesine yol açan ciddi bir nörondoksin maddedir. Minamata hastalığının temel sebebidir.";
-                interesting = ["Tam dolu d ve s orbitalleri arasındaki relativistik büzülme nedeniyle atomlar arası metalik bağları o kadar zayıftır ki oda sıcaklığında kristal örgü kuramaz, sıvı kalır.", "Yoğunluğu o kadar yüksektir ki üzerinde bir demir somun veya gülle batmadan rahatlıkla yüzebilir."];
-                notes = ["Müfredatta oda sıcaklığında sıvı olan metal olarak ezberletilir. d-bloğunun son grubunda (2B) yer alır.", "Atık pillerin doğaya bırakılmaması kuralı cıva ve kadmiyum kirliliği üzerinden anlatılır."];
+                usages = ["Barometre ve eski nesil termometre tüpleri", "Floresan aydınlatma lambaları", "Diş dolgusu amalgam alaşımları"];
+                bioText = "Biyolojik sistemler için ağır metal zehirlenmesine yol açan ciddi bir nörondoksin maddedir.";
+                interesting = ["Tam dolu d ve s orbitalleri arasındaki büzülme nedeniyle oda sıcaklığında sıvı kalır.", "Yoğunluğu o kadar yüksektir ki üzerinde bir demir gülle batmadan rahatlıkla yüzebilir."];
+                notes = ["Müfredatta oda sıcaklığında sıvı olan metal olarak ezberletilir. 2B grubunda yer alır.", "Atık pillerin doğaya bırakılmaması kirlilik üzerinden anlatılır."];
                 sss = [
-                    { q: "Cıva termometreleri neden yasaklandı?", a: "Kırıldığında oda sıcaklığında hızla buharlaşarak solunum yoluyla vücuda geçer ve kalıcı sinir sistemi hasarlarına yol açar." },
-                    { q: "Amalgam dolgu tehlikeli midir?", a: "Amalgam içerisindeki cıva gümüş ile bağlanarak katılaşır ve kararlı hale gelir; ancak söküm esnasında buharlaşma riski yaratabilir." }
+                    { q: "Cıva termometreleri neden yasaklandı?", a: "Kırıldığında oda sıcaklığında hızla buharlaşarak solunum yoluyla vücuda geçer ve kalıcı sinir hasarı yapar." },
+                    { q: "Amalgam dolgu tehlikeli midir?", a: "Amalgam içerisindeki cıva gümüş ile bağlanarak katılaşır ve kararlı hale gelir." }
                 ];
             }
 
@@ -627,7 +605,7 @@
             document.getElementById('m-grid-props').innerHTML = `
                 <div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Atom Numarası</div><div class="text-sm font-black mt-1 text-white">${el.n}</div></div>
                 <div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Atom Kütlesi</div><div class="text-sm font-black mt-1 text-white">${el.m} g/mol</div></div>
-                <div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-blue-500 font-bold uppercase">Elektron Konfigürasyonu</div><div class="text-xs font-bold mt-1 text-white select-text">${config}</div></div>
+                <div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-blue-500 font-bold uppercase">Elektron Konfigürasyonu</div><div class="text-xs font-bold mt-1 text-white">${config}</div></div>
                 <div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-blue-500 font-bold uppercase">Kabuklar</div><div class="text-xs font-bold mt-1 text-white">${shells}</div></div>
                 <div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-blue-500 font-bold uppercase">Elektronegatiflik</div><div class="text-sm font-black mt-1 text-white">${electronegativity}</div></div>
                 <div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-blue-500 font-bold uppercase">Yoğunluk</div><div class="text-sm font-black mt-1 text-white">${density}</div></div>
