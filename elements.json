@@ -118,3 +118,303 @@
   { "n": 117, "s": "Ts", "name": "Tennessin", "m": "294.0", "cat": "p" },
   { "n": 118, "s": "Og", "name": "Oganesson", "m": "294.0", "cat": "p" }
 ]
+
+[
+  {
+    "n": 1, "s": "H", "name": "Hidrojen", "m": "1.008", "g": "1A (1. Grup)", "p": "Periyot 1", "state": "Gaz", "cat": "Ametal",
+    "desc": "Evrenin en hafif, en basit ve en bol bulunan elementidir. Yıldızların ve güneşin temel enerji kaynağıdır.",
+    "config": "1s¹", "shells": "1", "neg": "2.20", "density": "0.089 g/L", "mp": "-259.1 °C", "bp": "-252.9 °C", "discoverer": "Henry Cavendish",
+    "history": "1766'da Henry Cavendish tarafından keşfedildi. Antoine Lavoisier tarafından 'su üreten' anlamına gelen Hidrojen adı verildi.",
+    "usages": ["Roket yakıtı olarak sıvı halde kullanılır.", "Amonyak (Haber-Bosch yöntemi) ve metanol üretiminde temel girdidir.", "Bitkisel yağların doyurulmasında (hidrojenasyon) kullanılır."],
+    "bio": "İnsan vücudundaki su ve tüm organik moleküllerin (karbonhidrat, protein, yağ) yapısında temel bileşendir.",
+    "facts": ["Evrendeki tüm atomların yaklaşık %90'ı hidrojendir.", "Yandığında sadece su buharı ürettiği için en temiz alternatif enerjidir."],
+    "notes": ["1A grubunda bulunmasına rağmen alkali metal değildir, bir ametaldir.", "Ametallerle kovalent, aktif metallerle iyonik hidrür bileşikleri oluşturur."],
+    "isotopes": [{"iso": "¹H (Protyum)", "text": "Doğada %99.98 oranında bulunur, nötronu yoktur."}, {"iso": "²H (Döteryum)", "text": "Çekirdeğinde 1 nötron vardır. Ağır su (D₂O) yapımında kullanılır."}],
+    "compounds": [{"form": "H₂O", "name": "Su", "desc": "Evrensel çözücü ve hayatın temeli."}, {"form": "HCl", "name": "Hidrojen Klorür", "desc": "Mide asidi ve sanayide tuz ruhu olarak bilinir."}],
+    "faqs": [{"q": "Hidrojen neden 1A grubundadır?", "a": "Değerlik elektron sayısı 1 olduğu için 1A grubuna yerleştirilmiştir ancak kimyasal özellikleri halojenlere de benzer."}]
+  },
+  {
+    "n": 2, "s": "He", "name": "Helyum", "m": "4.0026", "g": "8A (18. Grup)", "p": "Periyot 1", "state": "Gaz", "cat": "Soy Gaz",
+    "desc": "Evrende hidrojenden sonra en bol bulunan ikinci elementtir. Tepkimeye girmeyen (asal) yapısıyla bilinir.",
+    "config": "1s²", "shells": "2", "neg": "-", "density": "0.178 g/L", "mp": "-272.2 °C", "bp": "-268.9 °C", "discoverer": "Janssen & Lockyer",
+    "history": "1868 yılında güneş tutulması sırasında güneş spektrumundaki çizgilerden keşfedildi. Adını Yunan Güneş Tanrısı 'Helios'tan alır.",
+    "usages": ["Uçan balonlarda ve zeppelinlerde emniyetli kaldırma gazı olarak.", "Sıvı halde nükleer reaktörlerde ve MRI cihazlarında soğutucu olarak.", "Derin deniz dalgıç tüplerinde vurgun yemeyi önlemek için oksijenle karıştırılır."],
+    "bio": "Biyolojik olarak tamamen inerttir (etkisizdir), vücut dokularıyla reaksiyona girmez ve toksik değildir.",
+    "facts": ["Evrende çok bol olmasına rağmen, hafifliğinden dolayı yerçekiminden kaçar ve dünyada oldukça nadirdir.", "Mutlak sıcaklığa (-273.15 °C) en yakın sıcaklıkta bile sıvı kalan tek maddedir."],
+    "notes": ["Değerlik elektron sayısı 2 olmasına rağmen, katmanı tam dolu (dubleks) olduğu için 2A değil, 8A grubundadır.", "Hiçbir elementle doğal kimyasal bileşik oluşturmaz."],
+    "isotopes": [{"iso": "⁴He", "text": "En kararlı ve yaygın helyum izotopudur."}, {"iso": "³He", "text": "Nükleer füzyon araştırmalarında kritik öneme sahip nadir izotop."}],
+    "compounds": [],
+    "faqs": [{"q": "Helyum neden yanmaz?", "a": "Son katmanı tamamen dolu olduğu için elektron alışverişi yapamaz ve kimyasal bağ kuramaz, dolayısıyla oksijenle reaksiyona (yanma) girmez."}]
+  },
+  {
+    "n": 3, "s": "Li", "name": "Lityum", "m": "6.94", "g": "1A (1. Grup)", "p": "Periyot 2", "state": "Katı", "cat": "Alkali Metal",
+    "desc": "En hafif ve en düşük yoğunluklu katı elementtir. Su üzerinde batmadan yüzecek kadar hafiftir ve bıçakla kesilebilir.",
+    "config": "[He] 2s¹", "shells": "2 | 1", "neg": "0.98", "density": "0.534 g/cm³", "mp": "180.5 °C", "bp": "1342 °C", "discoverer": "Johan August Arfwedson",
+    "history": "1817'de petalit mineralinin analizi sırasında keşfedildi. Adını Yunanca taş anlamına gelen 'lithos' kelimesinden almıştır.",
+    "usages": ["Cep telefonları, dizüstü bilgisayarlar ve elektrikli araçlar için Li-iyon batarya yapımında.", "Hava taşıtlarında kullanılan hafif alaşımların üretiminde.", "Psikiyatride bipolar bozukluk tedavisinde ilaç olarak."],
+    "bio": "İnsan vücudunda eser miktarda bulunur, sinir sistemi üzerinde düzenleyici etkileri olduğu bilinmektedir.",
+    "facts": ["Su ile temas ettiğinde şiddetle reaksiyona girerek hidrojen gazı açığa çıkarır ve pembe renkli alevle yanar.", "Yoğunluğu suyun neredeyse yarısı kadardır."],
+    "notes": ["Alkali metallerin ilk üyesidir. Su ve hava ile hızla oksitlendiği için gaz yağı (gazyağı) içinde saklanır.", "1+ yüklü iyonlar oluşturur."],
+    "isotopes": [{"iso": "⁷Li", "text": "Doğal lityumun %92.5'ini oluşturan kararlı izotop."}, {"iso": "⁶Li", "text": "Nükleer füzyon reaktörlerinde trityum üretimi için kullanılan izotop."}],
+    "compounds": [{"form": "Li₂CO₃", "name": "Lityum Karbonat", "desc": "Tıpta antipsikotik ilaç yapımında ve seramik sanayisinde kullanılır."}],
+    "faqs": [{"q": "Lityum pilleri neden tehlikelidir?", "a": "Lityum çok reaktif bir metal olduğu için piller aşırı ısındığında veya delindiğinde hava ile temas ederek patlamaya yol açabilir."}]
+  },
+  {
+    "n": 4, "s": "Be", "name": "Berilyum", "m": "9.0122", "g": "2A (2. Grup)", "p": "Periyot 2", "state": "Katı", "cat": "Toprak Alkali Metal",
+    "desc": "Yüksek erime noktasına ve mükemmel ısı iletkenliğine sahip, çelikten daha sert ama alüminyumdan daha hafif grimsi bir metaldir.",
+    "config": "[He] 2s²", "shells": "2 | 2", "neg": "1.57", "density": "1.85 g/cm³", "mp": "1287 °C", "bp": "2469 °C", "discoverer": "Louis Nicolas Vauquelin",
+    "history": "1798'de zümrüt ve beril minerallerinin içinde keşfedildi. Bileşikleri tatlı olduğu için ilk başlarda 'Glucinium' olarak adlandırılmıştı.",
+    "usages": ["X-ışınlarını geçiren yapısı nedeniyle röntgen (X-ışını) tüplerinin pencerelerinde.", "Uzay teleskoplarının (James Webb gibi) aynalarında hafiflik ve dayanıklılık için.", "Nükleer reaktörlerde nötron moderatörü ve yansıtıcı olarak."],
+    "bio": "Biyolojik bir rolü yoktur. Tozu veya buharı solunduğunda 'Berilyozis' adı verilen ölümcül bir akciğer hastalığına yol açar.",
+    "facts": ["Zümrüt taşının yeşil rengini veren şey, yapısındaki berilyum atomları arasındaki krom safsızlıklarıdır.", "Ses hızı berilyum metalinin içinde havaya göre 36 kat daha hızlı hareket eder."],
+    "notes": ["2A grubunun ilk üyesidir ancak küçük atom yarıçapı nedeniyle grubun diğer üyelerine göre kovalent karakterli bileşikler yapmaya daha yatkındır.", "Amfoter özellik gösterir."],
+    "isotopes": [{"iso": "⁹Be", "text": "Doğadaki tek kararlı berilyum izotopudur."}],
+    "compounds": [{"form": "BeO", "name": "Berilyum Oksit", "desc": "Elektrik yalıtkanı ama mükemmel bir ısı iletkeni olan gelişmiş seramik malzeme."}],
+    "faqs": [{"q": "Berilyum neden James Webb uzay teleskobunda kullanıldı?", "a": "Aşırı soğuk uzay şartlarında şeklini ve pürüzsüzlüğünü kaybetmeyen, alüminyumdan hafif ve çelikten sert tek metal olduğu için aynalarda berilyum tercih edilmiştir."}]
+  },
+  {
+    "n": 5, "s": "B", "name": "Bor", "m": "10.81", "g": "3A (13. Grup)", "p": "Periyot 2", "state": "Katı", "cat": "Yarı Metal",
+    "desc": "Yüksek sıcaklığa dayanıklı, yarı iletken özellik gösteren metaloit (yarı metal) bir elementtir. Türkiye, dünya bor rezervlerinin %70'inden fazlasına sahiptir.",
+    "config": "[He] 2s² 2p¹", "shells": "2 | 3", "neg": "2.04", "density": "2.08 g/cm³", "mp": "2076 °C", "bp": "3927 °C", "discoverer": "Davy & Gay-Lussac",
+    "history": "1808 yılında potasyum yardımıyla borik asidin indirgenmesiyle izole edildi. Adını Arapça parıldayan anlamına gelen 'buraq' (boraks) kelimesinden alır.",
+    "usages": ["Isıya dayanıklı borosilikat cam (Borcam) üretiminde.", "Nükleer reaktörlerde kontrol çubuklarında nötron yakalayıcı olarak.", "Roket yakıtlarında ateşleyici katık ve askeri zırh seramiklerinin yapımında."],
+    "bio": "Bitkilerin hücre duvarı yapısı ve büyümesi için mutlak gerekli bir mikro besindir. İnsanlarda kemik sağlığına katkıda bulunur.",
+    "facts": ["Bor bileşikleri yandığında çok belirgin, parlak yeşil bir alev rengi oluşturur.", "Yüksek mukavemetli bor lifleri golf sopalarından uçak kanatlarına kadar ileri kompozitlerde kullanılır."],
+    "notes": ["3A grubunun ilk üyesidir. Metalik görünümlüdür ancak kimyasal reaksiyonlarında ametaller gibi davranarak kovalent bağlar kurar.", "Oktet boşluğuna sahip bileşikler ($BH_3, BF_3$) oluşturur."],
+    "isotopes": [{"iso": "¹¹B", "text": "Doğal borun %80'ini oluşturan izotop."}, {"iso": "¹⁰B", "text": "Nükleer santrallerde radyasyon ve nötron kalkanı olarak kullanılan kritik izotop."}],
+    "compounds": [{"form": "H₃BO₃", "name": "Borik Asit", "desc": "Tıpta antiseptik, sanayide cam ve tekstil üretiminde kullanılır."}, {"form": "Na₂B₄O₇·10H₂O", "name": "Boraks", "desc": "Doğal temizlik malzemesi, deterjan ve lehim eritici katkı."}]
+  },
+  {
+    "n": 6, "s": "C", "name": "Karbon", "m": "12.011", "g": "4A (14. Grup)", "p": "Periyot 2", "state": "Katı", "cat": "Ametal",
+    "desc": "Hayatın temel taşıdır. Karbon atomları kendi aralarında sonsuz uzunlukta zincirler ve halkalar oluşturabildiği için 'Organik Kimya' adında ayrı bir bilim dalının doğmasını sağlamıştır.",
+    "config": "[He] 2s² 2p²", "shells": "2 | 4", "neg": "2.55", "density": "2.26 g/cm³ (Grafit)", "mp": "3550 °C", "bp": "4027 °C", "discoverer": "Antik Çağ",
+    "history": "Tarih öncesi çağlardan beri kömür ve kurum formunda biliniyordu. Elmas ve grafitin aynı elementten oluştuğunu Antoine Lavoisier kanıtladı.",
+    "usages": ["Çeliğin sertliğini artırmak için demir ile alaşımlandırılmasında.", "Karbon elyaf (fiber) teknolojisiyle ultra hafif ve dayanıklı yarış arabaları, bisikletler yapımında.", "Aktif karbon formunda su arıtma filtrelerinde ve zehirlenme tedavilerinde."],
+    "bio": "DNA, RNA, protein, karbonhidrat ve yağlar dahil olmak üzere dünyadaki tüm organik yaşam formlarının ana iskeletini oluşturur.",
+    "facts": ["Doğanın en yumuşak minerallerinden biri olan grafit (kurşun kalem ucu) ile en sert minerallerinden biri olan zümrüt/elmas, karbonun allotroplarıdır.", "Fulleren ve grafen formları nanoteknolojinin kalbidir."],
+    "notes": ["4 bağımsız kovalent bağ yapabilme yeteneğine ($sp^3, sp^2, sp$ hibritleşmesi) sahiptir.", "Müfredatta allotropları (Elmas, Grafit, Grafen, Nanotüp) çok sık sorulur."],
+    "isotopes": [{"iso": "¹²C", "text": "Karbon atomlarının %98.9'unu oluşturan, atom kütle standart referansı olan izotop."}, {"iso": "¹⁴C", "text": "Radyoaktif izotop. Arkeolojide fosillerin yaşını tayin etmek (Karbon Tarihleme) için kullanılır."}],
+    "compounds": [{"form": "CO₂", "name": "Karbondioksit", "desc": "Solunum ürünü, bitkilerin fotosentez girdisi ve sera gazı."}, {"form": "CH₄", "name": "Metan", "desc": "Doğal gazın ana bileşeni olan en basit organik molekül."}]
+  },
+  {
+    "n": 7, "s": "N", "name": "Azot", "m": "14.007", "g": "5A (15. Grup)", "p": "Periyot 2", "state": "Gaz", "cat": "Ametal",
+    "desc": "Soluduğumuz havanın %78'ini oluşturan, renksiz, kokusuz ve normal şartlarda oldukça inaktif (bağ enerjisi çok yüksek) bir gazdır.",
+    "config": "[He] 2s² 2p³", "shells": "2 | 5", "neg": "3.04", "density": "1.25 g/L", "mp": "-210.0 °C", "bp": "-195.8 °C", "discoverer": "Daniel Rutherford",
+    "history": "1772'de Daniel Rutherford tarafından farenin kapalı kaptaki havayı tüketmesi deneyiyle 'zehirli hava' olarak izole edildi. Lavoisier ona 'yaşam yok' anlamında 'Azote' dedi.",
+    "usages": ["Sıvı azot formunda (-196 °C) tıpta siğil dondurmada, sperm ve embriyo saklanmasında.", "Gıda paketlemede (cips paketleri vb.) oksijenle teması kesip bozulmayı önlemek için.", "Tarımda azotlu yapay gübrelerin (üre, amonyum nitrat) üretiminde."],
+    "bio": "Proteinlerin, amino asitlerin ve genetik şifremizi taşıyan DNA ile RNA nükleotitlerinin yapısında mutlak şekilde bulunur.",
+    "facts": ["Azot molekülündeki iki azot atomu birbirine son derece güçlü bir üçlü bağla ($N \equiv N$) bağlıdır, bu bağ kırılmadan azot tepkime vermez.", "Yıldırımlar havada bu bağı kırarak toprağa doğal azot bağlar."],
+    "notes": ["5A grubundadır, bileşiklerinde -3 ile +5 arasında çok çeşitli yükseltgenme basamaklarına sahip olabilir.", "Haber-Bosch süreciyle amonyağa dönüştürülmesi endüstrinin temelidir."],
+    "isotopes": [{"iso": "¹⁴N", "text": "Doğadaki azotun %99.6'sını oluşturan kararlı temel izotop."}],
+    "compounds": [{"form": "NH₃", "name": "Amonyak", "desc": "Keskin kokulu, zayıf baz özellikli gübre ve temizlik hammaddesi."}, {"form": "HNO₃", "name": "Nitrik Asit", "desc": "Simyacıların 'Kezzap' olarak adlandırdığı, güçlü ve aşındırıcı asit."}]
+  },
+  {
+    "n": 8, "s": "O", "name": "Oksijen", "m": "15.999", "g": "6A (16. Grup)", "p": "Periyot 2", "state": "Gaz", "cat": "Ametal",
+    "desc": "Dünyadaki yaşamın ve solunumun ana gazıdır. Yerkabuğunun, okyanusların ve insan vücudunun kütlece en büyük kısmını oluşturan elementtir.",
+    "config": "[He] 2s² 2p⁴", "shells": "2 | 6", "neg": "3.44", "density": "1.429 g/L", "mp": "-218.7 °C", "bp": "-182.9 °C", "discoverer": "Joseph Priestley",
+    "history": "1774 yılında Joseph Priestley cıva oksiti ısıtarak bu gazı elde etti. Yanma olayındaki rolünü çözen Lavoisier, elemente 'asit üreten' anlamında Oksijen adını verdi.",
+    "usages": ["Hastanelerde solunum güçlüğü çeken hastaların oksijen çadırları ve tüplerinde.", "Çelik üretiminde demirdeki karbon safsızlıklarını yakıp uzaklaştırmak için.", "Yüksek sıcaklık elde etmek için oksiasetilen kaynak şalolarında."],
+    "bio": "Hücresel solunumda glikozun yakılarak ATP (enerji) üretilmesinde son elektron alıcıdır. Suyun yapısının %88.8'i kütlece oksijendir.",
+    "facts": ["Atmosferdeki serbest oksijen ($O_2$), bitkilerin milyonlarca yıldır gerçekleştirdiği fotosentez reaksiyonlarının bir ürünüdür.", "Atmosferin üst katmanlarındaki Allotropu olan Ozon ($O_3$), dünyayı zararlı UV ışınlarından korur."],
+    "notes": ["Flor elementinden sonra bilinen en yüksek elektronegatifliğe sahip ikinci elementtir.", "Bileşiklerinde genellikle -2, peroksitlerde ise -1 değerlik alır (Flor ile yaptığı $OF_2$ bileşiğinde ise istisnai olarak +2 alır)."],
+    "isotopes": [{"iso": "¹⁶O", "text": "Kararlı oksijen izotoplarının %99.76'sını oluşturan ana yapı."}],
+    "compounds": [{"form": "H₂O", "name": "Su", "desc": "İki hidrojen bir oksijenden oluşan evrensel yaşam sıvısı."}, {"form": "H₂O₂", "name": "Hidrojen Peroksit", "desc": "Halk arasında oksijenli su olarak bilinen mikrop öldürücü ve ağartıcı."}]
+  },
+  {
+    "n": 9, "s": "F", "name": "Flor", "m": "18.998", "g": "7A (17. Grup)", "p": "Periyot 2", "state": "Gaz", "cat": "Halojen",
+    "desc": "Kimyasal olarak bilinen en reaktif, en saldırgan ve elektronegatifliği en yüksek elementtir. Temas ettiği neredeyse her şeyi anında yakar veya aşındırır.",
+    "config": "[He] 2s² 2p⁵", "shells": "2 | 7", "neg": "3.98", "density": "1.696 g/L", "mp": "-219.6 °C", "bp": "-188.1 °C", "discoverer": "Henri Moissan",
+    "history": "Çok zehirli ve reaktif olduğu için izolasyonu sırasında birçok kimyacı hayatını kaybetti veya kör oldu. 1886'da Henri Moissan sıvı hidrojen florür elektroliziyle saf flor gazı elde etmeyi başararak Nobel Ödülü aldı.",
+    "usages": ["Diş macunlarında diş minesini sertleştirmek ve çürükleri önlemek için sodyum florür şeklinde.", "Yapışmaz teflon (PTFE) tavaların kaplama malzemesinin üretiminde.", "Klima ve buzdolaplarında soğutucu akışkan gazların sentezinde."],
+    "bio": "Kemiklerin ve diş minesinin yapısında kalsiyum florür formunda bulunur. Eksikliği diş çürümelerine, aşırısı ise florozise (dişlerde sararma) yol açar.",
+    "facts": ["Camı aşındırıp eritebilen tek asit olan Hidroflorik asit ($HF$), flor bileşiğidir. Bu yüzden HF asidi cam şişelerde değil, plastik kaplarda saklanır.", "Flor gazı suyla temas ettiğinde suyu yakarak oksijen gazı açığa çıkarır."],
+    "notes": ["Bütün periyodik tablonun elektronegatiflik şampiyonudur (3.98).", "Bileşiklerinde **sadece ve sadece -1** yükseltgenme basamağı alabilir (asla pozitif değerlik alamaz)."],
+    "isotopes": [{"iso": "¹⁹F", "text": "Florun doğada bulunan tek kararlı ve doğal izotopudur."}],
+    "compounds": [{"form": "HF", "name": "Hidroflorik Asit", "desc": "Cam işleme ve camı oymada kullanılan, zayıf ama dokulara çok zararlı asit."}, {"form": "NaF", "name": "Sodyum Florür", "desc": "Diş macunlarında kullanılan koruyucu tuz."}]
+  },
+  {
+    "n": 10,
+    "s": "Ne",
+    "name": "Neon",
+    "m": "20.179",
+    "g": "8A (18. Grup)", "p": "Periyot 2", "state": "Gaz", "cat": "Soy Gaz",
+    "desc": "Hiçbir maddeyle reaksiyona girmeyen, yüksek voltajlı elektrik akımı uygulandığında muhteşem, parlak kırmızımsı-turuncu bir ışık yayan asal gazdır.",
+    "config": "[He] 2s² 2p⁶", "shells": "2 | 8", "neg": "-", "density": "0.900 g/L", "mp": "-248.5 °C", "bp": "-246.0 °C", "discoverer": "Ramsay & Travers",
+    "history": "1898 yılında William Ramsay ve Morris Travers tarafından sıvı havanın damıtılması sırasında argon ve helyumun yanında yeni bir gaz olarak keşfedildi. Yunanca yeni anlamına gelen 'neos' adı verildi.",
+    "usages": ["Reklam tabelalarında, ışıklı panolarda ve yüksek görünürlüklü neon lambalarında.", "Lazer teknolojisinde (Helyum-Neon lazerleri) barkod okuyucularda.", "Sıvı neon, sanayide yüksek maliyetli bir kriyojenik soğutucu olarak."],
+    "bio": "Herhangi bir biyolojik rolü yoktur, tamamen zararsız ve etkisiz bir gazdır. Ancak kapalı alanda aşırı birikirse oksijen yetersizliğine (asfiksi) yol açabilir.",
+    "facts": ["Evrende en çok bulunan 5. element olmasına rağmen dünya atmosferinde milyonda 18 oranında bulunan çok nadir bir gazdır.", "Gerçek bir neon tüpü sadece turuncu-kırmızı ışık verir; mavi, yeşil, sarı renkli tabelalar diğer soy gazların veya cıva buharının karışımıyla elde edilir."],
+    "notes": ["Valans (değerlik) katmanı tamamen dolu (oktetini tamamlamış) kararlı bir atom yapısına sahiptir.", "Standart laboratuvar şartlarında bilinen hiçbir gerçek kimyasal bileşiği yoktur."],
+    "isotopes": [{"iso": "²⁰Ne", "text": "Neon gazının doğadaki payının %90.48'ini oluşturan ana kararlı izotop."}],
+    "compounds": [],
+    "faqs": [{"q": "Neon lambaları nasıl ışık verir?", "a": "Tüpün içindeki neon gazı atomlarına yüksek voltaj uygulandığında elektronlar üst enerji seviyelerine uyarılır; alt seviyeye geri dönerken kırmızı-turuncu renkte foton (ışık) fırlatırlar."}]
+  },
+  {
+    "n": 11, "s": "Na", "name": "Sodyum", "m": "22.99", "g": "1A (1. Grup)", "p": "Periyot 3", "state": "Katı", "cat": "Alkali Metal",
+    "desc": "Bıçakla kolayca kesilebilecek kadar yumuşak, gümüşi beyaz renkli, suyla temas ettiğinde patlama derecesinde şiddetle reaksiyona giren aktif bir alkali metaldir.",
+    "config": "[Ne] 3s¹", "shells": "2 | 8 | 1", "neg": "0.93", "density": "0.971 g/cm³", "mp": "97.8 °C", "bp": "883 °C", "discoverer": "Humphry Davy",
+    "history": "1807 yılında Humphry Davy tarafından kostik sodyumun ($NaOH$) elektroliz edilmesi yöntemiyle saf metal olarak izole edildi.",
+    "usages": ["Sodyum buharlı sokak lambalarında yüksek verimli sarı renkli aydınlatma sağlamak için.", "Nükleer reaktörlerde yüksek ısı iletim kapasitesi nedeniyle sıvı sodyum soğutucu olarak.", "Sofra tuzu, çamaşır sodası ve kostik gibi binlerce temel endüstriyel kimyasalın üretiminde."],
+    "bio": "Vücut sıvı dengesinin korunmasında, sinirsel sinyal iletiminde ve kas kasılma mekanizmalarında görev alan hayati bir elektrolittir.",
+    "facts": ["Saf sodyum metali su yüzeyine atıldığında hızla eriyerek küçük bir küre halini alır, su üstünde çılgınca dönerek hidrojen gazı çıkarır ve bazen şiddetle patlar.", "Yemeklerimize tat veren tuzun ($NaCl$) yarısı zehirli bir gaz olan klor, diğer yarısı ise bu patlayıcı metal sodyumdur."],
+    "notes": ["Havayla anında oksitlendiği ve nemle reaksiyona girdiği için kesinlikle açıkta bırakılmaz, gaz yağı veya parafin içinde muhafaza edilir.", "Bileşiklerinde daima +1 değerlik alır."],
+    "isotopes": [{"iso": "²³Na", "text": "Sodyumun doğada bulunan tek kararlı izotopudur."}],
+    "compounds": [{"form": "NaCl", "name": "Sodyum Klorür", "desc": "Bildiğimiz sofra tuzu, vücudun temel mineral kaynağı."}, {"form": "NaOH", "name": "Sodyum Hidroksit", "desc": "Sanayide lavabo açıcı ve sabun yapımında kullanılan güçlü baz (Sud-kostik)."}, {"form": "Na₂CO₃", "name": "Sodyum Karbonat", "desc": "Çamaşır sodası; su sertliğini gidermede ve cam üretiminde kullanılır."}]
+  },
+  {
+    "n": 12, "s": "Mg", "name": "Magnezyum", "m": "24.305", "g": "2A (2. Grup)", "p": "Periyot 3", "state": "Katı", "cat": "Toprak Alkali Metal",
+    "desc": "Göz kamaştırıcı parlak beyaz bir alevle yanan, yapısal malzemeler arasında en hafif metal alaşımlarını oluşturan gümüşi bir elementtir.",
+    "config": "[Ne] 3s²", "shells": "2 | 8 | 2", "neg": "1.31", "density": "1.738 g/cm³", "mp": "650 °C", "bp": "1090 °C", "discoverer": "Humphry Davy",
+    "history": "1755'te Joseph Black tarafından ayrı bir element olarak tanındı. 1808'de Humphry Davy tarafından magnezya mineralinden elektrolizle saf metal olarak elde edildi.",
+    "usages": ["Uçak, helikopter, yarış bisikletleri ve otomobil motor bloklarında hafif alaşım malzemesi olarak.", "Eski fotoğraf flaş tozlarında ve askeri işaret fişeklerinde parlak ışık kaynağı olarak.", "Organik kimyada Grignard reaktiflerinin hazırlanmasında."],
+    "bio": "Bitkilerde fotosentezi sağlayan yeşil renkli Klorofil pigmentinin merkez atomudur. İnsanlarda 300'den fazla enzimin çalışması ve kas-sinir fonksiyonları için zorunludur.",
+    "facts": ["Magnezyum şeridi havada yakıldığında ultraviyole ışınlar içeren, doğrudan bakıldığında göz retinasına zarar verebilecek kadar parlak beyaz bir ışık saçar.", "Karbondioksit gazı magnezyum yangınlarını söndüremez; çünkü magnezyum karbondioksitteki oksijeni bile çekerek yanmaya devam edebilir."],
+    "notes": ["2A grubundadır, bileşiklerinde daima +2 değerlik alır. Sıcak su ile reaksiyona girerek magnezyum hidroksit ve hidrojen gazı oluşturur."],
+    "isotopes": [{"iso": "²⁴Mg", "text": "Doğal magnezyumun %79'unu oluşturan temel izotop."}],
+    "compounds": [{"form": "MgO", "name": "Magnezyum Oksit", "desc": "Yüksek erime noktası nedeniyle fırın iç kaplamalarında kullanılan ateşe dayanıklı (refrakter) malzeme."}, {"form": "Mg(OH)₂", "name": "Magnezyum Hidroksit", "desc": "Mide yanmalarına karşı antasit olarak kullanılan Magnezya Sütü süspansiyonu."}]
+  },
+  {
+    "n": 13, "s": "Al", "name": "Alüminyum", "m": "26.982", "g": "3A (13. Grup)", "p": "Periyot 3", "state": "Katı", "cat": "Post-Geçiş Metali",
+    "desc": "Yerkabuğunda en bol bulunan metaldir (kütlece ~%8,1); tüm elementler arasında oksijen og silisyumdan sonra 3. sıradadır. Amfoterik özellik gösterir (hem asit hem bazla tepkime verir). Alüminyum folyo, içecek kutuları og uçak gövdelerinde kullanılır.",
+    "config": "[Ne] 3s² 3p¹", "shells": "2 | 8 | 3", "neg": "1.61", "density": "2.7 g/cm³", "mp": "660.3 °C", "bp": "2518.8 °C", "discoverer": "Hans Christian Ørsted",
+    "history": "Hans Christian Ørsted 1825'te kirli alüminyum elde etti. Friedrich Wöhler 1827'de AlCl₃'ü potasyumla indirgeyerek daha saf alüminyum izole etti. 19. yüzyılda alüminyum altından pahalıydı; ABD'deki Washington Anıtı'nın tepesindeki alüminyum piramit kapak (1884) og III. Napolyon'un tören takımlarında alüminyum kullanımı gibi bilinen örnekler vardı. 1886'da Charles Martin Hall og Paul Héroult bağımsız olarak elektroliz yöntemini (Hall-Héroult prosesi) geliştirerek fiyatı dramatik biçimde düşürdü.",
+    "usages": [
+      "Ambalaj: İçecek kutuları, folyo, gıda kapları (hafif og korozyona dayanıklı)",
+      "Ulaşım: Uçak gövdesi, otomobil parçaları, trenler (çelikten 3x hafif)",
+      "İnşaat: Pencere çerçeveleri, cephe kaplama, köprü elemanları",
+      "Elektrik iletimi: Yüksek gerilim hatlarında bakır yerine (hafifliği nedeniyle)",
+      "Termit reaksiyonu: Al + Fe₂O₃ → Al₂O₃ + Fe (kaynak og patlayıcı uygulamalar)",
+      "Alüminyum oksit (Al₂O₃): Zımpara, safir og yakut (krom katkılı), LED substrat"
+    ],
+    "bio": "Alüminyumun bilinen biyolojik bir rolü yoktur og yüksek miktarda toksik etkiler gösterir. Diyaliz hastalarında alüminyum birikimi diyaliz demansına yol açabilir. Alzheimer ile ilişkisi araştırılmış ancak kesin neden-sonuç bağlantısı kanıtlanamamıştır.",
+    "facts": [
+      "Alüminyum yerkabuğunun kütlece ~%8,1'ini oluşturur; en bol metaldir. Ancak reaktif olduğu için 1800'lere dek saf hâlde elde edilemedi.",
+      "Alüminyum yüzeyinde anında oluşan ince Al₂O₃ tabakası (pasif film) korozyona karşı doğal zırh görevi görür.",
+      "Termit reaksiyonu 2500°C'ye ulaşabilir; demiryolu kaynak işlemlerinde kullanılır.",
+      "Dünyanın ürettiği alüminyumun yarısından vazlası geri dönüştürülmüş hurda alüminyumdan elde edilir; geri dönüşüm %95 enerji tasarrufu sağlar.",
+      "Bauksit (Al₂O₃·nH₂O) alüminyumun ana cevheridir; işlenmesi çok enerji gerektirir."
+    ],
+    "notes": [
+      "Metal (post-geçiş); Grup 13, Periyot 3; elektron dizilimi [Ne] 3s² 3p¹ → +3 yükseltgenme basamağı.",
+      "Al(OH)₃ amfoterik: Al(OH)₃ + 3HCl → AlCl₃ + 3H₂O og Al(OH)₃ + NaOH → Na[Al(OH)₄].",
+      "AlCl₃ Lewis asit (eksik oktet, 6 elektron); AlF₃ ise iyonik yapıda.",
+      "Köşegen benzerliği: Al, Be ile köşegen ilişkisinde; her ikisi de amfoterik hidroksit oluşturur.",
+      "Termit: 2Al + Fe₂O₃ → Al₂O₃ + 2Fe (ΔH = -852 kJ/mol; redoks tepkimesi).",
+      "Elektroliz (Hall-Héroult): Al₂O₃ kriyolit içinde eritilir; katotta Al³⁺ + 3e⁻ → Al."
+    ],
+    "isotopes": [
+      {"iso": "²⁷Al", "text": "Doğal alüminyumun %100'ünü oluşturan tek kararlı izotop. ²⁷Al NMR spektroskopisi zeolitler og katalizörlerin analizinde yaygındır."},
+      {"iso": "²⁶Al", "text": "Yarı ömür: 717.000 yıl. Radyoaktif; kozmik ışın spallasyonuyla oluşur. Meteoritlerin oluşum tarihini belirlemekte kullanılır."}
+    ],
+    "compounds": [
+      {"form": "Al₂O₃", "name": "Alüminyum Oksit (Alumina)", "desc": "Zımpara; seramik; safir/yakut; katalizör taşıyıcı."},
+      {"form": "Al(OH)₃", "name": "Alüminyum Hidroksit", "desc": "Antasit; amfoterik; alev geciktirici."},
+      {"form": "AlCl₃", "name": "Alüminyum Klorür", "desc": "Friedel-Crafts katalizörü; deodorant etken maddesi."},
+      {"form": "Al₂(SO₄)₃", "name": "Alüminyum Sülfat", "desc": "Su arıtımında koagülant; kâğıt üretimi."},
+      {"form": "KAl(SO₄)₂·12H₂O", "name": "Şap (Alum)", "desc": "Astrenjan; gıdada kabartma tozu bileşeni; boya endüstrisi."}
+    ],
+    "faqs": [
+      {"q": "Alüminyum atom numarası kaçtır?", "a": "Alüminyum elementinin atom numarası 13'tür."},
+      {"q": "Alüminyum elektron dizilimi nedir?", "a": "Alüminyum elementinin elektron dizilimi [Ne] 3s² 3p¹ şeklindedir."},
+      {"q": "Alüminyum nerelerde kullanılır?", "a": "Ambalaj (içecek kutuları, folyo), ulaşım (uçak, otomobil), inşaat sektörü og elektrik iletim hatlarında yaygın olarak kullanılır."}
+    ]
+  },
+  {
+    "n": 14, "s": "Si", "name": "Silisyum", "m": "28.085", "g": "4A (14.0. Grup)", "p": "Periyot 3", "state": "Katı", "cat": "Yarı Metal",
+    "desc": "Yerkabuğunda oksijenden sonra en bol bulunan ikinci elementtir. Kumun, kuarsın ve modern elektronik dünyasını kuran bilgisayar çiplerinin ana maddesidir.",
+    "config": "[Ne] 3s² 3p²", "shells": "2 | 8 | 4", "neg": "1.90", "density": "2.329 g/cm³", "mp": "1414 °C", "bp": "3265 °C", "discoverer": "Jöns Jacob Berzelius",
+    "history": "1824 yılında Berzelius tarafından potasyum florosilikatın potasyum metali ile indirgenmesiyle saf formda izole edildi.",
+    "usages": ["Bilgisayar işlemcileri, mikroçipler ve yarı iletken transistörlerin üretiminde (Silikon Vadisi adını buradan alır).", "Güneş panellerinde (fotovoltaik hücreler) ışığı elektriğe dönüştürmek için.", "Cam, seramik, beton ve silikon polimer (kauçuk) sanayisinde."],
+    "bio": "Kemik ve bağ doku gelişimi için eser miktarda gereklidir. Bitkilerde sap dikliğini artırır.",
+    "facts": ["Kuvars kristali ($SiO_2$), silisyum ve oksijenden oluşur ve saatlerin içinde zamanı hassas ölçmek için frekans üretici olarak kullanılır.", "Doğadaki adi kum, aslında büyük oranda silisyum dioksittir."],
+    "notes": ["4A grubundadır, elmas benzeri kovalent kristal örgü yapısına sahiptir. Sıcaklıkla elektrik iletkenliği artan bir yarı iletken (metaloit) özelliğidir."],
+    "isotopes": [{"iso": "²⁸Si", "text": "Doğal silisyumun %92.2'sini oluşturan en yaygın kararlı izotop."}],
+    "compounds": [{"form": "SiO₂", "name": "Silisyum Dioksit (Silis/Kuvars)", "desc": "Camın ana hammaddesi olan, doğada kum ve çakmak taşı olarak bolca bulunan bileşik."}, {"form": "SiC", "name": "Silisyum Karbür (Karborundum)", "desc": "Elmasa yakın sertlikte olan süper aşındırıcı ve endüstriyel kesici malzeme."}]
+  },
+  {
+    "n": 15, "s": "P", "name": "Fosfor", "m": "30.974", "g": "5A (15. Grup)", "p": "Periyot 3", "state": "Katı", "cat": "Ametal",
+    "desc": "Karanlıkta parıldama özelliği gösteren, canlıların enerji moleküllerinin ve kemik yapılarının merkezinde yer alan oldukça aktif bir ametaldir.",
+    "config": "[Ne] 3s² 3p³", "shells": "2 | 8 | 3", "neg": "2.19", "density": "1.823 g/cm³ (Beyaz)", "mp": "44.1 °C (Beyaz)", "bp": "280.5 °C", "discoverer": "Hennig Brand",
+    "history": "1669 yılında simyacı Hennig Brand, felsefe taşını bulma ümidiyle insan idrarını damıtırken karanlıkta parlayan bu maddeyi tesadüfen keşfetti. Adı Yunanca 'ışık getiren' demektir.",
+    "usages": ["Kibrit çöplerinin uçlarında ve kibrit kutularının sürtünme yüzeylerinde kırmızı fosfor olarak.", "Tarımda bitki kök gelişimini artıran fosfatlı gübrelerin yapımında.", "Savaş sanayisinde duman bombaları ve sis perdeleri oluşturulmasında."],
+    "bio": "Hücrelerin enerji para birimi olan ATP molekülünün, DNA ve RNA nükleotit zincirlerinin ve kemiklerde kalsiyum fosfat ($Ca_3(PO_4)_2$) yapısının ana elementidir.",
+    "facts": ["Allotroplarından Beyaz Fosfor çok zehirlidir, havada 30°C'de kendiliğinden alev alır ve askeri olarak kullanımı yasaklanmış yakıcı bir silahtir.", "Kırmızı fosfor ise toksik değildir ve oldukça güvenlidir."],
+    "notes": ["5A grubundadır, ametaldir. Havayla temas ettiğinde fosfor pentoksit ($P_2O_5$) asidik oksit dumanları oluşturur."],
+    "isotopes": [{"iso": "³¹P", "text": "Fosforun doğadaki tek kararlı izotopudur."}],
+    "compounds": [{"form": "H₃PO₄", "name": "Fosforik Asit", "desc": "Kola ve gazlı içeceklerde asitlik düzenleyici, sanayide pas sökücü ve gübre hammaddesi."}]
+  },
+  {
+    "n": 16, "s": "S", "name": "Kükürt", "m": "32.06", "g": "6A (16. Grup)", "p": "Periyot 3", "state": "Katı", "cat": "Ametal",
+    "desc": "Doğada parlak sarı renkli kristaller veya kütleler halinde bulunan, yandığında keskin, boğucu kükürt dioksit gazı açığa çıkaran bir ametaldir.",
+    "config": "[Ne] 3s² 3p⁴", "shells": "2 | 8 | 4", "neg": "2.58", "density": "2.07 g/cm³", "mp": "115.2 °C", "bp": "444.6 °C", "discoverer": "Antik Çağ",
+    "history": "Antik çağlardan beri bilinmektedir. İncil'de ve eski metinlerde 'kükürt taşı' veya 'ateş taşı' olarak geçer. Element olduğunu Lavoisier kanıtlamıştır.",
+    "usages": ["Kimya sanayisinin en temel hammaddesi olan Sülfürik asit ($H_2SO_4$) üretiminde.", "Kauçuğun sertleştirilmesi (vulkanizasyon) işleminde.", "Kuru kayısı ve incirlerin bozulmasını önlemek, renklerini korumak için kükürtleme (kükürt dioksit dumanı) işleminde."],
+    "bio": "Sistein ve metiyonin gibi amino asitlerin yapısında yer alarak saç, tırnak ve cilt sağlığını koruyan proteinlerin (keratin) sentezinde görev alır.",
+    "facts": ["Saf kükürt kokusuzdur; ancak kükürt bileşikleri (özellikle hidrojen sülfür - $H_2S$) çürük yumurta gibi berbat bir kokuya sahiptir.", "Volkanik bacaların etrafında saf sarı kristaller halinde birikir."],
+    "notes": ["6A grubundadır, kalkojen ailesi üyesidir. Kararlı allotropları rombik ve monoklinik kükürttür ($S_8$ halkalı yapısı). Bileşiklerinde -2 ile +6 arasında değerlik alır."],
+    "isotopes": [{"iso": "³²S", "text": "Doğal kükürdün %94.9'unu oluşturan temel izotop yapı."}],
+    "compounds": [{"form": "H₂SO₄", "name": "Sülfürik Asit", "desc": "Simyacıların 'Zaç Yağı' dediği, endüstriyel gelişmişliğin en büyük göstergesi olan devasa güçlü asit."}, {"form": "SO₂", "name": "Kükürt Dioksit", "desc": "Fabrika bacalarından çıkan, asit yağmurlarına yol açan boğucu kokulu gaz."}]
+  },
+  {
+    "n": 17, "s": "Cl", "name": "Klor", "m": "35.45", "g": "7A (17. Grup)", "p": "Periyot 3", "state": "Gaz", "cat": "Halojen",
+    "desc": "Yeşilimsi sarı renkli, keskin boğucu kokulu, havadan ağır ve son derece zehirli, yüksek dezenfektan gücüne sahip aktif bir halojendir.",
+    "config": "[Ne] 3s² 3p⁵", "shells": "2 | 8 | 5", "neg": "3.16", "density": "3.21 g/L", "mp": "-101.5 °C", "bp": "-34.0 °C", "discoverer": "Carl Wilhelm Scheele",
+    "history": "1774'te Scheele tarafından piroluzit mineralinin HCl ile reaksiyonundan elde edildi fakat oksijen içeren bir bileşik sanıldı. Element olduğunu 1810'da Humphry Davy kanıtladı ve renginden dolayı Yunanca yeşilimsi sarı anlamına gelen 'chloros' adını verdi.",
+    "usages": ["Şebeke sularının ve yüzme havuzlarının mikroplardan arındırılması (klorlama) işleminde.", "Çamaşır suyu (Sodyum hipoklorit) üretimiyle evsel hijyen ve ağartma sanayisinde.", "PVC plastik boruların (Polivinil klorür) üretim hatlarında."],
+    "bio": "Mide özsuyunda bulunan hidrolik asidin ($HCl$) yapısında yer alarak sindirimi sağlar. Hücreler arası sıvı dengesini ve pH'ı düzenleyen ana anyondur ($Cl^-$).",
+    "facts": ["Klor gazı, I. Dünya Savaşı'nda (1915'te Ypres savaşında) kullanılan tarihteki ilk kimyasal kitle imha silahıdır.", "Sofra tuzunun yapısında bulunmasına rağmen serbest klor gazı ölümcüldür."],
+    "notes": ["7A grubundadır, iki atomlu moleküller ($Cl_2$) halinde bulunur. Yüksek elektron ilgisine sahiptir. Bileşiklerinde -1 ile +7 arasında değerlik alabilir (Flor ile yaptığı bileşikte flor -1 klor +1 olur)."],
+    "isotopes": [{"iso": "³⁵Cl", "text": "Doğal klorun %75.7'sini oluşturan izotop."}, {"iso": "³⁷Cl", "text": "Doğal klorun geriye kalan %24.3'ünü oluşturan izotop (Ortalama kütlenin 35.45 çıkma sebebidir)."}],
+    "compounds": [{"form": "HCl", "name": "Hidroklorik Asit", "desc": "Sanayide tuz ruhu olarak bilinen, kireç sökücü ve metal temizleyici güçlü asit."}, {"form": "NaClO", "name": "Sodyum Hipoklorit", "desc": "Evlerde dezenfektan ve beyazlatıcı olarak kullanılan çamaşır suyunun etken maddesi."}]
+  },
+  {
+    "n": 18, "s": "Ar", "name": "Argon", "m": "39.948", "g": "8A (18. Grup)", "p": "Periyot 3", "state": "Gaz", "cat": "Soy Gaz",
+    "desc": "Atmosferde azot ve oksijenden sonra en bol bulunan üçüncü gazdır (%0.93). Tamamen tembel ve reaksiyona girmeyen yapısıyla endüstride koruyucu atmosfer sağlar.",
+    "config": "[Ne] 3s² 3p⁶", "shells": "2 | 8 | 6", "neg": "-", "density": "1.784 g/L", "mp": "-189.3 °C", "bp": "-185.8 °C", "discoverer": "Ramsay & Rayleigh",
+    "history": "1894 yılında Lord Rayleigh ve William Ramsay havadan oksijen ve azotu uzaklaştırdıklarında geriye hiçbir şeyle reaksiyona girmeyen ağır bir gaz kaldığını gördüler. Tembelliğinden ötürü Yunanca tembel/işsiz anlamına gelen 'argon' adını verdiler.",
+    "usages": ["Akkor ampullerin ve çift camlı (pencerelerde) yalıtımlı pencerelerin iç dolgusunda ısı iletimini kesmek için.", "Yüksek sıcaklıktaki kaynak işlemlerinde (ark kaynağı) metallerin oksijenle yanmasını önlemek için koruyucu gaz perdesi olarak.", "Müze ve arşivlerde tarihi belgeleri yangından ve çürümeden korumak için kapalı dolaplarda."],
+    "bio": "Biyolojik olarak tamamen etkisizdir. Solunum mekanizmalarına katılmaz, dokulara zarar vermez.",
+    "facts": ["Atmosferde dünyadaki tüm karbondioksit gazından ve su buharından çok daha fazla argon gazı bulunur.", "Elektrik akımı altında mavi-mor renkli bir parıltı verir."],
+    "notes": ["8A grubu soy gazıdır, 3. periyot elementidir. Son katmanında 8 elektron taşır ve kararlıdır.", "Doğal şartlarda kararlı hiçbir gerçek kimyasal bileşiği sentezlenememiştir."],
+    "isotopes": [{"iso": "⁴⁰Ar", "text": "Dünya atmosferindeki argonun %99.6'sını oluşturan potasyum-40 bozunma ürünü olan izotop."}],
+    "compounds": [],
+    "faqs": [{"q": "Ampullerin içine neden argon basılır?", "a": "Ampulün içindeki volfram (tungsten) filaman telinin çok yüksek sıcaklıkta oksijenle temas edip yanarak kopmasını (ampulün patlamasını) önlemek için koruyucu olarak argon gazı doldurulur."}]
+  },
+  {
+    "n": 19, "s": "K", "name": "Potasyum", "m": "39.098", "g": "1A (1. Grup)", "p": "Periyot 4", "state": "Katı", "cat": "Alkali Metal",
+    "desc": "Gümüşi renkli, mum kıvamında yumuşak, sodyumdan bile daha aktif ve suyla temas ettiğinde mor renkli alev çıkararak anında patlayan bir alkali metaldir.",
+    "config": "[Ar] 4s¹", "shells": "2 | 8 | 8 | 1", "neg": "0.82", "density": "0.862 g/cm³", "mp": "63.3 °C", "bp": "759 °C", "discoverer": "Humphry Davy",
+    "history": "1807'de Humphry Davy tarafından potas küllerinden ($KOH$) elektroliz yöntemiyle elde edildi. Tarihte elektrolizle izole edilen ilk metaldir. Sembolü 'Kalium' kelimesinden gelir.",
+    "usages": ["Bitkilerin su dengesini ve dona dayanıklılığını artıran potasyumlu NPK gübrelerinin yapımında.", "Sıvı Arap sabunu (potasyum stearat) ve yumuşak sabunların üretiminde.", "Özel optik camların ve patlayıcı (barut) sanayisinde potasyum nitrat formunda."],
+    "bio": "Hücre içi sıvıların ana katyonudur ($K^+$). Kalp ritminin düzenlenmesinde, sodyum-potasyum pompasıyla hücre zarı potansiyelinin ve sinir iletiminin sağlanmasında kritik önemdedir.",
+    "facts": ["Muz, patates ve kayısı potasyum bakımından çok zengin besinlerdir.", "Potasyum yangınlarına kesinlikle su veya karbondioksit söndürücü ile müdahale edilemez, özel kuru toz söndürücüler gerekir."],
+    "notes": ["4. periyot 1A grubu alkali metalidir. Havayla temas ettiğinde saniyeler içinde matlaşarak potasyum süperoksit tabakası oluşturur. Sadece +1 değerlik alır."],
+    "isotopes": [{"iso": "³⁹K", "text": "Doğal potasyumun %93.25'ini oluşturan temel kararlı izotop."}, {"iso": "⁴⁰K", "text": "Doğada bulunan, yarı ömrü 1.25 milyar yıl olan çok hafif radyoaktif izotop. Kayaların yaş tayininde kullanılır."}],
+    "compounds": [{"form": "KOH", "name": "Potasyum Hidroksit", "desc": "Simyacıların 'Potas Kostik' dediği, Arap sabunu yapımında kullanılan çok güçlü baz."}, {"form": "KNO₃", "name": "Potasyum Nitrat", "desc": "Güverçile olarak bilinen, kara barutun ve havai fişeklerin ana oksitleyici hammaddesi."}]
+  },
+  {
+    "n": 20, "s": "Ca", "name": "Kalsiyum", "m": "40.078", "g": "2A (2. Grup)", "p": "Periyot 4", "state": "Katı", "cat": "Toprak Alkali Metal",
+    "desc": "Kireç taşının, mermerin ve kemiklerimizin yapısını oluşturan, gri-beyaz renkli, suyla yavaşça reaksiyona giren aktif bir toprak alkali metaldir.",
+    "config": "[Ar] 4s²", "shells": "2 | 8 | 8 | 2", "neg": "1.00", "density": "1.55 g/cm³", "mp": "842 °C", "bp": "1484 °C", "discoverer": "Humphry Davy",
+    "history": "1808 yılında Humphry Davy tarafından kireç ve cıva oksit karışımının elektroliz edilmesiyle amalgam formunda izole edildi. Adını Latince kireç anlamına gelen 'calx' kelimesinden alır.",
+    "usages": ["Çimento, beton, alçı ve kireç gibi inşaat sektörünün temel yapı malzemelerinin üretiminde.", "Metalürjide diğer metallerin (bakır, kurşun vb.) alaşımlarında saflaştırıcı ajan olarak.", "Mermer ve tebeşir imalatında kalsiyum karbonat şeklinde."],
+    "bio": "İnsan vücudunda en bol bulunan metalik elementtir. İskelet ve diş yapısının %99'unu oluşturur. Kas kasılması, kan pıhtılaşması ve hücre içi sinyal iletimi için Ca²+ iyonları zorunludur.",
+    "facts": ["Süt, yoğurt ve peynir en zengin kalsiyum depolarıdır.", "Mağaralardaki sarkıt ve dikitler, yüzbinlerce yıl boyunca kalsiyum bikarbonatlı suların buharlaşarak kalsiyum karbonat ($CaCO_3$) kristallerini çökeltmesiyle oluşur."],
+    "notes": ["2A grubundadır, bileşiklerinde daima +2 değerlik alır. Su ile reaksiyona girdiğinde kalsiyum hidroksit ve hidrojen gazı açığa çıkarır (reaksiyon sodyuma göre çok daha yavaştır)."],
+    "isotopes": [{"iso": "⁴⁰Ca", "text": "Doğadaki kalsiyum atomlarının %96.9'unu oluşturan, proton ve nötron sayıları eşit (20 proton, 20 nötron) çift sihirli çekirdeğe sahip kararlı izotop."}],
+    "compounds": [{"form": "CaCO₃", "name": "Kalsiyum Karbonat", "desc": "Doğada mermer, kireç taşı ve tebeşir olarak bulunan, sudaki geçici sertliğin ana sebebi olan tuz."}, {"form": "CaO", "name": "Kalsiyum Oksit", "desc": "Sönmemiş kireç. Endüstride kireç taşının yüksek sıcaklıkta kavrulmasıyla elde edilir."}, {"form": "Ca(OH)₂", "name": "Kalsiyum Hidroksit", "desc": "Sönmüş kireç. Sönmemiş kirecin suyla reaksiyonundan elde edilen harç maddesi."}]
+  },
+  {
+    "n": 26, "s": "Fe", "name": "Demir", "m": "55.845", "g": "8B (8. Grup)", "p": "Periyot 4", "state": "Katı", "cat": "Geçiş Metali",
+    "desc": "Dünya çekirdeğinin ana maddesi olan, insanlık tarihine adını vermiş (Demir Çağı), modern sanayinin, binaların ve köprülerin omurgasını oluşturan en önemli geçiş metalidir.",
+    "config": "[Ar] 3d⁶ 4s²", "shells": "2 | 8 | 14 | 2", "neg": "1.83", "density": "7.874 g/cm³", "mp": "1538 °C", "bp": "2862 °C", "discoverer": "Antik Çağ",
+    "history": "MÖ 3500'lerde Sümerler ve Mısırlılar tarafından meteoritlerden elde edilerek kullanılmaya başlandı. Sembolü Latince adı olan 'Ferrum'dan gelmektedir.",
+    "usages": ["İnşaat inşaat demirlerinde, köprülerde ve gökdelenlerin taşıyıcı karkaslarında Çelik alaşımı formunda.", "Otomotiv, gemi yapımı ve raylı sistem raylarının üretiminde ana hammadde olarak.", "Elektromıknatısların ve trafo çekirdeklerinin yapımında yüksek manyetik geçirgenliği nedeniyle."],
+    "bio": "Kanımızdaki alyuvarlara kırmızı rengini veren ve dokulara oksijen taşıyan Hemoglobin proteininin merkezindeki aktif metal atomudur ($Fe^{2+}$). Eksikliği kansızlığa (anemi) yol açar.",
+    "facts": ["Dünyanın sıvı dış çekirdeğindeki devasa erimiş demir akıntıları, dünyayı ölümcül kozmik radyasyondan koruyan manyetik kalkanı (Magnetosfer) üretir.", "Nemli havada oksijenle reaksiyona girerek pas ($Fe_2O_3·nH_2O$) oluşturur ve paslanma içten içe metali çürütür."],
+    "notes": ["Bir geçiş metalidir (d bloku). Kimyasal tepkimelerinde değişken değerlik alabilir; müfredatta en çok **+2 (Demir-II)** ve **+3 (Demir-III)** yükseltgenme basamakları karşımıza çıkar. Güçlü bir ferromanyetik maddedir."],
+    "isotopes": [{"iso": "⁵⁶Fe", "text": "Demir atomlarının %91.7'sini oluşturan, nükleer bağlanma enerjisi en yüksek ve evrende en kararlı olan çekirdek yapısı."}],
+    "compounds": [{"form": "Fe₂O₃", "name": "Demir(III) Oksit", "desc": "Doğada hematit cevheri olarak bulunan, kırmızımsı kahverengi pasın ana bileşeni olan oksit."}, {"form": "FeSO₄", "name": "Demir(II) Sülfat", "desc": "Kara boya veya şaçıkıbrıs olarak bilinen, tıpta demir takviyesi ilaçlarda ve mürekkep yapımında kullanılan tuz."}],
+    "faqs": [{"q": "Demir ve Çelik arasındaki fark nedir?", "a": "Demir saf bir elementtir. Çelik ise demir madeninin içine %0.2 ile %2 oranında Karbon ($C$) eklenerek mukavemeti ve esnekliği kat kat artırılmış çok güçlü bir alaşımdır."}]
+  }
+]
