@@ -270,6 +270,7 @@
         let activeTabId = 'dersler';
         let isDragging = false; 
         let currentModalElementNum = 79;
+        let activeCategoryFilter = null; 
 
         function switchTab(tabId) {
             activeTabId = tabId;
@@ -299,7 +300,7 @@
             window.scrollTo(0, 0);
         }
 
-        // --- 📂 ELEMENT VE GRUP COĞRAFYASI 📂 ---
+        // --- 📂 ELEMENT MATRİS VERİ SETİ 📂 ---
         const names = ["Hidrojen","Helyum","Lityum","Berilyum","Bor","Karbon","Azot","Oksijen","Flor","Neon","Sodyum","Magnezyum","Alüminyum","Silisyum","Fosfor","Kükürt","Klor","Argon","Potasyum","Kalsiyum","Skandiyum","Titanyum","Vanadyum","Krom","Manganez","Demir","Kobalt","Nikel","Bakır","Çinko","Galyum","Germanyum","Arsenik","Selenyum","Brom","Kripton","Rubidyum","Stronsiyum","İtriyum","Zirkonyum","Niyobyum","Molibden","Teknesyum","Rutenyum","Rodyum","Paladyum","Gümüş","Kadmiyum","İndiyum","Kalay","Antimon","Tellür","İyot","Ksenon","Sezyum","Baryum","Lantan","Seryum","Praseodim","Neodimyum","Prometyum","Samaryum","Europiyum","Gadolinyum","Terbiyum","Disprozyum","Holmiyum","Erbiyum","Tulyum","İterbiyum","Lutesyum","Hafniyum","Tantal","Volfram","Renyum","Osmiyum","İridyum","Platin","Altın","Cıva","Talyum","Kurşun","Bizmuth","Polonyum","Astat","Radon","Fransiyum","Radyum","Aktinyum","Toryum","Protaktinyum","Uranyum","Neptünyum","Plutonyum","Amerikyum","Küriyum","Berkelyum","Kaliforniyum","Aynştaynyum","Fermiyum","Mendelevyum","Nobelyum","Lavrensiyum","Rutherfordiyum","Dubniyum","Seaborgeyum","Bohriyum","Hassiyum","Maytneriyum","Darmstadtiyum","Röntgenyum","Kopernikyum","Nihonyum","Flerovyum","Moskovyum","Livermoryum","Tennessin","Oganesson"];
         const symbols = ["H","He","Li","Be","B","C","N","O","F","Ne","Na","Mg","Al","Si","P","S","Cl","Ar","K","Ca","Sc","Ti","V","Cr","Mn","Fe","Co","Ni","Cu","Zn","Ga","Ge","As","Se","Br","Kr","Rb","Sr","Y","Zr","Nb","Mo","Tc","Ru","Rh","Pd","Ag","Cd","In","Sn","Sb","Te","I","Xe","Cs","Ba","La","Ce","Pr","Nd","Pm","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu","Hf","Ta","W","Re","Os","Ir","Pt","Au","Hg","Tl","Pb","Bi","Po","At","Rn","Fr","Ra","Ac","Th","Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm","Md","No","Lr","Rf","Db","Sg","Bh","Hs","Mt","Ds","Rg","Cn","Nh","Fl","Mc","Lv","Ts","Og"];
         const masses = [1.008, 4.002, 6.94, 9.012, 10.81, 12.011, 14.007, 15.999, 18.998, 20.18, 22.99, 24.305, 26.982, 28.085, 30.974, 32.06, 35.45, 39.948, 39.098, 40.078, 44.956, 47.867, 50.942, 51.996, 54.938, 55.845, 58.933, 58.693, 63.546, 65.38, 69.723, 72.63, 74.922, 78.971, 79.904, 83.798, 85.468, 87.62, 88.906, 91.224, 92.906, 95.95, 98, 101.07, 102.91, 106.42, 107.87, 112.41, 114.82, 118.71, 121.76, 127.6, 126.9, 131.29, 132.91, 137.33, 138.91, 140.12, 140.91, 144.24, 145, 150.36, 151.96, 157.25, 158.93, 162.5, 164.93, 167.26, 168.93, 173.05, 174.97, 178.49, 180.95, 183.84, 186.21, 190.23, 192.22, 195.08, 196.97, 200.59, 204.38, 207.2, 208.98, 209, 210, 222, 223, 226, 227, 232.04, 231.04, 238.03, 237, 244, 243, 247, 247, 251, 252, 257, 258, 259, 262, 267, 268, 269, 270, 269, 278, 281, 280, 285, 286, 289, 289, 293, 294, 294];
@@ -377,8 +378,14 @@
             ];
 
             legends.forEach(l => {
+                let activeStyle = "border-slate-850 bg-[#0a0d16]/40 opacity-40";
+                if (activeCategoryFilter === l.id) {
+                    activeStyle = "border-white bg-slate-900 shadow-2xl scale-105 opacity-100 ring-2 ring-white/20";
+                } else if (!activeCategoryFilter) {
+                    activeStyle = "border-slate-850 bg-[#0a0d16]/40 hover:border-slate-700 opacity-100";
+                }
                 container.innerHTML += `
-                    <div onclick="toggleCategoryFilter('${l.id}')" class="border border-slate-850 rounded-xl p-1 flex flex-col items-center justify-center text-center bg-[#0a0d16]/40 select-none cursor-pointer transition-all hover:scale-105" style="grid-row: ${l.row}; grid-column: ${l.col} / span 2;">
+                    <div onclick="toggleCategoryFilter('${l.id}')" class="border rounded-xl p-1 flex flex-col items-center justify-center text-center select-none cursor-pointer transition-all ${activeStyle}" style="grid-row: ${l.row}; grid-column: ${l.col} / span 2;">
                         <div class="w-5 h-0.5 mb-1 rounded" style="background-color: ${l.color};"></div>
                         <span class="text-[9px] font-black tracking-tight" style="color: ${l.color};">${l.name}</span>
                         <span class="text-[7px] text-slate-500 font-medium">${l.count}</span>
@@ -393,20 +400,17 @@
             list.forEach(el => {
                 const coords = getGridCoords(el.n); let colorStyle = getCatStyle(el.cat);
                 let isMatch = false;
-                
                 if (activeCategoryFilter === "Lantanit/Aktinit") {
                     isMatch = ["Lantanit", "Aktinit"].includes(el.cat);
                 } else {
                     isMatch = el.cat === activeCategoryFilter;
                 }
-
                 let dimmingStyle = "";
                 if (activeCategoryFilter && !isMatch) {
                     dimmingStyle = "opacity: 0.10; filter: grayscale(80%); pointer-events: none; transform: scale(0.95);";
                 } else if (activeCategoryFilter && isMatch) {
                     dimmingStyle = "transform: scale(1.02); box-shadow: 0 0 10px rgba(255,255,255,0.1); font-weight: bold;";
                 }
-
                 container.innerHTML += `
                     <div onclick="openElementDetail(${el.n})" class="p-1 bg-[#0f1422] border rounded-xl flex flex-col items-center justify-center text-center shadow-md hover:scale-105 transition-all cursor-pointer ${colorStyle}" style="grid-row: ${coords.row}; grid-column: ${coords.col}; ${dimmingStyle}">
                         <span class="text-[8px] text-slate-500 font-bold self-start pl-0.5">${el.n}</span>
@@ -417,7 +421,7 @@
         }
         function filterElements(q) { renderElementsGrid(globalElements.filter(x => x.name.toLowerCase().includes(q.toLowerCase()) || x.s.toLowerCase().includes(q.toLowerCase()))); }
 
-        // --- 🔘 DETAY PANEL ENJEKTÖRÜ 🔘 ---
+        // --- 🔘 FERRUMONE TAM SÜRÜM DERİN KİMYA VERİ BLOĞU 🔘 ---
         function openElementDetail(num) {
             currentModalElementNum = num; const el = globalElements.find(x => x.n === num); if(!el) return;
             let colorStyle = getCatStyle(el.cat); const badge = document.getElementById('m-badge-container');
@@ -431,10 +435,10 @@
             let desc = `${el.name}, periyodik tablonun ${el.cat} sınıfına ait bir elementtir.`;
             let config = "n/a"; let shells = "n/a"; let density = "n/a"; let discoverer = "Bilinmiyor";
             let electronegativity = "n/a"; let melt = "n/a"; let boil = "n/a";
-            let historyText = "Müfredat kapsamında kimyasal özellikleri incelenen elementler sınıfındandır.";
-            let isotopeText = "Kararlı izotop yapısı ve kütle numarası bağıntıları AYT müfredatında yer alır.";
-            let usages = ["Endüstriyel alaşımlar ve laboratuvar test reaktifleri."];
-            let bioText = "Canlı dokularda iz miktar düzeyinde fonksiyon üstlenebilir.";
+            let historyText = "Müfredat kapsamında özellikleri incelenen elementler sınıfındandır.";
+            let isotopeText = "Kararlı izotop bağıntıları lise kimya müfredatında yer alır.";
+            let usages = ["Laboratuvar araştırma süreçleri ve endüstriyel üretim alanları."];
+            let bioText = "Canlı mekanizmalarında iz miktar düzeyinde fonksiyon üstlenebilir.";
             let interesting = ["AYT/TYT müfredatında soru potansiyeli yüksek elementlerdendir."];
             let notes = ["Reaksiyon yatkınlıkları periyodik özellik trendlerine göre değişim gösterir."];
             let sss = [
@@ -442,51 +446,135 @@
                 { q: `${el.name} elektron dizilimi nasıldır?`, a: `Müfredat kuantum sayıları kurallarına uygun dizilim gösterir.` }
             ];
 
+            // 🌟 1: HİDROJEN
             if(num === 1) {
                 eng = "Hydrogen"; state = "Gaz"; group = 1; period = 1;
-                desc = "Evrenin en hafif, en basit ve en bol bulunan elementidir. Yıldızların temel füzyon yakıtıdır. Ametal özellik taşır.";
+                desc = "Evrenin en hafif ve en bol bulunan elementidir. Yıldızların temel füzyon yakıtıdır. Ametal özellik taşır.";
                 config = "1s¹"; shells = "1"; density = "0.089 g/L"; electronegativity = "2.20"; melt = "-259.1 °C"; boil = "-252.9 °C"; discoverer = "Henry Cavendish";
-                historyText = "1766 yılında Henry Cavendish tarafından metal-asit reaksiyonları esnasında keşfedildi. Antoine Lavoisier, elemente su üreten anlamına gelen 'Hydrogen' ismini verdi.";
-                isotopeText = "¹H (Protium - %99.98), ²H (Deuterium - Ağır Hidrojen), ³H (Tritium - Radyoaktif).";
-                usages = ["Amonyak (Haber-Bosch) sentezi", "Roket yakıtları (sıvı H₂)", "Bitkisel yağların hidrojenasyonu", "Temiz enerji (Hidrojen yakıt pilleri)"];
-                bioText = "Su molekülünün yapısında yer alarak insan vücudunun kütlece %10'unu oluşturur. Organik bileşiklerin omurgasını tamamlar.";
-                interesting = ["1A grubunda yer almasına rağmen alkali metal değildir, ametaldir.", "Evrendeki tüm atomların yaklaşık %90'ını tek başına oluşturur."];
-                notes = ["Yalnızca 1 proton ve 1 elektrondan oluşur, nötronu olmayan tek kararlı elementtir.", "Katyonu (H⁺) saf sulu asit çözeltilerinin temel belirleyicisidir."];
+                historyText = "1766 yılında Henry Cavendish tarafından keşfedildi. Lavoisier elemente su üreten anlamına gelen 'Hydrogen' ismini verdi.";
+                isotopeText = "¹H (Protium), ²H (Deuterium - Ağır Hidrojen), ³H (Tritium - Radyoaktif).";
+                usages = ["Amonyak sentezi", "Roket yakıtları (sıvı H₂)", "Temiz enerji (Hidrojen yakıt pilleri)"];
+                bioText = "Su molekülünün yapısında yer alarak insan vücudunun kütlece %10'unu oluşturur.";
+                interesting = ["1A grubunda yer almasına rağmen alkali metal değildir, ametaldir.", "Evrendeki atomların yaklaşık %90'ını tek başına oluşturur."];
+                notes = ["Nötronu olmayan tek kararlı elementtir.", "Katyonu (H⁺) sulu çözeltilerin asitlik derecesini belirler."];
                 sss = [
-                    { q: "Hidrojen neden 1A grubundadır?", a: "Valans katmanında 1 elektron barındırdığı için s-blok 1A grubunda yer alır; ancak kimyasal özellikleri metallere benzemez." },
-                    { q: "Hidrojen yakıtı çevre dostu mudur?", a: "Evet, hidrojen yandığında yan ürün olarak sadece su buharı (H₂O) açığa çıkarır, karbon salınımı sıfırdır." }
+                    { q: "Hidrojen neden 1A grubundadır?", a: "Valans katmanında 1 elektron barındırdığı için s-blok 1A grubunda yer alır." },
+                    { q: "Hidrojen yakıtı çevre dostu mudur?", a: "Evet, yandığında yan ürün olarak sadece su buharı açığa çıkarır." }
                 ];
             }
+            // 🌟 2: HELYUM
+            else if(num === 2) {
+                eng = "Helium"; state = "Gaz"; group = 18; period = 1;
+                desc = "Evrendeki en hafif ikinci elementtir. Reaksiyona girmeyen (inert) bir soy gazdır. Dublet kuralına uyar.";
+                config = "1s²"; shells = "2"; density = "0.178 g/L"; electronegativity = "n/a"; melt = "-272.2 °C"; boil = "-268.9 °C"; discoverer = "Pierre Janssen / Norman Lockyer";
+                historyText = "İlk kez 1868 yılında güneş tutulması esnasındaki spektrum çizgilerinden keşfedildi. Adını Yunan güneş tanrısı Helios'tan alır.";
+                isotope5text = "³He, ⁴He (Doğal form %99.99 ⁴He yapısındadır).";
+                usages = ["Kriyojenik soğutma (MR cihazları)", "Meteoroloji ve eğlence balonları", "Derin deniz dalgıç tüpleri (Heliyum-Oksijen karışımı)"];
+                bioText = "Biyolojik olarak tamamen inerttir, vücut dokularıyla hiçbir reaksiyona girmez.";
+                interesting = ["Değerlik elektron sayısı 2 olmasına rağmen 2A grubunda değil, 8A soy gazlar grubundadır.", "Mutlak sıfıra (-273.15 °C) en yakın sıcaklıkta bile normal basınçta sıvı kalabilen tek elementtir."];
+                notes = ["Son katmanında 2 elektron barındırarak kararlı karaktere ulaşma durumuna (dublet kuralı) örnek gösterilir.", "İyonlaşma enerjisi en yüksek olan elementtir."];
+                sss = [
+                    { q: "Helyum neden yanmaz?", a: "Valans kabuğu tamamen dolu olduğu için elektron almaya veya vermeye karşı isteksizdir, yanma reaksiyonu vermez." },
+                    { q: "Dalgıç tüplerinde neden helyum kullanılır?", a: "Yüksek basınç altında kanda azot gibi çözünmeyerek vurgun (vurgun hastalığı) riskini minimize eder." }
+                ];
+            }
+            // 🌟 6: KARBON
             else if(num === 6) {
                 eng = "Carbon"; state = "Katı"; group = 14; period = 2;
-                desc = "Yaşamın temel taşıdır. Dört bağ yapabilme yeteneği (tetravalan) sayesinde milyonlarca farklı kararlı organik molekül oluşturabilir.";
+                desc = "Yaşamın temel taşıdır. Dört bağ yapabilme yeteneği sayesinde milyonlarca farklı kararlı organik molekül oluşturabilir.";
                 config = "[He] 2s² 2p²"; shells = "2 | 4"; density = "2.26 g/cm³"; electronegativity = "2.55"; melt = "3550 °C"; boil = "4027 °C"; discoverer = "Antik çağ";
-                historyText = "Tarih öncesi çağlardan beri kömür ve is formunda insanlık tarafından kullanılmaktadır. Elmas ve grafitin aynı elementten oluştuğu 18. yüzyılda kanıtlanmıştır.";
-                isotopeText = "¹²C (Kararlı - %98.9), ¹³C (Kararlı - %1.1), ¹⁴C (Radyoaktif - Arkeolojik yaş tayininde kullanılır).";
-                usages = ["Çelik üretimi (karbon katkısı)", "Nano-teknoloji (Grafen, Karbon Nanotüpler)", "Plastik ve polimer sanayisi", "Aktif karbon filtreleri"];
-                bioText = "Organik kimyanın omurgasıdır. Karbonhidratlar, lipidler, proteinler og DNA'nın iskelet yapısını kurar.";
-                interesting = ["Aynı element hem yeryüzünün en yumuşak malzemelerinden birini (grafit) hem de en sert malzemesini (elmas) oluşturabilir. Bu duruma allotropi denir.", "Karbon atomları kendi aralarında sonsuz zincirler oluşturma yeteneğine (katenasyon) sahiptir."];
-                notes = ["AYT Kimya Organik Giriş konusunun temelidir. Hibritleşme (sp³, sp², sp) teorileri bu element üzerinden anlatılır.", "Kovalent bağ kapasitesi en yüksek 2. periyot elementidir."];
+                historyText = "Tarih öncesi çağlardan beri kömür formunda kullanılmaktadır. Elmas ve grafitin aynı elementten oluştuğu 18. yüzyılda kanıtlanmıştır.";
+                isotopeText = "¹²C (Kararlı), ¹³C (Kararlı), ¹⁴C (Radyoaktif - Yaş tayini).";
+                usages = ["Çelik üretimi", "Nano-teknoloji (Grafen, Karbon Nanotüpler)", "Polimer ve plastik sanayisi"];
+                bioText = "Organik kimyanın omurgasıdır. Karbonhidratlar, lipidler, proteinler ve DNA'nın iskelet yapısını kurar.";
+                interesting = ["Aynı element hem en yumuşak malzemelerden birini (grafit) hem de en sert malzemeyi (elmas) oluşturabilir.", "Karbon atomları kendi aralarında sonsuz zincirler oluşturma yeteneğine sahiptir."];
+                notes = ["AYT Kimya Organik Giriş konusunun temelidir. Hibritleşme teorileri bu element üzerinden anlatılır.", "Kovalent bağ kapasitesi en yüksek elementlerdendir."];
                 sss = [
-                    { q: "Karbon allotropları nelerdir?", a: "Doğal allotropları elmas ve grafittir. Yapay allotropları ise fullerene, karbon nanotüp og grafendir." },
-                    { q: "Karbon-14 yöntemi nasıl çalışır?", a: "Radyoaktif ¹⁴C izotopunun yarılanma ömrü (5730 yıl) kullanılarak fosillerin og kalıntıların yaş tayini yapılır." }
+                    { q: "Karbon allotropları nelerdir?", a: "Doğal allotropları elmas ve grafittir. Yapay allotropları ise fullerene, nanotüp ve grafendir." },
+                    { q: "Karbon yaş tayini yöntemi nedir?", a: "Radyoaktif ¹⁴C izotopunun yarılanma ömrü kullanılarak fosillerin yaş tayini yapılır." }
                 ];
             }
+            // 🌟 7: AZOT
+            else if(num === 7) {
+                eng = "Nitrogen"; state = "Gaz"; group = 15; period = 2;
+                desc = "Atmosferin hacimce %78'ini oluşturan, oda koşullarında oldukça kararlı ve bağ enerjisi çok yüksek bir gazdır.";
+                config = "[He] 2s² 2p³"; shells = "2 | 5"; density = "1.251 g/L"; electronegativity = "3.04"; melt = "-210.0 °C"; boil = "-195.8 °C"; discoverer = "Daniel Rutherford";
+                historyText = "1772 yılında Daniel Rutherford tarafından keşfedildi. Lavoisier yaşamı desteklemediği için ona Yunanca yaşam yok anlamına gelen 'Azote' ismini verdi.";
+                isotopeText = "¹⁴N (%99.6), ¹⁵N (%0.4).";
+                usages = ["Sıvı azot ile şoklama ve dondurma süreçleri", "Gübre (üre, amonyum nitrat) imalatı", "Patlayıcı sanayisi (TNT, dinamit)", "Gıda ambalajlarında koruyucu atmosfer gazı"];
+                bioText = "Amino asitlerin, proteinlerin ve nükleik asitlerin (DNA/RNA) yapısında mutlak bulunması gereken elementtir.";
+                interesting = ["Azot atomları arasındaki üçlü kovalent bağ (N≡N) o kadar güçlüdür ki oda sıcaklığında reaksiyona girmesi imkansıza yakındır (Asallık).", "Yıldırımlar ve şimşekler havadaki bu güçlü bağı kırarak azotun toprağa bağlanmasını (azot fiksasyonu) sağlar."];
+                notes = ["Müfredatta p-bloğu 5A grubu elementidir. Küresel simetri özelliği (p³) gösterir.", "Periyodik özelliklerde iyonlaşma enerjisi sıralamasında 3 aşağı 5 yukarı kuralının '5' numarasını oluşturur."];
+                sss = [
+                    { q: "Azot gazı neden reaksiyonlara karşı ilgisizdir?", a: "Moleküler formdaki üçlü kovalent bağın kırılması çok yüksek enerji gerektirdiği için oda koşullarında inert davranır." },
+                    { q: "Sıvı azot neden tehlikelidir?", a: "-196 °C sıcaklığa sahip olduğu için çıplak tenle temas ettiğinde anında ciddi doku donmalarına (kriyojenik yanık) sebep olur." }
+                ];
+            }
+            // 🌟 8: OKSİJEN
             else if(num === 8) {
                 eng = "Oxygen"; state = "Gaz"; group = 16; period = 2;
                 desc = "Solunum ve yanma reaksiyonlarının temel elementidir. Yerkabuğunda kütlece en çok bulunan elementtir (%46.6).";
-                config = "[He] 2s² 2p⁴"; shells = "2 | 6"; density = "1.429 g/L"; electronegativity = "3.44"; melt = "-218.7 °C"; boil = "-182.9 °C"; discoverer = "Carl Wilhelm Scheele / Joseph Priestley";
-                historyText = "1772-1774 yılları arasında Scheele ve Priestley tarafından bağımsız olarak keşfedildi. Lavoisier, elementin asit oluşturma özelliklerini inceleyerek 'oksijen' adını verdi.";
+                config = "[He] 2s² 2p⁴"; shells = "2 | 6"; density = "1.429 g/L"; electronegativity = "3.44"; melt = "-218.7 °C"; boil = "-182.9 °C"; discoverer = "Scheele / Priestley";
+                historyText = "1772-1774 yılları arasında keşfedildi. Lavoisier elementin asit oluşturma özelliklerini inceleyerek 'oksijen' adını verdi.";
                 isotopeText = "¹⁶O (%99.76), ¹⁷O, ¹⁸O.";
-                usages = ["Çelik ergitme fırınları (oksidasyon)", "Tıbbi solunum tüpleri", "Oksiasetilen kaynağı", "Su arıtma (Ozonizasyon süreçleri)"];
-                bioText = "Hücresel solunumda ATP sentezi için son elektron alıcıdır. İnsan vücudunun kütlece %65'ini oluşturur.";
-                interesting = ["Oksijen gazı (O₂) şeffaftır ancak sıvı ve katı formdayken çok şık soluk mavi bir renk alır.", "Oksijen allotropu olan Ozon (O₃), stratosferde Dünya'yı UV ışınlarından korur."];
-                notes = ["Oksidasyon (yükseltgenme) kavramının isim babasıdır. Fluor (F) hariç tüm elementlerle reaksiyonlarında negatif yükseltgenme basamağı alır.", "Müfredatta gazlar ve redoks başlıklarında sıkça incelenir."];
+                usages = ["Çelik ergitme fırınları", "Tıbbi solunum tüpleri", "Ozonizasyon süreçleri (su arıtma)"];
+                bioText = "Hücresel solunumda ATP sentezi için son elektron alıcıdır. Vücut kütlesinin %65'ini oluşturur.";
+                interesting = ["Sıvı ve katı formdayken soluk mavi bir renk alır.", "Oksijen allotropu olan Ozon (O₃), Dünya'yı zararlı UV ışınlarından korur."];
+                notes = ["Yükseltgenme kavramının isim babasıdır. Fluor hariç tüm elementlerle reaksiyonlarında negatif yükseltgenme basamağı alır.", "Müfredatta gazlar ve redoks başlıklarında sıkça incelenir."];
                 sss = [
-                    { q: "Oksijen yakıcı mıdır?", a: "Evet, oksijen yanıcı değil, yanma reaksiyonlarının gerçekleşmesi için ortamda bulunması gereken yakıcı bir gazdır." },
-                    { q: "Ozon tabakası neden delinir?", a: "Kloroflorokarbon (CFC) gazları stratosfere ulaştığında klor radikalleri salarak O₃ moleküllerini hızla parçalar." }
+                    { q: "Oksijen yanıcı mıdır?", a: "Hayır, oksijen yanıcı değil, yakıcı bir gazdır. Yanma olayının gerçekleşmesi için ortamda bulunması şarttır." },
+                    { q: "Ozon tabakası neden delinir?", a: "Kloroflorokarbon (CFC) gazları klor radikalleri salarak O₃ moleküllerini parçalar." }
                 ];
             }
+            // 🌟 9: FLOR
+            else if(num === 9) {
+                eng = "Fluorine"; state = "Gaz"; group = 17; period = 2;
+                desc = "Periyodik tablonun en elektronegatif elementidir. Elektrona olan açlığı nedeniyle tüm reaksiyonlarında sadece -1 yükseltgenme basamağı alır.";
+                config = "[He] 2s² 2p⁵"; shells = "2 | 7"; density = "1.696 g/L"; electronegativity = "3.98"; melt = "-219.6 °C"; boil = "-188.1 °C"; discoverer = "Henri Moissan";
+                historyText = "O kadar reaktif bir elementtir ki saf halde eldesi onlarca bilim insanının zehirlenmesine yol açtı. 1886'da Henri Moissan özel platin ekipmanlarla izole ederek Nobel kazandı.";
+                isotopeText = "¹⁹F (%100 kararlı tek doğal izotop).";
+                usages = ["Diş macunlarında çürük önleyici koruyucu", "Teflon (PTFE) yapışmaz yüzey polimer üretimi", "Klima ve soğutucu gazların sentezi", "Uranyum zenginleştirme (UF₆ gazı)"];
+                bioText = "Kemik ve diş minesinin hidroksiapatit yapısına katılarak florapatit oluşturur, dişi asit erozyonuna karşı güçlendirir.";
+                interesting = ["Elektronegatifliği en yüksek (3.98) element olduğu için bileşiklerinde asla pozitif yükseltgenme basamağı alamaz.", "Camı eritebilen tek asit olan Hidroflorik Asit (HF), bu elementin hidrojenli bileşiğidir."];
+                notes = ["Müfredatta 7A Halojenler grubunun ilk üyesidir. Elektron ilgisi klordan düşüktür fakat elektronegatifliği en yüksektir (En popüler tuzak bilgi).", "Oksijenle yaptığı OF₂ bileşiğinde oksijene pozitif değerlik aldırır."];
+                sss = [
+                    { q: "Flor neden sadece -1 değerlik alır?", a: "Oktetini tamamlamak için sadece 1 elektrona ihtiyacı vardır ve elektron çekme gücü tablodaki tüm elementlerden büyüktür." },
+                    { q: "Flor gazı neden cam şişelerde saklanamaz?", a: "Oluşturduğu HF asidi veya saf flor gazı camın yapısındaki silisyum dioksit (SiO₂) ile doğrudan reaksiyona girerek camı aşındırır." }
+                ];
+            }
+            // 🌟 11: SODYUM
+            else if(num === 11) {
+                eng = "Sodium"; state = "Katı"; group = 1; period = 3;
+                desc = "Bıçakla kesilebilecek kadar yumuşak, suyla temas ettiğinde şiddetli patlamalarla H₂ gazı açığa çıkaran oldukça aktif bir alkali metaldir.";
+                config = "[Ne] 3s¹"; shells = "2 | 8 | 1"; density = "0.97 g/cm³"; electronegativity = "0.93"; melt = "97.8 °C"; boil = "883 °C"; discoverer = "Humphry Davy";
+                historyText = "1807 yılında Sir Humphry Davy tarafından kostik sodanın (NaOH) elektroliz edilmesi yöntemiyle ilk kez saf metal olarak izole edildi.";
+                isotopeText = "²³Na (%100 kararlı doğal form).";
+                usages = ["Sofratuzu (NaCl) imalatı", "Sodyum buharlı sokak aydınlatma lambaları", "Kağıt, cam ve deterjan sanayisi (Çamaşır sodası - Na₂CO₃)", "Nükleer reaktörlerde ısı transfer sıvısı"];
+                bioText = "Vücut sıvı dengesinin, ozmotik basıncın ve sinirsel ileti sistemindeki aksiyon potansiyelinin (Sodyum-Potasyum pompası) temel katyonudur.";
+                interesting = ["Saf metalik formu su yüzeyinde batmadan yüzerken, su moleküllerini parçalayarak alevli patlamalara neden olur.", "Yemek tuzu formundayken yaşam için şarttır, fakat saf metal hali ölümcül derecede reaktiftir."];
+                notes = ["Müfredatta 3. periyot 1A grubu Alkali Metalidir. Aktifliği çok yüksek olduğu için laboratuvarlarda açık havada saklanamaz, gaz yağı veya gazyağı/gaz yağı içinde korunur.", "Alev testinde karakteristik sarı renk verir."];
+                sss = [
+                    { q: "Sodyum metalik formu neden gaz yağında saklanır?", a: "Havadaki oksijen ve nem ile anında reaksiyona girerek oksitlendiği ve patlama riski taşıdığı için hava ile teması gaz yağı ile kesilir." },
+                    { q: "Sodyumun suyla reaksiyonu ne tür bir tepkimedir?", a: "Şiddetli bir ekzotermik (ısı veren) redoks tepkimesidir. Açığa çıkan H₂ gazı reaksiyon ısısıyla anında tutuşur." }
+                ];
+            }
+            // 🌟 12: MAGNEZYUM
+            else if(num === 12) {
+                eng = "Magnesium"; state = "Katı"; group = 2; period = 3;
+                desc = "Gümüşümsü beyaz renkte, hafif ve havada parlak beyaz bir ışıkla yanarak Magnezyum Oksit (MgO) oluşturan bir toprak alkali metaldir.";
+                config = "[Ne] 3s²"; shells = "2 | 8 | 2"; density = "1.74 g/cm³"; electronegativity = "1.31"; melt = "650 °C"; boil = "1090 °C"; discoverer = "Joseph Black / Humphry Davy";
+                historyText = "İlk olarak Joseph Black tarafından bir element olarak tanındı, 1808'de Humphry Davy tarafından amalgama yöntemiyle saf olarak elde edildi. Adını Manisa (Magnesia) bölgesinden alır.";
+                isotopeText = "²⁴Mg (%79), ²⁵Mg, ²⁶Mg.";
+                usages = ["Hafif alaşımlar (Otomotiv ve uçak parçaları)", "Havai fişek ve işaret fişekleri (Göz alıcı beyaz ışık)", "Görsel ve sinema flaş tozları", "Tıbbi antasit ilaçlar (Magnezyum sütü)"];
+                bioText = "Klorofil molekülünün merkez atomudur; bitkilerin fotosentez yapmasını sağlar. İnsanlarda 300'den fazla enzimin işlevsel kofaktörüdür.";
+                interesting = ["Magnezyum yangınları suyla söndürülemez; çünkü sıcak magnezyum su moleküllerindeki oksijeni çekerek daha şiddetli yanmaya devam eder.", "Vücutta eksikliği kas kramplarına ve kronik yorgunluğa neden olur."];
+                notes = ["Müfredatta 3. periyot 2A grubu 'Toprak Alkali Metalidir'. Reaksiyonlarında daima +2 değerlik alır.", "Sert suların yapısında kalsiyum ile birlikte bulunan temel iyonlardan biridir."];
+                sss = [
+                    { q: "Klorofil molekülünün yapısında hangi metal vardır?", a: "Merkez atomu olarak Magnezyum (Mg) yer alır. Eksikliğinde bitki yaprakları sararır ve fotosentez durur." },
+                    { q: "Magnezyum şeridi havada yandığında ne oluşur?", a: "Karakteristik kör edici beyaz bir ışık çıkararak beyaz renkli bazik bir oksit olan Magnezyum Oksit (MgO) katısı oluşturur." }
+                ];
+            }
+            // 🌟 13: ALÜMİNYUM
             else if(num === 13) {
                 eng = "Aluminium"; state = "Katı"; group = 13; period = 3;
                 desc = "Yerkabuğunda en bol bulunan metaldir (kütlece ~%8,1). Düşük yoğunluğu ve korozyon direnci ile havacılık sanayisinin vazgeçilmezidir. Amfoter metaldir.";
@@ -498,10 +586,43 @@
                 interesting = ["19. yüzyılda alüminyum elde etmek altından daha pahalıydı; Napolyon'un misafirlerine alüminyum çatal sunduğu bilinir.", "Yüzeyinde anında oluşan koruyucu Al₂O₃ film tabakası metali paslanmaya karşı kilitler."];
                 notes = ["Müfredatta 3A grubu 'Toprak Metalleri' başlığının ilk ve en karizmatik amfoterik metal örneğidir.", "Bazlarla tepkime verme denklemleri AYT kimya testlerinde tuzak soru olarak kullanılır."];
                 sss = [
-                    { q: "Alüminyum neden paslanmaz?", a: "Hava ile temas ettiği anda yüzeyinde koruyucu, çok ince ve gözeneksiz bir Al₂O₃ film tabakası oluşur." },
+                    { q: "Alüminyum neden paslanmaz?", a: "Hava ile temas ettiği anda yüzeyinde koruyucu, çok ince og gözeneksiz bir Al₂O₃ film tabakası oluşur. Bu süreç metali paslanmaya karşı kilitler." },
                     { q: "Alüminyum bazlarla neden reaksiyona girer?", a: "Amfoter özellik gösterdiği için bazik ortamlarda asit gibi davranarak çözünür alüminat kompleksleri oluşturur." }
                 ];
             }
+            // 🌟 17: KLOR
+            else if(num === 17) {
+                eng = "Chlorine"; state = "Gaz"; group = 17; period = 3;
+                desc = "Boğucu kokulu, yeşilimsi sarı renkli, yüksek elektron ilgisine sahip halojen sınıfı zehirli bir gazdır.";
+                config = "[Ne] 3s² 3p⁵"; shells = "2 | 8 | 7"; density = "3.214 g/L"; electronegativity = "3.16"; melt = "-101.5 °C"; boil = "-34.0 °C"; discoverer = "Carl Wilhelm Scheele";
+                historyText = "1774 yılında Scheele tarafından keşfedildi, fakat element olduğu 1810'da Humphry Davy tarafından tescillendi. Yunanca açık yeşil anlamına gelen 'Chloros' kelimesinden gelir.";
+                isotopeText = "³⁵Cl (%75.8), ³⁷Cl (%24.2) (Ortalama atom kütlesinin 35.5 çıkmasının sebebidir).";
+                usages = ["İçme ve havuz sularının dezenfeksiyonu", "Çamaşır suyu (NaOCl) ve PVC plastik üretimi", "Tuz ruhu (HCl) üretimi", "Tekstil ve kağıt sanayisinde ağartıcı"];
+                bioText = "Mide özsuyundaki Hidroklorik Asit (HCl) yapısında yer alarak sindirimi sağlar. Hücre içi sıvı dengesinde ana anyondur.";
+                interesting = ["Periyodik tablonun elektron ilgisi (E.I.) en yüksek elementidir (Floru bu kulvarda geçer).", "I. Dünya Savaşı'nda maalesef kimyasal silah (boğucu gaz) olarak kullanılmıştır."];
+                notes = ["Müfredatta 3. periyot 7A grubundadır. Flor hariç diğer halojenler gibi bileşiklerinde -1 ile +7 arasında değişken yükseltgenme basamakları alabilir.", "Elektron ilgisi trendinin en ünlü istisnasıdır."];
+                sss = [
+                    { q: "Klorun elektron ilgisi neden flordan büyüktür?", a: "Flor atomunun çapı çok küçük olduğundan elektron yoğunluğu fazladır ve gelen elektronu iter; klorun hacmi bu elektronu daha rahat kabul eder." },
+                    { q: "Çamaşır suyu ile tuz ruhu karışırsa ne olur?", a: "Ölümcül derecede zehirli olan ve akciğerleri tahrip eden Klor Gazı (Cl₂) açığa çıkar, kesinlikle karıştırılmamalıdır." }
+                ];
+            }
+            // 🌟 20: KALSİYUM
+            else if(num === 20) {
+                eng = "Calcium"; state = "Katı"; group = 2; period = 4;
+                desc = "Yerkabuğunda en bol bulunan beşinci elementtir. Kemik ve dişlerin yapıtaşı olan aktif bir toprak alkali metaldir.";
+                config = "[Ar] 4s²"; shells = "2 | 8 | 8 | 2"; density = "1.55 g/cm³"; electronegativity = "1.00"; melt = "842 °C"; boil = "1484 °C"; discoverer = "Humphry Davy";
+                historyText = "Romalılar döneminden beri kireç (kalsiyum oksit) olarak harç yapımında kullanılıyordu. Saf metal olarak 1808 yılında Humphry Davy tarafından elektrolizle elde edildi.";
+                isotopeText = "⁴0Ca (%96.9), ⁴²Ca, ⁴³Ca, ⁴⁴Ca.";
+                usages = ["İnşaat sektörü: Sönmüş kireç, çimento, alçı imalatı", "Metalurjide diğer metallerin eldesi için indirgen ajan", "Peynir yapımında sütün pıhtılaştırılması", "Kireçtaşı ve mermer endüstrisi"];
+                bioText = "İnsan vücudunda en bol bulunan metalik elementtir. İskelet sisteminin dayanıklılığını sağlar, kan pıhtılaşmasında ve kas kasılmasında hayati rol oynar.";
+                interesting = ["Sönmemiş kirecin (CaO) suyla tepkimesi o kadar ekzotermiktir ki suyu anında kaynatacak düzeyde ısı açığa çıkarır.", "Vücuttaki kalsiyumun %99'u kemiklerde ve dişlerde depo edilmiştir."];
+                notes = ["Müfredatta 4. periyot 2A grubu elementidir. s-bloku üyesidir. Bileşiklerinde sadece +2 yükseltgenme basamağı alır.", "Su sertliği başlığında geçici sertliğe sebep olan Mg ile birlikte iki iyon metalinden biridir."];
+                sss = [
+                    { q: "Kireç sönmesi reaksiyonu nasıldır?", a: "CaO katısının suyla (H₂O) ekzotermik tepkimesi sonucu Ca(OH)₂ (Sönmüş kireç) yapısı elde edilir." },
+                    { q: "Kemik erimesi (Osteoporoz) neden olur?", a: "Kanda kalsiyum seviyesi düştüğünde vücut kemiklerdeki kalsiyumu çekmeye başlar, bu da kemik yoğunluğunu azaltır." }
+                ];
+            }
+            // 🌟 26: DEMİR
             else if(num === 26) {
                 eng = "Iron"; state = "Katı"; group = 8; period = 4;
                 desc = "Sanayinin ve ağır endüstrinin temel taşıdır. Dünya çekirdeğinin ana bileşenidir. Ferromanyetik özellik gösterir.";
@@ -517,6 +638,7 @@
                     { q: "Çelik ile demir arasındaki fark nedir?", a: "Çelik, ham demirin içine belirli oranlarda Karbon eklenerek mukavemeti artırılmış alaşımdır." }
                 ];
             }
+            // 🌟 29: BAKIR
             else if(num === 29) {
                 eng = "Copper"; state = "Katı"; group = 11; period = 4;
                 desc = "Gümüşten sonra elektrik ve ısıyı en iyi ileten metaldir. Yarı soy metaldir.";
@@ -532,6 +654,7 @@
                     { q: "Pirinç alaşımı nelerin karışımıdır?", a: "Bakır metali içerisine Çinko katılarak elde edilen parlak sarı bir alaşımdır." }
                 ];
             }
+            // 🌟 79: ALTIN
             else if(num === 79) {
                 eng = "Gold"; state = "Katı"; group = 11; period = 6;
                 desc = "Soy metal, korozyona dayanıklı. Elektronik bağlantılarda, mücevhercilikte and para sisteminde kullanılır. Rölatiflik etkisi altın rengi verir.";
@@ -547,6 +670,7 @@
                     { q: "Altın elektron dizilimi nedir?", a: "Altın elementinin elektron dizilimi [Xe] 4f¹⁴ 5d¹⁰ 6s¹ şeklindedir." }
                 ];
             }
+            // 🌟 80: CIVA
             else if(num === 80) {
                 eng = "Mercury"; state = "Sıvı"; group = 12; period = 6;
                 desc = "Oda sıcaklığında sıvı halde bulunan tek metaldir. Ağır ve son derece toksik bir geçiş elementidir.";
@@ -563,6 +687,7 @@
                 ];
             }
 
+            // MODAL DOM GÜNCELLEMELERİ
             document.getElementById('m-eng').innerText = eng;
             document.getElementById('m-desc').innerText = desc;
             document.getElementById('sss-heading').innerText = `${el.name} SSS`;
