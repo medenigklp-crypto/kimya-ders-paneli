@@ -23,25 +23,26 @@
         .animate-spin-slow { animation: spin 8s linear infinite; }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         
-        /* Önbellek Kaydırma Çubukları */
-        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        /* Kaydırma Çubukları */
+        ::-webkit-scrollbar { width: 4px; height: 5px; }
         ::-webkit-scrollbar-track { background: #060813; }
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 9px; }
 
-        /* Ferrumone Element Grid Accent Renkleri */
-        .cat-ametal { border-color: #10b981 !important; color: #10b981; background-color: rgba(16, 185, 129, 0.04); }
-        .cat-soygaz { border-color: #ec4899 !important; color: #ec4899; background-color: rgba(236, 72, 153, 0.04); }
-        .cat-alkali { border-color: #ef4444 !important; color: #ef4444; background-color: rgba(239, 68, 68, 0.04); }
-        .cat-toprak-alkali { border-color: #f97316 !important; color: #f97316; background-color: rgba(249, 115, 22, 0.04); }
-        .cat-halojen { border-color: #84cc16 !important; color: #84cc16; background-color: rgba(132, 204, 22, 0.04); }
-        .cat-yarimetal { border-color: #eab308 !important; color: #eab308; background-color: rgba(234, 179, 8, 0.04); }
-        .cat-gecis { border-color: #3b82f6 !important; color: #3b82f6; background-color: rgba(59, 130, 246, 0.04); }
-        .cat-post-gecis { border-color: #06b6d4 !important; color: #06b6d4; background-color: rgba(6, 182, 212, 0.04); }
-        .cat-lantanit-aktinit { border-color: #a855f7 !important; color: #a855f7; background-color: rgba(168, 85, 247, 0.04); }
+        /* Ferrumone Neon Kategori Renkleri */
+        .cat-ametal { border-color: #10b981 !important; color: #10b981; background-color: rgba(16, 185, 129, 0.03); }
+        .cat-soygaz { border-color: #ec4899 !important; color: #ec4899; background-color: rgba(236, 72, 153, 0.03); }
+        .cat-alkali { border-color: #ef4444 !important; color: #ef4444; background-color: rgba(239, 68, 68, 0.03); }
+        .cat-toprak-alkali { border-color: #f97316 !important; color: #f97316; background-color: rgba(249, 115, 22, 0.03); }
+        .cat-halojen { border-color: #84cc16 !important; color: #84cc16; background-color: rgba(132, 204, 22, 0.03); }
+        .cat-yarimetal { border-color: #eab308 !important; color: #eab308; background-color: rgba(234, 179, 8, 0.03); }
+        .cat-gecis { border-color: #3b82f6 !important; color: #3b82f6; background-color: rgba(59, 130, 246, 0.03); }
+        .cat-post-gecis { border-color: #06b6d4 !important; color: #06b6d4; background-color: rgba(6, 182, 212, 0.03); }
+        .cat-lantanit-aktinit { border-color: #a855f7 !important; color: #a855f7; background-color: rgba(168, 85, 247, 0.03); }
     </style>
 </head>
 <body class="text-slate-100 font-sans min-h-screen flex flex-col overflow-x-hidden">
 
+    <!-- Üst Başlık -->
     <header class="bg-[#0b0f19] border-b border-slate-800 p-4 sticky top-0 z-40 shadow-md flex justify-between items-center w-full">
         <div class="flex items-center space-x-3">
             <img src="logo .png" alt="Medeni Gökalp Logo" class="h-8 w-auto object-contain select-none rounded">
@@ -54,8 +55,9 @@
         </div>
     </header>
 
-    <main class="flex-1 p-3 max-w-6xl w-full mx-auto pb-24 box-border overflow-x-hidden">
+    <main class="flex-1 p-3 max-w-7xl w-full mx-auto pb-24 box-border overflow-x-hidden">
         
+        <!-- 1. DERS SEKMESİ -->
         <section id="tab-dersler" class="tab-content space-y-4">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
                 <h2 class="text-base font-bold mb-1 text-blue-400 flex items-center"><i class="fa-solid fa-graduation-cap mr-2"></i> Müfredat & Ders Yönetimi</h2>
@@ -76,6 +78,7 @@
             </div>
         </section>
 
+        <!-- 2. 3D STÜDYO SEKMESİ -->
         <section id="tab-3d" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
                 <h2 class="text-base font-bold text-emerald-400 flex items-center mb-2"><i class="fa-solid fa-flask mr-2"></i> Interaktif 3D Stüdyo</h2>
@@ -119,9 +122,11 @@
             </div>
         </section>
 
+        <!-- 3. PERİYODİK TABLO SEKMESİ (BİREBİR MATRİS VE KAYDIRMA) -->
         <section id="tab-elementler" class="tab-content space-y-4 hidden">
             <div class="bg-[#0a0d16] p-4 rounded-xl border border-slate-800 shadow-lg space-y-4">
                 
+                <!-- Üst Nav Kontrolleri -->
                 <div class="flex items-center justify-between gap-2">
                     <div class="relative flex-1 max-w-xs">
                         <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-500 text-xs"></i>
@@ -138,10 +143,17 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-3 sm:grid-cols-6 gap-2 max-h-[520px] overflow-y-auto p-0.5" id="periodic-matrix-container"></div>
+                <!-- MOBİL KAYDIRILABİLİR 18 SÜTUNLU GRİD YAPISI -->
+                <div class="overflow-x-auto w-full pb-3">
+                    <div id="periodic-matrix-container" class="grid gap-1.5 p-1 min-w-[1240px]" style="grid-template-columns: 28px repeat(18, minmax(64px, 1fr));">
+                        <!-- JavaScript buraya başlıkları, elementleri ve orta açıklama kutularını dolduracak -->
+                    </div>
+                </div>
+
             </div>
         </section>
 
+        <!-- 4. GÜVENLİK SEKMESİ -->
         <section id="tab-guvenlik" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg">
                 <h2 class="text-base font-bold mb-1 text-amber-400 flex items-center"><i class="fa-solid fa-triangle-exclamation mr-2"></i> Kimyasal Tehlike İşaretleri</h2>
@@ -152,13 +164,14 @@
                     <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-3"><div class="shrink-0 w-14 h-14 flex items-center justify-center"><div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow"><div class="-rotate-45 text-slate-900 flex items-center justify-center w-6 h-6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="5" x2="8" y2="10" /><line x1="8" y1="12" x2="8" y2="12.01" stroke-width="3.5" /><line x1="21" y1="5" x2="16" y2="10" /><line x1="16" y1="12" x2="16" y2="12.01" stroke-width="3.5" /><path d="M2 18h5l0.5-2h1l0.5 2h2" /><path d="M13 18h2.5l0.5-2h1l0.5 2h2.5" /></svg></div></div></div><div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Aşındırıcı / Korozif</h3><p class="text-[10px] text-slate-400 leading-relaxed">Cildi ve metalleri aşındırır. Örnek: Sülfürik Asit, Tuz Ruhu</p></div></div>
                     <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-3"><div class="shrink-0 w-14 h-14 flex items-center justify-center"><div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow"><div class="-rotate-45 text-slate-900 text-lg"><i class="fa-solid fa-burst"></i></div></div></div><div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Patlayıcı Madde</h3><p class="text-[10px] text-slate-400 leading-relaxed">Darbe ve yüksek ısıdan korunmalıdır. Örnek: TNT, Dinamit</p></div></div>
                     <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-3"><div class="shrink-0 w-14 h-14 flex items-center justify-center"><div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow"><div class="-rotate-45 text-slate-900 text-xl font-sans font-black flex items-center justify-center leading-none select-none">!</div></div></div><div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Tahriş Edici Madde</h3><p class="text-[10px] text-slate-400 leading-relaxed">Alerji yapar, buharı solunmamalıdır. Örnek: Çamaşır Suyu, Deterjan</p></div></div>
-                    <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-3"><div class="shrink-0 w-14 h-14 flex items-center justify-center"><div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow"><div class="-rotate-45 text-slate-900 text-base"><i class="fa-solid fa-skull-crossbones"></i></div></div></div><div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Zehirli / Toksik Madde</h3><p class="text-[10px] text-slate-400 leading-relaxed">Ciddi zehirlenmelere ve ölüme yol açar. Örnek: Klor Gazı, Siyanür</p></div></div>
+                    <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-3"><div class="shrink-0 w-14 h-14 flex items-center justify-center"><div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow"><div class="-rotate-45 text-slate-900 text-base"><i class="fa-solid fa-skull-crossbones"></i></div></div></div><div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Zehirli / Toksik Madde</h3><p class="text-[10px] text-slate-400 leading-relaxed">Ciddi zehirlenmelere and ölüme yol açar. Örnek: Klor Gazı, Siyanür</p></div></div>
                     <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-3"><div class="shrink-0 w-14 h-14 flex items-center justify-center"><div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow"><div class="-rotate-45 text-slate-900 text-base animate-pulse"><i class="fa-solid fa-radiation animate-spin-slow"></i></div></div></div><div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Radyoaktif Madde</h3><p class="text-[10px] text-slate-400 leading-relaxed">Zararlı radyasyon yayar. Örnek: Uranyum, Röntgen Cihazları</p></div></div>
                     <div class="p-2.5 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center space-x-3"><div class="shrink-0 w-14 h-14 flex items-center justify-center"><div class="w-11 h-11 bg-white border-[3px] border-red-600 rotate-45 flex items-center justify-center shadow"><div class="-rotate-45 text-slate-900 flex items-center justify-center w-6 h-6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18c4-1 8-1 12 0s4 1 8 0" stroke-width="2" /><path d="M6 18V7M6 12l3-2M6 10L4 8M6 14L4 15" /><path d="M13 15.5c1.5-0.8 3.5-0.8 5 0.5l1.5-0.8v1.6l-1.5-0.8c-1.5 1-3.5 1-5 0.3z" fill="currentColor" /></svg></div></div></div><div class="min-w-0 flex-1"><h3 class="text-xs font-bold text-slate-200">Çevreye Zararlı Madde</h3><p class="text-[10px] text-slate-400 leading-relaxed">Doğaya bırakılmamalıdır, lavaboya dökülmez. Örnek: Piller, Cıva</p></div></div>
                 </div>
             </div>
         </section>
 
+        <!-- 5. VİDEOLAR SEKMESİ -->
         <section id="tab-galeri" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg space-y-3">
                 <h2 class="text-base font-bold text-cyan-400 flex items-center"><i class="fa-solid fa-video mr-2"></i> Videolar & Deney Listesi</h2>
@@ -174,6 +187,7 @@
             </div>
         </section>
 
+        <!-- 6. SENARYO SEKMESİ -->
         <section id="tab-youtube" class="tab-content space-y-4 hidden">
             <div class="bg-[#0e1322] p-4 rounded-xl border border-slate-800 shadow-lg flex flex-col h-[calc(100vh-12rem)]">
                 <h2 class="text-base font-bold mb-2 text-rose-400 flex items-center"><i class="fa-brands fa-youtube mr-2"></i> YouTube Senaryo Üretici</h2>
@@ -184,16 +198,20 @@
 
     </main>
 
-    <div id="element-modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-sm z-50 hidden flex items-center justify-center p-0 sm:p-4">
-        <div class="bg-[#05070f] w-full h-full sm:max-w-2xl sm:h-[90vh] sm:rounded-2xl border-t sm:border border-slate-800 flex flex-col shadow-2xl overflow-hidden animate-fade-in">
+    <!-- FERRUMONE BİREBİR DETAY MODALI -->
+    <div id="element-modal" class="fixed inset-0 bg-slate-950/95 backdrop-blur-sm z-50 hidden flex items-center justify-center p-0 sm:p-4">
+        <div class="bg-[#05070f] w-full h-full sm:max-w-2xl sm:h-[90vh] sm:rounded-2xl border-t sm:border border-slate-800 flex flex-col shadow-2xl overflow-hidden">
             
+            <!-- Üst Başlık Kısmı -->
             <div class="p-4 bg-[#0a0d16] border-b border-slate-850 flex justify-between items-center shrink-0">
                 <span class="text-xs font-semibold text-slate-400" id="modal-breadcrumb">Periyodik Tablo / Element</span>
                 <button onclick="closeModal()" class="text-slate-400 text-xs bg-[#131a2e] px-3 py-1.5 rounded-lg border border-slate-800 font-bold">Kapat</button>
             </div>
             
+            <!-- İçerik Alanı -->
             <div class="flex-1 overflow-y-auto p-4 space-y-4 bg-[#05070f]" id="modal-scroll-content">
                 
+                <!-- Üst Element Amblem Alanı -->
                 <div class="bg-[#0a0d16] p-5 rounded-2xl border border-slate-850 flex flex-col items-start space-y-4">
                     <div id="m-badge-container" class="w-24 h-24 border rounded-2xl flex flex-col items-center justify-center text-center shadow-lg bg-slate-950/50">
                         <span class="text-xs text-slate-400 font-bold self-start pl-3 pt-1" id="m-num">79</span>
@@ -202,70 +220,63 @@
                     </div>
                     
                     <div class="space-y-2 w-full">
-                        <h2 class="text-xl font-black text-white" id="m-name">Altın (Au) Nedir? <span class="text-sm font-normal text-slate-500" id="m-eng">Gold</span></h2>
+                        <h2 class="text-xl font-black text-white" id="m-name">Altın (Au) Nedir?</h2>
                         <div class="flex flex-wrap gap-1.5" id="m-tags"></div>
                         <p class="text-xs text-slate-300 leading-relaxed pt-2 border-t border-slate-850" id="m-desc"></p>
                     </div>
                 </div>
 
+                <!-- 9'lu Metrik Veri Izgarası -->
                 <div class="grid grid-cols-2 gap-2" id="m-grid-props"></div>
 
+                <!-- Detay Blokları -->
                 <div id="ferrum-history-block" class="p-4 bg-[#0a0d16] border border-slate-850 rounded-2xl">
-                    <div class="text-[11px] text-blue-400 font-bold uppercase flex items-center gap-1.5 mb-2">
-                        <i class="fa-regular fa-clock"></i> Keşif Tarihi
-                    </div>
+                    <div class="text-[11px] text-blue-400 font-bold uppercase flex items-center gap-1.5 mb-2"><i class="fa-regular fa-clock"></i> Keşif Tarihi</div>
                     <p class="text-xs text-slate-300 leading-relaxed" id="m-history-text"></p>
                 </div>
 
                 <div id="ferrum-isotope-block" class="p-4 bg-[#0a0d16] border border-slate-850 rounded-2xl">
-                    <div class="text-[11px] text-purple-400 font-bold uppercase flex items-center gap-1.5 mb-2">
-                        <i class="fa-solid fa-circle-nodes"></i> İzotoplar
-                    </div>
+                    <div class="text-[11px] text-purple-400 font-bold uppercase flex items-center gap-1.5 mb-2"><i class="fa-solid fa-circle-nodes"></i> İzotoplar</div>
                     <p class="text-xs text-slate-300 leading-relaxed" id="m-isotope-text"></p>
                 </div>
 
                 <div id="ferrum-usages-block" class="p-4 bg-[#0a0d16] border border-slate-850 rounded-2xl">
                     <div class="text-[11px] text-cyan-400 font-bold uppercase mb-2">Kullanım Alanları</div>
-                    <ul class="space-y-1.5" id="m-usages-list"></ul>
+                    <ul class="space-y-1.5 list-none" id="m-usages-list"></ul>
                 </div>
 
                 <div id="ferrum-bio-block" class="p-4 bg-[#06100d] border border-emerald-900/60 rounded-2xl">
-                    <div class="text-[11px] text-emerald-400 font-bold uppercase flex items-center gap-1.5 mb-2">
-                        <i class="fa-solid fa-heart-pulse"></i> Biyolojik Rol
-                    </div>
+                    <div class="text-[11px] text-emerald-400 font-bold uppercase flex items-center gap-1.5 mb-2"><i class="fa-solid fa-heart-pulse"></i> Biyolojik Rol</div>
                     <p class="text-xs text-slate-300 leading-relaxed" id="m-bio-text"></p>
                 </div>
 
                 <div id="ferrum-interesting-block" class="p-4 bg-[#191307] border border-amber-900/60 rounded-2xl">
-                    <div class="text-[11px] text-[#f97316] font-bold uppercase flex items-center gap-1.5 mb-2">
-                        <i class="fa-regular fa-star"></i> İlginç Bilgiler
-                    </div>
+                    <div class="text-[11px] text-[#f97316] font-bold uppercase flex items-center gap-1.5 mb-2"><i class="fa-regular fa-star"></i> İlginç Bilgiler</div>
                     <ul class="space-y-2 list-disc pl-4 text-xs text-slate-300 leading-relaxed" id="m-interesting-list"></ul>
                 </div>
 
                 <div id="ferrum-notes-block" class="p-4 bg-[#0a1124] border border-blue-900/60 rounded-2xl">
-                    <div class="text-[11px] text-blue-400 font-bold uppercase flex items-center gap-1.5 mb-2">
-                        <i class="fa-solid fa-bolt"></i> Çalışma Notları
-                    </div>
+                    <div class="text-[11px] text-blue-400 font-bold uppercase flex items-center gap-1.5 mb-2"><i class="fa-solid fa-bolt"></i> Çalışma Notları</div>
                     <ul class="space-y-1.5 text-xs text-slate-300 leading-relaxed" id="m-notes-list"></ul>
                 </div>
 
+                <!-- Element SSS Bölümü -->
                 <div class="space-y-2">
-                    <div class="text-[11px] text-slate-400 font-bold uppercase tracking-wider pl-1" id="sss-heading">Altın SSS</div>
+                    <div class="text-[11px] text-slate-400 font-bold uppercase tracking-wider pl-1" id="sss-heading">SSS</div>
                     <div class="space-y-2" id="m-sss-container"></div>
                 </div>
-
             </div>
 
+            <!-- Alt Değiştirme Butonları -->
             <div class="p-3 bg-[#0a0d16] border-t border-slate-850 flex items-center justify-between gap-2 shrink-0">
                 <button id="modal-btn-prev" onclick="navigateElement(-1)" class="flex-1 bg-[#131a2e] border border-slate-800 text-xs py-2 rounded-xl text-slate-300 text-left pl-3 truncate">← Önceki</button>
                 <button onclick="closeModal()" class="bg-[#1c120c] border border-[#f97316]/30 text-[#f97316] text-xs font-bold px-4 py-2 rounded-xl flex items-center gap-2"><i class="fa-solid fa-table-cells"></i> Periyodik Tablo</button>
                 <button id="modal-btn-next" onclick="navigateElement(1)" class="flex-1 bg-[#131a2e] border border-slate-800 text-xs py-2 rounded-xl text-slate-300 text-right pr-3 truncate">Sonraki →</button>
             </div>
-
         </div>
     </div>
 
+    <!-- ALT SEKMELER -->
     <nav class="bg-slate-800 border-t border-slate-700 fixed bottom-0 left-0 right-0 p-1 flex justify-between items-center shadow-2xl z-40 w-full overflow-x-auto">
         <button onclick="switchTab('dersler')" id="btn-dersler" class="flex-1 flex flex-col items-center justify-center py-1 rounded-lg text-slate-400 active-tab min-w-[55px]"><i class="fa-solid fa-list-check text-xs mb-0.5"></i><span class="text-[8px]">Ders</span></button>
         <button onclick="switchTab('3d')" id="btn-3d" class="flex-1 flex flex-col items-center justify-center py-1 rounded-lg text-slate-400 min-w-[55px]"><i class="fa-solid fa-cube text-xs mb-0.5"></i><span class="text-[8px]">3D Stüdyo</span></button>
@@ -309,7 +320,7 @@
             window.scrollTo(0, 0);
         }
 
-        // --- 📂 118 ELEMENT MATRİS MOTORU 📂 ---
+        // --- 📂 ELEMENT MATRİS MOTORU (18 SÜTUN KOORDİNATLARI) 📂 ---
         const names = ["Hidrojen","Helyum","Lityum","Berilyum","Bor","Karbon","Azot","Oksijen","Flor","Neon","Sodyum","Magnezyum","Alüminyum","Silisyum","Fosfor","Kükürt","Klor","Argon","Potasyum","Kalsiyum","Skandiyum","Titanyum","Vanadyum","Krom","Manganez","Demir","Kobalt","Nikel","Bakır","Çinko","Galyum","Germanyum","Arsenik","Selenyum","Brom","Kripton","Rubidyum","Stronsiyum","İtriyum","Zirkonyum","Niyobyum","Molibden","Teknesyum","Rutenyum","Rodyum","Paladyum","Gümüş","Kadmiyum","İndiyum","Kalay","Antimon","Tellür","İyot","Ksenon","Sezyum","Baryum","Lantan","Seryum","Praseodim","Neodimyum","Prometyum","Samaryum","Europiyum","Gadolinyum","Terbiyum","Disprozyum","Holmiyum","Erbiyum","Tulyum","İterbiyum","Lutesyum","Hafniyum","Tantal","Volfram","Renyum","Osmiyum","İridyum","Platin","Altın","Cıva","Talyum","Kurşun","Bizmuth","Polonyum","Astat","Radon","Fransiyum","Radyum","Aktinyum","Toryum","Protaktinyum","Uranyum","Neptünyum","Plutonyum","Amerikyum","Küriyum","Berkelyum","Kaliforniyum","Aynştaynyum","Fermiyum","Mendelevyum","Nobelyum","Lavrensiyum","Rutherfordiyum","Dubniyum","Seaborgeyum","Bohriyum","Hassiyum","Maytneriyum","Darmstadtiyum","Röntgenyum","Kopernikyum","Nihonyum","Flerovyum","Moskovyum","Livermoryum","Tennessin","Oganesson"];
         const symbols = ["H","He","Li","Be","B","C","N","O","F","Ne","Na","Mg","Al","Si","P","S","Cl","Ar","K","Ca","Sc","Ti","V","Cr","Mn","Fe","Co","Ni","Cu","Zn","Ga","Ge","As","Se","Br","Kr","Rb","Sr","Y","Zr","Nb","Mo","Tc","Ru","Rh","Pd","Ag","Cd","In","Sn","Sb","Te","I","Xe","Cs","Ba","La","Ce","Pr","Nd","Pm","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu","Hf","Ta","W","Re","Os","Ir","Pt","Au","Hg","Tl","Pb","Bi","Po","At","Rn","Fr","Ra","Ac","Th","Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm","Md","No","Lr","Rf","Db","Sg","Bh","Hs","Mt","Ds","Rg","Cn","Nh","Fl","Mc","Lv","Ts","Og"];
         const masses = [1.008, 4.002, 6.94, 9.012, 10.81, 12.011, 14.007, 15.999, 18.998, 20.18, 22.99, 24.305, 26.982, 28.085, 30.974, 32.06, 35.45, 39.948, 39.098, 40.078, 44.956, 47.867, 50.942, 51.996, 54.938, 55.845, 58.933, 58.693, 63.546, 65.38, 69.723, 72.63, 74.922, 78.971, 79.904, 83.798, 85.468, 87.62, 88.906, 91.224, 92.906, 95.95, 98, 101.07, 102.91, 106.42, 107.87, 112.41, 114.82, 118.71, 121.76, 127.6, 126.9, 131.29, 132.91, 137.33, 138.91, 140.12, 140.91, 144.24, 145, 150.36, 151.96, 157.25, 158.93, 162.5, 164.93, 167.26, 168.93, 173.05, 174.97, 178.49, 180.95, 183.84, 186.21, 190.23, 192.22, 195.08, 196.97, 200.59, 204.38, 207.2, 208.98, 209, 210, 222, 223, 226, 227, 232.04, 231.04, 238.03, 237, 244, 243, 247, 247, 251, 252, 257, 258, 259, 262, 267, 268, 269, 270, 269, 278, 281, 280, 285, 286, 289, 289, 293, 294, 294];
@@ -339,6 +350,26 @@
             return "cat-gecis";
         }
 
+        // Matris Yerleşim Hesaplama Motoru (Satır/Sütun Atamaları)
+        function getGridCoords(num) {
+            if (num === 1) return { row: 2, col: 2 }; 
+            if (num === 2) return { row: 2, col: 19 }; 
+            if (num >= 3 && num <= 4) return { row: 3, col: num - 1 }; 
+            if (num >= 5 && num <= 10) return { row: 3, col: num + 9 }; 
+            if (num >= 11 && num <= 12) return { row: 4, col: num - 9 }; 
+            if (num >= 13 && num <= 18) return { row: 4, col: num + 1 }; 
+            if (num >= 19 && num <= 36) return { row: 5, col: num - 17 }; 
+            if (num >= 37 && num <= 54) return { row: 6, col: num - 35 }; 
+            if (num === 55) return { row: 7, col: 2 }; 
+            if (num === 56) return { row: 7, col: 3 }; 
+            if (num >= 57 && num <= 71) return { row: 10, col: num - 57 + 4 }; // Alt Lantanit sırası
+            if (num >= 72 && num <= 86) return { row: 7, col: num - 72 + 5 }; 
+            if (num === 87) return { row: 8, col: 2 }; 
+            if (num === 88) return { row: 8, col: 3 }; 
+            if (num >= 89 && num <= 103) return { row: 11, col: num - 89 + 4 }; // Alt Aktinit sırası
+            if (num >= 104 && num <= 118) return { row: 8, col: num - 104 + 5 }; 
+        }
+
         function buildElementsMatrix() {
             let list = [];
             for(let i=0; i<118; i++) {
@@ -350,14 +381,64 @@
         const globalElements = buildElementsMatrix();
 
         function renderElementsGrid(list) {
-            const container = document.getElementById('periodic-matrix-container'); container.innerHTML = '';
-            list.forEach(el => {
-                let colorStyle = getCatStyle(el.cat);
+            const container = document.getElementById('periodic-matrix-container');
+            container.innerHTML = '';
+
+            // Sütun Numaralarını Ekle (1-18)
+            for (let g = 1; g <= 18; g++) {
+                container.innerHTML += `<div class="text-center text-[10px] font-bold text-slate-600 self-end pb-1" style="grid-row: 1; grid-column: ${g + 1};">${g}</div>`;
+            }
+
+            // Satır Numaralarını Ekle (1-7)
+            for (let p = 1; p <= 7; p++) {
+                container.innerHTML += `<div class="flex items-center justify-center text-[10px] font-bold text-slate-600 pr-1" style="grid-row: ${p + 1}; grid-column: 1;">${p}</div>`;
+            }
+
+            // Ortadaki Boşluğa Ferrumone Kategori Kılavuz Kartlarını Enjekte Et
+            const legends = [
+                { name: "Alkali Metal", count: "6 element", color: "#ef4444", row: 3, col: 4 },
+                { name: "Toprak Alkali", count: "6 element", color: "#f97316", row: 3, col: 6 },
+                { name: "Lantanit & Aktinit", count: "30 element", color: "#a855f7", row: 3, col: 8 },
+                { name: "Geçiş Metali", count: "35 element", color: "#3b82f6", row: 3, col: 10 },
+                { name: "Post-Geçiş", count: "12 element", color: "#06b6d4", row: 3, col: 12 },
+                { name: "Yarı Metal", count: "6 element", color: "#eab308", row: 4, col: 4 },
+                { name: "Ametal", count: "7 element", color: "#10b981", row: 4, col: 6 },
+                { name: "Halojen", count: "6 element", color: "#84cc16", row: 4, col: 8 },
+                { name: "Soy Gaz", count: "7 element", color: "#ec4899", row: 4, col: 10 },
+                { name: "Bilinmiyor", count: "3 element", color: "#64748b", row: 4, col: 12 }
+            ];
+
+            legends.forEach(l => {
                 container.innerHTML += `
-                    <div onclick="openElementDetail(${el.n})" class="p-2.5 bg-[#0f1422] border rounded-xl flex flex-col items-center justify-center text-center shadow-md hover:scale-105 transition-all cursor-pointer ${colorStyle}">
-                        <span class="text-[9px] text-slate-500 font-bold self-start">${el.n}</span>
-                        <span class="text-sm font-black mt-[-2px] text-white">${el.s}</span>
-                        <span class="text-[9px] font-bold text-slate-400 truncate w-full">${el.name}</span>
+                    <div class="border border-slate-850 rounded-xl p-1 flex flex-col items-center justify-center text-center bg-[#0a0d16]/40 select-none" style="grid-row: ${l.row}; grid-column: ${l.col} / span 2;">
+                        <div class="w-5 h-0.5 mb-1 rounded" style="background-color: ${l.color};"></div>
+                        <span class="text-[9px] font-black tracking-tight" style="color: ${l.color};">${l.name}</span>
+                        <span class="text-[7px] text-slate-500 font-medium">${l.count}</span>
+                    </div>
+                `;
+            });
+
+            // Tablo İçi "57-71" ve "89-103" Yer Tutucu Kutuları
+            container.innerHTML += `
+                <div class="border border-dashed border-purple-950 rounded-xl flex items-center justify-center text-center bg-purple-950/5 select-none" style="grid-row: 7; grid-column: 4;">
+                    <span class="text-[9px] font-bold text-purple-500/70">57-71</span>
+                </div>
+                <div class="border border-dashed border-purple-950 rounded-xl flex items-center justify-center text-center bg-purple-950/5 select-none" style="grid-row: 8; grid-column: 4;">
+                    <span class="text-[9px] font-bold text-purple-500/70">89-103</span>
+                </div>
+                <div style="grid-row: 9; grid-column: 1 / span 19; height: 12px;"></div>
+            `;
+
+            // Element Hücrelerini Konumlandır
+            list.forEach(el => {
+                const coords = getGridCoords(el.n);
+                let colorStyle = getCatStyle(el.cat);
+                
+                container.innerHTML += `
+                    <div onclick="openElementDetail(${el.n})" class="p-1 bg-[#0f1422] border rounded-xl flex flex-col items-center justify-center text-center shadow-md hover:scale-105 transition-all cursor-pointer ${colorStyle}" style="grid-row: ${coords.row}; grid-column: ${coords.col};">
+                        <span class="text-[8px] text-slate-500 font-bold self-start pl-0.5">${el.n}</span>
+                        <span class="text-xs font-black tracking-tight text-white mt-[-2px]">${el.s}</span>
+                        <span class="text-[8px] font-medium text-slate-400 truncate w-full mt-0.5">${el.name}</span>
                     </div>`;
             });
         }
@@ -378,7 +459,7 @@
             document.getElementById('m-mass').innerText = el.m;
             document.getElementById('m-name').innerHTML = `${el.name} (${el.s}) Nedir? <span class="text-xs font-normal text-slate-500" id="m-eng">Element</span>`;
             
-            // Varsayılan Akıllı Şablon Verileri
+            // Varsayılan Dinamik Kimya Şablon Verileri
             let eng = "Chemical Element"; let state = "Katı"; let period = Math.ceil(num/18); let group = (num % 18 === 0) ? 18 : num % 18;
             let desc = `${el.name}, periyodik tablonun ${el.cat} sınıfına ait kararlı bir elementtir.`;
             let config = "n/a"; let shells = "n/a"; let density = "n/a"; let discoverer = "Bilinmiyor";
@@ -394,9 +475,9 @@
                 { q: `${el.name} nerelerde kullanılır?`, a: `Genel kimya sanayi ve eğitim teknolojilerinde tercih edilir.` }
             ];
 
-            // 🌟 79 NUMARALI ALTIN (Au) ELEMENTİNİN BİREBİR EKRAN GÖRÜNTÜSÜ VERİLERİ 🌟
+            // 🌟 79 NUMARALI ALTIN (Au) ELEMENTİNİN BİREBİR DETAY VERİLERİ 🌟
             if(num === 79) {
-                eng = "Gold"; state = "Katı";
+                eng = "Gold"; state = "Katı"; group = 11; period = 6;
                 desc = "Soy metal, korozyona dayanıklı. Elektronik bağlantılarda, mücevhercilikte ve para sisteminde kullanılır. Rölatiflik etkisi altın rengi verir.";
                 config = "[Xe] 4f¹⁴ 5d¹⁰ 6s¹"; shells = "2 | 8 | 18 | 32 | 18 | 1"; density = "19.3 g/cm³"; electronegativity = "2.54"; melt = "1064.2 °C"; boil = "2855.8 °C"; discoverer = "Antik çağ";
                 historyText = "Altın, insanlığın işlediği ilk metallerden biridir; en erken buluntular yaklaşık MÖ 5000 yılına tarihlenmektedir (Varna nekropolü, Bulgaristan). Sembolü Au, Latince \"aurum\" sözcüğünden gelir. Antik Mısır, Anadolu altın madenleri (Lidia elektrum sikkeleri, MÖ 600), Roma ve Keza İnka İmparatorluğu büyük altın kültürleri geliştirdi. Altın standardı 19-20. yüzyıl para sistemlerini şekillendirdi; Bretton Woods anlaşmasıyla (1944) ABD Doları altına bağlı rezerv para birimi ilan edildi, 1971'de Nixon bu bağı kesti.";
@@ -429,7 +510,6 @@
             document.getElementById('m-desc').innerText = desc;
             document.getElementById('sss-heading').innerText = `${el.name} SSS`;
 
-            // Kategori Hap Etiketleri
             document.getElementById('m-tags').innerHTML = `
                 <span class="text-[10px] bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-full text-white font-medium">${el.cat}</span>
                 <span class="text-[10px] bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-full text-slate-400">Periyot ${period}</span>
@@ -437,7 +517,6 @@
                 <span class="text-[10px] bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-full text-slate-400">${state}</span>
             `;
             
-            // 9'lu Izgara Metrik Kartları (Ferrumone Tarzı)
             document.getElementById('m-grid-props').innerHTML = `
                 <div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Atom Numarası</div><div class="text-sm font-black mt-1 text-white">${el.n}</div></div>
                 <div class="p-3 bg-[#0a0d16] border border-slate-850 rounded-xl"><div class="text-[9px] text-slate-500 font-bold uppercase">Atom Kütlesi</div><div class="text-sm font-black mt-1 text-white">${el.m} g/mol</div></div>
@@ -458,9 +537,8 @@
             document.getElementById('m-interesting-list').innerHTML = interesting.map(x => `<li>${x}</li>`).join('');
             document.getElementById('m-notes-list').innerHTML = notes.map(x => `<li class="text-xs text-slate-300 leading-relaxed">• ${x}</li>`).join('');
             
-            // SSS Akordeon Oluşturucu
             const sssBox = document.getElementById('m-sss-container'); sssBox.innerHTML = '';
-            sss.forEach((item, idx) => {
+            sss.forEach((item) => {
                 sssBox.innerHTML += `
                     <div class="bg-[#0a0d16] border border-slate-850 rounded-xl p-3">
                         <div class="text-xs font-bold text-white mb-1">${item.q}</div>
@@ -468,7 +546,7 @@
                     </div>`;
             });
 
-            // Alt Kılavuz Navigasyon İsim Güncellemeleri
+            // Alt Buton İsimlerini Güncelle
             const prevEl = globalElements.find(x => x.n === num - 1);
             const nextEl = globalElements.find(x => x.n === num + 1);
             
